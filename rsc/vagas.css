@@ -54,6 +54,7 @@ hr {
 }
 
 .tituloVaga {
+    align-self: center;
     justify-self: end;
 
     text-align: right;
@@ -70,10 +71,12 @@ hr {
 }
 
 .textoVaga {
+    align-self: center;
+
     max-width: 75ch;
     text-align: justify;
     }
-    
+
 /* botão pra se candidatar */
 .botaoCandidatar {
     justify-self: start;
