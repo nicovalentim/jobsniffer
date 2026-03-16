@@ -58,7 +58,7 @@ async function iniciar() {
             ${descNaPagina}
         </section>
 
-        <section class="botadoCandidatar">
+        <section class="botaoCandidatar">
             <a>
             Quero me candidatar!
             </a>
