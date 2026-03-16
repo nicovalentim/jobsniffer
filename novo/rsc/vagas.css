@@ -1,0 +1,69 @@
+/* filtro de vagas */
+.filtro {
+    display: flex;
+    justify-self: end;
+    text-align: center;
+    justify-content: end;
+    align-items: center;
+    cursor: pointer;
+
+    margin: 0.4em;
+    padding: 0.5em;
+    border-radius: 10px;
+    min-width: 12em;
+
+    font-weight: 500;
+
+    background-color: rgba(var(--cinza), 1);
+    border: 1px solid rgba(var(--cinza), 1);
+    }
+
+.filtro img {
+    width: 16px;
+    margin: 5px;
+    }
+
+.selecionado {
+    color: rgba(var(--branco),1);
+    background-color: rgba(var(--realce), 1);
+    }
+
+/* seção de vagas */
+#vaga {
+    align-items: center;
+    column-gap: 2em;
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr;
+
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+#vaga hr {
+    grid-column-start: 1;
+    grid-column-end: -1; /* -1 para usar todas as colunas */
+    width: 100%;
+}
+
+.tituloVaga {
+    align-self: center;
+    justify-self: end;
+
+    text-align: right;
+    max-width: 20ch;
+    word-wrap: break-word;
+}
+
+.textoVaga {
+    max-width: 75ch;
+    }
+
+/* botão pra se candidatar */
+.botadoCandidatar {
+    align-self: start;
+    justify-self: start;
+    cursor: pointer;
+
+    font-size: 1.2em;
+    font-weight: 400;
+    }
