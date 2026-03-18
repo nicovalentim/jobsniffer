@@ -94,11 +94,7 @@ ul {
 
 /* header */
 .fundo {
-    margin-top: -3.2em;
-    padding-top: 3.2em;
-
     justify-items: center;
-    text-align: center;
     width: 100%;
 
     background-color: rgba(var(--branco), 1);
@@ -121,7 +117,6 @@ header {
 
 header h1 {
     user-select: none;
-    max-width: 8ch;
     word-wrap: break-word;
     margin-left: 2em;
 
