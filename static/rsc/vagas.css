@@ -43,8 +43,7 @@
 
     #menu button {
         display: flex;
-        justify-content: flex-end; /* */
-        justify-self: end;
+        justify-content: center;
         align-items: center;
     
         cursor: pointer;
@@ -75,15 +74,27 @@
     }
 
 /* seção de vagas */
+#buscarVaga {
+    width:300px;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid rgba(var(--preto),0.2);
+
+    text-align: right;
+    display: block;
+    margin-left: auto;
+    margin-right: 7.5%;
+}
+
 #vaga {
     column-gap: 2em;
     display: grid;
     grid-template-columns: 1fr 4fr;
+    justify-self: center;
 
-    margin-left: 8em;
     margin-bottom: 1em;
     margin-top: 1em;
-    width: 75%;
+    width: 85%;
 }
 
 #vaga hr {

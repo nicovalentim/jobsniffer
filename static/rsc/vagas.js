@@ -6,6 +6,21 @@ botaoMenu.onclick = () => {
     menu.classList.toggle("menuClicado");
 };
 
+// Busca de vagas
+const busca = document.getElementById("buscarVaga");
+
+if (busca) {
+    busca.addEventListener("keyup", function () {
+        const texto = busca.value.toLowerCase();
+        const vagas = document.querySelectorAll(".vaga");
+
+        vagas.forEach(vaga => {
+            const conteudo = vaga.textContent.toLowerCase();
+            vaga.style.display = conteudo.includes(texto) ? "block" : "none";
+        });
+    });
+}
+
 const container = document.getElementById("vaga")
 
 // carrega a URL do DB, "/vagas" na verdade é re-roteado via python para o diretório correto
