@@ -78,7 +78,7 @@
 #vaga {
     column-gap: 2em;
     display: grid;
-    grid-template-columns: 0.5fr 4fr;
+    grid-template-columns: 1fr 4fr;
 
     margin-left: 8em;
     margin-bottom: 1em;
@@ -100,12 +100,11 @@
     justify-self: end;
 
     text-align: right;
-    max-width: 20ch;
+    max-width: 25ch;
     word-wrap: break-word;
 }
 
 .textoVaga {
-    align-self: center;
-
+    align-self: flex-start;
     text-align: justify;
 }

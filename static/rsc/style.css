@@ -1,7 +1,3 @@
-.vaga {
-    width: 75%; /* mudar depois pra ser global */
-    }
-
 /* fontes usadas: Montserrat e Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -40,22 +36,18 @@ h1 {
     }
 
 /* navbar */
-#logo {
-    width: 4vh;
-    margin-left: 2em;
-}
-
-#titulo {
-    font-family: var(--fontePrimaria);
-    font-weight: 800;
-}
-
 .navbar {
-    background: rgba(var(--branco), 1);
     list-style: none;
     display: flex;
     align-items: center;
     font-size: 2em;
+    
+    position: absolute;
+    width: 100%;
+    top:0;
+
+    color: rgba(var(--branco), 1);
+    text-shadow: 5px 5px 20px rgba(var(--preto), 0.75);
 }
 
 .navbar > li {
@@ -67,8 +59,8 @@ h1 {
 
 .navbar > li:last-child {
     font-size: 0.6em;
-    margin-left: 10%;
-    margin-right: 1em;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 ul {
@@ -76,29 +68,27 @@ ul {
     margin: 0;
 }
 
-    .dropdown {
-        background: rgba(var(--cinza), 1);
-        position: absolute;
-        width: 220px;
-        display: none;
-        max-height: 250px;
-        overflow-y: auto;
-        scrollbar-width: none;
-        font-size: 0.5em;
+    #logo {
+        width: 4vh;
+        margin-left: 2em;
     }
 
-    .dropdown::-webkit-scrollbar {
-        display: none;
+    #titulo {
+        font-family: var(--fontePrimaria);
+        font-weight: 800;
     }
 
-    .dropdown li, .navbar li:hover .dropdown {
-        display: block;
+    #login {
+        color: rgb(var(--realce));
+        background-color: rgb(var(--branco));
+
+        padding: 9px;
     }
 
 /* header */
 header {
     width: 100%;
-    min-height: 18em;
+    min-height: 32em;
 
     display: flex;
     align-items: flex-end;
@@ -109,12 +99,15 @@ header {
 
 header h1 {
     user-select: none;
+    max-width: ;
     word-wrap: break-word;
     margin-left: 2em;
 
     color: rgba(var(--branco), 1);
     font-size: 3em;
     font-weight: 900;
+
+    text-shadow: 5px 5px 20px rgba(var(--preto), 0.2);
     }
 
     header img {
