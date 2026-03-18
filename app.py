@@ -8,7 +8,6 @@ app = Flask(__name__)
 def home():
     return render_template("vagas.html")
 
-
 # rota das vagas agora com filtrro
 @app.route("/vagas")
 def vagas():

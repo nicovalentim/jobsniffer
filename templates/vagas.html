@@ -2,7 +2,7 @@
 
 <head>
          <link rel="stylesheet" href="../static/rsc/style.css">
-        <link rel="stylesheet" href="../static/rsc/vagas.css">
+         <link rel="stylesheet" href="../static/rsc/vagas.css">
          <title>job sniffer</title>
          <link rel="icon" type="image/x-icon" href="../static/icon/icon.svg">
 </head>
@@ -29,20 +29,29 @@
 </ul>
 
 <header>
-    <img src="vagasHeader.png" />
+    <img src="../static//images/vagasHeader.webp" />
     <h1>vagas recomendadas</h1>
 </header>
 
-<div class="fundo">
-
-<button class="filtro selecionado" data-filtro="todos">Ver tudo</button>
-<button class="filtro" data-presenca="0">Presencial</button>
-<button class="filtro" data-presenca="1">Híbrido</button>
-<button class="filtro" data-presenca="2">100% Remoto</button>
-<button class="filtro" data-tempo="1">Tempo integral</button>
-<button class="filtro" data-tempo="0">Meio período</button>
-
 <div id="vaga"></div>
+
+<div id="cantoDaTela">
+
+    <section id="botaoMenu">
+        +
+        <section id="menu">
+            <button class="filtro selecionado" data-filtro="todos">Ver tudo</button>
+            <button class="filtro" data-presenca="0">Presencial</button>
+            <button class="filtro" data-presenca="1">Híbrido</button>
+            <button class="filtro" data-presenca="2">100% Remoto</button>
+            <button class="filtro" data-tempo="1">Tempo integral</button>
+            <button class="filtro" data-tempo="0">Meio período</button>
+    </section>
+
+
+    </section>
+    <section id="chatbot"></section>
+
 
 </div>
 
