@@ -1,6 +1,7 @@
 const container = document.getElementById("vaga")
 
-async function carregar(url = "/db/vagas") {
+// carrega a URL do DB, "/vagas" na verdade é re-roteado via python para o diretório correto
+async function carregar(url = "/vagas") {
 
     const res = await fetch(url)
     const dados = await res.json()
@@ -32,18 +33,18 @@ document.querySelectorAll(".filtro").forEach(botao => {
 
     botao.onclick = () => {
 
-        let url = "/db/vagas"
+        let url = "/vagas"
 
         if (botao.dataset.presenca) {
-            url = "/db/vagas?tipo=" + botao.dataset.presenca
+            url = "/vagas?tipo=" + botao.dataset.presenca
         }
 
         if (botao.dataset.tempo) {
-            url = "/db/vagas?tempo=" + botao.dataset.tempo
+            url = "/vagas?tempo=" + botao.dataset.tempo
         }
 
         if (botao.dataset.filtro === "todos") {
-            url = "/db/vagas"
+            url = "/vagas"
         }
 
         carregar(url)
