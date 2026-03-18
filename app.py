@@ -10,12 +10,12 @@ def home():
 
 
 # rota das vagas agora com filtrro
-@app.route("/vagas")
+@app.route("/db/vagas")
 def vagas():
     tipo = request.args.get("tipo")   # presenca
     tempo = request.args.get("tempo") # tempo
 
-    with open("db/vagas.json", encoding="utf-8") as f:
+    with open("db/db/vagas.json", encoding="utf-8") as f:
         dados = json.load(f)
 
     lista = dados["vagas"]
@@ -41,7 +41,7 @@ def vagas():
 # ver vaga específica
 @app.route("/vaga/<int:id>")
 def vaga(id):
-    with open("db/vagas.json", encoding="utf-8") as f:
+    with open("db/db/vagas.json", encoding="utf-8") as f:
         dados = json.load(f)
 
     return jsonify(dados["vagas"][id])

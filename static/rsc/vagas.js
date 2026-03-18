@@ -1,6 +1,6 @@
 const container = document.getElementById("vaga")
 
-async function carregar(url = "/vagas") {
+async function carregar(url = "/db/vagas") {
 
     const res = await fetch(url)
     const dados = await res.json()
@@ -32,18 +32,18 @@ document.querySelectorAll(".filtro").forEach(botao => {
 
     botao.onclick = () => {
 
-        let url = "/vagas"
+        let url = "/db/vagas"
 
         if (botao.dataset.presenca) {
-            url = "/vagas?tipo=" + botao.dataset.presenca
+            url = "/db/vagas?tipo=" + botao.dataset.presenca
         }
 
         if (botao.dataset.tempo) {
-            url = "/vagas?tempo=" + botao.dataset.tempo
+            url = "/db/vagas?tempo=" + botao.dataset.tempo
         }
 
         if (botao.dataset.filtro === "todos") {
-            url = "/vagas"
+            url = "/db/vagas"
         }
 
         carregar(url)
