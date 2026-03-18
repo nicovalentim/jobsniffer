@@ -12,6 +12,9 @@
     --cinza: 217, 217, 217;
 
     --realce: 28, 24, 55;
+
+    --fontePrimaria: "Montserrat", sans-serif;
+    --fonteSecundaria: "Roboto", sans-serif;
     }
 
 /* variáveis globais */
@@ -25,13 +28,13 @@ body {
     color: rgba(var(--preto), 1);
     margin: 0;
 
-    font-family: "Roboto", sans-serif;
+    font-family: var(fonteSecundaria);
     font-size: 0.9em;
     font-weight: 300;
     }
 
 h1 {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(fontePrimaria);
     font-weight: 400;
     margin-top: 0;
     }
@@ -43,7 +46,7 @@ h1 {
 }
 
 #titulo {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(fontePrimaria);
     font-weight: 800;
 }
 
