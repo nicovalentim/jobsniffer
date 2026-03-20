@@ -83,77 +83,6 @@ document.addEventListener("click", (e) => {
     atualizarBotaoTodos();
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // função de filtrar
 function filtrarVagas() {
     // buscar a ID da barra de busca
@@ -163,25 +92,34 @@ function filtrarVagas() {
     // pesquisa dentro de tudo com classe/id ("")
     const vagas = document.querySelectorAll(".vaga");
 
+    // loopa pelas vagas procurando data-set igual ao conteúdo
     vagas.forEach(vaga => {
-        // loopa pelas vagas procurando texto igual ao conteúdo
-        const conteudo = vaga.textContent.toLowerCase();
+        const presenca = vaga.dataset.presenca;
+        const tempo = vaga.dataset.tempo;
+        const area = vaga.dataset.area;
+        const conteudo = vaga.textContent.toLowerCase(); // 🔥 FIX
         let visivel = true;
 
         // esconde conteúdo diferente (!) do que foi pesquisado
-        if (!conteudo.includes(texto)) {
+        if (!conteudo.includes(texto)) { // 🔥 FIX
             visivel = false;
         }
 
-        // esconde conteúdo (!) que NÃO inclua o filtro aplicado no botão 
-        if (filtroAtual.presenca && !conteudo.includes(filtroAtual.presenca)) { // filtro por presença
-            visivel = false;
+        // esconde conteúdo (!) que NÃO inclua o dataset da categoria
+        if (filtroAtual.presenca.length > 0) {
+            if (!filtroAtual.presenca.includes(presenca)) {  // filtra por presença
+                visivel = false;
+            }
         }
-        if (filtroAtual.tempo && !conteudo.includes(filtroAtual.tempo)) { // filtro por tempo de trabalho 
-            visivel = false;
+        if (filtroAtual.tempo.length > 0) {
+            if (!filtroAtual.tempo.includes(tempo)) { // filtra por tempo de trabalho 
+                visivel = false;
+            }
         }
-        if (filtroAtual.area && !conteudo.includes(filtroAtual.area)) { // filtro por área da vaga
-            visivel = false;
+        if (filtroAtual.area.length > 0) { // filtr por área da vaga
+            if (!filtroAtual.area.includes(area)) {
+                visivel = false;
+            }
         }
 
         // muda o estilo de "display" das vagas para escondê-las

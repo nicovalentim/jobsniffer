@@ -1,115 +1,114 @@
 <html>
-
-<head>
-         <link rel="stylesheet" href="../static/rsc/style.css">
-         <link rel="stylesheet" href="../static/rsc/vagas.css">
+    <head>
+         <link rel="stylesheet" href="static/rsc/style.css">
+         <link rel="stylesheet" href="static/rsc/vagas.css">
          <title>job sniffer</title>
-         <link rel="icon" type="image/x-icon" href="../static/icon/favicon.svg">
-</head>
+         <link rel="icon" type="image/x-icon" href="../static/icon/icon.svg">
+    </head>
 
-<body>
+    <body>
 
-<ul class="navbar">
-    <li>
-        <a href="/" id="titulo">
-            <img src="../static/icon/dog.svg" id="logo"/> job sniffer
-        </a>
-    </li>
+        <ul class="navbar">
+            <li>
+                <a href="" id="titulo">
+                    <img src="../static/icon/dog.svg" id="logo"> job sniffer
+                </a>
+            </li>
 
-    <li class="links">
-        <a href="#">Sobre</a> -
-        <a href="#">Contato</a> -
-        <a href="#">Vagas</a>
-    </li>
+            <li class="links">
+                <a href="#">Sobre</a> -
+                <a href="#">Contato</a> -
+                <a href="#">Vagas</a>
+            </li>
 
-    <li>
-        <a href="#" id="login">Login</a>
-        <a href="#" id="cadastro">Cadastrar</a>
-    </li>
-</ul>
+            <li>
+                <a href="#" id="login">Login</a>
+                <a href="#" id="cadastro">Cadastrar</a>
+            </li>
+        </ul>
 
-<header>
-    <img src="../static//images/vagasHeader.webp" />
-    <h1>vagas recomendadas</h1>
-</header>
+        <header>
+            <img src="../static/images/vagasHeader.webp">
+            <h1>vagas recomendadas</h1>
+        </header>
 
-<div class="fundo">
+        <div class="fundo">
 
-<input type="text" id="buscarVaga" placeholder="Pesquisar vaga">
+        <input type="text" id="buscarVaga" placeholder="Pesquisar vaga">
 
-<section class="menu">
-    <button class="selecionado" data-filtro="todos">Ver tudo</button>
-    <button data-presenca="0">Presencial</button>
-    <button data-presenca="1">Híbrido</button>
-    <button data-presenca="2">100% Remoto</button>
-    <button data-tempo="1">Tempo integral</button>
-    <button data-tempo="0">Meio período</button>
-</section><section class="menu">
-    <button class="areaVaga" data-area="area-ti" style="filter: hue-rotate(360deg)">TI</button>
-    <button class="areaVaga" data-area="area-adm" style="filter: hue-rotate(51deg)">ADM</button>
-    <button class="areaVaga" data-area="area-mkt" style="filter: hue-rotate(102deg)">MKT</button>
-    <button class="areaVaga" data-area="area-com" style="filter: hue-rotate(154deg)">COM</button>
-    <button class="areaVaga" data-area="area-log" style="filter: hue-rotate(206deg)">LOG</button>
-    <button class="areaVaga" data-area="area-eng" style="filter: hue-rotate(257deg)">ENG</button>
-    <button class="areaVaga" data-area="area-com" style="filter: hue-rotate(309deg)">COM</button>
-</section>
+        <section class="menu">
+            <button class="selecionado" data-filtro="todos">Ver tudo</button>
+            <button data-presenca="0">Presencial</button>
+            <button data-presenca="1">Híbrido</button>
+            <button data-presenca="2">100% Remoto</button>
+            <button data-tempo="1">Tempo integral</button>
+            <button data-tempo="0">Meio período</button>
+        </section><section class="menu">
+            <button class="areaVaga" data-area="ti" title="Tecnologia da Informação">TI</button>
+            <button class="areaVaga" data-area="adm" title="Administração">ADM</button>
+            <button class="areaVaga" data-area="mkt" title="Marketing">MKT</button>
+            <button class="areaVaga" data-area="com" title="Comércio / Vendas">COM</button>
+            <button class="areaVaga" data-area="log" title="Logística">LOG</button>
+            <button class="areaVaga" data-area="eng" title="Engenharia">ENG</button>
+        </section>
 
-<div id="posts"></div>
+        <div id="posts"></div>
 
-<div id="cantoDaTela">
+        <div id="cantoDaTela">
 
-    <section id="irAoTopo">
-        ^
-    </section>
-    <section id="chatbot"></section>
+            <section id="irAoTopo">
+                ^
+            </section>
+            <section id="chatbot"></section>
 
-</div>
+        </div>
 
-</div>
+        </div>
 
-<div class="footer">
+        <div class="footer">
 
-<section>
-    <h3>ACESSO RÁPIDO</h3>
-    <hr />
-    <a href="">Blog/Notícias</a>
-    <a href="">Boletos/Faturas</a>
-    <a href="">Suporte técnico</a>
-    <a href="">Trabalhe conosco</a>
-    <a href="">Área restrita</a>
-    <a href="">Política de Privacidade e Cookies</a>
-</section>
+        <section>
+            <h3>ACESSO RÁPIDO</h3>
+            <hr />
+            <a href="">Blog/Notícias</a>
+            <a href="">Boletos/Faturas</a>
+            <a href="">Suporte técnico</a>
+            <a href="">Trabalhe conosco</a>
+            <a href="">Área restrita</a>
+            <a href="">Política de Privacidade e Cookies</a>
+        </section>
 
-<section>
-    <h3>ACESSO RÁPIDO</h3>
-    <hr />
-    <a href="">Blog/Notícias</a>
-    <a href="">Boletos/Faturas</a>
-    <a href="">Compliance</a>
-    <a href="">Contato</a>
-    <a href="">Produtos</a>
-    <a href="">Revenda</a>
-</section>
+        <section>
+            <h3>ACESSO RÁPIDO</h3>
+            <hr />
+            <a href="">Blog/Notícias</a>
+            <a href="">Boletos/Faturas</a>
+            <a href="">Compliance</a>
+            <a href="">Contato</a>
+            <a href="">Produtos</a>
+            <a href="">Revenda</a>
+        </section>
 
-<section>
-    <h3>ENDEREÇO</h3>
-    <hr />
- Rua Francisco Antunes, 598<br />
- Guarulhos - SP<br />
- CEP: 07040-010<br /><br />
+        <section>
+            <h3>ENDEREÇO</h3>
+            <hr />
+        Rua Francisco Antunes, 598<br />
+        Guarulhos - SP<br />
+        CEP: 07040-010<br /><br />
 
- ATENDIMENTO<br />
- De segunda à sexta<br />
- das 08:00 às 18:00<br />
+        ATENDIMENTO<br />
+        De segunda à sexta<br />
+        das 08:00 às 18:00<br />
 
- CONTATO<br />
- 55 (11) 2442-2600<br />
- cac@reisoffice.com.br
-</section>
+        CONTATO<br />
+        55 (11) 2442-2600<br />
+        cac@reisoffice.com.br
+        </section>
 
-</div>
+        </div>
 
-<script type="module" src="../static/rsc/scripts.js"></script>
-<script type="module" src="../static/rsc/importVagas.js"></script>
+        <script type="module" src="../static/rsc/scripts.js"></script>
+        <script type="module" src="../static/rsc/importVagas.js"></script>
 
-</body></html>
+    </body>
+</html>

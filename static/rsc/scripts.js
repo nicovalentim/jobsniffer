@@ -1,9 +1,18 @@
-// menu popup
-const botaoMenu = document.getElementById("botaoMenu");
-const menu = document.getElementByClass("menu");
+const backToTopBtn = document.getElementById("irAoTopo");
 
-botaoMenu.onclick = () => {
-    menu.classList.toggle("menuClicado");
-};
+// faz o botão aparecer ou sumir dependendo de quanto o usuário scrollou
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) { // Aparece depois de 300px scrollados
+        backToTopBtn.classList.add("visible");
+    } else {
+        backToTopBtn.classList.remove("visible");
+    }
+});
 
-// botão que volta ao topo
+// Joga pro topo devagarzinho (o smooth pra isso)
+backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});

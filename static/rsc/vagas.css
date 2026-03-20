@@ -94,10 +94,12 @@
     margin: 0;
     padding: 4px;
     text-align: center;
+    text-transform: uppercase;
     order: -1;
 
     font-size: 1.5em;
     font-weight: 800;
+    min-width: 4ch;
 
     background-color: rgb(var(--primaria));
     color: rgb(var(--branco));
@@ -133,4 +135,30 @@
     filter: saturate(20%) brightness(100%);
 
     z-index: -1;
+}
+
+/* cores para cada área de vagas */
+
+.areaVaga[data-area="ti"] {
+    filter: hue-rotate(calc(360deg*0/6));
+}
+
+.areaVaga[data-area="adm"] {
+    filter: hue-rotate(calc(360deg*1/6));
+}
+
+.areaVaga[data-area="mkt"] {
+    filter: hue-rotate(calc(360deg*2/6));
+}
+
+.areaVaga[data-area="com"] {
+    filter: hue-rotate(calc(360deg*3/6));
+}
+
+.areaVaga[data-area="log"] {
+    filter: hue-rotate(calc(360deg*4/6));
+}
+
+.areaVaga[data-area="eng"] {
+    filter: hue-rotate(calc(360deg*5/6));
 }

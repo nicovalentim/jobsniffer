@@ -44,20 +44,22 @@
     <button data-tempo="1">Tempo integral</button>
     <button data-tempo="0">Meio período</button>
 </section><section class="menu">
-    <button class="areaVaga" data-area="area-ti" style="filter: hue-rotate(360deg)">TI</button>
-    <button class="areaVaga" data-area="area-adm" style="filter: hue-rotate(51deg)">ADM</button>
-    <button class="areaVaga" data-area="area-mkt" style="filter: hue-rotate(102deg)">MKT</button>
-    <button class="areaVaga" data-area="area-com" style="filter: hue-rotate(154deg)">COM</button>
-    <button class="areaVaga" data-area="area-log" style="filter: hue-rotate(206deg)">LOG</button>
-    <button class="areaVaga" data-area="area-eng" style="filter: hue-rotate(257deg)">ENG</button>
-    <button class="areaVaga" data-area="area-com" style="filter: hue-rotate(309deg)">COM</button>
+    <button class="areaVaga" data-area="ti" title="Tecnologia da Informação">TI</button>
+    <button class="areaVaga" data-area="adm" title="Administração">ADM</button>
+    <button class="areaVaga" data-area="mkt" title="Marketing">MKT</button>
+    <button class="areaVaga" data-area="com" title="Comércio / Vendas">COM</button>
+    <button class="areaVaga" data-area="log" title="Logística">LOG</button>
+    <button class="areaVaga" data-area="eng" title="Engenharia">ENG</button>
 </section>
 
 <div id="posts">
 
-    <section class="vaga">
+    <section class="vaga"
+    data-presenca="1"
+    data-tempo="0"
+    data-area="com">
         <section class="tituloVaga">
-            <p class="areaVaga">COM</p>
+            <p class="areaVaga" data-area="com">com</p>
             <h1>segurança</h1>
         </section>
 
@@ -73,9 +75,12 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
 	<button class="filtro naVaga">Presencial</button>
 	<button class="filtro naVaga">Meio Período</button>
 
-</section><section class="vaga">
+</section><section class="vaga"
+    data-presenca="0"
+    data-tempo="1"
+    data-area="adm">
         <section class="tituloVaga">
-            <p class="areaVaga" style="filter: hue-rotate(180deg)">ADM</p>
+            <p class="areaVaga" data-area="adm">adm</p>
             <h1>guia para PCD</h1>
         </section>
 
@@ -88,9 +93,12 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
         <button class="filtro naVaga">Presencial</button>
         <button class="filtro naVaga">Meio Período</button>
 
-</section><section class="vaga">
+</section><section class="vaga"
+    data-presenca="1"
+    data-tempo="0"
+    data-area="ti">
         <section class="tituloVaga">
-            <p class="areaVaga" style="filter: hue-rotate(60deg)">TI</p>
+            <p class="areaVaga" data-area="ti">TI</p>
             <h1>ala-pivô de basquete</h1>
         </section>
 
@@ -103,9 +111,12 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
         <button class="filtro naVaga">Presencial</button>
         <button class="filtro naVaga">Meio Período</button>
 
-</section><section class="vaga">
+</section><section class="vaga"
+    data-presenca="2"
+    data-tempo="1"
+    data-area="log">
         <section class="tituloVaga">
-            <p class="areaVaga" style="filter: hue-rotate(120deg)">LOG</p>
+            <p class="areaVaga" data-area="log">LOG</p>
             <h1>porteiro</h1>
         </section>
 
@@ -123,9 +134,7 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
 
 <div id="cantoDaTela">
 
-    <section id="irAoTopo">
-        ^
-    </section>
+    <section id="irAoTopo"></section>
     <section id="chatbot"></section>
 
 </div>

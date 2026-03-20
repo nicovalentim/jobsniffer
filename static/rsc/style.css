@@ -175,62 +175,72 @@ header h1 {
 
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: 10px;
 }
 
 #cantoDaTela section {
     user-select: none;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
 
-    font-weight: 800;
-    font-size: 2em;
-
+    box-shadow: 10px 10px 5px rgba(var(--preto), 0.2);
     background-color: rgb(var(--realce));
-    color: rgb(var(--branco));
-    border: 1px solid rgba(var(--branco),0.1);
 }
 
-#chatbot {
-    cursor: pointer;
+#irAoTopo, #chatbot {
+        cursor: pointer;
 
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 0.01em;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 0.01em;
 
-    background-image: url(../icon/dormindo.svg);
-    border-radius: 50%;
+        background-size: 60%;
+        border-radius: 100%;
 
-    width: 100px;
-    height: 100px;
+        transition-duration: 0.5s;
 }
+
+    #irAoTopo {
+        position: fixed;
+        bottom: 90%;
+
+        opacity: 0;
+        visibility: hidden;
+
+        background-image: url(../icon/seta.svg);
+
+        height: 50px;
+        width: 50px;
+    }
+        #irAoTopo.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    #chatbot {
+        background-image: url(../icon/dormindo.svg);
+
+        height: 100px;
+        width: 100px;
+    }
+        #chatbot:hover {
+            background-image: url("../icon/latindo.svg");
+            transition-duration: 0.5s;
+        }
 
     @media (max-width: 1080px) {
         #chatbot {
-            background-size: 60%;
             padding: 18px;
 
             height: 32px;
             width: 32px;
         }
+        #irAoTopo {
+            height: 16px;
+            width: 16px;
+        }
     }
-
-    #chatbot:hover {
-        background-image: url("../icon/latindo.svg");
-        transition-duration: 0.5s;
-    }
-
-#irAoTopo {
-    user-select: none;
-    cursor: pointer;
-
-    position: relative;
-    width: auto;
-    display: inline-block;
-
-    padding: 0.1em 0.4em;
-}
 
 /* footer */
 .footer {

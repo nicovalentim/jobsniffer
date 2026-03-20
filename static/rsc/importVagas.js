@@ -1,13 +1,5 @@
-// ARRUMAR E COMENTAR ISSO AQUI
-
-
-
-
-
-
-
 // importa a função de filtrar de outro arquivo (pra facilitar não ter que colocar dois script no html)
-import "./filtros.js";
+import "./vagas.js";
 
 // seleciona o lugar aonde vai jogar os posts (aonde as vagas vão aparecer)
 const container = document.getElementById("posts")
@@ -17,63 +9,47 @@ export async function carregar(url = "/vagas") {
 
     const dados = await buscarVagas(url);
 
+    let conteudo = "";
     container.innerHTML = ''
 
+    // loopa cada elemento no banco de dados para procurar informações das vagas
     dados.vagas.forEach(vaga => {
-
+        // transforma variáveis inteiras em texto para ser exibido
         const tiposPresenca = ["Presencial", "Híbrido", "100% remoto"]
         const tiposTempo = ["Meio-período", "Período Integral"]
 
+        // reduz a quantidade de caracteres na tela (pra não mostrar tudo da vaga na página de ver todas elas)
         let descricao = vaga.descricao
         if (descricao.length > 360) {
             descricao = descricao.substring(0, 360) + " (...)"
         }
 
-//const nomeDaArea = <class="areaVaga">
+    // cria o conteúdo com o layout da página
+    conteudo += `
+    <section class="vaga"
+        data-presenca="${vaga.presenca}"
+        data-tempo="${vaga.tempo}"
+        data-area="${vaga.area}">
+            <section class="tituloVaga">
+                <!-- essa data-area dentro do p ajuda o CSS a criar image de fundo -->
+                <p class="areaVaga" data-area="${vaga.area}">${vaga.area}</p>
+                <h1>${vaga.nome}</h1>
+            </section>
 
-//switch (nomeDaArea) {
-//  case "Administrativo":
-//      document.getElementbyClass("nomeDaArea").style.filter = "filter: hue-rotate(0deg)";
-//      break;
-//  case "Marketing":
-//      document.getElementbyClass("nomeDaArea").style.filter = "filter: hue-rotate(72deg)";
-//      break;
-//  case "Comercial / Vendas":
-//      document.getElementbyClass("nomeDaArea").style.filter = "filter: hue-rotate(144deg)";
-//      break;
-//  case "Logística":
-//      document.getElementbyClass("nomeDaArea").style.filter = "filter: hue-rotate(216deg)";
-//      break;
-//  case "Engenharia":
-//      document.getElementbyClass("nomeDaArea").style.filter = "filter: hue-rotate(288deg)";
-//      break;
-//  default:
-//      document.getElementbyClass("nomeDaArea").style.filter = "filter: saturate(0)";
-//}
-
-    container.innerHTML += `
-        <section class="vaga">
-        <section class="tituloVaga">
-        
-            <p class="areaVaga"></p>
-
-
-            <h1>${vaga.nome}</h1>
-        </section>
-
-        <section class="textoVaga">
-            Empresa: ${vaga.empresa}<br /><br />
-            ${descricao}
-        </section>
-
-        <hr />
-        <button class="naVaga">${tiposPresenca[vaga.presenca]}</button>
-        <button class="naVaga">Meio Período</button>
-        </section>
+            <section class="textoVaga">
+                Empresa: ${vaga.empresa}<br><br>
+                ${descricao}
+            </section>
+            <hr />
+            <button class="naVaga">${tiposPresenca[vaga.presenca]}</button>
+            <button class="naVaga">${tiposTempo[vaga.tempo]}</button>
+    </section>
         `
-    })
+    });
+
+    // adiciona todo o conteúdo criado para a página html de uma vez só
+    container.innerHTML = conteudo
 
     filtrarVagas();
 }
-
 carregar();
