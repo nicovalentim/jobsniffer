@@ -7,11 +7,13 @@
     --preto: 18, 18, 18;
     --cinza: 217, 217, 217;
 
-    --realce: 28, 24, 55;
+    --realce: 39,39,87; /* midnightblue */
+    --primaria: 80, 80, 129;
+/*    --primaria: 70, 130, 180; /* steelblue */ */
 
     --fontePrimaria: "Montserrat", sans-serif;
     --fonteSecundaria: "Roboto", sans-serif;
-    }
+}
 
 /* variáveis globais */
 a {
@@ -27,13 +29,13 @@ body {
     font-family: var(--fonteSecundaria);
     font-size: 0.9em;
     font-weight: 300;
-    }
+}
 
 h1 {
     font-family: var(--fontePrimaria);
     font-weight: 400;
     margin-top: 0;
-    }
+}
 
 /* navbar */
 .navbar {
@@ -49,6 +51,7 @@ h1 {
     padding: 0 0.2em;
     text-decoration: none;
     display: flex;
+    font-size: 0.6em;
 }
 
 ul {
@@ -61,8 +64,6 @@ ul {
     .links {
         margin-left: auto;
         margin-right: auto;
-
-        font-size: 0.6em;
     }
 
         .links a {
@@ -70,30 +71,32 @@ ul {
         }
 
     #logo {
-        width: 4vh;
+        height: 1em;
+        width: auto;
+        vertical-align: middle;
     }
 
     #titulo {
         font-family: var(--fontePrimaria);
         font-weight: 800;
+        font-size: 1.5em;
     }
 
     #login, #cadastro {
         padding: 9px;
-        font-size: 0.6em;
         margin: 0 5px;
     }
 
     #cadastro {
         color: rgba(var(--branco), 1);
-        background-color: rgb(var(--preto));
+        background-color: rgb(var(--realce));
         border-radius: 16px;
     }
 
 /* header */
 header {
     width: 97.5%;
-    min-height: 48em;
+    min-height: 80vh;
     border-radius: 16px;
     margin-bottom: 1em;
 
@@ -126,7 +129,6 @@ header h1 {
         object-fit: cover;
 
         z-index: -3;
-
     }
 
     header::before {
@@ -155,6 +157,16 @@ header h1 {
         z-index: -1;
     }
 
+/* fundo do corpo */
+.fundo {
+    padding: 1em 0;
+    width: 85%;
+
+    display: flexbox;
+    justify-items: end;
+    justify-self: center;
+}
+
 /* botões laterais */
 #cantoDaTela {
     position: fixed;
@@ -167,16 +179,89 @@ header h1 {
     gap: 10px;
 }
 
+#cantoDaTela section {
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+
+    font-weight: 800;
+    font-size: 2em;
+
+    background-color: rgb(var(--realce));
+    color: rgb(var(--branco));
+    border: 1px solid rgba(var(--branco),0.1);
+}
+
 #chatbot {
     cursor: pointer;
 
-    background-image: url("../icon/dormindo.svg");
-    background-size: cover;
-    height: 5em;
-    width: 5em;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0.01em;
+
+    background-image: url(../icon/dormindo.svg);
+    border-radius: 50%;
+
+    width: 100px;
+    height: 100px;
 }
+
+    @media (max-width: 1080px) {
+        #chatbot {
+            background-size: 60%;
+            padding: 18px;
+
+            height: 32px;
+            width: 32px;
+        }
+    }
 
     #chatbot:hover {
         background-image: url("../icon/latindo.svg");
         transition-duration: 0.5s;
     }
+
+#irAoTopo {
+    user-select: none;
+    cursor: pointer;
+
+    position: relative;
+    width: auto;
+    display: inline-block;
+
+    padding: 0.1em 0.4em;
+}
+
+/* footer */
+.footer {
+    padding: 1em 10em;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10em;
+    justify-content: center;
+    margin: 0;
+
+    background-color: rgb(var(--realce));
+    color: rgb(var(--branco));
+}
+
+    @media (max-width: 1080px) {
+        .footer {
+            grid-template-columns: 1fr;
+            gap: 2em;
+        }
+    }
+
+.footer h3 {
+    margin: 0;
+}
+
+.footer hr {
+    margin: 4px 0;
+}
+
+.footer a {
+    display: block;
+    text-transform: uppercase;
+}

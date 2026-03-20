@@ -4,7 +4,7 @@
          <link rel="stylesheet" href="../static/rsc/style.css">
          <link rel="stylesheet" href="../static/rsc/vagas.css">
          <title>job sniffer</title>
-         <link rel="icon" type="image/x-icon" href="../static/icon/icon.svg">
+         <link rel="icon" type="image/x-icon" href="../static/icon/favicon.svg">
 </head>
 
 <body>
@@ -33,23 +33,24 @@
     <h1>vagas recomendadas</h1>
 </header>
 
+<div class="fundo">
+
 <input type="text" id="buscarVaga" placeholder="Pesquisar vaga" />
 
-<div id="vaga"></div>
+<div id="posts"></div>
 
 <div id="cantoDaTela">
 
     <section id="botaoMenu">
         +
         <section id="menu">
-            <button class="filtro selecionado" data-filtro="todos">Ver tudo</button>
-            <button class="filtro" data-presenca="0">Presencial</button>
-            <button class="filtro" data-presenca="1">Híbrido</button>
-            <button class="filtro" data-presenca="2">100% Remoto</button>
-            <button class="filtro" data-tempo="1">Tempo integral</button>
-            <button class="filtro" data-tempo="0">Meio período</button>
+            <button class="selecionado" data-filtro="todos">Ver tudo</button>
+            <button data-presenca="0">Presencial</button>
+            <button data-presenca="1">Híbrido</button>
+            <button data-presenca="2">100% Remoto</button>
+            <button data-tempo="1">Tempo integral</button>
+            <button data-tempo="0">Meio período</button>
     </section>
-
 
     </section>
     <section id="chatbot"></section>
@@ -57,7 +58,52 @@
 
 </div>
 
-<script type="module" src="../static/rsc/vagas.js"></script>
+</div>
+
+<div class="footer">
+
+    <section>
+        <h3>ACESSO RÁPIDO</h3>
+        <hr />
+        <a href="">Blog/Notícias</a>
+        <a href="">Boletos/Faturas</a>
+        <a href="">Suporte técnico</a>
+        <a href="">Trabalhe conosco</a>
+        <a href="">Área restrita</a>
+        <a href="">Política de Privacidade e Cookies</a>
+    </section>
+
+    <section>
+        <h3>ACESSO RÁPIDO</h3>
+        <hr />
+        <a href="">Blog/Notícias</a>
+        <a href="">Boletos/Faturas</a>
+        <a href="">Compliance</a>
+        <a href="">Contato</a>
+        <a href="">Produtos</a>
+        <a href="">Revenda</a>
+    </section>
+
+    <section>
+        <h3>ENDEREÇO</h3>
+        <hr />
+        Rua Francisco Antunes, 598<br />
+        Guarulhos - SP<br />
+        CEP: 07040-010<br /><br />
+
+        ATENDIMENTO<br />
+        De segunda à sexta<br />
+        das 08:00 às 18:00<br />
+
+        CONTATO<br />
+        55 (11) 2442-2600<br />
+        cac@reisoffice.com.br
+    </section>
+
+</div>
+
+<script type="module" src="../static/rsc/menuHover.js"></script>
+<script type="module" src="../static/rsc/importVagas.js"></script>
 
 </body>
 </html>

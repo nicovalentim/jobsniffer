@@ -1,76 +1,42 @@
 /* filtro de vagas / botão de ajuda */
 #botaoMenu {
-    user-select: none;
-    cursor: pointer;
-
     position: relative;
     width: auto;
-    display: inline-block;
 
     padding: 0.1em 0.4em;
-    font-weight: 400;
-    font-size: 2em;
-    color: var(--preto);
-
-    background-color: rgb(var(--branco));
-    border: 2.5px solid rgb(var(--preto));
-    border-radius: 100%;
 }
 
-    #menu {
-        position: absolute;
-        bottom:0;
-        right: 100%;
-        margin-bottom: 1.5em;
-        margin-right: 8px;
-
-        background-color: rgb(var(--branco));
-        box-shadow: 0px 8px 20px rgba(var(--preto),0.25);
-        border-radius: 2%;
-        padding: 0.4em;
-
-        opacity: 0;
-        transform: translateY(10px);
-        pointer-events: none;
-        transition: 0.2s ease;
-    }
-
-    #menu.menuClicado {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    #menu button {
+    .menu {
         display: flex;
-        justify-content: center;
-        align-items: center;
-    
+        margin: 0;
+    }
+        @media (max-width: 1080px) {
+            .menu {
+                text-align: center;
+            }
+        }
+
+        .menu button.selecionado {
+            background-color: rgba(var(--preto),1);
+            color: rgba(var(--branco),1);
+        }
+
+    /* cor de selecionado quando passa o mouse em cima */
+    .menu button:hover {
+        background-color: rgba(var(--preto),1);
+        color: rgb(var(--branco));
+    }
+
+    button {
+        background-color: rgba(var(--realce),0.2);
         cursor: pointer;
         user-select: none;
 
-        margin: 0.2em;
-        padding: 0.5em 0.8em;
+        padding: 0.75em;
+        min-width: 4ch;
+        border: none;
 
-        border-radius: 0.5em;
-        border: 1px solid rgba(var(--preto),0.1);
-
-        min-width: 10em;
-        font-weight: 500;
-
-        transition: background-color 0.15s ease, transform 0.1s ease;
-    }
-
-    #menu button.selecionado {
-        color: rgba(var(--branco),1);
-        background-color: rgba(var(--realce), 1);
-    }
-
-    /* cor de selecionado quando hover */
-    #menu button:hover {
-            background-color: rgba(var(--realce),1);
-            color: rgb(var(--branco));
-            transform: translateX(2px);
+        text-align: center;
     }
 
 /* seção de vagas */
@@ -79,43 +45,92 @@
     padding:10px;
     border-radius:6px;
     border:1px solid rgba(var(--preto),0.2);
+    margin-bottom: 1em;
 
     text-align: right;
-    display: block;
-    margin-left: auto;
-    margin-right: 7.5%;
+    display: flex;
 }
 
-#vaga {
+    @media (max-width: 1080px) {
+        #buscarVaga {
+            justify-self: center;
+            text-align: left;
+        }
+    }
+
+#posts {
     column-gap: 2em;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 1fr;
     justify-self: center;
 
     margin-bottom: 1em;
     margin-top: 1em;
-    width: 85%;
 }
 
-#vaga hr {
-    grid-column-start: 1;
-    grid-column-end: -1; /* -1 para ocupar todas as colunas */
-    width: 100%;
+    @media (max-width: 1080px) {
+        #posts {
+            grid-template-columns: 1fr;
+            gap: 2em;
+        }
+    }
 
-    margin-bottom: 1em;
-    margin-top: 1em;
+#posts hr {
+    margin: 16px 0;
+    opacity: 0.2;
+}
+
+.vaga {
+    align-content: center;
+
+    background-color: rgb(var(--branco));
+    border-radius: 16px;
+    border: 1px solid rgba(var(--preto),0.1);
+    margin: 0.5em;
+    padding: 24px;
+}
+
+.areaVaga {
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+    order: -1;
+
+    font-size: 1.5em;
+    font-weight: 800;
+
+    background-color: rgb(var(--primaria));
+    color: rgb(var(--branco));
 }
 
 .tituloVaga {
-    align-self: start;
-    justify-self: end;
-
-    text-align: right;
-    max-width: 25ch;
-    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    margin: 0;
 }
+    .tituloVaga h1 {
+        margin: 8px;
+    }
 
 .textoVaga {
     align-self: flex-start;
     text-align: justify;
+}
+    
+.naVaga {
+    position: relative;
+    overflow: hidden;
+    color: rgb(var(--branco));
+    z-index: 0;
+}
+
+.naVaga::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-color: rgba(var(--primaria));
+    filter: saturate(20%) brightness(100%);
+
+    z-index: -1;
 }
