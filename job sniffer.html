@@ -3,7 +3,7 @@
          <link rel="stylesheet" href="static/rsc/style.css">
          <link rel="stylesheet" href="static/rsc/vagas.css">
          <title>job sniffer</title>
-         <link rel="icon" type="image/x-icon" href="http://127.0.0.1:5000/static/icon/icon.svg">
+         <link rel="icon" type="image/x-icon" href="/static/icon/icon.svg">
 </head>
 
 <body>
@@ -34,16 +34,17 @@
 
 <div class="fundo">
 
-<input type="text" id="buscarVaga" placeholder="Pesquisar vaga">
-
-<section class="menu">
+<section class="filtro">
+    <input type="text" id="buscarVaga" placeholder="Pesquisar vaga">
+    <section id="pesquisar"></section>
+</section><section class="filtro">
     <button class="selecionado" data-filtro="todos">Ver tudo</button>
     <button data-presenca="0">Presencial</button>
     <button data-presenca="1">Híbrido</button>
     <button data-presenca="2">100% Remoto</button>
     <button data-tempo="1">Tempo integral</button>
     <button data-tempo="0">Meio período</button>
-</section><section class="menu">
+</section><section class="filtro">
     <button class="areaVaga" data-area="ti" title="Tecnologia da Informação">TI</button>
     <button class="areaVaga" data-area="adm" title="Administração">ADM</button>
     <button class="areaVaga" data-area="mkt" title="Marketing">MKT</button>
@@ -72,8 +73,8 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
         </section>
 
 	<hr />
-	<button class="filtro naVaga">Presencial</button>
-	<button class="filtro naVaga">Meio Período</button>
+	<button class="naVaga">Presencial</button>
+	<button class="naVaga">Meio Período</button>
 
 </section><section class="vaga"
     data-presenca="0"
@@ -90,8 +91,8 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
         </section>
 
         <hr />
-        <button class="filtro naVaga">Presencial</button>
-        <button class="filtro naVaga">Meio Período</button>
+        <button class="naVaga">Presencial</button>
+        <button class="naVaga">Meio Período</button>
 
 </section><section class="vaga"
     data-presenca="1"
@@ -108,8 +109,8 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
         </section>
 
         <hr />
-        <button class="filtro naVaga">Presencial</button>
-        <button class="filtro naVaga">Meio Período</button>
+        <button class="naVaga">Presencial</button>
+        <button class="naVaga">Meio Período</button>
 
 </section><section class="vaga"
     data-presenca="2"
@@ -126,8 +127,8 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
         </section>
 
         <hr />
-        <button class="filtro naVaga">Presencial</button>
-        <button class="filtro naVaga">Meio Período</button>
+        <button class="naVaga">Presencial</button>
+        <button class="naVaga">Meio Período</button>
 </section>	
 
         </div>
@@ -184,6 +185,6 @@ Também valorizamos candidatos com habilidade avançada em detectar carteiros a 
 </div>
 
 <script type="module" src="static/rsc/scripts.js"></script>
-<script type="module" src="static/rsc/importVagas.js"></script>
+<script type="module" src="static/rsc/importarVagas.js"></script>
 
 </body></html>

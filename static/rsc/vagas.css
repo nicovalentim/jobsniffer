@@ -6,51 +6,74 @@
     padding: 0.1em 0.4em;
 }
 
-    .menu {
-        display: flex;
-        margin: 0;
+.filtro {
+    display: flex;
+    align-items: stretch; /* para os filtros terem a mesma altura mesmo em mobile */
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+    @media (max-width: 1080px) {
+        .filtro {
+            text-align: center;
+        }
     }
-        @media (max-width: 1080px) {
-            .menu {
-                text-align: center;
-            }
-        }
-
-        .menu button.selecionado {
-            background-color: rgba(var(--preto),1);
-            color: rgba(var(--branco),1);
-        }
-
+    .filtro button.selecionado {
+        background-color: rgba(var(--preto),1);
+        color: rgba(var(--branco),1);
+    }
     /* cor de selecionado quando passa o mouse em cima */
-    .menu button:hover {
+    .filtro button:hover {
         background-color: rgba(var(--preto),1);
         color: rgb(var(--branco));
     }
 
-    button {
-        background-color: rgba(var(--realce),0.2);
-        cursor: pointer;
-        user-select: none;
+button {
+    background-color: rgba(var(--realce),0.2);
+    cursor: pointer;
+    user-select: none;
 
-        padding: 0.75em;
-        min-width: 4ch;
-        border: none;
+    padding: 0.75em;
+    min-width: 4ch;
+    border: none;
 
-        text-align: center;
-    }
-
-/* seção de vagas */
-#buscarVaga {
-    width:300px;
-    padding:10px;
-    border-radius:6px;
-    border:1px solid rgba(var(--preto),0.2);
-    margin-bottom: 1em;
-
-    text-align: right;
-    display: flex;
+    text-align: center;
 }
 
+/* seção de vagas */
+#pesquisar {
+    cursor: pointer;
+    display: inline-flex;
+
+    padding: 0.01em;
+    height: 50px;
+    width: 50px;
+    background-size: 60%;
+    border-radius: 100%;
+
+    transition-duration: 0.5s;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../icon/pesquisa.svg);
+    background-color: rgb(var(--realce));
+}
+    @media (max-width: 1080px) {
+        #pesquisar {
+            height: 32px;
+            width: 32px;
+        }
+    }
+
+#buscarVaga {
+    align-self: center;
+    border-radius:6px;
+    border:1px solid rgba(var(--preto),0.2);
+    margin-right: 1em;
+    padding:10px;
+    transition-duration: 0.5s;
+    text-align: right;
+    width:300px;
+}
     @media (max-width: 1080px) {
         #buscarVaga {
             justify-self: center;
