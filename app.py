@@ -14,17 +14,17 @@ def vagas():
     tipo = request.args.get("tipo")   # presenca
     tempo = request.args.get("tempo") # tempo
 
-    with open("db/vagas.json", encoding="utf-8") as f:
+    with open("db/banco_de_vagas.json", encoding="utf-8") as f:
         dados = json.load(f)
 
-    lista = dados["vagas"]
+    lista = dados["banco_de_vagas"]
     resultado = []
 
     for vaga in lista:
 
         # filtro por presença
         if tipo:
-            if str(vaga["presenca"]) != tipo:
+            if str(vaga["localizacao"]) != tipo:
                 continue
 
         # filtro por tempo 

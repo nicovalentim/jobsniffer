@@ -22,7 +22,63 @@
             </li>
 
             <li>
-                <a href="#" id="login">Login</a>
+                <a href="#" id="loginBtn">Login</a>
+                  <div class="dropdown" id="loginMenu">
+
+                    <span id="voltarBtn">◀</span>
+
+                    <div id="telaLogin">
+                    <label>e-mail</label>
+                    <input type="email" id="loginEmail">
+
+                    <label>senha</label>
+                    <input type="password" id="loginSenha">
+
+                    <p id="esqueceu">esqueceu a senha</p>
+                    <p id="cadastrar">cadastrar-se</p>
+
+                    <button id="entrarBtn" class="btn">entrar</button>
+                    </div>
+
+                    <div id="telaSenha" style="display:none;">
+                    <label>nova senha</label>
+                    <input type="password" id="novaSenha">
+
+                    <p id="AlterarSenha">
+                        A senha deve ter:
+                        <br><span id="a1">• Pelo menos 6 caracteres</span>
+                        <br><span id="a2">• Letra maiúscula</span>
+                        <br><span id="a3">• Letra minúscula</span>
+                        <br><span id="a4">• Número</span>
+                    </p>
+
+                    <button id="alterarBtn" class="btn">alterar</button>
+                    </div>
+
+
+                    <div id="telaCadastro" style="display:none;">
+                    <label>e-mail</label>
+                    <input type="email" id="cadEmail">
+
+                    <p id="erroEmail" >
+                        Email já cadastrado
+                    </p>
+
+                    <label>senha</label>
+                    <input type="password" id="senhaCadastro">
+
+                    <p id="regrasSenhaCadastro">
+                        A senha deve ter:
+                        <br><span id="r1">• Pelo menos 6 caracteres</span>
+                        <br><span id="r2">• Letra maiúscula</span>
+                        <br><span id="r3">• Letra minúscula</span>
+                        <br><span id="r4">• Número</span>
+                    </p>
+
+                    <button id="cadastrarBtn" class="btn">cadastrar</button>
+                    </div>
+
+                </div>
                 <a href="#" id="cadastro">Cadastrar</a>
             </li>
         </ul>
@@ -32,24 +88,25 @@
             <h1>vagas recomendadas</h1>
         </header>
 
-        <div class="fundo">
-
-        <input type="text" id="buscarVaga" placeholder="Pesquisar vaga">
+    <div class="fundo">
 
         <section class="filtro">
-            <button class="selecionado" data-filtro="todos">Ver tudo</button>
-            <button data-presenca="0">Presencial</button>
-            <button data-presenca="1">Híbrido</button>
-            <button data-presenca="2">100% Remoto</button>
-            <button data-tempo="1">Tempo integral</button>
-            <button data-tempo="0">Meio período</button>
+            <input type="text" id="buscarVaga">
         </section><section class="filtro">
-            <button class="areaVaga" data-area="ti" title="Tecnologia da Informação">TI</button>
-            <button class="areaVaga" data-area="adm" title="Administração">ADM</button>
-            <button class="areaVaga" data-area="mkt" title="Marketing">MKT</button>
-            <button class="areaVaga" data-area="com" title="Comércio / Vendas">COM</button>
-            <button class="areaVaga" data-area="log" title="Logística">LOG</button>
-            <button class="areaVaga" data-area="eng" title="Engenharia">ENG</button>
+            <button class="selecionado" data-filtro="todos">Ver tudo</button>
+            <button data-localizacao="Presencial">Presencial</button>
+            <button data-localizacao="Híbrido">Híbrido</button>
+            <button data-localizacao="Remoto">Remoto</button>
+            
+            <button data-presenca="Período Integral">Período integral</button>
+            <button data-presenca="Meio Período">Meio período</button>
+        </section><section class="filtro">
+            <button class="areaVaga" data-area="ti">Tecnologia da Informação</button>
+            <button class="areaVaga" data-area="adm">Administração</button>
+            <button class="areaVaga" data-area="mkt">Marketing</button>
+            <button class="areaVaga" data-area="com">Comércio / Vendas</button>
+            <button class="areaVaga" data-area="log">Logística</button>
+            <button class="areaVaga" data-area="eng">Engenharia</button>
         </section>
 
         <div id="posts"></div>
