@@ -1,0 +1,329 @@
+#/
+<!-- saved from url=(0022)/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="stylesheet" href="static/rsc/style.css">
+         <link rel="stylesheet" href="static/rsc//vagas.css">
+         <title>job sniffer</title>
+         <link rel="icon" type="image/x-icon" href="/static/icon/icon.svg">
+    </head>
+
+    <body>
+
+        <ul class="navbar">
+            <li>
+                <a href="/" id="titulo">
+                    <img src="static/rsc//dog.svg" id="logo"> job sniffer
+                </a>
+            </li>
+
+            <li class="links">
+                <a href="#">Sobre</a> -
+                <a href="#">Contato</a> -
+                <a href="#">Vagas</a>
+            </li>
+
+            <li>
+                <a href="#" id="loginBtn">Login</a>
+                  <div class="dropdown" id="loginMenu" style="display: none;">
+
+                    <span id="voltarBtn">◀</span>
+
+                    <div id="telaLogin">
+                    <label>e-mail</label>
+                    <input type="email" id="loginEmail">
+
+                    <label>senha</label>
+                    <input type="password" id="loginSenha">
+
+                    <p id="esqueceu">esqueceu a senha</p>
+                    <p id="cadastrar">cadastrar-se</p>
+
+                    <button id="entrarBtn" class="btn">entrar</button>
+                    </div>
+
+                    <div id="telaSenha" style="display:none;">
+                    <label>nova senha</label>
+                    <input type="password" id="novaSenha">
+
+                    <p id="AlterarSenha">
+                        A senha deve ter:
+                        <br><span id="a1">• Pelo menos 6 caracteres</span>
+                        <br><span id="a2">• Letra maiúscula</span>
+                        <br><span id="a3">• Letra minúscula</span>
+                        <br><span id="a4">• Número</span>
+                    </p>
+
+                    <button id="alterarBtn" class="btn">alterar</button>
+                    </div>
+
+
+                    <div id="telaCadastro" style="display:none;">
+                    <label>e-mail</label>
+                    <input type="email" id="cadEmail">
+
+                    <p id="erroEmail">
+                        Email já cadastrado
+                    </p>
+
+                    <label>senha</label>
+                    <input type="password" id="senhaCadastro">
+
+                    <p id="regrasSenhaCadastro">
+                        A senha deve ter:
+                        <br><span id="r1">• Pelo menos 6 caracteres</span>
+                        <br><span id="r2">• Letra maiúscula</span>
+                        <br><span id="r3">• Letra minúscula</span>
+                        <br><span id="r4">• Número</span>
+                    </p>
+
+                    <button id="cadastrarBtn" class="btn">cadastrar</button>
+                    </div>
+
+                </div>
+                <a href="#" id="cadastro">Cadastrar</a>
+            </li>
+        </ul>
+
+        <header>
+            <img src="static/images/vagasHeader.webp">
+            <h1>vagas recomendadas</h1>
+        </header>
+
+    <div class="fundo">
+
+        <section class="filtro">
+            <input type="text" id="buscarVaga">
+        </section><section class="filtro">
+            <button class="selecionado" data-filtro="todos">Ver tudo</button>
+            <button data-localizacao="Presencial">Presencial</button>
+            <button data-localizacao="Híbrido">Híbrido</button>
+            <button data-localizacao="Remoto">Remoto</button>
+            
+            <button data-presenca="Período Integral">Período integral</button>
+            <button data-presenca="Meio Período">Meio período</button>
+        </section><section class="filtro">
+            <button class="areaVaga" data-area="ti">Tecnologia da Informação</button>
+            <button class="areaVaga" data-area="adm">Administração</button>
+            <button class="areaVaga" data-area="mkt">Marketing</button>
+            <button class="areaVaga" data-area="com">Comércio / Vendas</button>
+            <button class="areaVaga" data-area="log">Logística</button>
+            <button class="areaVaga" data-area="eng">Engenharia</button>
+        </section>
+
+        <div id="posts">
+    <section class="vaga" data-localizacao="remoto" data-presenca="período integral" data-area="ti">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="ti">TI</p>
+                <h1>Desenvolvedor Front-End</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Criação interfaces responsivas
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#React</p><p class="requisitos">#HTML</p><p class="requisitos">#CSS</p><p class="requisitos">#JavaScript</p></section>
+            <button class="naVaga">Remoto</button>
+            <button class="naVaga">Período Integral</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="híbrido" data-presenca="meio período" data-area="ti">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="ti">TI</p>
+                <h1>Analista de Suporte Técnico</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Atendimento a usuários e manutenção
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#Windows</p><p class="requisitos">#Redes</p><p class="requisitos">#Hardware</p></section>
+            <button class="naVaga">Híbrido</button>
+            <button class="naVaga">Meio Período</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="remoto" data-presenca="período integral" data-area="ti">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="ti">TI</p>
+                <h1>Administrador de Banco de Dados (DBA)</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Gestão e otimização de bancos MySQL
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#SQL Avançado</p><p class="requisitos">#Backup</p><p class="requisitos">#Performance</p></section>
+            <button class="naVaga">Remoto</button>
+            <button class="naVaga">Período Integral</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="presencial" data-presenca="período integral" data-area="ti">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="ti">TI</p>
+                <h1>Engenheiro de Redes</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Configuração de roteadores e firewalls
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#Certificação CCNA</p><p class="requisitos">#Protocolos TCP/IP</p></section>
+            <button class="naVaga">Presencial</button>
+            <button class="naVaga">Período Integral</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="remoto" data-presenca="meio período" data-area="ti">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="ti">TI</p>
+                <h1>Analista de Segurança da Informação</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Monitoramento de ameaças e vulnerabilidades
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#LGPD</p><p class="requisitos">#Firewall</p><p class="requisitos">#Ethical Hacking</p></section>
+            <button class="naVaga">Remoto</button>
+            <button class="naVaga">Meio Período</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="presencial" data-presenca="período integral" data-area="com">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="com">COM</p>
+                <h1>Consultor de Sucesso do Cliente (Vendedor)</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Prospecção ativa de novos negócios.
+
+Diagnóstico de necessidades e apresentação de soluções.
+
+Negociação e fechamento de contratos.
+
+Gestão de contatos no sistema (CRM)
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#Pacote Office</p><p class="requisitos">#Organização</p></section>
+            <button class="naVaga">Presencial</button>
+            <button class="naVaga">Período Integral</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="presencial" data-presenca="meio período" data-area="adm">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="adm">ADM</p>
+                <h1>Recepcionista</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Atendimento telefônico e recepção de clientes
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#Comunicação assertiva</p><p class="requisitos">#Inglês básico</p></section>
+            <button class="naVaga">Presencial</button>
+            <button class="naVaga">Meio Período</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="híbrido" data-presenca="meio período" data-area="adm">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="adm">ADM</p>
+                <h1>Auxiliar Financeiro</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Controle de contas a pagar e receber
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#Matemática financeira</p><p class="requisitos">#Excel</p></section>
+            <button class="naVaga">Híbrido</button>
+            <button class="naVaga">Meio Período</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="presencial" data-presenca="período integral" data-area="adm">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="adm">ADM</p>
+                <h1>Analista Administrativo</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Gestão de processos internos e relatórios
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#Gestão de processos</p><p class="requisitos">#ERP</p></section>
+            <button class="naVaga">Presencial</button>
+            <button class="naVaga">Período Integral</button>
+    </section>
+        
+    <section class="vaga" data-localizacao="híbrido" data-presenca="período integral" data-area="mkt">
+            <section class="tituloVaga">
+                <p class="areaVaga" data-area="mkt">MKT</p>
+                <h1>Analista de Marketing</h1>
+            </section>
+
+            <section class="textoVaga">
+<!--                Empresa: undefined<br><br> -->
+                Gestão de Campanhas: Criar e monitorar anúncios em redes sociais e Google Ads.
+
+Conteúdo: Produzir materiais para blog, e-mail marketing e redes sociais.
+
+Análise de Dados: Mensurar KPIs e o ROI das ações de marketing.
+
+Branding: Garantir a consistência da identidade visual e voz da marca
+            </section>
+            <hr>
+            <section class="reqs"><p class="requisitos">#Criatividade</p><p class="requisitos">#Google Analytics</p><p class="requisitos">#RD Station/HubSpot</p><p class="requisitos">#Comunicação</p></section>
+            <button class="naVaga">Híbrido</button>
+            <button class="naVaga">Período Integral</button>
+    </section>
+        </div>
+
+        <div id="cantoDaTela">
+
+            <section id="irAoTopo" class="">
+                ^
+            </section>
+            <section id="chatbot"></section>
+
+        </div>
+
+        </div>
+
+        <div class="footer">
+
+        <section>
+            <h3>Siga-nos</h3>
+            <hr>
+            <a href="https://www.eniac.edu.br/"><img src="static/icon/logo_eniac.webp" title="Faculdade Eniac"></a>
+            <a href="https://github.com/matosaguiar"><img src="static/icon/logo_gustavo.png" title="Gustavo Matos"></a>
+            <a href="https://github.com/rocharlia"><img src="static/icon/logo_julia.png" title="Júlia Nascimento"></a>
+            <a href="https://github.com/nicovalentim"><img src="static/icon/logo_nico.png" title="Nicolas Valentim"></a>
+            <a href="https://github.com/Rodsmont"><img src="static/icon/logo_rodrigo.png" title="Rodrigo Monteiro"></a>
+            <p>Ícones feitos por <a href="https://www.flaticon.com/authors/vitaly-gorbachev">Vitaly Gorbachev</a>.</p>
+        </section>
+
+        <section>
+            <h3>Endereço</h3>
+            <hr>
+        Rua Marielle Franco, 79<br>
+        Rio de Janeiro - RJ<br>
+        CEP: 0716-626<br><br>
+
+        CONTATO<br>
+        55 (11) 1403-2018<br>
+        sac@jobsniffer.edu.br
+        </section>
+
+        </div>
+
+        <script type="module" src="static/rsc/scripts.js"></script>
+        <script type="module" src="static/rsc/importarVagas.js"></script>
+
+    
+</body></html>

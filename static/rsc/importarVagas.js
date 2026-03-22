@@ -16,7 +16,7 @@ async function buscarVagas(url) {
 }
 
 // carrega a URL do DB, "/vagas" na verdade é re-roteado via python para o diretório correto
-export async function carregar(url = "/vagas") {
+export async function carregar(url = "/api/vagas") {
 
     const dados = await buscarVagas(url);
 

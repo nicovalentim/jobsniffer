@@ -6,11 +6,16 @@ app = Flask(__name__)
 # abre a página principal
 @app.route("/")
 def home():
+    return render_template("index.html")
+
+# abre a página de vagas
+@app.route("/vagas")
+def vagas():
     return render_template("vagas.html")
 
 # rota das vagas agora com filtrro
-@app.route("/vagas")
-def vagas():
+@app.route("/api/vagas")
+def get_vagas_data():
     tipo = request.args.get("tipo")   # presenca
     tempo = request.args.get("tempo") # tempo
 
@@ -24,18 +29,17 @@ def vagas():
 
         # filtro por presença
         if tipo:
-            if str(vaga["localizacao"]) != tipo:
+            if str(vaga.get("localizacao")) != tipo:
                 continue
 
         # filtro por tempo 
         if tempo:
-            if str(vaga["tempo"]) != tempo:
+            if str(vaga.get("tempo")) != tempo:
                 continue
 
         resultado.append(vaga)
 
     return jsonify({"vagas": resultado})
-
 
 # ver vaga específica
 @app.route("/vaga/<int:id>")
