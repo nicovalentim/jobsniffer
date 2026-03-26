@@ -1,156 +1,32 @@
-<html>
-    <head>
-         <link rel="stylesheet" href="static/rsc/style.css">
-         <link rel="stylesheet" href="static/rsc/vagas.css">
-         <title>job sniffer</title>
-         <link rel="icon" type="image/x-icon" href="../static/icon/icon.svg">
-    </head>
+<header>
+    <img src="../static/images/vagasHeader.webp">
+    <h1>vagas recomendadas</h1>
+</header>
 
-    <body>
+<div class="fundo">
 
-        <ul class="navbar">
-            <li>
-                <a href="/" id="titulo">
-                    <img src="../static/icon/dog.svg" id="logo"> job sniffer
-                </a>
-            </li>
+<section class="filtro">
+    <input type="text" id="buscarVaga">
+</section>
 
-            <li class="links">
-                <a href="/sobre">Sobre</a> -
-                <a href="/contato">Contato</a> -
-                <a href="/vagas">Vagas</a>
-            </li>
-
-            <li>
-                <a href="#" id="loginBtn">Login</a>
-                  <div class="dropdown" id="loginMenu">
-
-                    <span id="voltarBtn">◀</span>
-
-                    <div id="telaLogin">
-                    <label>e-mail</label>
-                    <input type="email" id="loginEmail">
-
-                    <label>senha</label>
-                    <input type="password" id="loginSenha">
-
-                    <p id="esqueceu">esqueceu a senha</p>
-                    <p id="cadastrar">cadastrar-se</p>
-
-                    <button id="entrarBtn" class="btn">entrar</button>
-                    </div>
-
-                    <div id="telaSenha" style="display:none;">
-                    <label>nova senha</label>
-                    <input type="password" id="novaSenha">
-
-                    <p id="AlterarSenha">
-                        A senha deve ter:
-                        <br><span id="a1">• Pelo menos 6 caracteres</span>
-                        <br><span id="a2">• Letra maiúscula</span>
-                        <br><span id="a3">• Letra minúscula</span>
-                        <br><span id="a4">• Número</span>
-                    </p>
-
-                    <button id="alterarBtn" class="btn">alterar</button>
-                    </div>
-
-
-                    <div id="telaCadastro" style="display:none;">
-                    <label>e-mail</label>
-                    <input type="email" id="cadEmail">
-
-                    <p id="erroEmail" >
-                        Email já cadastrado
-                    </p>
-
-                    <label>senha</label>
-                    <input type="password" id="senhaCadastro">
-
-                    <p id="regrasSenhaCadastro">
-                        A senha deve ter:
-                        <br><span id="r1">• Pelo menos 6 caracteres</span>
-                        <br><span id="r2">• Letra maiúscula</span>
-                        <br><span id="r3">• Letra minúscula</span>
-                        <br><span id="r4">• Número</span>
-                    </p>
-
-                    <button id="cadastrarBtn" class="btn">cadastrar</button>
-                    </div>
-
-                </div>
-                <a href="/cadastro" id="cadastro">Cadastrar</a>
-            </li>
-        </ul>
-
-        <header>
-            <img src="../static/images/vagasHeader.webp">
-            <h1>vagas recomendadas</h1>
-        </header>
-
-    <div class="fundo">
-
-        <section class="filtro">
-            <input type="text" id="buscarVaga">
-        </section><section class="filtro">
-            <button class="selecionado" data-filtro="todos">Ver tudo</button>
-            <button data-localizacao="Presencial">Presencial</button>
-            <button data-localizacao="Híbrido">Híbrido</button>
-            <button data-localizacao="Remoto">Remoto</button>
+<section class="filtro">
+    <button class="selecionado" data-filtro="todos">Ver tudo</button>
+    <button data-localizacao="Presencial">Presencial</button>
+    <button data-localizacao="Híbrido">Híbrido</button>
+    <button data-localizacao="Remoto">Remoto</button>
             
-            <button data-presenca="Período Integral">Período integral</button>
-            <button data-presenca="Meio Período">Meio período</button>
-        </section><section class="filtro">
-            <button class="areaVaga" data-area="ti">Tecnologia da Informação</button>
-            <button class="areaVaga" data-area="adm">Administração</button>
-            <button class="areaVaga" data-area="mkt">Marketing</button>
-            <button class="areaVaga" data-area="com">Comércio / Vendas</button>
-            <button class="areaVaga" data-area="log">Logística</button>
-            <button class="areaVaga" data-area="eng">Engenharia</button>
-        </section>
+    <button data-regime="Período Integral">Período integral</button>
+    <button data-regime="Meio Período">Meio período</button>
+</section>
+
+<section class="filtro">
+    <button class="areaVaga" data-area="ti">Tecnologia da Informação</button>
+    <button class="areaVaga" data-area="adm">Administração</button>
+    <button class="areaVaga" data-area="mkt">Marketing</button>
+    <button class="areaVaga" data-area="com">Comércio / Vendas</button>
+    <button class="areaVaga" data-area="log">Logística</button>
+    <button class="areaVaga" data-area="eng">Engenharia</button>
+</section>
 
         <div id="posts"></div>
-
-        <div id="cantoDaTela">
-
-            <section id="irAoTopo">
-                ^
-            </section>
-            <section id="chatbot"></section>
-
-        </div>
-
-        </div>
-
-        <div class="footer">
-
-        <section>
-            <h3>Siga-nos</h3>
-            <hr />
-            <a href="https://www.eniac.edu.br/"><img src="../static/icon/logo_eniac.webp" title="Faculdade Eniac" /></a>
-            <a href="https://github.com/matosaguiar"><img src="../static/icon/logo_gustavo.png" title="Gustavo Matos" /></a>
-            <a href="https://github.com/rocharlia"><img src="../static/icon/logo_julia.png" title="Júlia Nascimento" /></a>
-            <a href="https://github.com/nicovalentim"><img src="../static/icon/logo_nico.png" title="Nicolas Valentim" /></a>
-            <a href="https://github.com/Rodsmont"><img src="../static/icon/logo_rodrigo.png" title="Rodrigo Monteiro" /></a>
-            <p>Ícones feitos por <a href="https://www.flaticon.com/authors/vitaly-gorbachev">Vitaly Gorbachev</a>.</p>
-        </section>
-
-        <section>
-            <h3>Endereço</h3>
-            <hr />
-        Rua Marielle Franco, 79<br />
-        Rio de Janeiro - RJ<br />
-        CEP: 0716-626<br /><br />
-
-        CONTATO<br />
-        55 (11) 1403-2018<br />
-        sac@jobsniffer.edu.br
-        </section>
-
-        </div>
-
-        <script type="module" src="../static/rsc/scripts.js"></script>
-        <script type="module" src="../static/rsc/importarVagas.js"></script>
-
-    </body>
-</html>
+</div>

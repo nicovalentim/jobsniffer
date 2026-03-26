@@ -158,8 +158,11 @@ header h1 {
     padding: 1em 0;
     width: 100%;
 
-    display: block;
+    overflow: hidden;
+    overflow-wrap: break-word;
+
     justify-self: center;
+    justify-items: center;
 }
 
 /* botões laterais */

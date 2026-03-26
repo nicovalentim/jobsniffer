@@ -2,8 +2,6 @@
 import "./filtrarVagas.js";
 
 // seleciona o lugar aonde vai jogar os posts (aonde as vagas vão aparecer)
-const container = document.getElementById("posts")
-
 async function buscarVagas(url) {
     try {
         const resposta = await fetch(url);
@@ -17,6 +15,7 @@ async function buscarVagas(url) {
 
 // carrega a URL do DB, "/vagas" na verdade é re-roteado via python para o diretório correto
 export async function carregar(url = "/api/vagas") {
+    const container = document.getElementById("posts")
 
     const dados = await buscarVagas(url);
 
@@ -39,19 +38,15 @@ export async function carregar(url = "/api/vagas") {
         // listar as vagas na página
         // variável pra postar no html
         let reqs = ""
-        function listaReqs () {
-            for (let i = 0; i < requisitos.length; i++) {
-                reqs += `<p class="requisitos">#${requisitos[i]}</p>`
-            }
+        for (let i = 0; i < requisitos.length; i++) {
+            reqs += `<p class="requisitos">#${requisitos[i]}</p>`
         }
-
-        listaReqs();
 
     // cria o conteúdo com o layout da página
     conteudo += `
     <section class="vaga"
         data-localizacao="${vaga.localizacao.toLowerCase()}"
-        data-presenca="${vaga.presenca.toLowerCase()}"
+        data-regime="${vaga.regime.toLowerCase()}"
         data-area="${vaga.area.toLowerCase()}">
             <section class="tituloVaga">
                 <p class="areaVaga" data-area="${vaga.area.toLowerCase()}">${vaga.area}</p>
@@ -65,7 +60,7 @@ export async function carregar(url = "/api/vagas") {
             <hr />
             <section class="reqs">${reqs}</section>
             <button class="naVaga">${vaga.localizacao}</button>
-            <button class="naVaga">${vaga.presenca}</button>
+            <button class="naVaga">${vaga.regime}</button>
     </section>
         `
     });
@@ -75,6 +70,3 @@ export async function carregar(url = "/api/vagas") {
 
     filtrarVagas();
 }
-carregar();
-
-console.log(reqs)

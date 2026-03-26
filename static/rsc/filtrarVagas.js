@@ -1,7 +1,7 @@
 // valores iniciais das variáveis dentro de um array
 let filtroAtual = {
     localizacao: [],
-    presenca: [],
+    regime: [],
     area: []
 };
 
@@ -18,7 +18,7 @@ export function filtrarVagas() {
     // loopa pelas vagas procurando data-set igual ao conteúdo
     vagas.forEach(vaga => {
         const localizacao = vaga.dataset.localizacao;
-        const presenca = vaga.dataset.presenca;
+        const regime = vaga.dataset.regime;
         const area = vaga.dataset.area;
         const conteudo = vaga.textContent.toLowerCase();
         let visivel = true;
@@ -32,7 +32,7 @@ export function filtrarVagas() {
             if (filtroAtual.localizacao.length > 0 && !filtroAtual.localizacao.includes(localizacao)) { // filtra por presença
                     visivel = false;
                 }
-            if (filtroAtual.presenca.length > 0 && !filtroAtual.presenca.includes(presenca)) { // filtra por tempo de trabalho 
+            if (filtroAtual.regime.length > 0 && !filtroAtual.regime.includes(regime)) { // filtra por tempo de trabalho 
                     visivel = false;
                 }
             if (filtroAtual.area.length > 0 && !filtroAtual.area.includes(area)) { // filtr por área da vaga
@@ -73,12 +73,15 @@ document.addEventListener("click", (e) => {
     // "botao" é a variável que está na tag "button" dentro da classe "menu"
     const botao = e.target.closest(".filtro button");
 
+    // se o clique não foi em um botão de filtro, ignora o restante do código
+    if (!botao) return;
+
     // reseta os filtros se clicar no "Ver tudo"
     if (botao.dataset.filtro === "todos") {
 
         // esvazia as variáveis
         filtroAtual.localizacao = [];
-        filtroAtual.presenca = [];
+        filtroAtual.regime = [];
         filtroAtual.area = [];
 
         // seleciona os botões (<button>) na classe "filtro"
@@ -115,10 +118,10 @@ document.addEventListener("click", (e) => {
             // pega o conteudo escrito em "data-localizacao", deixa em minúscula e grava como filtro
             const conteudo = botao.dataset.localizacao.toLowerCase();
             filtroAtual.localizacao = toggleFiltro(filtroAtual.localizacao, conteudo);
-        // afeta elementos dentro da tag definida acima com "data-presenca"
-        } else if (botao.dataset.presenca) {
-            const conteudo = botao.dataset.presenca.toLowerCase();
-            filtroAtual.presenca = toggleFiltro(filtroAtual.presenca, conteudo);
+        // afeta elementos dentro da tag definida acima com "data-regime"
+        } else if (botao.dataset.regime) {
+            const conteudo = botao.dataset.regime.toLowerCase();
+            filtroAtual.regime = toggleFiltro(filtroAtual.regime, conteudo);
         // afeta elementos dentro da tag definida acima com "data-area"
         } else if (botao.dataset.area) {
             const conteudo = botao.dataset.area.toLowerCase();
