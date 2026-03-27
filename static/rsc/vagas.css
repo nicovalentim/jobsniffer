@@ -100,7 +100,7 @@ button {
     }
 
 #posts hr {
-    margin: 16px 0;
+    margin-top: 1em ;
     opacity: 0.2;
 }
 
@@ -134,25 +134,24 @@ button {
 .tituloVaga {
     display: flex;
     align-items: flex-start;
+    text-transform: capitalize;
 }
     .tituloVaga h1 {
         margin: 0 8px;
     }
     .naVaga {
-        position: relative;
+        text-align: center;
+        user-select: none;
         overflow: hidden;
-        color: rgb(var(--branco));
-        z-index: 0;
-    }
-        .naVaga::before {
-            content: "";
-            position: absolute;
-            inset: 0;
 
-            background-color: rgba(var(--preto));
-    /*        filter: saturate(20%) brightness(50%); */ /* cor baseada na principal */
-            z-index: -1;
-        }
+        border-radius: 8px;
+        padding: 0.75em;
+        min-width: 4ch;
+        border: none;
+
+        background-color: rgb(var(--preto));
+        color: rgb(var(--branco));
+    }
 
     .textoVaga {
         align-self: flex-start;
@@ -160,11 +159,12 @@ button {
         margin: 1.25em 0;
     }
         .reqs {
-            margin-bottom: 4px;
+            display: block;
+            margin-bottom: 1em;
         }
         .requisitos {
             display: inline-block;
-            margin: 2px;
+            margin: 4px;
             padding: 6px;
 
             background-color: var(--complementar);

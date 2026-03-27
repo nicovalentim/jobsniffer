@@ -48,19 +48,19 @@ export async function carregar(url = "/api/vagas") {
         data-localizacao="${vaga.localizacao.toLowerCase()}"
         data-regime="${vaga.regime.toLowerCase()}"
         data-area="${vaga.area.toLowerCase()}">
-            <section class="tituloVaga">
+            <span class="tituloVaga">
                 <p class="areaVaga" data-area="${vaga.area.toLowerCase()}">${vaga.area}</p>
                 <h1>${vaga.titulo}</h1>
-            </section>
+            </span>
 
-            <section class="textoVaga">
+            <span class="textoVaga">
 <!--                Empresa: ${vaga.empresa}<br><br> -->
                 ${descricao}
-            </section>
+            </span>
             <hr />
-            <section class="reqs">${reqs}</section>
-            <button class="naVaga">${vaga.localizacao}</button>
-            <button class="naVaga">${vaga.regime}</button>
+            <span class="reqs">${reqs}</span>
+            <span class="naVaga">${vaga.localizacao}</span>
+            <span class="naVaga">${vaga.regime}</span>
     </section>
         `
     });
