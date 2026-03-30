@@ -83,7 +83,6 @@ button {
     }
 
 #posts {
-    width: 85%;
     column-gap: 2em;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

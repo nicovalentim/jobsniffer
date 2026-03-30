@@ -48,6 +48,20 @@ async function carregarPagina(url) {
     const modulo = await import("./importarVagas.js");
     modulo.carregar();
   }
+
+// carregar js/css em caso de páginas de formulários
+  if (url.includes("cadastro") || url.includes("contato") ) {
+    // importar o css de formulário
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "/static/rsc/forms.css";
+  
+    document.head.appendChild(link);
+
+    // importar o js de vagas se a url for pra vagas
+    const modulo = await import("./enviarCV.js");
+    modulo.carregar();
+  }
 }
 
 const botaoAoTopo = document.getElementById("irAoTopo");

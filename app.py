@@ -14,12 +14,28 @@ mysql = MySQL(app)
 
 # caminho das páginas
 @app.route("/")
-def home():
+def index():
     return render_template("index.html")
+
+@app.route("/home")
+def home_content():
+    return render_template("home.html")
+
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
+
+@app.route("/contato")
+def contato():
+    return render_template("contato.html")
 
 @app.route("/vagas")
 def vagas():
     return render_template("vagas.html")
+
+@app.route("/cadastro")
+def cadastro():
+    return render_template("cadastro.html")
 
 # rota das vagas agora com filtro
 @app.route("/api/vagas")

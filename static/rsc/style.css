@@ -37,6 +37,11 @@ h1 {
     margin-top: 0;
 }
 
+button {
+    cursor: pointer;
+    user-select: none;
+}
+
 /* navbar */
 .navbar {
     display: flex;
@@ -200,7 +205,7 @@ header {
 /* fundo do corpo */
 .fundo {
     padding: 1em 0;
-    width: 100%;
+    width: 75%;
 
     overflow: hidden;
     overflow-wrap: break-word;
@@ -208,6 +213,9 @@ header {
     justify-self: center;
     justify-items: center;
 }
+    .fundo hr  {
+        width: 100%;
+    }
 
 #pagina {
     margin-bottom: 1em;
@@ -359,14 +367,14 @@ header {
         margin-top: 10px;
     }
 
-    /* caixa de texto */
-    #loginMenu input {
+    /* menu de login */
+    input {
         border: none;
-
         border-radius: 8px;
         margin: 5px 0 10px;
         padding: 10px;
-
+    }
+    #loginMenu input {
         width: 100%;
     }
 

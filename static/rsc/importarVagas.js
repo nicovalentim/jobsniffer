@@ -54,7 +54,6 @@ export async function carregar(url = "/api/vagas") {
             </span>
 
             <span class="textoVaga">
-<!--                Empresa: ${vaga.empresa}<br><br> -->
                 ${descricao}
             </span>
             <hr />

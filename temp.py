@@ -140,3 +140,31 @@ def vaga(id):
 if __name__ == "__main__":
     # debug=True allows the server to auto-restart when you save changes
     app.run(debug=True)
+
+# login 
+
+@app.route("/login", methods=["POST"])
+def login():
+    dados = request.json
+
+    email = dados.get("email")
+    senha = dados.get("senha")
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute(
+        "SELECT * FROM login WHERE email = %s AND senha = %s",
+        (email, senha)
+    )
+
+    usuario = cursor.fetchone()
+    cursor.close()
+    
+    if usuario:
+        return jsonify({"status": "ok"})
+    else:
+        return jsonify({"status": "erro"})
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
