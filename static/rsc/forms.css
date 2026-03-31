@@ -3,7 +3,6 @@
 display: block;
 }
     .form input:not([type="checkbox"]) {
-        margin: 1em 0;
         display: flex;
         align-items: center;
         width: 100%;
@@ -45,11 +44,15 @@ display: block;
     margin: 0.5em 0.5em;
 }
 
-.form input[name="nascimento"],
-.form input[name="cpf"],
-.form input[name="telefone"] {
-    border: 1px solid red;
+.linha {
+    display: flex;
+    gap: 1em;
+    margin: 1em 0;
 }
+    .linha input {
+        flex: 1;
+        margin: 0;
+    }
 
 .form label {
     display: flex;
