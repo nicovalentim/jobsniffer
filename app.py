@@ -1,3 +1,19 @@
+import subprocess
+import sys
+
+def install_dependencies():
+    try:
+        import flask_mysqldb
+    # se não houver a lib, baixa ela
+    except ImportError:
+        print("Library 'flask_mysqldb' not found. Installing now...")
+        # roda o pip install caso não houver essa lib
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "flask-mysqldb"])
+        print("Installation complete! Restarting app...")
+
+# checa se tá instalada
+install_dependencies()
+
 from flask import Flask, jsonify, request, render_template
 from flask_mysqldb import MySQL
 
