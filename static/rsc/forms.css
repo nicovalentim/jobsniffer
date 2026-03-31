@@ -1,0 +1,84 @@
+/* páginas de contato/cadastro */
+.form {
+display: block;
+}
+    .form input:not([type="checkbox"]) {
+        margin: 1em 0;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .form input[type="file"] {
+        display: none;
+    }
+    .form span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .form p {
+        text-align: center;
+    }
+    #receberArquivo {
+        user-select: none;
+        cursor: pointer;
+
+        background-color: white;
+        color: rgba(var(--preto),0.75);
+        font-size: 1.5em;
+        height: 10vh;
+
+        border: 1px dashed rgb(var(--preto));
+        border-radius: 8px;
+        margin-bottom: 0.25em;
+    }
+    #apagarCV {
+        margin: 0;
+    }
+
+.form button {
+    display: block;
+    margin-bottom: 1em;
+}
+
+.form input[type="checkbox"] {
+    margin: 0.5em 0.5em;
+}
+
+.form input[name="nascimento"],
+.form input[name="cpf"],
+.form input[name="telefone"] {
+    border: 1px solid red;
+}
+
+.form label {
+    display: flex;
+    justify-self: end;
+    align-items: center;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.form button[type="submit"] {
+    display: flex;
+    justify-self: end;
+}
+    .form button {
+        border: 1px solid rgba(var(--preto),0.5);
+        border-radius: 4px;
+
+        padding: 8px 16px;
+
+        background-color: white;
+    }
+
+.form img {
+    position: relative;
+    z-index: 1;
+
+    height: 48px;
+    width: 48px;
+
+    margin: 0.2em 0.2em;
+}
