@@ -121,6 +121,9 @@ header {
 
         text-shadow: 5px 5px 20px rgba(var(--preto), 0.2);
     }
+    .small {
+        min-height: 30vh;
+    }
 
     header img {
         position: absolute;
@@ -221,6 +224,27 @@ header {
     margin-bottom: 1em;
 }
 
+.card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+    margin: 1em 3em;
+}
+    .card span {
+        background-color: rgba(255,255,255,0.5);
+        border: none;
+        border-radius: 16px;
+        box-shadow: 5px 5px 20px rgba(var(--preto),0.2);
+
+        min-height: 50vh;
+        padding: 2em;
+
+        align-items: center;
+    }
+    .card h1 {
+        font-weight: 700;
+    }
+
 /* botões laterais */
 #cantoDaTela {
     position: fixed;
@@ -272,6 +296,7 @@ header {
     }
 
     #chatbot {
+        box-shadow: 5px 5px 20px rgba(var(--preto),0.1);
         background-image: url(../icon/dormindo.svg);
 
         height: 100px;
@@ -338,8 +363,10 @@ header {
             top: 4.85em; /* temporário */
             width: 30vh;
 
-            background: rgba(var(--branco), 0.75);
+            background: rgb(var(--realce));
+            box-shadow: 5px 5px 20px rgba(var(--preto),0.2);
             backdrop-filter: blur(6px);
+            color: rgb(var(--branco));
 
             padding: 1em;
             border-radius: 16px;
@@ -349,7 +376,7 @@ header {
                 display: none;
                 cursor: pointer;
 
-                color: rgb(var(--realce));
+                color: rgb(var(--branco));
                 font-size: 1.5em;
                 font-weight: bold;
 
@@ -382,7 +409,7 @@ header {
     #esqueceu, #cadastrar {
         width:100%;
         text-align:center;
-        color:rgb(var(--realce));
+        color:rgb(var(--branco));
         font-size: 0.9em;
         cursor: pointer;
         margin: 5px 0;
@@ -397,12 +424,13 @@ header {
         padding: 10px;
         width: 40%;
 
-        background: rgb(var(--realce));
-        color:rgb(var(--branco));
+        background: rgb(var(--branco));
+        color:rgb(var(--realce));
         font-weight: bold;
     }
         #loginMenu .btn:hover {
             background: rgb(var(--preto));
+            color: rgb(var(--branco));
         }
 
     /* erro */
@@ -420,7 +448,7 @@ header {
     
     #regrasSenhaCadastro, #AlterarSenha {
     font-size: 0.8;
-    color: rgb(var(--realce));
+    color: rgb(var(--branco));
     margin-top: 5px;
     line-height: 1.4;
     }
