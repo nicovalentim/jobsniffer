@@ -20,25 +20,25 @@ button {
 }
 
 .filtro {
-    display: flex;
+    display: block;
     align-items: stretch; /* para os filtros terem a mesma altura mesmo em mobile */
     justify-self: center;
-
-    margin-bottom: 0.25em;
+    text-align: center;
+    width: 75%;
 }
-    @media (max-width: 1080px) {
-        .filtro {
-            text-align: center;
-        }
-    }
     .filtro button {
         border-radius: 16px;
         border: 1px solid rgb(var(--preto));
-        margin: 0 0.1em;
+        margin: 0.1em;
         min-width: 16ch;
 
         background-color: rgb(var(--branco));
         color: rgb(var(--preto));
+    }
+    @media (max-width: 1080px) {
+        .filtro button {
+            min-width: 0;
+        }
     }
     .filtro button.selecionado {
         background-color: rgba(var(--preto),1);
@@ -62,7 +62,7 @@ button {
     border-bottom: 1px solid rgb(var(--preto));
     border-radius: 0;
 
-    margin-bottom: 1em;
+    margin: 0.5em;
     font-size: 1.5em;
 
     align-self: center;
@@ -78,22 +78,20 @@ button {
     width: 85%;
 }
     #buscarVaga:focus {
-        background-image: none;
-
         border-radius:6px;
+    }
+    #buscarVaga:not(:placeholder-shown) {
+        background-image: none;
     }
 
 #posts {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-self: center;
-    margin-top: 1em;
+    margin: 1em;
+    width: 100%;
 }
-    @media (max-width: 1080px) {
-        #posts {
-            grid-template-columns: 1fr;
-        }
-    }
 
 #posts hr {
     margin-top: 1em ;
@@ -104,13 +102,18 @@ button {
     background-color: rgba(255,255,255,0.5);
     border: none;
     border-radius: 16px;
-    box-shadow: 5px 5px 20px rgba(var(--preto),0.2);
+    box-shadow: 5px 5px 20px rgba(var(--preto),0.1);
 
-    margin: 0.5em;
     padding: 2em;
 
     align-content: center;
+    justify-self: center;
 }
+    @media (max-width: 1080px) {
+        .vaga {
+            width: 90%;
+        }
+    }
 
 .tituloVaga .areaVaga {
     margin: 0;

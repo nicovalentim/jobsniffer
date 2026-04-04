@@ -67,6 +67,7 @@ ul {
     justify-self: center;
 }
     .links a {
+        align-content: center;
         margin: 0 8px;
     }
     #logo {
@@ -91,10 +92,148 @@ ul {
         background-color: rgb(var(--realce));
         border-radius: 16px;
     }
+        @media (max-width: 1080px) {
+            #titulo {
+                font-size: 1em;
+            }
+            .links a, #loginBtn, #cadastro {
+                font-size: 0.75em;
+            }
+        }
+
+/* Menu de Login */
+#loginMenu, #loginMenu input {
+    box-sizing: border-box;
+}
+
+#loginMenu {
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+
+    opacity: 0;
+    pointer-events: none;
+
+    width: 320px;
+    max-width: 90%;
+
+    background: rgb(var(--branco));
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(var(--preto), 0.3);
+    padding: 2em;
+}
+    #loginMenu.ativo {
+        opacity: 1;
+        pointer-events: all;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    #loginMenu input {
+        width: 100%;
+
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+
+        background: white;
+    }
+    #fecharBtn {
+        display: inline;
+        align-self: end;
+
+        margin-bottom: 1em;
+
+        padding: 5px 10px;
+        color: rgb(var(--realce));
+    }
+    #fecharBtn, .btn {
+        cursor: pointer;
+
+        border: none;
+        border-radius: 8px;
+    }
+    .btn {
+        font-weight: 600;
+        padding: 10px;
+
+        background: rgb(var(--realce));
+        color: rgb(var(--branco));
+    }
+    #voltarBtn {
+        cursor: pointer;
+        display: none;
+        position: absolute;
+
+        font-size: 0.8em;
+        padding: 10px;
+
+        color: rgb(var(--realce));
+    }
+    #esqueceuSenha {
+        cursor: pointer;
+
+        color: rgb(var(--realce));
+        text-align: center;
+        font-size: 0.85em;
+        margin: 10px 0;
+    }
+
+/* Overlay escuro em cima do resto da página */
+#overlay {
+    pointer-events: none;
+
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+}
+    #overlay.ativo {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+.tela {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.erro {
+    color: red;
+    font-size: 0.75em;
+    min-height: 1.2em;
+    animation: tremer 0.2s;
+}
+    @keyframes tremer {
+        25% { transform: translateX(-4px); }
+        75% { transform: translateX(4px); }
+    }
+
+.api {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .api img {
+        position: relative;
+        z-index: 1;
+
+        height: 48px;
+        width: 48px;
+
+        margin: 0.2em;
+    }
 
 /* header */
 header {
-    width: 97.5%;
+    width: 95%;
     min-height: 30vh;
     border-radius: 16px;
 
@@ -159,49 +298,54 @@ header {
         z-index: -1;
     }
 
-/* telas divididas na metade */
-.metade {
-    display: grid;
-    grid-template-rows: 1fr;
-    align-items: stretch;
-    grid-template-columns: 65% 35%;
-}
-    .metade section {
-        grid-column-start: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        height: 100%;
-        min-height: 80vh;
-        box-sizing: border-box;
-
-        background-color: rgb(var(--branco));
-        padding: 2em;
+    /* telas divididas na metade */
+    .metade {
+        display: grid;
+        grid-template-rows: 1fr;
+        align-items: stretch;
+        grid-template-columns: 65% 35%;
     }
-    .metade::after {
-        background: linear-gradient(
-            to bottom,
-            rgba(var(--preto), 0) 0%,
-            rgba(var(--preto), 0.25) 40%,
-            rgba(var(--preto), 0.75) 100%
-        );
+    @media (max-width: 1080px) {
+        .metade {
+            grid-template-columns: 40% 60%;
+        }
+        .metade h1 {
+            display: none;
+        }
     }
+        .metade section {
+            grid-column-start: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            height: 100%;
+            min-height: 80vh;
+            box-sizing: border-box;
+
+            background-color: rgb(var(--branco));
+            padding: 2em;
+        }
+        .metade::after {
+            background: linear-gradient(
+                to bottom,
+                rgba(var(--preto), 0) 0%,
+                rgba(var(--preto), 0.25) 40%,
+                rgba(var(--preto), 0.75) 100%
+            );
+        }
 
 /* fundo do corpo */
 .fundo {
-    padding: 1em 0;
-    margin: 0 10em;
+    margin: 1em auto;
+    width: 90%;
+    max-width: 1200px;
 
-    overflow: hidden;
     overflow-wrap: break-word;
 
     justify-self: center;
     justify-items: center;
 }
-    .fundo hr  {
-        width: 100%;
-    }
 
 #pagina {
     margin-bottom: 1em;
@@ -227,6 +371,15 @@ header {
     .card h1 {
         font-weight: 700;
     }
+        @media (max-width: 1080px) {
+            .card {
+                grid-template-columns: 1fr;
+            }
+            .card span {
+                margin-bottom: 1em;
+                min-height: auto;
+            }
+        }
 
 /* botões laterais */
 #cantoDaTela {
@@ -311,7 +464,7 @@ header {
     justify-content: center;
     gap: 10em;
     margin: 0;
-    padding: 1em 20em;
+    padding: 1em 20%;
 
     background-color: rgb(var(--realce));
     color: rgb(var(--branco));
@@ -333,135 +486,4 @@ header {
         display: inline;
         width: 32px;
         padding: 8px;
-    }
-
-/* Menu de Login */
-#loginMenu, #loginMenu input {
-    box-sizing: border-box;
-}
-
-#loginMenu {
-    display: flex;
-    flex-direction: column;
-
-    position: fixed;
-    z-index: 3;
-    top: 50%;
-    left: 50%;
-
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.25s ease;
-
-    width: 320px;
-    max-width: 90%;
-
-    background: rgb(var(--branco));
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(var(--preto), 0.3);
-    padding: 2em;
-}
-    #loginMenu.ativo {
-        opacity: 1;
-        pointer-events: all;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    #loginMenu input {
-        width: 100%;
-
-        border: none;
-        border-radius: 8px;
-        padding: 10px;
-        margin: 5px 0;
-
-        background: white;
-    }
-    #fecharBtn {
-        position: absolute;
-        top: 12px;
-        right: 15px;
-
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: bold;
-        color: rgb(var(--preto));
-    }
-
-/* Overlay escuro em cima do resto da página */
-#overlay {
-    pointer-events: none;
-
-    position: fixed;
-    inset: 0;
-    z-index: 2;
-
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-    #overlay.ativo {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-.tela {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: center;
-    gap: 5px;
-}
-
-#voltarBtn, .btn {
-    cursor: pointer;
-    transition: filter 0.2s;
-    
-    border-radius: 8px;
-    border: none;
-    font-weight: 600;
-    padding: 10px;
-
-    background: rgb(var(--realce));
-    color: rgb(var(--branco));
-}
-    #voltarBtn {
-        display: none;
-        align-self: flex-start;
-        font-size: 0.75em;
-        margin-bottom: 2em;
-    }
-    #esqueceuSenha {
-        cursor: pointer;
-
-        color: rgb(var(--realce));
-        text-align: center;
-        font-size: 0.85em;
-        margin: 10px 0;
-    }
-
-.erro {
-    color: red;
-    font-size: 0.75em;
-    min-height: 1.2em;
-    animation: tremer 0.2s;
-}
-    @keyframes tremer {
-        25% { transform: translateX(-4px); }
-        75% { transform: translateX(4px); }
-    }
-
-.api {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-    .api img {
-        position: relative;
-        z-index: 1;
-
-        height: 48px;
-        width: 48px;
-
-        margin: 0.2em 0.2em;
     }

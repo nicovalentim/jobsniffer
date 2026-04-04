@@ -27,22 +27,19 @@
 <a href="#" id="loginBtn">Login</a>
 
         <div id="loginMenu">
-            <span id="fecharBtn">✖</span>
             <span id="voltarBtn">Voltar</span>
+            <span id="fecharBtn">✖</span>
 
             <section id="telaLogin" class="tela">
-                <label>E-mail</label>
-                <input type="email" id="loginEmail">
+                <input type="email" id="loginEmail" placeholder="Digite seu email" />
                 <span id="erroLoginEmail" class="erro"></span>
 
-                <label>Senha</label>
-                <input type="password" id="loginSenha">
+                <input type="password" id="loginSenha" placeholder="Digite sua senha">
                 <span id="erroLoginSenha" class="erro"></span>
 
                 <p id="esqueceuSenha">Esqueceu a senha?</p>
                 <button id="btnEntrar" class="btn">Entrar</button>
 
-                <hr />
                 <p style="text-align: center; font-size: 0.7em;">Ou faça Login com:</p>
                 <span class="api">
                     <a href><img src="static/icon/github.png" /></a>
@@ -52,8 +49,7 @@
             </section>
 
             <section id="telaSenha" class="tela" style="display:none;">
-                <label>E-mail</label>
-                <input type="email" id="recEmail">
+                <input type="email" id="recEmail" placeholder="Digite seu email para recuperar" >
                 <span id="erroRecuperacao" class="erro"></span>
                 <button id="btnRecuperar" class="btn">Recuperar</button>
             </section>

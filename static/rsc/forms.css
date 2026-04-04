@@ -58,6 +58,14 @@ display: block;
         flex: 1;
         margin: 0;
     }
+        @media (max-width: 1080px) {
+            .linha {
+                display: block
+            }
+            .linha input {
+                margin: 1em 0;
+            }
+        }
 
 .form label {
     display: flex;
