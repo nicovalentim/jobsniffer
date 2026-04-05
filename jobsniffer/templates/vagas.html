@@ -1,0 +1,30 @@
+<header>
+    <img src="../static/images/vagasHeader.webp">
+    <h1>vagas recomendadas</h1>
+</header>
+
+<div class="fundo">
+
+<section class="filtro">
+    <input type="text" id="buscarVaga" placeholder="" />
+</section>
+
+<section class="filtro">
+    <button class="selecionado" data-filtro="todos">Ver tudo</button>
+
+    <button data-localizacao="Presencial">Presencial</button>
+    <button data-localizacao="Híbrido">Híbrido</button>
+    <button data-localizacao="Remoto">Remoto</button>
+            
+    <button data-regime="Período Integral">Período integral</button>
+    <button data-regime="Meio Período">Meio período</button>
+
+    <button class="areaVaga" data-area="ti">Tecnologia da Informação</button>
+    <button class="areaVaga" data-area="adm">Administração</button>
+    <button class="areaVaga" data-area="mkt">Marketing</button>
+    <button class="areaVaga" data-area="com">Comércio / Vendas</button>
+    <button class="areaVaga" data-area="log">Logística</button>
+    <button class="areaVaga" data-area="eng">Engenharia</button>
+</section>
+        <div id="posts" class="vagasPagina"></div>
+</div>
