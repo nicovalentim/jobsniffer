@@ -38,7 +38,7 @@ async function carregarPagina(url) {
   conteudoPagina.innerHTML = conteudoCarregado;
 
   // carregar o js caso seja a página de vagas
-  if (url.includes("vagas")) {
+  if (url.includes("vagas") || url.includes("home") ) {
 
     // importar o css de vagas se a url for pra vagas
     const link = document.createElement("link");
@@ -53,7 +53,7 @@ async function carregarPagina(url) {
   }
 
 // carregar js/css em caso de páginas de formulários
-  if (url.includes("cadastro") || url.includes("contato") ) {
+  if (url.includes("cadastro") || url.includes("contato")) {
     // importar o css de formulário
     const link = document.createElement("link");
     link.rel = "stylesheet";

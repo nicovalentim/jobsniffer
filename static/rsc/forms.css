@@ -90,10 +90,21 @@ display: block;
         color: rgb(var(--branco));
     }
 
+.cadastro {
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
 .contato {
+    align-items: start;
     grid-template-columns: 1fr 3fr;
     gap: 1em;
 }
+    @media (max-width: 1080px) {
+        .contato {
+            grid-template-columns: 1fr;
+        }
+    }
     .contato textarea {
         border: none;
         border-radius: 8px;

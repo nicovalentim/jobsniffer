@@ -32,8 +32,12 @@ body {
 
 h1 {
     font-family: var(--fontePrimaria);
-    font-weight: 400;
+    font-weight: 700;
     margin-top: 0;
+}
+
+h2 {
+    font-weight: 400;
 }
 
 button {
@@ -111,7 +115,7 @@ ul {
     flex-direction: column;
 
     position: fixed;
-    z-index: 3;
+    z-index: 4;
     top: 50%;
     left: 50%;
 
@@ -187,7 +191,7 @@ ul {
 
     position: fixed;
     inset: 0;
-    z-index: 2;
+    z-index: 3;
 
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(4px);
@@ -225,10 +229,10 @@ ul {
         position: relative;
         z-index: 1;
 
-        height: 48px;
-        width: 48px;
+        height: 32px;
+        width: 32px;
 
-        margin: 0.2em;
+        margin: 4px;
     }
 
 /* header */
@@ -258,9 +262,6 @@ header {
         font-weight: 900;
 
         text-shadow: 5px 5px 20px rgba(var(--preto), 0.2);
-    }
-    .big {
-        min-height: 80vh;
     }
 
     header img {
@@ -298,43 +299,6 @@ header {
         z-index: -1;
     }
 
-    /* telas divididas na metade */
-    .metade {
-        display: grid;
-        grid-template-rows: 1fr;
-        align-items: stretch;
-        grid-template-columns: 65% 35%;
-    }
-    @media (max-width: 1080px) {
-        .metade {
-            grid-template-columns: 40% 60%;
-        }
-        .metade h1 {
-            display: none;
-        }
-    }
-        .metade section {
-            grid-column-start: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            height: 100%;
-            min-height: 80vh;
-            box-sizing: border-box;
-
-            background-color: rgb(var(--branco));
-            padding: 2em;
-        }
-        .metade::after {
-            background: linear-gradient(
-                to bottom,
-                rgba(var(--preto), 0) 0%,
-                rgba(var(--preto), 0.25) 40%,
-                rgba(var(--preto), 0.75) 100%
-            );
-        }
-
 /* fundo do corpo */
 .fundo {
     margin: 1em auto;
@@ -353,11 +317,12 @@ header {
 
 .card {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     gap: 1em;
     margin: 1em 3em;
 }
-    .card span {
+    .card section {
+        box-sizing: border-box;
+
         background-color: rgba(255,255,255,0.5);
         border: none;
         border-radius: 16px;
@@ -365,19 +330,49 @@ header {
 
         min-height: 50vh;
         padding: 2em;
-
-        align-items: center;
+        width: 100%;
     }
     .card h1 {
         font-weight: 700;
+    }
+    .home {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr 20px);
+        gap: 1em;
+
+        border-radius: 16px;
+        padding: 1em;
+    }
+    .home section {
+        min-height: 0;
+        text-align: center;
+    }
+    .home section img {
+        border-radius: 50%;
+
+        height: 120px;
+        width: 120px;
+    }
+    .sobre {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .valores {
+        border-radius: 16px;
+        padding: 1em;
+
+        background-color: rgb(var(--realce));
+        color: rgb(var(--branco));
     }
         @media (max-width: 1080px) {
             .card {
                 grid-template-columns: 1fr;
             }
-            .card span {
+            .card section {
                 margin-bottom: 1em;
                 min-height: auto;
+            }
+            .sobre {
+                grid-template-columns: 1fr;
             }
         }
 
