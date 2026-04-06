@@ -1,5 +1,39 @@
-import subprocess
-import sys
+import os, subprocess, sys
+
+def init_db(app, mysql):
+    with app.app_context():
+        # conecta ao MySQL sem especificar o banco para criar o DB se necessário
+        cursor = mysql.connection.cursor()
+        
+        # cria o banco de dados se não existir
+        cursor.execute("CREATE DATABASE IF NOT EXISTS banco_de_vagas")
+        
+        # usa o banco de dados criado ou existente
+        cursor.execute("USE banco_de_vagas")
+        
+        # checa se as tabelas existem
+        cursor.execute("SHOW TABLES LIKE 'banco_de_vagas'")
+        result = cursor.fetchone()
+        
+        if not result:
+            print("Database tables not found. Initializing from SQL file...")
+            sql_path = os.path.join(os.getcwd(), 'db', 'banco_de_vagas.sql')
+            
+            try:
+                with open(sql_path, 'r', encoding='utf-8') as f:
+                    sql_commands = f.read().split(';')
+                    
+                    for command in sql_commands:
+                        clean_command = command.strip()
+                        if clean_command:
+                            cursor.execute(clean_command)
+                
+                mysql.connection.commit()
+                print("Database initialized successfully!")
+            except Exception as e:
+                print(f"Error: {e}")
+        
+        cursor.close()
 
 def install_dependencies():
     try:
@@ -23,8 +57,8 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'banco_de_vagas'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQL_DB'] = 'banco_de_vagas'
 
 mysql = MySQL(app)
 
@@ -151,4 +185,5 @@ def chat():
     })
 
 if __name__ == "__main__":
+    init_db(app, mysql)
     app.run(debug=True)
