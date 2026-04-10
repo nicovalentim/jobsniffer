@@ -1,7 +1,5 @@
-import { abreFecha } from "./scripts.js";
-const overlay = document.getElementById("overlay");
-
-var loginMenu = document.getElementById("loginMenu");
+var menu = document.getElementById("loginMenu");
+var overlay = document.getElementById("overlay");
 var voltarBtn = document.getElementById("voltarBtn");
 var loginBtn = document.getElementById("loginBtn");
 
@@ -16,15 +14,15 @@ var campos = {
     rEmail: document.getElementById("recEmail")
 };
 
-// chama o menu de login
-abreFecha(loginMenu, loginBtn, function() {
+// mostra o menu se clicar no botão login
+loginBtn.onclick = function(e) {
+    e.stopPropagation();                             // não deixa acontecer em outros elementos da página
+    menu.classList.add("ativo");
+    overlay.classList.add("ativo");
     alternarTela('login');
     campos.lEmail.value = campos.lSenha.value = campos.rEmail.value = "";
-
-    setTimeout(function() {
-        document.getElementById("loginEmail").focus();
-    }, 50);
-});
+    document.getElementById("loginEmail").focus();  // deixa o menu de "e-mail" pré-clicado
+};
 
 // alterna entre as telas do menu
 function alternarTela(tela) {
@@ -39,6 +37,26 @@ function alternarTela(tela) {
     document.getElementById("esqueceuSenha").onclick = function() {
         alternarTela('senha');
     };
+
+// fechar a janela
+function fechar() {
+    menu.classList.remove("ativo");
+    overlay.classList.remove("ativo");
+}
+    // fecha ao clicar fora do menu de login
+    overlay.onclick = fechar;
+    document.onclick = function(e) {
+        if (!menu.contains(e.target) && e.target !== loginBtn) fechar();
+    };
+    menu.onclick = function(e) { e.stopPropagation(); }; // não deixa acontecer em outros elementos da página
+    menu.oninput = function() { limparErros(); };
+    // fecha com tecla ESC
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") fechar();
+    });
+    // fecha no X no topo da tela
+    const fecharBtn = document.getElementById("fecharBtn");
+    fecharBtn.addEventListener("click", fechar);
 
 // validar dados
 function validar(tipo, valor) {
@@ -67,7 +85,7 @@ function validar(tipo, valor) {
     }
     // erros
     function limparErros() {
-        var spans = loginMenu.querySelectorAll(".erro");
+        var spans = menu.querySelectorAll(".erro");
         for (var i = 0; i < spans.length; i++) spans[i].textContent = "";   // limpa todos os elementos com a classe erro
     }
 
@@ -81,7 +99,7 @@ document.getElementById("btnRecuperar").onclick = function(e) {
     submeterRecuperacao();
 };
     // envia com enter
-    loginMenu.onkeydown = function(e) {
+    menu.onkeydown = function(e) {
         if (e.key === "Enter") {
             // para tela de login
             if (telas.login.style.display !== "none") {

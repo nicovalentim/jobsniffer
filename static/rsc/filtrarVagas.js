@@ -5,13 +5,13 @@ let filtroAtual = {
     area: []
 };
 
-// função de filtrarF
+// função de filtrar
 export function filtrarVagas() {
     // buscar a ID da barra de busca
     const busca = document.getElementById("buscarVaga");
 
-    // transforma o pequisa digitado em lowercase
-    const pequisa = busca ? busca.value.toLowerCase().trim(): "";
+    // transforma o texto digitado em lowercase
+    const texto = busca.value.toLowerCase().trim();
     // pesquisa dentro de tudo com classe/id ("")
     const vagas = document.querySelectorAll(".vaga");
 
@@ -23,11 +23,8 @@ export function filtrarVagas() {
         const conteudo = vaga.textContent.toLowerCase();
         let visivel = true;
 
-        if (
-            // se o campo de pequisa da barra de pesquisa estiver vazio   
-            pequisa !== ""
-            // esconde conteúdo diferente (!) do que foi pesquisado
-            && !conteudo.includes(pequisa)) {
+        // esconde conteúdo diferente (!) do que foi pesquisado
+        if (!conteudo.includes(texto)) {
             visivel = false;
         }
 

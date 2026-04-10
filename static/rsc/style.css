@@ -11,8 +11,8 @@
 /*    --primaria: 70, 130, 180; /* steelblue */
     --complementar: hsl(from rgb(var(--primaria)) 180deg s 70%);
 
-    --fontePrimaria: "Roboto", sans-serif;
-    --fonteSecundaria: "Montserrat", sans-serif;
+    --fontePrimaria: "Montserrat", sans-serif;
+    --fonteSecundaria: "Roboto", sans-serif;
 }
 
 /* variáveis globais */
@@ -26,7 +26,7 @@ body {
     color: rgba(var(--preto), 1);
     margin: 0;
 
-    font-family: var(--fontePrimaria);
+    font-family: var(--fonteSecundaria);
     font-size: 0.9em;
 }
 
@@ -50,7 +50,6 @@ button {
     display: flex;
     align-items: center;
     font-size: 2em;
-    font-family: var(--fontePrimaria);
     user-select: none;
 
     color: rgba(var(--preto), 1);
@@ -170,6 +169,7 @@ ul {
     #voltarBtn {
         cursor: pointer;
         display: none;
+        position: absolute;
 
         font-size: 0.8em;
         padding: 10px;
@@ -251,7 +251,6 @@ header {
     header h1 {
         user-select: none;
         grid-row-start: -1;
-        font-family: var(--fonteSecundaria);
 
         position: absolute;
         bottom: 0.5em;
@@ -479,6 +478,7 @@ header {
             font-weight: 800;
         }
         .chat-box .close {
+            cursor: pointer;
             margin-left: auto;
 
             color: white;
