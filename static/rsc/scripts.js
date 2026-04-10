@@ -1,13 +1,7 @@
-// importa as funções de login
 import "./login.js";
-
-// importa as funções do chatbot
 import "./chatbot.js";
 
-// seleciona a parte aonde o conteúdo vai ser carregado
 let conteudoPagina = document.getElementById("pagina");
-
-// seleciona a navbar
 const navbar = document.querySelector(".navbar");
 
 // adiciona um evento de clique
@@ -84,3 +78,36 @@ botaoAoTopo.addEventListener("click", function() {
         behavior: "smooth"
     });
 });
+
+// funções de abrir/fechar globais
+export function abreFecha(menu, btnAbrir, funcao) {
+  const abrir = function() {
+      menu.classList.add("ativo");
+      overlay.classList.add("ativo");
+      if (typeof funcao === "function") funcao();
+  };
+
+  const fechar = function() {
+      menu.classList.remove("ativo");
+      overlay.classList.remove("ativo");
+  };
+
+  btnAbrir.onclick = function(e) {
+      e.stopPropagation();
+      abrir();
+  };
+
+  overlay.onclick = fechar;
+
+  document.addEventListener("click", function(e) {
+      if (menu.classList.contains("ativo") && !menu.contains(e.target) && e.target !== btnAbrir) {
+          fechar();
+      }
+  });
+
+  document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") fechar();
+  });
+
+  menu.onclick = function(e) { e.stopPropagation(); };
+}

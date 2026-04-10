@@ -58,7 +58,6 @@ app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-app.config['MYSQL_DB'] = 'banco_de_vagas'
 
 mysql = MySQL(app)
 
@@ -186,4 +185,5 @@ def chat():
 
 if __name__ == "__main__":
     init_db(app, mysql)
+    app.config['MYSQL_DB'] = 'banco_de_vagas'
     app.run(debug=True)
