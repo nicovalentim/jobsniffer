@@ -1,0 +1,79 @@
+/* fontes usadas */
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* cores usadas */
+:root {
+    --branco: 245, 245, 245;
+    --preto: 18, 18, 18;
+    --cinza: 217, 217, 217;
+
+    --realce: 28, 24, 55;
+    }
+            
+body {
+    font-family: Roboto;
+    font-weight: 300;
+
+    background-color: rgba(var(--branco), 1);
+    color: rgba(var(--preto), 1);
+    margin: 0;
+    }
+
+.menu {
+    background: rgba(var(--realce), 1);
+}
+
+h1, h2 {
+    font-family: Montserrat;
+    }
+
+.header {
+    background-image:
+        linear-gradient(rgba(var(--realce), 1), rgba(var(--realce), 1)),
+        url("images.jpeg");
+    background-blend-mode: color;
+    }
+
+.header h1 {
+    color: rgba(var(--branco), 1);
+    font-size: 3em;
+    font-weight: 900;
+    }
+
+.filtro, .filtroVaga {
+    font-family: Arvo;
+    font-size: 0.75em;
+
+    background-color: rgba(var(--cinza), 1);
+    border: 1px solid rgba(var(--cinza), 1);
+    }
+
+.fundo {
+    background-color: rgba(var(--branco), 1);
+    }
+            
+.selecionado {
+    color: rgba(var(--branco),1);
+    background-color: rgba(var(--realce), 1);
+    }
+
+.vaga {
+    background-color: rgba(var(--branco), 1);
+    width: 75%;
+    }
+
+.vaga h1 {
+    font-weight: 400;
+    }
+
+.textoVaga {
+    font-size: 0.9em;
+    word-wrap: normal;
+    max-width: 75ch;
+    }
+
+.botadoCandidatar {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1.2em;
+    }

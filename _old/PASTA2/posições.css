@@ -1,0 +1,113 @@
+/* fundo pra esconder o título */
+    .fundo {
+        width: 100%;
+        position: relative;
+        justify-items: center;
+        }
+
+/* imagem de header e texto abaixo */
+    .header {
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        display: flex;
+        align-items: flex-end;
+
+        width: 100%;
+        min-height: 18em;
+        }
+
+    .header h1 {
+        user-select: none;
+        max-width: 7ch;
+        word-wrap: break-word;
+
+        margin-left: 2em;
+        }
+
+/* instruções para esconder título */
+    .fundo {
+        margin-top: -3.2em;
+        padding-top: 3.2em;
+        }
+
+/* filtros clicáveis no topo da página */
+    .filtrosTopo {
+        display: flex;
+        justify-content: end;
+
+        grid-column-start: 1;
+        grid-column-end: -1; /* -1 para usar todas as colunas */
+                            
+        margin-bottom: 0.5em;
+        }
+
+    .filtro {
+        display: inline;
+        text-align: center;
+
+        margin: 0.4em;
+        padding: 0.5em;
+        }
+
+    .filtro, .filtroVaga {
+        border-radius: 10px;
+        cursor: pointer;
+        width: 12em;
+        }
+
+/* tabela de vagas, com 3 colunas (pra título, texto e botão de candidatar) */
+    .vaga {
+        align-items: center; /* alinhar vertical */
+        display: grid;
+        column-gap: 2em;
+        grid-template-columns: 1fr 2fr 0.5fr;
+        }
+
+    .vaga hr {
+        grid-column-start: 1;
+        grid-column-end: -1; /* -1 para usar todas as colunas */
+        width: 100%;
+        }
+
+/* formnatação da tabela */
+    .vaga {
+        margin-bottom: 1em;
+        margin-top: 1em;
+        }
+
+    .vaga h1 {
+        margin: 0;
+        margin-bottom: 0.5em;
+        }
+
+    .tituloVaga {
+        align-self: center;
+        justify-self: end;
+
+        text-align: right;
+        max-width: 20ch;
+        word-wrap: break-word;
+        }
+
+    .filtroVaga {
+        display: flex;
+        justify-self: end;
+        justify-content: center;
+        align-items: center;
+                            
+        margin: 0.5em;
+        padding: 0.2em;
+        }
+
+    .filtroVaga img {
+        width: 16px;
+        margin: 5px;
+        }
+
+/* botão pra se candidatar */
+    .botadoCandidatar {
+        align-self: start;
+        justify-self: start;
+        cursor: pointer;
+        }
