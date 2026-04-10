@@ -50,6 +50,24 @@ export async function carregar(url = "/api/vagas") {
             reqs += `<p class="requisitos">#${requisitos[i]}</p>`
         }
 
+        var infoVaga = `
+                <div class="infoVaga" id="infoVaga-${vaga.id}">
+                    <span class="tituloVaga">
+                    <p class="areaVaga" data-area="${vaga.area.toLowerCase()}">${vaga.area}</p>
+                    </span>
+                        <h1>${vaga.titulo}</h1>
+                    <span class="textoVaga">
+                        ${vaga.descricao}
+                    </span>
+                    <section>
+                        <span class="naVaga">${vaga.localizacao}</span>
+                        <span class="naVaga">${vaga.regime}</span>
+                    </section>
+                    <span class="reqs">${reqs}</span>
+                    <button class="">Candidatar-se!</button>
+            </div>
+            `
+
     // cria o conteúdo com o layout da página
     conteudo += `
         <section href="#" class="vaga" id="${vaga.id}"
@@ -69,23 +87,8 @@ export async function carregar(url = "/api/vagas") {
                 <span class="naVaga">${vaga.localizacao}</span>
                 <span class="naVaga">${vaga.regime}</span>
         </section>
-
-        <div class="infoVaga" id="infoVaga-${vaga.id}">
-                <span class="tituloVaga">
-                <p class="areaVaga" data-area="${vaga.area.toLowerCase()}">${vaga.area}</p>
-                </span>
-                    <h1>${vaga.titulo}</h1>
-                <span class="textoVaga">
-                    ${vaga.descricao}
-                </span>
-                <section>
-                    <span class="naVaga">${vaga.localizacao}</span>
-                    <span class="naVaga">${vaga.regime}</span>
-                </section>
-                <span class="reqs">${reqs}</span>
-                <button class="">Candidatar-se!</button>
-        </div>
             `
+            + infoVaga
 }};
 
     if (document.getElementsByClassName("vagasDestaque").length > 0) {
@@ -119,7 +122,7 @@ export async function carregar(url = "/api/vagas") {
             <span class="naVaga">${vaga.localizacao}</span>
             <span class="naVaga">${vaga.regime}</span>
         </section>
-            `;
+            `
     }
 }
 

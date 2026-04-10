@@ -1,65 +1,98 @@
-import os, subprocess, sys
+import os, sqlite3, re
 
-def init_db(app, mysql):
+# converter de sql para sqlite
+def clean_mysql_to_sqlite(sql_content):
+    sql_content = re.sub(r'/\*.*?\*/', '', sql_content, flags=re.DOTALL)
+    sql_content = re.sub(r'--.*?\n', '\n', sql_content)
+    
+    sql_content = sql_content.replace("AUTO_INCREMENT", "AUTOINCREMENT")
+    sql_content = re.sub(r'int\(\d+\) NOT NULL AUTOINCREMENT', 'INTEGER PRIMARY KEY AUTOINCREMENT', sql_content, flags=re.IGNORECASE)
+    sql_content = re.sub(r'INT NOT NULL AUTOINCREMENT', 'INTEGER PRIMARY KEY AUTOINCREMENT', sql_content, flags=re.IGNORECASE)
+
+    raw_commands = sql_content.split(';')
+    
+    clean_commands = []
+    for cmd in raw_commands:
+        c = cmd.strip()
+        if not c: continue
+        
+        upper_c = c.upper()
+        if upper_c.startswith("CREATE TABLE") or upper_c.startswith("INSERT INTO"):
+            
+            c = c.replace('`', '')
+            c = re.sub(r'ENGINE=.*$', '', c, flags=re.IGNORECASE | re.MULTILINE)
+            c = re.sub(r'DEFAULT CHARSET=.*$', '', c, flags=re.IGNORECASE | re.MULTILINE)
+
+            if "INTEGER PRIMARY KEY" in c:
+                lines = c.split('\n')
+                filtered_lines = []
+                for line in lines:
+                    if "PRIMARY KEY (ID)" in line.upper() or "PRIMARY KEY (ID)" in line.upper():
+                        continue
+                    filtered_lines.append(line)
+
+                content = "\n".join(filtered_lines)
+                content = content.replace(",\n)", "\n)").replace(", )", ")")
+                c = content
+
+            clean_commands.append(c.strip())
+            
+    return clean_commands
+
+def init_db(app):
     with app.app_context():
-        # conecta ao MySQL sem especificar o banco para criar o DB se necessário
-        cursor = mysql.connection.cursor()
-        
-        # cria o banco de dados se não existir
-        cursor.execute("CREATE DATABASE IF NOT EXISTS banco_de_vagas")
-        
-        # usa o banco de dados criado ou existente
-        cursor.execute("USE banco_de_vagas")
-        
-        # checa se as tabelas existem
-        cursor.execute("SHOW TABLES LIKE 'banco_de_vagas'")
-        result = cursor.fetchone()
-        
-        if not result:
-            print("Database tables not found. Initializing from SQL file...")
-            sql_path = os.path.join(os.getcwd(), 'db', 'banco_de_vagas.sql')
+        db_dir = os.path.join(os.getcwd(), 'db')
+        db_path = os.path.join(db_dir, 'jobsniffer.db')
+        sql_path = os.path.join(os.getcwd(), 'db', 'jobsniffer.sql')
+
+        if not os.path.exists(db_dir):
+            os.makedirs(db_dir)
+
+        if os.path.exists(db_path):
+            try:
+                conn = sqlite3.connect(db_path)
+                cursor = conn.cursor()
+                cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='banco_de_vagas'")
+                if not cursor.fetchone():
+                    conn.close()
+                    os.remove(db_path)
+                else:
+                    conn.close()
+            except:
+                os.remove(db_path)
+
+        if not os.path.exists(db_path):
+            print("Iniciando o banco de dados pelo arquivo SQL...")
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
             
             try:
                 with open(sql_path, 'r', encoding='utf-8') as f:
-                    sql_commands = f.read().split(';')
+                    sql_commands = clean_mysql_to_sqlite(f.read())
                     
                     for command in sql_commands:
-                        clean_command = command.strip()
-                        if clean_command:
-                            cursor.execute(clean_command)
+                        cursor.execute(command)
                 
-                mysql.connection.commit()
-                print("Database initialized successfully!")
+                conn.commit()
+                print("Banco de dados iniciado com sucesso!")
             except Exception as e:
-                print(f"Error: {e}")
-        
-        cursor.close()
+                print(f"Erro na initialização: {e}")
+                conn.close()
+                if os.path.exists(db_path): os.remove(db_path)
+            finally:
+                if 'conn' in locals(): conn.close()
 
-def install_dependencies():
-    try:
-        import flask_mysqldb
-    # se não houver a lib, baixa ela
-    except ImportError:
-        print("Library 'flask_mysqldb' not found. Installing now...")
-        # roda o pip install caso não houver essa lib
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "flask-mysqldb"])
-        print("Installation complete! Restarting app...")
-
-# checa se tá instalada
-install_dependencies()
-
+# abrir flask e páginas
 from flask import Flask, jsonify, request, render_template
-from flask_mysqldb import MySQL
 from static.rsc.chatbot import responder_usuario
 
 app = Flask(__name__)
+DB_PATH = os.path.join(os.getcwd(), 'db', 'jobsniffer.db')
 
-app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-
-mysql = MySQL(app)
+def get_db_connection():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row 
+    return conn
 
 # caminho das páginas
 @app.route("/")
@@ -86,104 +119,42 @@ def vagas():
 def cadastro():
     return render_template("cadastro.html")
 
-# rota das vagas agora com filtro
 @app.route("/api/vagas")
 def get_vagas_data():
-
-    localizacao_filtro = request.args.get("localizacao")   # presenca
-    regime_filtro = request.args.get("regime")             # tempo
-
-    cursor = mysql.connection.cursor()
+    conn = get_db_connection()
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM banco_de_vagas")
-    lista = cursor.fetchall()                              # lista = dados["banco_de_vagas"]
-    cursor.close()
+    lista = [dict(row) for row in cursor.fetchall()]
+    conn.close()
+    return jsonify({"vagas": lista})
 
-    resultado = []
-
-    for vaga in lista:
-        if localizacao_filtro and str(vaga.get("localizacao")) != localizacao_filtro:
-            continue
-
-        if regime_filtro and str(vaga.get("regime")) != regime_filtro:
-            continue
-
-        if vaga.get('salario'):
-            vaga['salario'] = float(vaga['salario'])
-
-        resultado.append(vaga)
-
-    return jsonify({"vagas": resultado})
-
-# ver vaga específica
 @app.route("/vaga/<int:id>")
 def vaga(id):
-
-    cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM banco_de_vagas WHERE id = %s", (id,))
-    vaga_selecionada = cursor.fetchone()
-    cursor.close()
-
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM banco_de_vagas WHERE id = ?", (id,))
+    row = cursor.fetchone()
+    vaga_selecionada = dict(row) if row else None
+    conn.close()
     if vaga_selecionada:
-        if vaga_selecionada['salario']:
-            vaga_selecionada['salario'] = float(vaga_selecionada['salario'])
         return jsonify(vaga_selecionada)
-    
     return jsonify({"erro": "Vaga não encontrada"}), 404
 
-# candidatar
-@app.route("/candidatar", methods=["POST"])
-def candidatar():
-    dados = request.json
-    
-    cursor = mysql.connection.cursor()
-
-    cursor.execute(
-        "INSERT INTO candidaturas (email, vaga_id) VALUES (%s, %s)", 
-        (dados.get("email"), dados.get("vaga_id"))
-    )
-    mysql.connection.commit()
-    cursor.close()
-
-    return jsonify({"status": "ok"})
-
-# login 
 @app.route("/login", methods=["POST"])
 def login():
     dados = request.json
-
-    email = dados.get("email")
-    senha = dados.get("senha")
-
-    cursor = mysql.connection.cursor()
-
-    cursor.execute(
-        "SELECT * FROM login WHERE email = %s AND senha = %s",
-        (email, senha)
-    )
-
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM login WHERE email = ? AND senha = ?", (dados.get("email"), dados.get("senha")))
     usuario = cursor.fetchone()
-    cursor.close()
-    
-    if usuario:
-        return jsonify({"status": "ok"})
-    else:
-        return jsonify({"status": "erro"})
+    conn.close()
+    return jsonify({"status": "ok" if usuario else "erro"})
 
-# chatbot
 @app.route("/chat", methods=["POST"])
 def chat():
-
     data = request.get_json()
-
-    mensagem = data["mensagem"]
-
-    resposta = responder_usuario(mensagem)
-
-    return jsonify({
-        "resposta": resposta
-    })
+    return jsonify({"resposta": responder_usuario(data["mensagem"])})
 
 if __name__ == "__main__":
-    init_db(app, mysql)
-    app.config['MYSQL_DB'] = 'banco_de_vagas'
+    init_db(app)
     app.run(debug=True)
