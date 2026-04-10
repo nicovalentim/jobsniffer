@@ -1,0 +1,45 @@
+{
+    "vagas": [
+        {
+            "nome": "segurança",
+            "presenca": 1,
+            "tempo": 0,
+
+            "empresa": "Particular",
+            "local": "Guarulhos - SP",
+            "salario": "",
+            
+            "descricao": "Estamos procurando profissional de proteção para portaria com experiência de pitbull. Latir para motociclistas é importante diferencial (...)"
+        }, {
+            "nome": "guia para PCD",
+            "presenca": 1,
+            "tempo": 0,
+
+            "empresa": "Au Lar",
+            "local": "São Paulo - SP",
+            "salario": "4000",
+            
+            "descricao": "Queremos um profissional para servir de guia para pessoas com problemas visuais, preferencialmente aqueles com treinamento prévio em Retriever e/ou tecnólogo em Pastor Alemão - ajudo de custo no treinamento (...)"
+        }, {
+            "nome": "ala-pivô de basquete",
+            "presenca": 2,
+            "tempo": 0,
+
+            "empresa": "Timberwolves",
+            "local": "Guarulhos - SP",
+            "salario": "Variável (pago por jogo)",
+            
+            "descricao": "Vaga para Golden Retriever com experiência em artes circenses, controle de bola, folha de pagamento e cálculo de recisão, impostos, inss, fgts, icms, iss, pis, cofins - inglês desejado."
+        }, {
+            "nome": "porteiro",
+            "presenca": 1,
+            "tempo": 1,
+
+            "empresa": "Particular",
+            "local": "Minha casa",
+            "salario": "",
+            
+            "descricao": "Estamos conduzindo processo seletivo para Trainee em Engenharia CIvil ou Elétrica (até 2 anos de formado) para atuação presencial em residência. Procuramos profissionais pró-ativos, animados e dedicados para trabalhar com a recepção de visitas. Escala 7/0. Requisitos: superior completo, conhecimento em python avançado, inglês fluente, conhecimento em paleontologia. Não inclui vale transporte."
+        }
+    ]
+}

@@ -1,5 +1,7 @@
 // importa a função de filtrar de outro arquivo (pra facilitar não ter que colocar dois script no html)
-import "./filtrarVagas.js";
+import { filtrarVagas } from "./filtrarVagas.js";
+import { abreFecha } from "./scripts.js";
+const overlay = document.getElementById("overlay");
 
 // seleciona o lugar aonde vai jogar os posts (aonde as vagas vão aparecer)
 async function buscarVagas(url) {
@@ -50,7 +52,7 @@ export async function carregar(url = "/api/vagas") {
 
     // cria o conteúdo com o layout da página
     conteudo += `
-        <section class="vaga"
+        <section href="#" class="vaga" id="${vaga.id}"
             data-localizacao="${vaga.localizacao.toLowerCase()}"
             data-regime="${vaga.regime.toLowerCase()}"
             data-area="${vaga.area.toLowerCase()}">
@@ -67,13 +69,30 @@ export async function carregar(url = "/api/vagas") {
                 <span class="naVaga">${vaga.localizacao}</span>
                 <span class="naVaga">${vaga.regime}</span>
         </section>
+
+        <div class="infoVaga" id="infoVaga-${vaga.id}">
+                <span class="tituloVaga">
+                <p class="areaVaga" data-area="${vaga.area.toLowerCase()}">${vaga.area}</p>
+                </span>
+                    <h1>${vaga.titulo}</h1>
+                <span class="textoVaga">
+                    ${vaga.descricao}
+                </span>
+                <section>
+                    <span class="naVaga">${vaga.localizacao}</span>
+                    <span class="naVaga">${vaga.regime}</span>
+                </section>
+                <span class="reqs">${reqs}</span>
+                <button class="">Candidatar-se!</button>
+        </div>
             `
 }};
+
     if (document.getElementsByClassName("vagasDestaque").length > 0) {
         let vagasEmDestaque = dados.vagas.slice(0, 3);
 
     // loopa cada elemento no banco de dados para procurar informações das vagas
-    for (let i =0; i < vagasEmDestaque.length; i++) {
+    for (let i = 0; i < vagasEmDestaque.length; i++) {
         const vaga = dados.vagas[i];
 
         // transformar reqs em array
@@ -100,13 +119,29 @@ export async function carregar(url = "/api/vagas") {
             <span class="naVaga">${vaga.localizacao}</span>
             <span class="naVaga">${vaga.regime}</span>
         </section>
-            `
+            `;
     }
-};
-
+}
 
     // adiciona todo o conteúdo criado para a página html de uma vez só
     container.innerHTML = conteudo
+
+    // encontra a barra de pesquisa na página
+    const barraPesquisa = document.getElementById("buscarVaga");
+    if (barraPesquisa) {
+        barraPesquisa.addEventListener("input", filtrarVagas);
+    }
+
+    if (document.getElementsByClassName("vagasPagina").length > 0) {
+        dados.vagas.forEach(function(vaga) {
+            const card = document.getElementById(vaga.id);
+            const cardGrande = document.getElementById(`infoVaga-${vaga.id}`);
+
+            if (card && cardGrande) {
+                abreFecha(cardGrande, card);
+            }
+        });
+    }
 
     filtrarVagas();
 }
