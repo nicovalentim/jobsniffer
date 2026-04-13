@@ -45,7 +45,7 @@ apagarCV.addEventListener("click", function() {
 });
 
 // autoformatar data
-let campoDeDatas = document.getElementsByName("nascimento")[0];
+let campoDeDatas = document.getElementsByName("nasc")[0];
 
 campoDeDatas.addEventListener('input', function(e) {
         var valor = e.target.value.replace(/\D/g, '');
@@ -66,6 +66,27 @@ campoDeDatas.addEventListener('input', function(e) {
 });
 
 // autoformatar telefone
+let campoDeTelefone = document.getElementsByName("tel")[0];
+
+campoDeTelefone.addEventListener('input', function(e) {
+        var valor = e.target.value.replace(/\D/g, '');
+        var formatado = '';
+
+        if (valor.length > 0) {
+            //ddd
+            formatado = "(" + valor.substring(0,2)
+        } if (valor.length > 2) {
+            formatado += ') ' + valor.substring(2,6)
+        } if (valor.length > 6 && valor.length < 11) {
+            formatado += '-' + valor.substring(6,10);
+        } else if (valor.length >= 11) {
+            formatado = "(" + valor.substring(0,2)+ ") " + valor.substring(2,7) + "-" + valor.substring(7,11);
+        }
+
+    e.target.value = formatado;
+});
+
+// autoformatar cpf
 let campoDeCPF = document.getElementsByName("cpf")[0];
 
 campoDeCPF.addEventListener('input', function(e) {
@@ -80,27 +101,6 @@ campoDeCPF.addEventListener('input', function(e) {
             formatado += '.' + valor.substring(6,9);
         } if (valor.length > 9) {
             formatado += '- ' + valor.substring(9,11);
-        }
-
-    e.target.value = formatado;
-});
-
-// autoformatar telefone
-let campoDeTelefone = document.getElementsByName("telefone")[0];
-
-campoDeTelefone.addEventListener('input', function(e) {
-        var valor = e.target.value.replace(/\D/g, '');
-        var formatado = '';
-
-        if (valor.length > 0) {
-            //ddd
-            formatado = "(" + valor.substring(0,2)
-        } if (valor.length > 2) {
-            formatado += ') ' + valor.substring(2,6)
-        } if (valor.length > 6 && valor.length < 11) {
-            formatado += '-' + valor.substring(6,10);
-        } else if (valor.length == 11) {
-            formatado = "(" + valor.substring(0,2)+ ") " + valor.substring(2,7) + "-" + valor.substring(7,11);
         }
 
     e.target.value = formatado;

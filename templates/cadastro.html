@@ -7,18 +7,19 @@
 
     <section>
         <h1>Cadastro</h1>
-        <form class="form">
+        <div action="/cadastro" method="POST" class="form">
 
             <input type="text" name="nome" placeholder="Digite seu nome aqui" />
             <div class="linha">
-                <input type="text" name="cpf" placeholder="Digite seu CPF"  />
-                <input type="text" name="nascimento" placeholder="Digite sua data de nascimento"  />
-                <input type="text" name="telefone"  placeholder="Digite seu telefone" />
+                <input type="text" name="nasc" placeholder="Digite sua data de nascimento"  />
+                <input type="text" name="tel"  placeholder="Digite seu telefone" />
             </div>
-            <input type="email" name="email"  placeholder="Digite seu e-mail" />
-            <input type="text" name="endereco" placeholder="Digite sua cidade"  />
+            <div class="linha">
+                <input type="text" name="cidade" placeholder="Digite sua cidade"  /> <!-- lista com autocompletar -->
+                <input type="text" name="estado" placeholder="Digite sua estado"  /> <!-- fazer pegar automaticamente -->
+            </div>
             <input type="url" name="linkedin" placeholder="Cole o seu LinkedIn"  />
-            <input type="url" name="portfoliio" placeholder="Cole o link do seu portfolio"  />
+            <input type="url" name="folio" placeholder="Cole o link do seu portfolio"  />
 
             <div id="receberArquivo">
                 <div class="texto">enviar curriculo</div>
@@ -32,6 +33,12 @@
             Aceitar termos & condições</label>
 
             <button type="submit">Enviar</button>
+
+            <div>  <!-- fazer aparecer só depois de enviar -->
+                <input type="email" name="email"  placeholder="Digite seu e-mail" />
+                <input type="password" name="senha"  placeholder="Digite sua senha" />
+                <input type="password" name="senha_confirm"  placeholder="Confirme sua senha" />
+            </div>
 
         </form>
             <p style="text-align: center;">Ou faça Login com:</p>

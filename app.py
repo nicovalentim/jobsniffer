@@ -174,7 +174,7 @@ def login():
 
     # verifica usuário e senha
     cursor.execute(
-        "SELECT * FROM login WHERE email = ? AND senha = ?", 
+        "SELECT * FROM cadastro WHERE email = ? AND senha = ?", 
         (dados.get("email"), dados.get("senha"))
     )
     
@@ -183,6 +183,31 @@ def login():
     
     # retorna status
     return jsonify({"status": "ok" if usuario else "erro"})
+
+@app.route('/cadastro', methods=['POST'])
+def cadastro_data():
+    # variável python = ...('name no html')
+    nome = request.form.get('nome')
+    email = request.form.get('email')
+    senha = request.form.get('senha')
+    nasc = request.form.get('nasc')
+    telefone = request.form.get('tel')
+    cidade = request.form.get('cidade')
+    estado = request.form.get('estado')
+    linkedin = request.form.get('linkedin')
+    folio = request.form.get('folio')
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "INSERT INTO cadastro (Nome, Email, Senha, Data_Nascimento, Telefone, cidade, estado, linkedin_url, folio_url) VALUES (?, ?, ?, ?, ?, ?, ?)"), 
+    (nome, email, senha, nasc, telefone, cidade, estado, linkedin, folio)
+
+    conn.commit()
+    conn.close()
+    
+    return "Deu certo o cadastro!"
 
 # chatbot
 @app.route("/chat", methods=["POST"])
