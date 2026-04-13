@@ -76,9 +76,13 @@ display: block;
     cursor: pointer;
 }
 
-.form button[type="submit"] {
+.form hr {
+    margin: 16px 0;
+}
+
+.form button.enviar {
     display: flex;
-    justify-self: end;
+    justify-self: center;
 }
     .form button {
         border: none;

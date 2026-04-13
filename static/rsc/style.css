@@ -107,11 +107,12 @@ ul {
         }
 
 /* Menu de Login */
-#loginMenu, #loginMenu input {
+#loginMenu, #loginMenu input
+#cadastroMenu, #cadastroMenu input {
     box-sizing: border-box;
 }
 
-#loginMenu {
+#loginMenu, #cadastroMenu {
     display: flex;
     flex-direction: column;
 
@@ -131,12 +132,14 @@ ul {
     box-shadow: 0 10px 30px rgba(var(--preto), 0.3);
     padding: 2em;
 }
-    #loginMenu.ativo {
+    #loginMenu.ativo,
+    #cadastroMenu.ativo {
         opacity: 1;
         pointer-events: all;
         transform: translate(-50%, -50%) scale(1);
     }
-    #loginMenu input {
+    #loginMenu input
+    #cadastroMenu input {
         width: 100%;
 
         border: none;

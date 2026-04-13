@@ -65,8 +65,8 @@ export async function carregar(url = "/api/vagas") {
                     </section>
                     <span class="reqs">${reqs}</span>
                     <button class="">Candidatar-se!</button>
-            </div>
-            `
+                </div>
+                `
 
     // cria o conteúdo com o layout da página
     conteudo += `

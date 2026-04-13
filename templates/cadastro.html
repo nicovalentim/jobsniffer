@@ -27,26 +27,29 @@
                 <div class="nomeAparece"></div>
             </div>
 
-            <button type="button" id="apagarCV">Limpar</button>
+            <button id="apagarCV">Limpar</button>
 
-            <label><input type="checkbox">
-            Aceitar termos & condições</label>
+<!--            <label><input type="checkbox">
+            Aceitar termos & condições</label> -->
 
-            <button type="submit">Enviar</button>
+            <hr />
+            <button class="enviar" id="cadastro">Enviar</button>
 
-            <div>  <!-- fazer aparecer só depois de enviar -->
+            <div id="cadastroMenu">
                 <input type="email" name="email"  placeholder="Digite seu e-mail" />
                 <input type="password" name="senha"  placeholder="Digite sua senha" />
-                <input type="password" name="senha_confirm"  placeholder="Confirme sua senha" />
+                <input type="password" name="senha_confirm"  placeholder="Confirme sua senha" />            
+                <button type="submit" class="enviar">Criar conta!</button>
             </div>
 
-        </form>
             <p style="text-align: center;">Ou faça Login com:</p>
             <div class="api">
                 <a href><img src="static/icon/github.png" /></a>
                 <a href><img src="static/icon/google.png" /></a>
                 <a href><img src="static/icon/linkedin.png" /></a>
             </div>
+
+        </form>
     </section>
 
 </div>

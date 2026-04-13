@@ -1,3 +1,5 @@
+import { abreFecha } from "./scripts.js";
+
 var receberArquivo = document.getElementById("receberArquivo");
 var arquivoRecebido = document.getElementById("arquivoRecebido");
 var nomeAparece = receberArquivo.querySelector(".nomeAparece");
@@ -44,6 +46,16 @@ apagarCV.addEventListener("click", function() {
     texto.style.display = "inline";
 });
 
+// chama a tela de validação de usuário/senha (testa se senha repete e etc)
+const cadastro = document.getElementById('cadastro');
+const cadastroMenu = document.getElementById('cadastroMenu');
+
+abreFecha(cadastro, cadastroMenu, function() {
+    setTimeout(function() {
+        document.getElementsByName("email").focus();
+    }, 50);
+});
+
 // autoformatar data
 let campoDeDatas = document.getElementsByName("nasc")[0];
 
@@ -86,6 +98,7 @@ campoDeTelefone.addEventListener('input', function(e) {
     e.target.value = formatado;
 });
 
+/*
 // autoformatar cpf
 let campoDeCPF = document.getElementsByName("cpf")[0];
 
@@ -104,4 +117,4 @@ campoDeCPF.addEventListener('input', function(e) {
         }
 
     e.target.value = formatado;
-});
+}); */
