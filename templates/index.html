@@ -62,25 +62,50 @@
     <div id="pagina"></div>
 
     <div id="cantoDaTela">
-        <section id="irAoTopo"></section>
-        <button id="chatbot" class="open-chat" onclick="toggleChat()"></button>
-        <div id="chat" class="chat-box">
-            <span class="top">
-                <img src="../static/images/avatar.png" class="avatar">
-                <div class="name">ChatBot</div>
-                <button class="close" onclick="toggleChat()">✖</button>
-            </span>
+    <section id="irAoTopo"></section>
 
-            <span id="messages" class="messages">
-                <div class="bot">Oi, Bem Vindo! como posso ajudar?</div>
-            </span>
+    <button id="chatbot" class="open-chat" onclick="toggleChat()"></button>
 
-            <span class="bottom">
-                <input id="text" type="text" placeholder="Digite...">
-                <button onclick="sendMessage()">Enviar</button>
-            </span>
+    <div id="chat" class="chat-box">
+
+        <div class="top">
+            <img src="../static/images/avatar.png" class="avatar">
+            <div class="name">ChatBot</div>
+            <button class="close" onclick="toggleChat()">✖</button>
         </div>
+
+        <div id="messages" class="messages">
+
+            <div class="bot">
+                Olá 😊 Posso te ajudar a encontrar vagas, enviar seu currículo ou entender o processo seletivo.<br><br>
+                O que você gostaria de saber?
+            </div>
+
+            <div id="sugestoes">
+                <p><strong>Sugestões:</strong></p>
+
+                <button onclick="enviarSugestao('Quais vagas estão disponíveis?')">
+                    Quais vagas estão disponíveis?
+                </button>
+
+                <button onclick="enviarSugestao('Como enviar meu currículo?')">
+                    Como enviar meu currículo?
+                </button>
+
+                <button onclick="enviarSugestao('Como funciona o processo seletivo?')">
+                    Como funciona o processo seletivo?
+                </button>
+            </div>
+
+        </div>
+
+        <div class="bottom">
+            <input id="text" type="text" placeholder="Digite...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+
     </div>
+</div>
 
 <footer>
     <section>

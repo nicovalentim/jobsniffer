@@ -133,4 +133,4 @@ document.addEventListener("click", (e) => {
     }
     atualizarTodosBotoes();
     filtrarVagas();
-});
+});   
