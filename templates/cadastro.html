@@ -37,8 +37,23 @@
 
             <div id="cadastroMenu">
                 <input type="email" name="email"  placeholder="Digite seu e-mail" />
-                <input type="password" name="senha"  placeholder="Digite sua senha" />
-                <input type="password" name="senha_confirm"  placeholder="Confirme sua senha" />            
+                <input type="password" name="senha"  placeholder="Digite sua senha" id="senha" />
+                <input type="password" name="senha_confirm"  placeholder="Confirme sua senha" id="confirmaSenha" />
+                <p id="regrasSenha">
+                    A senha deve ter:
+                    <span id="r1">
+                        • Pelo menos seis caracteres
+                    </span><span id="r2">
+                        • Uma letra maiúscula
+                    </span><span id="r3">
+                        • Uma letra minúscula
+                    </span><span id="r4">
+                        • Um número
+                    </span>
+                </p>
+                <p id="erroConfirmaSenha">
+                    As senhas devem ser iguais!
+                </p>
                 <button type="submit" class="enviar" href="#">Criar conta!</button>
             </div>
 

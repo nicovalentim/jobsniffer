@@ -369,7 +369,13 @@ header {
         background-color: rgb(var(--realce));
         color: rgb(var(--branco));
     }
-        @media (max-width: 1080px) {
+    .vagasDestaque #vaga_4 {
+        display: none !important;
+    }
+        @media (max-width: 1080px) {   
+            .vagasDestaque #vaga_4 {
+                display: block !important;
+            }
             .card {
                 grid-template-columns: 1fr;
             }
@@ -657,4 +663,55 @@ footer {
         display: inline;
         width: 32px;
         padding: 8px;
+    }
+
+/* formulários */
+input {
+    border: none;
+    border-radius: 8px;
+    margin: 5px 0 10px;
+    padding: 10px;
+}
+
+form {
+display: block;
+}
+    form button {
+        border: none;
+        border-radius: 8px;
+        display: block;
+        margin-bottom: 1em;
+
+        padding: 8px 16px;
+
+        background-color: rgb(var(--realce));
+        color: rgb(var(--branco));
+    }
+        form button.enviar {
+            justify-self: center;
+        }
+    form hr {
+        margin: 16px 0;
+    }
+    form input:not([type="checkbox"]) {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    form input[type="file"] {
+        display: none;
+    }
+    form input[type="checkbox"] {
+        margin: 0.5em 0.5em;
+    }
+    form label {
+        display: flex;
+        justify-self: end;
+        align-items: center;
+
+        user-select: none;
+        cursor: pointer;
+    }
+    form p {
+        text-align: center;
     }

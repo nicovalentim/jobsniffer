@@ -51,7 +51,7 @@ export async function carregar(url = "/api/vagas") {
         }
 
         var infoVaga = `
-                <div class="infoVaga" id="infoVaga-${vaga.id}">
+                <div class="infoVaga" id="infoVaga_${vaga.id}">
                     <span class="tituloVaga">
                     <p class="areaVaga" data-area="${vaga.area.toLowerCase()}">${vaga.area}</p>
                     </span>
@@ -70,7 +70,10 @@ export async function carregar(url = "/api/vagas") {
 
     // cria o conteúdo com o layout da página
     conteudo += `
-        <section href="#" class="vaga" id="${vaga.id}"
+        <section
+            href="#"
+            class="vaga"
+            id="vaga_${vaga.id}"
             data-localizacao="${vaga.localizacao.toLowerCase()}"
             data-regime="${vaga.regime.toLowerCase()}"
             data-area="${vaga.area.toLowerCase()}">
@@ -92,7 +95,7 @@ export async function carregar(url = "/api/vagas") {
 }};
 
     if (document.getElementsByClassName("vagasDestaque").length > 0) {
-        let vagasEmDestaque = dados.vagas.slice(0, 3);
+        let vagasEmDestaque = dados.vagas.slice(0, 4);
 
     // loopa cada elemento no banco de dados para procurar informações das vagas
     for (let i = 0; i < vagasEmDestaque.length; i++) {
@@ -109,7 +112,10 @@ export async function carregar(url = "/api/vagas") {
         }
     
         conteudo += `
-        <section class="vaga"
+        <section
+            href="#"
+            class="vaga"
+            id="vaga_${vaga.id}"
             data-localizacao="${vaga.localizacao.toLowerCase()}"
             data-regime="${vaga.regime.toLowerCase()}"
             data-area="${vaga.area.toLowerCase()}">
@@ -137,8 +143,8 @@ export async function carregar(url = "/api/vagas") {
 
     if (document.getElementsByClassName("vagasPagina").length > 0) {
         dados.vagas.forEach(function(vaga) {
-            const card = document.getElementById(vaga.id);
-            const cardGrande = document.getElementById(`infoVaga-${vaga.id}`);
+            const card = document.getElementById(`vaga_${vaga.id}`);
+            const cardGrande = document.getElementById(`infoVaga_${vaga.id}`);
 
             if (card && cardGrande) {
                 abreFecha(cardGrande, card);

@@ -1,52 +1,23 @@
 /* páginas de contato/cadastro */
-input {
-    border: none;
+#receberArquivo {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: white;
+    color: rgba(var(--preto),0.75);
+    font-size: 1.5em;
+    height: 10vh;
+
+    border: 1px dashed rgb(var(--preto));
     border-radius: 8px;
-    margin: 5px 0 10px;
-    padding: 10px;
+    margin-bottom: 0.25em;
 }
 
-form {
-display: block;
-}
-    form input:not([type="checkbox"]) {
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
-    form input[type="file"] {
-        display: none;
-    }
-    form p {
-        text-align: center;
-    }
-    #receberArquivo {
-        user-select: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background-color: white;
-        color: rgba(var(--preto),0.75);
-        font-size: 1.5em;
-        height: 10vh;
-
-        border: 1px dashed rgb(var(--preto));
-        border-radius: 8px;
-        margin-bottom: 0.25em;
-    }
-    #apagarCV {
-        margin: 0;
-    }
-
-form button {
-    display: block;
-    margin-bottom: 1em;
-}
-
-form input[type="checkbox"] {
-    margin: 0.5em 0.5em;
+#apagarCV {
+    margin: 0;
 }
 
 .linha {
@@ -66,31 +37,6 @@ form input[type="checkbox"] {
                 margin: 1em 0;
             }
         }
-
-form label {
-    display: flex;
-    justify-self: end;
-    align-items: center;
-
-    user-select: none;
-    cursor: pointer;
-}
-
-form hr {
-    margin: 16px 0;
-}
-form button {
-    border: none;
-    border-radius: 8px;
-
-    padding: 8px 16px;
-
-    background-color: rgb(var(--realce));
-    color: rgb(var(--branco));
-}
-    form button.enviar {
-        justify-self: center;
-    }
 
 .cadastro {
     grid-template-columns: 1fr;
@@ -119,4 +65,14 @@ form button {
 
         min-height: 25vh;
         width: 100%;
+    }
+
+#regrasSenha span,
+#erroConfirmaSenha.ativo {
+    display: block;
+}
+    #regrasSenha.inativo,
+    #regrasSenha span.valido,
+    #erroConfirmaSenha {
+        display: none;
     }
