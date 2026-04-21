@@ -31,8 +31,8 @@ async function carregarConteudo(fileUrl, type) {
     const existeCSSVagas = document.querySelector('link[href="../css/vagas.css"]');
 
     if (type === "vagas" || type === "home") {
-        const modulo = await import("./vagasImport.js");
-        modulo.carregarVagas();
+        const vagas = await import("./vagasImport.js");
+        vagas.carregarVagas();
 
         if (!existeCSSVagas) {
             const estiloVagas = document.createElement('link');
@@ -45,7 +45,10 @@ async function carregarConteudo(fileUrl, type) {
         existeCSSVagas?.remove();
     }
 
-    // if (type === "cadastro" || type === "contato")
+    if (type === "cadastro" || type === "contato") {
+        await import("./formularios.js");
+        // arumar
+    }
 }
 
 navbar.addEventListener("click", (e) => {

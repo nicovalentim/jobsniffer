@@ -16,7 +16,6 @@ export async function carregarVagas(url = "/api/vagas") {
     const container = document.getElementById("posts")
     const dados = await buscarVagas(url);
 
-    // reordenar
     dados.vagas.sort(function(a, b) {
         return new Date(b.data_de_criacao).getTime() - new Date(a.data_de_criacao).getTime();
     });
@@ -29,8 +28,9 @@ export async function carregarVagas(url = "/api/vagas") {
     for (const vaga of dados.vagas) {
 
         let descricao = vaga.descricao
-        if (descricao.length > 360) {
-            descricao = descricao.substring(0, 360) + " (...)"
+        const tamanhoDesc = 170
+        if (descricao.length > tamanhoDesc) {
+            descricao = descricao.substring(0, tamanhoDesc) + "(...)"
         }
         
         const requisitos = vaga.requisitos.split(', ')
@@ -38,7 +38,6 @@ export async function carregarVagas(url = "/api/vagas") {
         for (let i = 0; i < requisitos.length; i++) {
             reqs += `<p class="requisitos">#${requisitos[i]}</p>`
         }
-
 
         const infoVaga = `
                 <div class="infoVaga" id="infoVaga_${vaga.id}">

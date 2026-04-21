@@ -138,11 +138,11 @@ button {
     align-content: center;
     justify-self: center;
 }
-    #vaga_4 {
+    .vagasNaHomePage #vaga_4 {
         display: none !important;
     }
     @media (max-width: 1080px) {
-        #vaga_4 {
+        .vagasNaHomePage #vaga_4 {
             display: block !important;
         }
     }
