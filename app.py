@@ -39,7 +39,7 @@ def init_db(app):
             
             try:
                 with open(sql_path, 'r', encoding='utf-8') as f:
-                    sql_commands = clean_mysql_to_sqlite(f.read())      # converte para SQLite
+                    sql_commands = mysqlParaSqlite(f.read())      # converte para SQLite
 
                     for command in sql_commands:
                         cursor.execute(command)
