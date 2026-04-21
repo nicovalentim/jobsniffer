@@ -450,7 +450,7 @@ header {
         width: 100px;
     }
         #chatbot:hover, #chatbot.ativo {
-            background-image: url("../icon/latindo.svg");
+            background-image: url("../icones/latindo.svg");
             transition-duration: 0.5s;
         }
 
