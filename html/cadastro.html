@@ -1,0 +1,102 @@
+<header>
+    <img src="../images/cadastroHeader.jpg">
+    <h1>crie sua conta</h1>
+</header>
+
+<div class="fundo card cadastro">
+
+    <section>
+        <h1>Cadastro</h1>
+        <form action="/cadastro" method="POST">
+
+            <input type="text" name="nome" placeholder="Digite seu nome aqui" />
+            <div class="linha">
+                <input type="text" name="nasc" placeholder="Digite sua data de nascimento"  />
+                <input type="text" name="tel"  placeholder="Digite seu telefone" />
+
+                <select name="estado">
+                    <option value="">Estado</option>
+                    <option value=""></option>
+                    <option value="Acre">AC</option>
+                    <option value="Alagoas">AL</option>
+                    <option value="Amapá">AP</option>
+                    <option value="Amazonas">AM</option>
+                    <option value="Bahia">BA</option>
+                    <option value="Ceará">CE</option>
+                    <option value="Distrito Federal">DF</option>
+                    <option value="Espírito Santo">ES</option>
+                    <option value="Goiás">GO</option>
+                    <option value="Maranhão">MA</option>
+                    <option value="Minas Gerais">MG</option>
+                    <option value="Mato Grosso">MT</option>
+                    <option value="Mato Grosso do Sul">MS</option>
+                    <option value="Pará">PA</option>
+                    <option value="Paraíba">PB</option>
+                    <option value="Pernambuco">PE</option>
+                    <option value="Piauí">PI</option>
+                    <option value="Paraná">PR</option>
+                    <option value="Rio de Janeiro">RJ</option>
+                    <option value="Rio Grande do Norte">RN</option>
+                    <option value="Rondônia">RO</option>
+                    <option value="Roraima">RR</option>
+                    <option value="Rio Grande do Sul">RS</option>
+                    <option value="Santa Catarina">SC</option>
+                    <option value="Sergipe">SE</option>
+                    <option value="São Paulo">SP</option>
+                    <option value="Tocantins">TO</option>
+                    <!-- <input type="text" name="estado" placeholder="Digite sua estado"  /> <!-- fazer pegar automaticamente -->
+                </select>
+
+                <input type="text" name="cidade" placeholder="Digite sua cidade"  /> <!-- lista com autocompletar -->
+
+            </div>
+            <input type="url" name="linkedin" placeholder="Cole o seu LinkedIn"  />
+            <input type="url" name="folio" placeholder="Cole o link do seu portfolio"  />
+
+            <div id="receberArquivo">
+                <div class="texto">enviar curriculo</div>
+                <input type="file" id="arquivoRecebido" />
+                <div class="nomeAparece"></div>
+            </div>
+
+            <button type="button" id="apagarCV">Limpar</button>
+
+<!--            <label><input type="checkbox">
+            Aceitar termos & condições</label> -->
+
+            <hr />
+            <button type="button" class="enviar" id="cadastroBtn">Enviar</button>
+
+            <div id="cadastroMenu">
+                <input type="email" name="email"  placeholder="Digite seu e-mail" />
+                <input type="password" name="senha"  placeholder="Digite sua senha" id="senha" />
+                <input type="password" name="senha_confirm"  placeholder="Confirme sua senha" id="confirmaSenha" />
+                <p id="regrasSenha">
+                    A senha deve ter:
+                    <span id="r1">
+                        • Pelo menos seis caracteres
+                    </span><span id="r2">
+                        • Uma letra maiúscula
+                    </span><span id="r3">
+                        • Uma letra minúscula
+                    </span><span id="r4">
+                        • Um número
+                    </span>
+                </p>
+                <p id="erroConfirmaSenha">
+                    As senhas devem ser iguais!
+                </p>
+                <button type="submit" class="enviar" href="#">Criar conta!</button>
+            </div>
+
+            <p style="text-align: center;">Ou faça Login com:</p>
+            <div class="api">
+                <a href><img src="../icones/github.png" /></a>
+                <a href><img src="../icones/google.png" /></a>
+                <a href><img src="../icones/linkedin.png" /></a>
+            </div>
+
+        </form>
+    </section>
+
+</div>

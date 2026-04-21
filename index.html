@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/global.css">
+    <script type="module" src="js/global.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="icones/icon.svg">
+    <title>job sniffer</title>
+</head>
+
+<body>
+
+    <ul class="navbar">
+        <li>
+            <a href="home"  id="titulo" class="links">
+                <img src="icones/dog.svg" id="logo"> job sniffer
+            </a>
+        </li>
+
+    <li class="links">
+        <a href="sobre" class="links">Sobre</a> -
+        <a href="contato" class="links">Contato</a> -
+        <a href="vagas" class="links">Vagas</a>
+    </li>
+
+    <li>
+        <a href="#" id="loginBtn">Login</a>
+
+        <div id="loginMenu">
+            <span id="voltarBtn">Voltar</span>
+
+            <section id="telaLogin" class="tela">
+                <input type="email" id="loginEmail" placeholder="Digite seu email" />
+                <span id="erroLoginEmail" class="erro"></span>
+
+                <input type="password" id="loginSenha" placeholder="Digite sua senha">
+                <span id="erroLoginSenha" class="erro"></span>
+
+                <p id="esqueceuSenha">Esqueceu a senha?</p>
+                <button id="btnEntrar" class="btn">Entrar</button>
+
+                <p style="text-align: center; font-size: 0.7em;">Ou faça Login com:</p>
+                <span class="api">
+                    <a href><img src="icones/github.png" /></a>
+                    <a href><img src="icones/google.png" /></a>
+                    <a href><img src="icones/linkedin.png" /></a>
+                </span>
+            </section>
+
+            <section id="telaSenha" class="tela" style="display:none;">
+                <input type="email" id="recEmail" placeholder="Digite seu email para recuperar" >
+                <span id="erroRecuperacao" class="erro"></span>
+                <button id="btnRecuperar" class="btn">Recuperar</button>
+            </section>
+        </div>
+
+        <a href="cadastro" id="cadastro" class="links">Cadastrar</a>
+        </li>
+    </ul>
+
+    <div id="pagina"></div>
+
+    <div id="cantoDaTela">
+    <section id="irAoTopo"></section>
+
+    <button id="chatbot" class="open-chat" onclick="toggleChat()"></button>
+
+    <div id="chat" class="chat-box">
+
+        <div class="top">
+            <img src="images/avatar.png" class="avatar">
+            <div class="name">ChatBot</div>
+            <button class="close" onclick="toggleChat()">✖</button>
+        </div>
+
+        <div id="messages" class="messages">
+
+            <div class="bot">
+                Olá 😊 Posso te ajudar a encontrar vagas, enviar seu currículo ou entender o processo seletivo.<br><br>
+                O que você gostaria de saber?
+            </div>
+
+            <div id="sugestoes">
+                <p><strong>Sugestões:</strong></p>
+
+                <button onclick="enviarSugestao('Quais vagas estão disponíveis?')">
+                    Quais vagas estão disponíveis?
+                </button>
+
+                <button onclick="enviarSugestao('Como enviar meu currículo?')">
+                    Como enviar meu currículo?
+                </button>
+
+                <button onclick="enviarSugestao('Como funciona o processo seletivo?')">
+                    Como funciona o processo seletivo?
+                </button>
+            </div>
+
+        </div>
+
+        <div class="bottom">
+            <input id="text" type="text" placeholder="Digite...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <section>
+        <h3>Siga-nos</h3>
+        <hr />
+        <a href="https://www.eniac.edu.br/"><img src="icones/logo_eniac.webp" title="Faculdade Eniac" /></a>
+        <a href="https://github.com/matosaguiar"><img src="icones/logo_gustavo.png" title="Gustavo Matos" /></a>
+        <a href="https://github.com/JoaoVitor5"><img src="icones/logo_joao.png" title="João Vítor Araújo" /></a>
+        <a href="https://github.com/rocharlia"><img src="icones/logo_julia.png" title="Júlia Nascimento" /></a>
+        <a href="https://github.com/nicovalentim"><img src="icones/logo_nico.png" title="Nicolas Valentim" /></a>
+        <a href="https://github.com/Rodsmont"><img src="icones/logo_rodrigo.png" title="Rodrigo Monteiro" /></a>
+        <p>Ícones feitos por <a href="https://www.flaticon.com/authors/vitaly-gorbachev">Vitaly Gorbachev</a>.</p>
+    </section>
+
+    <section>
+        <h3>Endereço</h3>
+        <hr />
+        Rua Marielle Franco, 79<br />
+        Rio de Janeiro - RJ<br />
+        CEP: 0716-626<br /><br />
+
+        CONTATO<br />
+        55 (11) 1403-2018<br />
+        sac@jobsniffer.edu.br
+    </section>
+
+</footer>
+<section id="overlay"></section>
+</body>
+</html>
