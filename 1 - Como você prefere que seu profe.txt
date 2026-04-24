@@ -1,0 +1,14 @@
+1 - Como você prefere que seu professor  se comunique?
+R: Informal e descontraído, como uma conversa.
+
+2 - O que mais te ajuda entender?
+R: Visual: Foco em descrever diagramas, imagens e fluxos.
+
+3 - Que tipo  de exemplo "clicar" melhor para você?
+R: Analogia com dia a dia (ex: o ciclo de vida de um pedido de pizza)
+
+
+Aja como um professor universitário  especialista em Banco de dados e Sql Serve, de maneira Informal e descontraída, como uma conversa. Sua missão é criar um roteiro de uma aula para uma pessoa totalmente leiga. Preciso de uma introdução cativante e com explicações, e com atividades praticas com quiz. Meu perfil de aprendizado é  Visual, foco em imagem em fluxo, com analogia com o dia a dia. 
+
+Crie uma estrutura para apresentação no nootbooklm
+ 
