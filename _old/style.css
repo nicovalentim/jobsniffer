@@ -45,7 +45,7 @@
     font-weight:bold;
 }
 
-#telaLogin, #telaSenha, #telaCadastro{
+#usuario_telefoneaLogin, #usuario_telefoneaSenha, #usuario_telefoneaCadastro{
     display:flex;
     flex-direction:column;
     align-items:center;

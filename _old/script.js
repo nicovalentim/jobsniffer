@@ -1,9 +1,9 @@
 const loginBtn = document.getElementById("loginBtn");
 const menu = document.getElementById("loginMenu");
 
-const telaLogin = document.getElementById("telaLogin");
-const telaSenha = document.getElementById("telaSenha");
-const telaCadastro = document.getElementById("telaCadastro");
+const usuario_telefoneaLogin = document.getElementById("usuario_telefoneaLogin");
+const usuario_telefoneaSenha = document.getElementById("usuario_telefoneaSenha");
+const usuario_telefoneaCadastro = document.getElementById("usuario_telefoneaCadastro");
 
 const voltarBtn = document.getElementById("voltarBtn");
 
@@ -40,9 +40,9 @@ loginBtn.onclick = (e) => {
 
   voltarBtn.style.display = "none";
 
-  telaLogin.style.display = "flex";
-  telaSenha.style.display = "none";
-  telaCadastro.style.display = "none";
+  usuario_telefoneaLogin.style.display = "flex";
+  usuario_telefoneaSenha.style.display = "none";
+  usuario_telefoneaCadastro.style.display = "none";
 
   loginEmail.value = "";
   loginSenha.value = "";
@@ -56,23 +56,23 @@ document.addEventListener("click", (e) => {
   }
 });
 
-/* trocar telas */
+/* trocar usuario_telefoneas */
 esqueceu.onclick = () => {
-  telaLogin.style.display = "none";
-  telaSenha.style.display = "flex";
+  usuario_telefoneaLogin.style.display = "none";
+  usuario_telefoneaSenha.style.display = "flex";
   voltarBtn.style.display = "block";
 };
 
 cadastrar.onclick = () => {
-  telaLogin.style.display = "none";
-  telaCadastro.style.display = "flex";
+  usuario_telefoneaLogin.style.display = "none";
+  usuario_telefoneaCadastro.style.display = "flex";
   voltarBtn.style.display = "block";
 };
 
 voltarBtn.onclick = () => {
-  telaSenha.style.display = "none";
-  telaCadastro.style.display = "none";
-  telaLogin.style.display = "flex";
+  usuario_telefoneaSenha.style.display = "none";
+  usuario_telefoneaCadastro.style.display = "none";
+  usuario_telefoneaLogin.style.display = "flex";
   voltarBtn.style.display = "none";
 };
 
@@ -131,8 +131,8 @@ cadastrarBtn.onclick = () => {
   localStorage.setItem("senha", senhaCadastro.value);
 
   alert("Cadastro realizado!");
-  telaCadastro.style.display = "none";
-  telaLogin.style.display = "flex";
+  usuario_telefoneaCadastro.style.display = "none";
+  usuario_telefoneaLogin.style.display = "flex";
   voltarBtn.style.display = "none";
 };
 
@@ -168,8 +168,8 @@ alterarBtn.onclick = () => {
 
   localStorage.setItem("senha", novaSenha.value);
   alert("Senha alterada!");
-  telaSenha.style.display = "none";
-  telaLogin.style.display = "flex";
+  usuario_telefoneaSenha.style.display = "none";
+  usuario_telefoneaLogin.style.display = "flex";
   voltarBtn.style.display = "none";
 };
 

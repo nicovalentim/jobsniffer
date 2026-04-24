@@ -1,4 +1,4 @@
-export function abreFecha(menu, btnAbrir, funcao) {
+export function popUp(menu, btnAbrir, funcao) {
   const abrir = function() {
       menu.classList.add("ativo");
       overlay.classList.add("ativo");

@@ -1,6 +1,21 @@
-let campoDeDatas = document.getElementsByName("nasc")[0];
+/* let cadastro_usuarioCEP = document.getElementsByName("usuario_CEP")[0];
 
-campoDeDatas.addEventListener('input', function(e) {
+cadastro_usuarioCEP.addEventListener('input', function(e) {
+        var valor = e.target.value.replace(/\D/g, '');
+        var formatado = '';
+
+        if (valor.length > 0) {
+            formatado = valor.substring(0,5)
+        } if (valor.length <= 8) {
+            formatado = "-" + valor.substring(5,8);
+        }
+
+    e.target.value = formatado;
+}); */
+
+let cadastro_usuarioNascimento = document.getElementsByName("usuario_nascimento")[0];
+
+cadastro_usuarioNascimento.addEventListener('input', function(e) {
         var valor = e.target.value.replace(/\D/g, '');
         var formatado = '';
 
@@ -15,9 +30,9 @@ campoDeDatas.addEventListener('input', function(e) {
     e.target.value = formatado;
 });
 
-let campoDeTelefone = document.getElementsByName("tel")[0];
+let cadastro_usuarioTelefone = document.getElementsByName("usuario_telefone")[0];
 
-campoDeTelefone.addEventListener('input', function(e) {
+cadastro_usuarioTelefone.addEventListener('input', function(e) {
         var valor = e.target.value.replace(/\D/g, '');
         var formatado = '';
 
@@ -35,9 +50,9 @@ campoDeTelefone.addEventListener('input', function(e) {
 });
 
 /*
-let campoDeCPF = document.getElementsByName("cpf")[0];
+let cadastro_usuarioCPF = document.getElementsByName("cadastro_usuarioCPF")[0];
 
-campoDeCPF.addEventListener('input', function(e) {
+cadastro_usuarioCPF.addEventListener('input', function(e) {
         var valor = e.target.value.replace(/\D/g, '');
         var formatado = '';
 

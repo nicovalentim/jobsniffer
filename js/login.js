@@ -1,13 +1,12 @@
-import { abreFecha } from "./global.js";
-const overlay = document.getElementById("overlay");
+import { popUp } from "./global.js";
 
 var loginMenu = document.getElementById("loginMenu");
 var voltarBtn = document.getElementById("voltarBtn");
 var loginBtn = document.getElementById("loginBtn");
 
-var telas = {
-    login: document.getElementById("telaLogin"),
-    senha: document.getElementById("telaSenha")
+var usuario_telefoneas = {
+    login: document.getElementById("usuario_telefoneaLogin"),
+    senha: document.getElementById("usuario_telefoneaSenha")
 };
 
 var campos = {
@@ -17,8 +16,8 @@ var campos = {
 };
 
 // chama o menu de login
-abreFecha(loginMenu, loginBtn, function() {
-    alternarTela('login');
+popUp(loginMenu, loginBtn, function() {
+    alternarusuario_telefonea('login');
     campos.lEmail.value = campos.lSenha.value = campos.rEmail.value = "";
 
     setTimeout(function() {
@@ -26,18 +25,18 @@ abreFecha(loginMenu, loginBtn, function() {
     }, 50);
 });
 
-// alterna entre as telas do menu
-function alternarTela(tela) {
+// alterna entre as usuario_telefoneas do menu
+function alternarusuario_telefonea(usuario_telefonea) {
     limparErros();
-    telas.login.style.display = (tela === 'login') ? "flex" : "none";
-    telas.senha.style.display = (tela === 'senha') ? "flex" : "none";
-    voltarBtn.style.display = (tela === 'senha') ? "inline" : "none";
+    usuario_telefoneas.login.style.display = (usuario_telefonea === 'login') ? "flex" : "none";
+    usuario_telefoneas.senha.style.display = (usuario_telefonea === 'senha') ? "flex" : "none";
+    voltarBtn.style.display = (usuario_telefonea === 'senha') ? "inline" : "none";
 }
     voltarBtn.onclick = function() {
-        alternarTela('login');
+        alternarusuario_telefonea('login');
     };
     document.getElementById("esqueceuSenha").onclick = function() {
-        alternarTela('senha');
+        alternarusuario_telefonea('senha');
     };
 
 // validar dados
@@ -83,12 +82,12 @@ document.getElementById("btnRecuperar").onclick = function(e) {
     // envia com enter
     loginMenu.onkeydown = function(e) {
         if (e.key === "Enter") {
-            // para tela de login
-            if (telas.login.style.display !== "none") {
+            // para usuario_telefonea de login
+            if (usuario_telefoneas.login.style.display !== "none") {
                 submeterLogin();
             } 
-            // para tela de recuperação
-            else if (telas.senha.style.display !== "none") {
+            // para usuario_telefonea de recuperação
+            else if (usuario_telefoneas.senha.style.display !== "none") {
                 submeterRecuperacao();
             }
         }

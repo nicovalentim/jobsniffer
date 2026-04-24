@@ -77,13 +77,13 @@ button {
     }
 
 /* seção de vagas */
-.filtro:has(#buscarVaga) {
+.filtro:has(#vaga_barraPesquisa) {
     width: 100%;
     align-self: flex-end;
     justify-content: center;
 }
 
-#buscarVaga {
+#vaga_barraPesquisa {
     border: none;
     border-bottom: 1px solid rgb(var(--preto));
     border-radius: 0;
@@ -103,10 +103,10 @@ button {
     padding:10px;
     width: 85%;
 }
-    #buscarVaga:focus {
+    #vaga_barraPesquisa:focus {
         border-radius:6px;
     }
-    #buscarVaga:not(:placeholder-shown) {
+    #vaga_barraPesquisa:not(:placeholder-shown) {
         background-image: none;
     }
 

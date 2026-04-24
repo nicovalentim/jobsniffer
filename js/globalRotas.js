@@ -1,7 +1,7 @@
 const conteudoPagina = document.getElementById("pagina");
 const navbar = document.querySelector(".navbar"); // Target ONLY the navbar
 
-async function routeHandler(caminho) {
+async function rotearPagina(caminho) {
     switch (caminho) {
         case "":
         case "home":
@@ -32,7 +32,7 @@ async function carregarConteudo(fileUrl, type) {
 
     if (type === "vagas" || type === "home") {
         const vagas = await import("./vagasImport.js");
-        vagas.carregarVagas();
+        vagas.vagas_carregar();
 
         if (!existeCSSVagas) {
             const estiloVagas = document.createElement('link');
@@ -56,7 +56,7 @@ navbar.addEventListener("click", (e) => {
     e.preventDefault();
 
     const path = link.getAttribute("href");
-    routeHandler(path);
+    rotearPagina(path);
 });
 
-document.addEventListener("DOMContentLoaded", () => routeHandler("home"));
+document.addEventListener("DOMContentLoaded", () => rotearPagina("home"));

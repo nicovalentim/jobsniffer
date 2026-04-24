@@ -1,4 +1,4 @@
-export async function dadosBanco(url) {
+export async function vagas_carregarBanco(url) {
     try {
         const resposta = await fetch(url);
         const dados = await resposta.json();

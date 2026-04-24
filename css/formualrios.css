@@ -1,5 +1,5 @@
 /* páginas de contato/cadastro */
-#receberArquivo {
+#cadastro_arqReceber {
     user-select: none;
     cursor: pointer;
     display: flex;
@@ -16,7 +16,7 @@
     margin-bottom: 0.25em;
 }
 
-#apagarCV {
+#cadastro_arqApaga {
     margin: 0;
 }
 

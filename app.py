@@ -125,15 +125,14 @@ def login():
 @app.route('/cadastro', methods=['POST'])
 def cadastro_data():
     # variável python = ...('name no html')
-    nome = request.form.get('nome')
-    email = request.form.get('email')
-    senha = request.form.get('senha')
-    nasc = request.form.get('nasc')
-    telefone = request.form.get('tel')
-    cidade = request.form.get('cidade')
-    estado = request.form.get('estado')
-    linkedin = request.form.get('linkedin')
-    folio = request.form.get('folio')
+    nome = request.form.get('usuario_nome')
+    email = request.form.get('usuario_email')
+    senha = request.form.get('usuario_senha')
+    nascimento = request.form.get('usuario_nascimento')
+    telefone = request.form.get('usuario_telefone')
+    cep = request.form.get("usuario_cep")
+    linkedin = request.form.get('usuario_linkedin')
+    folio = request.form.get('usuario_folio')
 
     conn = get_db_connection()                          # conecta ao banco de dados
     cursor = conn.cursor()                              # cria cursor para executar comandos SQL
@@ -142,9 +141,9 @@ def cadastro_data():
         cursor.execute(                                 # primeira linha é o nome das colunas do SQLite
                                                         # segunda linha deixa ? como valor temporário para evitar SQL injection (segurança)
             """INSERT INTO cadastro 
-               (Nome, Email, Senha, Data_Nascimento, Telefone, Cidade, Estado, LinkedIn_url, Folio_url)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""", 
-            (nome, email, senha, nasc, telefone, cidade, estado, linkedin, folio)
+               (Nome, Email, Senha, Nascimento, Telefone, CEP, LinkedIn_url, Folio_url)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""", 
+            (nome, email, senha, nascimento, telefone, cep, linkedin, folio)
         )
         conn.commit()
         return "Cadastro realizado com sucesso!"        # usado em testes

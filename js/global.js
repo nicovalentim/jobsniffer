@@ -1,4 +1,4 @@
-export { abreFecha } from "./globalPopups.js";
+export { popUp } from "./globalPopups.js";
 
 import "./globalPopups.js";
 import "./globalAoTopo.js";

@@ -5,8 +5,8 @@ let filtroAtual = {
     area: []
 };
 
-export function filtrarVagas() {
-    const busca = document.getElementById("buscarVaga");
+export function vagas_filtrar() {
+    const busca = document.getElementById("vaga_barraPesquisa");
     const pequisa = busca ? busca.value.toLowerCase().trim(): "";
     const vagas = document.querySelectorAll(".vaga");
 
@@ -37,7 +37,7 @@ export function filtrarVagas() {
     });
 }
 
-function botaoVerTodos() {
+function vaga_verTodosFiltros() {
     const botaoTodos = document.querySelector('[data-filtro="todos"]');
     const selecionados = document.querySelectorAll('.filtro button.selecionado:not([data-filtro="todos"])');
 
@@ -46,11 +46,6 @@ function botaoVerTodos() {
     } else {
         botaoTodos.classList.remove("selecionado");
     }
-}
-
-const buscaInput = document.getElementById("buscarVaga");
-if (buscaInput) {
-    buscaInput.addEventListener("input", filtrarVagas);
 }
 
 document.addEventListener("click", (e) => {
@@ -93,6 +88,6 @@ document.addEventListener("click", (e) => {
             filtroAtual.area = toggleFiltro(filtroAtual.area, conteudo);
         }
     }
-    botaoVerTodos();
-    filtrarVagas();
-});   
+    vaga_verTodosFiltros();
+    vagas_filtrar();
+});

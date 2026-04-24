@@ -1,14 +1,14 @@
-const botaoAoTopo = document.getElementById("irAoTopo");
+const irAoTopo = document.getElementById("irAoTopo");
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
-        botaoAoTopo.classList.add("visible");
+        irAoTopo.classList.add("visible");
     } else {
-        botaoAoTopo.classList.remove("visible");
+        irAoTopo.classList.remove("visible");
     }
 });
 
-botaoAoTopo.addEventListener("click", function() {
+irAoTopo.addEventListener("click", function() {
     window.scrollTo({
         top: 0,
         behavior: "smooth"

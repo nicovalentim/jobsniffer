@@ -207,7 +207,7 @@ ul {
         pointer-events: all;
     }
 
-.tela {
+.usuario_telefonea {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -391,7 +391,7 @@ header {
         }
 
 /* botões laterais */
-#cantoDaTela {
+#cantoDausuario_telefonea {
     position: fixed;
     right: 16px;
     bottom: 16px;
@@ -401,7 +401,7 @@ header {
     gap: 10px;
 }
 
-#cantoDaTela section, #chatbot {
+#cantoDausuario_telefonea section, #chatbot {
     user-select: none;
     cursor: pointer;
     display: flex;

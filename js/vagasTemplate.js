@@ -1,28 +1,4 @@
-export function gerarHtmlVagas(listaVagas, limiteDesc) {
-    let conteudoHTML = "";
-
-    for (const vaga of listaVagas) {
-        let descricaoCurta = vaga.descricao;
-        if (descricaoCurta.length > limiteDesc) {
-            descricaoCurta = `${descricaoCurta.slice(0, limiteDesc)} (...)`;
-        }
-
-        const requisitos = vaga.requisitos.split(', ')
-        let reqs = ""
-        for (let i = 0; i < requisitos.length; i++) {
-            reqs += `<p class="requisitos">#${requisitos[i]}</p>`
-        }
-
-        const infoVaga = criarInfoVaga(vaga, reqs);
-        const cardVaga = criarVagaCard(vaga, descricaoCurta, reqs);
-
-        conteudoHTML += cardVaga + infoVaga;
-    }
-    
-    return conteudoHTML;
-}
-
-export function criarVagaCard(vaga, descricao, reqs) {
+export function vaga_info(vaga, descricao, reqs) {
     return `
             <section
                 href="#"
@@ -45,7 +21,7 @@ export function criarVagaCard(vaga, descricao, reqs) {
             `
 }
 
-export function criarInfoVaga(vaga, reqs) {
+export function vaga_infoOnClick(vaga, reqs) {
     return `
         <div class="infoVaga" id="infoVaga_${vaga.id}">
             <span class="tituloVaga">
@@ -61,4 +37,28 @@ export function criarInfoVaga(vaga, reqs) {
             <button class="">Candidatar-se!</button>
         </div>
     `
+}
+
+export function vaga_gerarHTML(listaVagas, limiteDesc) {
+    let conteudoHTML = "";
+
+    for (const vaga of listaVagas) {
+        let descricaoCurta = vaga.descricao;
+        if (descricaoCurta.length > limiteDesc) {
+            descricaoCurta = `${descricaoCurta.slice(0, limiteDesc)} (...)`;
+        }
+
+        const requisitos = vaga.requisitos.split(', ')
+        let reqs = ""
+        for (let i = 0; i < requisitos.length; i++) {
+            reqs += `<p class="requisitos">#${requisitos[i]}</p>`
+        }
+
+        const infoVaga = vaga_infoOnClick(vaga, reqs);
+        const cardVaga = vaga_info(vaga, descricaoCurta, reqs);
+
+        conteudoHTML += cardVaga + infoVaga;
+    }
+    
+    return conteudoHTML;
 }

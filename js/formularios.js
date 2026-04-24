@@ -1,15 +1,21 @@
 import "./formulariosAutoformatar.js"
 import "./formulariosReceberArquivo.js"
-import "./formulariosValidacoes.js"
+// import "./formulariosValidacoes.js"
+import { popUp } from "./globalPopups.js"
 
-const form = document.querySelector('form');
+const cadastroBtn = document.getElementById('cadastroBtn');
+const cadastroMenu = document.getElementById('cadastroMenu');
 
-form.addEventListener('submit', async (e) => {
+if (cadastroBtn && cadastroMenu) {
+    popUp(cadastroMenu, cadastroBtn);
+}
+
+const cadastro_formulario = document.querySelector('form');
+
+cadastro_formulario.addEventListener('submit', async (e) => {
     e.preventDefault(); // impede sair da página ou recarregar
 
-    // coleta os dados do formulátrio, incluindo o arquivo
-    const formData = new FormData(form);
-
+    const formData = new FormData(cadastro_formulario);
     const response = await fetch('/cadastro', {
         method: 'POST',
         body: formData
