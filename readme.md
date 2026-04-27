@@ -9,10 +9,11 @@
     vagas_filtrar
 
 ## gerador de vagas
-    ### vaga_gerarHTML
-        teste
 
-    ### vaga_info & vaga_infoOnClick
+### vaga_gerarHTML
+teste
+
+## vaga_info & vaga_infoOnClick
         teste
 
 
