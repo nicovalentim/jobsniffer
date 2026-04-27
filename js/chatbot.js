@@ -90,9 +90,9 @@ export async function sendMessage() {
     botTyping.className = "bot typing";
 
     botTyping.innerHTML = `
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="dot circular"></div>
+        <div class="dot circular"></div>
+        <div class="dot circular"></div>
     `;
 
     messages.appendChild(botTyping);
