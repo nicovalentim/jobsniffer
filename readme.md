@@ -1,4 +1,4 @@
-funções:
+# funções:
     carregarConteudo
     rotearPagina
     popUp
@@ -7,10 +7,16 @@ funções:
     vagas_carregar
     vagas_carregarBanco
     vagas_filtrar
-    vaga_gerarHTML
-    vaga_info
-    vaga_infoOnClick
-    vaga_verTodosFiltros
+
+## gerador de vagas
+    ### vaga_gerarHTML
+        teste
+
+    ### vaga_info & vaga_infoOnClick
+        teste
+
+
+    ### vaga_verTodosFiltros
 
 ouvintes:
     document                    > carregar home no index
