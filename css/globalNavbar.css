@@ -1,0 +1,59 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    font-family: var(--fontePrimaria);
+    user-select: none;
+
+    color: rgba(var(--preto), 1);
+    padding: 0.8em;
+}
+
+.navbar > li {
+    padding: 0 0.2em;
+    text-decoration: none;
+    display: flex;
+    font-size: 0.6em;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+ul {
+    margin: 0;
+    width: 75%;
+    justify-self: center;
+}
+    .links a {
+        align-content: center;
+        margin: 0 8px;
+    }
+    #logo {
+        height: 1em;
+        width: auto;
+        vertical-align: middle;
+    }
+    #titulo {
+        text-wrap: nowrap;
+
+        font-family: var(--fontePrimaria);
+        font-weight: 800;
+        font-size: 1.5em;
+        color: black;
+    }
+    #loginBtn, #cadastro {
+        padding: 9px;
+        margin: 0 5px;
+    }
+    #cadastro:not(button) {
+        color: rgba(var(--branco), 1);
+        background-color: rgb(var(--realce));
+        border-radius: 16px;
+    }
+        @media (max-width: 1080px) {
+            #titulo {
+                font-size: 1em;
+            }
+            .links a, #loginBtn, #cadastro {
+                font-size: 0.75em;
+            }
+        }

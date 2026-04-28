@@ -1,0 +1,67 @@
+/* fontes usadas: Montserrat e Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("globalCards.css");
+@import url("globalFooter.css");
+@import url("globalFormularios.css");
+@import url("globalHeader.css");
+@import url("globalLaterais.css");
+@import url("globalLogin.css");
+@import url("globalNavbar.css");
+@import url("globalVagas.css");
+
+:root {
+    --branco: 245, 245, 245;
+    --preto: 41, 41, 46;
+
+    --realce: 39,39,87; /* midnightblue */
+    --primaria: 80, 80, 129;
+/*    --primaria: 70, 130, 180; /* steelblue */
+    --complementar: hsl(from rgb(var(--primaria)) 180deg s 70%);
+
+    --fontePrimaria: "Roboto", sans-serif;
+    --fonteSecundaria: "Montserrat", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--realce);
+}
+
+body {
+    background-color: rgba(var(--branco), 1);
+    color: rgba(var(--preto), 1);
+    margin: 0;
+
+    font-family: var(--fontePrimaria);
+    font-size: 0.9em;
+}
+
+h1 {
+    font-family: var(--fontePrimaria);
+    font-weight: 700;
+    margin-top: 0;
+}
+
+h2 {
+    font-weight: 400;
+}
+
+button {
+    cursor: pointer;
+    user-select: none;
+}
+
+.api {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .api img {
+        position: relative;
+        z-index: 1;
+
+        height: 32px;
+        width: 32px;
+
+        margin: 4px;
+    }

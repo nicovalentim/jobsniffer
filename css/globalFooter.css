@@ -1,0 +1,30 @@
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    justify-content: center;
+    gap: 10em;
+    margin: 0;
+    padding: 1em 20%;
+
+    background-color: rgb(var(--realce));
+    color: rgb(var(--branco));
+}
+    @media (max-width: 1080px) {
+        footer {
+            grid-template-columns: 1fr;
+            gap: 2em;
+        }
+    }
+    footer h3 {
+        margin: 0;
+        text-transform: uppercase;
+    }
+    footer hr {
+        margin: 4px 0;
+    }
+    footer section img {
+        display: inline;
+        width: 32px;
+        padding: 8px;
+    }

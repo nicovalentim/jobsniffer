@@ -1,0 +1,85 @@
+#loginMenu, #loginMenu input
+#cadastroMenu, #cadastroMenu input {
+    box-sizing: border-box;
+}
+
+#loginMenu,
+#cadastroMenu {
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+
+    opacity: 0;
+    pointer-events: none;
+
+    width: 320px;
+    max-width: 90%;
+
+    background: rgb(var(--branco));
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(var(--preto), 0.3);
+    padding: 2em;
+}
+    #loginMenu.ativo,
+    #cadastroMenu.ativo {
+        opacity: 1;
+        pointer-events: all;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    #loginMenu input
+    #cadastroMenu input {
+        width: 100%;
+
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+
+        background: white;
+    }
+    #fecharBtn {
+        display: inline;
+        align-self: end;
+
+        margin-bottom: 1em;
+
+        padding: 5px 10px;
+        color: rgb(var(--realce));
+    }
+    #fecharBtn, .btn {
+        cursor: pointer;
+
+        border: none;
+        border-radius: 8px;
+    }
+    .btn {
+        font-weight: 600;
+        padding: 10px;
+
+        background: rgb(var(--realce));
+        color: rgb(var(--branco));
+    }
+    #voltarBtn {
+        cursor: pointer;
+        display: none;
+
+        font-size: 0.8em;
+        padding: 10px;
+
+        color: rgb(var(--realce));
+    }
+    #esqueceuSenha {
+        cursor: pointer;
+
+        color: rgb(var(--realce));
+        text-align: center;
+        font-size: 0.85em;
+        margin: 10px 0;
+    }
+    #loginBtn {
+        padding: 9px;
+        margin: 0 5px;
+    }

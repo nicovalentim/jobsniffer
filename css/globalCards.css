@@ -1,0 +1,66 @@
+/* fundo do corpo */
+.fundo {
+    margin: 1em auto;
+    width: 90%;
+    max-width: 1200px;
+
+    overflow-wrap: break-word;
+
+    justify-self: center;
+    justify-items: center;
+}
+
+#pagina {
+    margin-bottom: 1em;
+}
+
+.card {
+    display: grid;
+    gap: 1em;
+    margin: 1em 3em;
+}
+    .card section {
+        box-sizing: border-box;
+
+        background-color: rgba(255,255,255,0.5);
+        border: none;
+        border-radius: 16px;
+        box-shadow: 5px 5px 20px rgba(var(--preto),0.2);
+
+        min-height: 50vh;
+        padding: 2em;
+        width: 100%;
+        height: 100%;
+    }
+    .card h1 {
+        font-weight: 700;
+    }
+    .home {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr 20px);
+        gap: 1em;
+
+        border-radius: 16px;
+        padding: 1em;
+    }
+    .home section {
+        min-height: 0;
+        text-align: center;
+    }
+    .home section img {
+        border-radius: 50%;
+
+        height: 120px;
+        width: 120px;
+        filter: saturate(0.5);
+    }
+    .sobre {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .valores {
+        border-radius: 16px;
+        padding: 1em;
+
+        background-color: rgb(var(--realce));
+        color: rgb(var(--branco));
+    }

@@ -33,16 +33,6 @@ async function carregarConteudo(fileUrl, type) {
     if (type === "vagas" || type === "home") {
         const vagas = await import("./vagasImport.js");
         vagas.vagas_carregar();
-
-        if (!existeCSSVagas) {
-            const estiloVagas = document.createElement('link');
-            estiloVagas.rel = 'stylesheet';
-            estiloVagas.href = '../css/vagas.css';
-
-            document.head.appendChild(estiloVagas);
-        }
-    } else {
-        existeCSSVagas?.remove();
     }
 
     if (type === "cadastro" || type === "contato") {
