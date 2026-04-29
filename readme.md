@@ -35,14 +35,16 @@ Permite a localização de vagas por área ou regime de trabalho.
 ### Cadastro de Usuários:
 Criação de usuários novos com adição ao banco de dados.
 
+- cadastro_arqAtualiza()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosReceberArquivo.js): permite modificar o valor do nome do arquivo adicionado no cadastro, como uma forma de feedback;
+- ouvinte em cadastro_arqRecebido<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosReceberArquivo.js) para conseguir receber o arquivo do usuário;
+- ouvinte em cadastro_arqApaga<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosReceberArquivo.js) para apagar o arquivo recebido;
+- ouvintes em usuario_CEP, usuario_nascimento e usuario_telefone<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosAutoformatar.js) para formatar o texto digitado pelo usuário;
 - validarRegras()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): identifica regras para a criação de uma senha nova (como caracteres maiúsculos e minúsculos) dependendo do que foi digitado;
 - senhaValida()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): verifica se a senha é válida;
 - mostrarErro()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): mostra um erro visual em caso de erro de validação da senha;
 - regrasSenha()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): mostra ou esconde visualmente as regras dependendo do que foi digitado;
 - senhasIguais()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): cofnrima que a senha e a verificação dela são iguais;
-- senhasIguais()<sup>JS</sup>[*]
-- cadastro_arqAtualiza
-
+- ouvinte em cadastro_formulario<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formularios.js) para enviar os dados ao banco.
 
 ## Próximos Passos
 
@@ -61,18 +63,3 @@ Criação de usuários novos com adição ao banco de dados.
 
 1. Clone o repositório.
 2. Use o comando `py app.py` dentro do terminal do VSCode.
-
-# funções:
-
-ouvintes:
-    irAoTopo
-
-    cadastro_arqApaga
-    cadastro_arqNome
-    cadastro_arqRecebido
-    cadastro_arqReceber
-    cadastro_formulario
-    cadastro_usuarioCEP
-    cadastro_usuarioCPF         > depreciado
-    cadastro_usuarioNascimento
-    cadastro_usuarioTelefone
