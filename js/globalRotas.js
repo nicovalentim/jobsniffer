@@ -1,5 +1,5 @@
 const conteudoPagina = document.getElementById("pagina");
-const navbar = document.querySelector(".navbar"); // Target ONLY the navbar
+const navbar = document.querySelector(".navbar");
 
 async function rotearPagina(caminho) {
     switch (caminho) {
@@ -28,8 +28,6 @@ async function carregarConteudo(fileUrl, type) {
     const resposta = await fetch(fileUrl);
     conteudoPagina.innerHTML = await resposta.text();
 
-    const existeCSSVagas = document.querySelector('link[href="../css/vagas.css"]');
-
     if (type === "vagas" || type === "home") {
         const vagas = await import("./vagasImport.js");
         vagas.vagas_carregar();
@@ -37,7 +35,6 @@ async function carregarConteudo(fileUrl, type) {
 
     if (type === "cadastro" || type === "contato") {
         await import("./formularios.js");
-        // arumar
     }
 }
 

@@ -1,4 +1,3 @@
-
 let filtroAtual = {
     localizacao: [],
     regime: [],
@@ -76,7 +75,6 @@ document.addEventListener("click", (e) => {
             }
         }
 
-    // Filtros
         if (botao.dataset.localizacao) {
             const conteudo = botao.dataset.localizacao.toLowerCase();
             filtroAtual.localizacao = toggleFiltro(filtroAtual.localizacao, conteudo);

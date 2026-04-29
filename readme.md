@@ -1,71 +1,31 @@
-# Sobre
+resumo de duas frases do que é o projeto (pitch de venda)
 
-É uma plataforma centralizada de oportunidades de carreira. O objetivo do projeto é conectar candidatos a uma curadoria de vagas selecionadas, oferecendo uma interface limpa para visualização e, futuramente, um painel administrativo completo para gestão de conteúdo.
+categorizar as linguagens e arquiteturas usadas
 
-## O Projeto
+funções chave e o que foi pivotado durante o projeto (coisas como: foi de estático para dinâmico, foi de dinâmico para estático, etc)
 
-Diferente de um simples buscador, também funciona como um portal onde:
-- *Clientes (Candidatos):* Podem navegar por um banco de dados de vagas pré-existentes e encontrar sua próxima oportunidade.
-- *Administradores (Em breve):* Terão um sistema de login exclusivo para cadastrar, editar e remover vagas diretamente pela interface.
+esquematização do banco de dados / fluxogramas aqui
 
-## Funcionalidades Atuais
+pré-requisitos para fazer o projeto rodar
 
-### Funcionalidade de Aplicação em página única: [*](https://github.com/nicovalentim/jobsniffer/blob/main/js/globalRotas.js)
-O site inteiro funciona com uma página só, apenas carregando o conteúdo essencial.
-
-- rotearPagina()<sup>JS</sup>: switch case para escolher qual arquivo HTML a carregar;
-- carregarConteudo()<sup>JS</sup>: lógica de if/else para carregar o javascript necessário apenas em certas páginas;
-- navbar com ouvinte<sup>JS</sup> para identficar quais links reagem com a lógica de página única, e evitar mudanças de URL;
-- documento com ouvinte<sup>JS</sup> para carregar a página "Home.html" sempre que o site é carregado da primeira vez.
-
-### Visualização de Vagas:
-Listagem fluida de oportunidades armazenadas no banco de dados.
-
-- vagas_carregarBanco()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasBanco.js): cria uma conexão com o banco de dados em python;
-- vaga_gerarHTML (listaVagas, limiteDesc)<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasTemplate.js): usa o código HTML gerado nas funções vaga_info()<sup>JS</sup> e vaga_infoOnClick()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasTemplate.js) para criar elementos em HTML a serem adicionados na página; 
-- vagas_carregar()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasImport.js): reorganiza as vagas em ordem de criação (mais novas primeiro), e adiciona os elementos em HTML na página;
-- popUp()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/globalPopups.js): usado não apenas na seção de vagas, mas como uma função global que entre outros usos, permite mostrar dados mais específicos sobre cada vaga na página.
-
-### Filtros de Busca: (*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasFiltros.js]
-Permite a localização de vagas por área ou regime de trabalho.
-
-- vagas_filtrar()<sup>JS</sup>: modifica a query buscada por uma versão em letras minúsculas, e usa querySelectors para buscar datasets para filtrar vagas exibidas tanto pelo texto contido nelas (na barra de pesquisa com um ouvinte<sup>JS</sup> para isso) quanto por filtros padrões de área e regime da vaga pesquisada (por botões com os datasets identificados);
-- vaga_verTodosFiltros()<sup>JS</sup>: remove todos os filtros e mostra todas as vagas na página, além de desmarcar os botões não selecionados.
-
-### Cadastro de Usuários:
-Criação de usuários novos com adição ao banco de dados.
-
-- validarRegras()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]: identifica regras para a criação de uma senha nova (como caracteres maiúsculos e minúsculos) dependendo do que foi digitado;
-- senhaValida()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]: verifica se a senha é válida;
-- mostrarErro()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]: mostra um erro visual em caso de erro de validação da senha;
-- regrasSenha()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]: mostra ou esconde visualmente as regras dependendo do que foi digitado;
-- senhasIguais()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]:
-- regrasSenha()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]:
-- regrasSenha()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]:
-- cadastro_arqAtualiza
-
-
-## Próximos Passos
-
-- [ ] *Sistema de Autenticação:* Implementação de login seguro para administradores.
-- [ ] *Painel Administrativo:* Interface para criação, edição e exclusão de vagas (CRUD).
-- [ ] *Dashboards:* Métricas de visualização para cada vaga postada.
-- [ ] *Favoritos:* Permitir que o candidato salve vagas de interesse.
-
-## Tecnologias Utilizadas
-
-* *Frontend:* HTML, CSS (sem bibliotecas ou frameworks)
-* *Backend:* Python (Flask), Javascript<sup>JS</sup>
-* *Banco de Dados:* SQL convertido para SQLite
-
-## Como rodar o projeto
-
-1. Clone o repositório.
-2. Use o comando `py app.py` dentro do terminal do VSCode.
+screenshots da dashboard/partes do projeto rodando
 
 # funções:
+    carregarConteudo
+    rotearPagina
+    popUp
+
+    cadastro_arqAtualiza
+    vagas_carregar
+    vagas_carregarBanco
+    vagas_filtrar
+    vaga_gerarHTML(listaVagas, limiteDesc)
+    vaga_info & vaga_infoOnClick
+    vaga_verTodosFiltros
 
 ouvintes:
+    document                    > carregar home no index
+    navbar                      > para trocar páginas
     irAoTopo
 
     cadastro_arqApaga
