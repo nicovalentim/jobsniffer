@@ -8,10 +8,6 @@ funcional
     limite de vagas por página
     envio de e-mail via página de contato
 
-organização
-    reduzir o código redundante em css
-    estruturar o readme.md
-
 estética
     mudar a marca para algo mais profissional
     reduzir número de vagas por página

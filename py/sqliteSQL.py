@@ -1,15 +1,15 @@
 import re
 
-def mysqlParaSqlite(sql_content):
-    sql_content = re.sub(r'/\*.*?\*/', '', sql_content, flags=re.DOTALL)    # remove comentários com /* */
-    sql_content = re.sub(r'--.*?\n', '\n', sql_content)                     # remove comentários com --
-    sql_content = sql_content.replace("AUTO_INCREMENT", "AUTOINCREMENT")    # substitui AUTO_INCREMENT (mySQL) por AUTOINCREMENT (sqlite)
+def mysqlParaSqlite(conteudo_sql):
+    conteudo_sql = re.sub(r'/\*.*?\*/', '', conteudo_sql, flags=re.DOTALL)    # remove comentários com /* */
+    conteudo_sql = re.sub(r'--.*?\n', '\n', conteudo_sql)                     # remove comentários com --
+    conteudo_sql = conteudo_sql.replace("AUTO_INCREMENT", "AUTOINCREMENT")    # substitui AUTO_INCREMENT (mySQL) por AUTOINCREMENT (sqlite)
     
     # Ajusta tipos INT com autoincremento para padrão SQLite
-    sql_content = re.sub(r'int\(\d+\) NOT NULL AUTOINCREMENT', 'INTEGER PRIMARY KEY AUTOINCREMENT', sql_content, flags=re.IGNORECASE)
-    sql_content = re.sub(r'INT NOT NULL AUTOINCREMENT', 'INTEGER PRIMARY KEY AUTOINCREMENT', sql_content, flags=re.IGNORECASE)
+    conteudo_sql = re.sub(r'int\(\d+\) NOT NULL AUTOINCREMENT', 'INTEGER PRIMARY KEY AUTOINCREMENT', conteudo_sql, flags=re.IGNORECASE)
+    conteudo_sql = re.sub(r'INT NOT NULL AUTOINCREMENT', 'INTEGER PRIMARY KEY AUTOINCREMENT', conteudo_sql, flags=re.IGNORECASE)
 
-    raw_commands = sql_content.split(';')                                   # divide o sql em comandos separados por ";"
+    raw_commands = conteudo_sql.split(';')                                   # divide o sql em comandos separados por ";"
     
     clean_commands = []
 

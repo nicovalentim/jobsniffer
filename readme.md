@@ -21,7 +21,8 @@ O site inteiro funciona com uma página só, apenas carregando o conteúdo essen
 ### Visualização de Vagas:
 Listagem fluida de oportunidades armazenadas no banco de dados.
 
-- vagas_carregarBanco()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasBanco.js): cria uma conexão com o banco de dados em python;
+- vagas_carregarBanco()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasBanco.js), conexao()[*](https://github.com/nicovalentim/jobsniffer/blob/main/py/conectarBanco.py)<sup>PY</sup>,  get_vagas_data()[*](https://github.com/nicovalentim/jobsniffer/blob/main/py/rota/vagas.py) e init_db()[*](https://github.com/nicovalentim/jobsniffer/blob/main/py/iniciarBanco.py): cria uma conexão com o banco de dados em python;
+- mysqlParaSqlite(conteudo_sql)<sup>PY</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/py/sqliteSQL.py): modifica o banco de dados de SQL para SQLite (para criar um banco de dados de testes mais simplificado);
 - vaga_gerarHTML (listaVagas, limiteDesc)<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasTemplate.js): usa o código HTML gerado nas funções vaga_info()<sup>JS</sup> e vaga_infoOnClick()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasTemplate.js) para criar elementos em HTML a serem adicionados na página; 
 - vagas_carregar()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasImport.js): reorganiza as vagas em ordem de criação (mais novas primeiro), e adiciona os elementos em HTML na página;
 - popUp()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/globalPopups.js): usado não apenas na seção de vagas, mas como uma função global que entre outros usos, permite mostrar dados mais específicos sobre cada vaga na página.
@@ -45,13 +46,14 @@ Criação de usuários novos com adição ao banco de dados.
 - regrasSenha()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): mostra ou esconde visualmente as regras dependendo do que foi digitado;
 - senhasIguais()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): cofnrima que a senha e a verificação dela são iguais;
 - ouvinte em cadastro_formulario<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formularios.js) para enviar os dados ao banco.
+- cadastro_data()<sup>PY</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/py/rota/cadastro.py): envia os dados ao banco de dados.
 
 ## Próximos Passos
 
-- [ ] *Sistema de Autenticação:* Implementação de login seguro para administradores.
-- [ ] *Painel Administrativo:* Interface para criação, edição e exclusão de vagas (CRUD).
-- [ ] *Dashboards:* Métricas de visualização para cada vaga postada.
-- [ ] *Favoritos:* Permitir que o candidato salve vagas de interesse.
+- *Sistema de Autenticação:* Implementação de login seguro para administradores.
+- *Painel Administrativo:* Interface para criação, edição e exclusão de vagas (CRUD).
+- *Dashboards:* Métricas de visualização para cada vaga postada.
+- *Favoritos:* Permitir que o candidato salve vagas de interesse.
 
 ## Tecnologias Utilizadas
 
