@@ -26,7 +26,7 @@ Listagem fluida de oportunidades armazenadas no banco de dados.
 - vagas_carregar()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasImport.js): reorganiza as vagas em ordem de criação (mais novas primeiro), e adiciona os elementos em HTML na página;
 - popUp()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/globalPopups.js): usado não apenas na seção de vagas, mas como uma função global que entre outros usos, permite mostrar dados mais específicos sobre cada vaga na página.
 
-### Filtros de Busca: (*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasFiltros.js]
+### Filtros de Busca: [*](https://github.com/nicovalentim/jobsniffer/blob/main/js/vagasFiltros.js)
 Permite a localização de vagas por área ou regime de trabalho.
 
 - vagas_filtrar()<sup>JS</sup>: modifica a query buscada por uma versão em letras minúsculas, e usa querySelectors para buscar datasets para filtrar vagas exibidas tanto pelo texto contido nelas (na barra de pesquisa com um ouvinte<sup>JS</sup> para isso) quanto por filtros padrões de área e regime da vaga pesquisada (por botões com os datasets identificados);
@@ -35,13 +35,12 @@ Permite a localização de vagas por área ou regime de trabalho.
 ### Cadastro de Usuários:
 Criação de usuários novos com adição ao banco de dados.
 
-- validarRegras()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]: identifica regras para a criação de uma senha nova (como caracteres maiúsculos e minúsculos) dependendo do que foi digitado;
-- senhaValida()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]: verifica se a senha é válida;
-- mostrarErro()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]: mostra um erro visual em caso de erro de validação da senha;
-- regrasSenha()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]: mostra ou esconde visualmente as regras dependendo do que foi digitado;
-- senhasIguais()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]:
-- regrasSenha()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]:
-- regrasSenha()<sup>JS</sup>(*)[https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js]:
+- validarRegras()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): identifica regras para a criação de uma senha nova (como caracteres maiúsculos e minúsculos) dependendo do que foi digitado;
+- senhaValida()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): verifica se a senha é válida;
+- mostrarErro()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): mostra um erro visual em caso de erro de validação da senha;
+- regrasSenha()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): mostra ou esconde visualmente as regras dependendo do que foi digitado;
+- senhasIguais()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): cofnrima que a senha e a verificação dela são iguais;
+- senhasIguais()<sup>JS</sup>[*]
 - cadastro_arqAtualiza
 
 

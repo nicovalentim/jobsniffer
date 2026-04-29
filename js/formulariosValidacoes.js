@@ -81,9 +81,9 @@ if (cadastroBtn && cadastroMenu) {
 
     function senhasIguais() {
         if (
-            confirmaSenha.value != "" &&
-            senha.value != "" &&
-            senha.value != confirmaSenha.value
+            confirmaSenha.value != ""
+            && senha.value != ""
+            && senha.value != confirmaSenha.value
         ) {
             document.getElementById("erroConfirmaSenha").classList.add("ativo")
         } else {
