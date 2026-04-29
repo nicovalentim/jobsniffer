@@ -55,12 +55,6 @@ Criação de usuários novos com adição ao banco de dados.
 - *Dashboards:* Métricas de visualização para cada vaga postada.
 - *Favoritos:* Permitir que o candidato salve vagas de interesse.
 
-## Tecnologias Utilizadas
-
-* *Frontend:* HTML, CSS (sem bibliotecas ou frameworks)
-* *Backend:* Python (Flask), Javascript<sup>JS</sup>
-* *Banco de Dados:* SQL convertido para SQLite
-
 ## Como rodar o projeto
 
 1. Clone o repositório.
