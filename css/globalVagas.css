@@ -1,9 +1,9 @@
 /* vagas na página inicial */
-.vagasDestaque #vaga_4 {
+.vagasHomePage #vaga_4 {
     display: none !important;
 }
     @media (max-width: 1080px) {   
-        .vagasDestaque #vaga_4 {
+        .vagasHomePage #vaga_4 {
             display: block !important;
         }
         .card {
@@ -152,19 +152,10 @@ button {
     border: none;
     border-radius: 16px;
     box-shadow: 5px 5px 20px rgba(var(--preto),0.1);
-    box-sizing: border-box;
 
     align-content: center;
     justify-self: center;
 }
-    .vagasNaHomePage #vaga_4 {
-        display: none !important;
-    }
-    @media (max-width: 1080px) {
-        .vagasNaHomePage #vaga_4 {
-            display: block !important;
-        }
-    }
 
 .tituloVaga .areaVaga {
     margin: 0;

@@ -19,7 +19,7 @@ export async function vagas_carregar(url = "/api/vagas") {
         conteudo = vaga_gerarHTML(dados.vagas, 169);
     }
 
-    if (document.getElementsByClassName("vagasNaHomePage").length > 0) {
+    if (document.getElementsByClassName("vagasHomePage").length > 0) {
         const vagasEmDestaque = dados.vagas.slice(0, 4);
         conteudo = vaga_gerarHTML(vagasEmDestaque, 69);
     }

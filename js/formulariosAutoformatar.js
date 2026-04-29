@@ -1,17 +1,17 @@
-/* let cadastro_usuarioCEP = document.getElementsByName("usuario_CEP")[0];
+let cadastro_usuarioCEP = document.getElementsByName("usuario_CEP")[0];
 
 cadastro_usuarioCEP.addEventListener('input', function(e) {
         var valor = e.target.value.replace(/\D/g, '');
         var formatado = '';
 
-        if (valor.length > 0) {
-            formatado = valor.substring(0,5)
-        } if (valor.length <= 8) {
-            formatado = "-" + valor.substring(5,8);
+        if (valor.length <=5 ) {
+            formatado = valor;
+        } if (valor.length > 5) {
+            formatado = valor.substring(0,5) + "-" + valor.substring(5,8);
         }
 
     e.target.value = formatado;
-}); */
+});
 
 let cadastro_usuarioNascimento = document.getElementsByName("usuario_nascimento")[0];
 

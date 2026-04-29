@@ -14,21 +14,16 @@
     cursor: pointer;
     display: flex;
 
-    box-shadow: 5px 5px 5px rgba(var(--preto), 0.4);
     background-color: rgb(var(--branco));
-}
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    border-radius: 100%;
 
-#irAoTopo, #chatbot {
-        cursor: pointer;
+    padding: 0.01em;
+    box-shadow: 5px 5px 5px rgba(var(--preto), 0.4);
 
-        background-position: center;
-        background-repeat: no-repeat;
-        padding: 0.01em;
-
-        background-size: 60%;
-        border-radius: 100%;
-
-        transition-duration: 0.5s;
+    transition-duration: 0.5s;
 }
 
 #irAoTopo {
@@ -215,7 +210,6 @@
     padding: 8px;
     border-radius: 20px;
     background: #eee;
-    cursor: pointer;
     text-align: left;
 }
 

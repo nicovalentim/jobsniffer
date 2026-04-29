@@ -1,3 +1,15 @@
+resumo de duas frases do que é o projeto (pitch de venda)
+
+categorizar as linguagens e arquiteturas usadas
+
+funções chave e o que foi pivotado durante o projeto (coisas como: foi de estático para dinâmico, foi de dinâmico para estático, etc)
+
+esquematização do banco de dados / fluxogramas aqui
+
+pré-requisitos para fazer o projeto rodar
+
+screenshots da dashboard/partes do projeto rodando
+
 # funções:
     carregarConteudo
     rotearPagina

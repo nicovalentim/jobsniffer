@@ -1,5 +1,5 @@
 form {
-display: block;
+    display: block;
 }
     form button {
         border: none;
@@ -44,7 +44,8 @@ display: block;
     }
 
 input,
-select {
+select,
+textarea {
     border: none;
     border-radius: 8px;
     padding: 10px;
@@ -94,10 +95,7 @@ select {
         }
     }
     .contato textarea {
-        border: none;
-        border-radius: 8px;
         margin: 1em 0;
-        padding: 1em;
         font: var(--fontePrimaria);
 
         min-height: 25vh;
@@ -118,19 +116,15 @@ select {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin: 0;
+    gap: 16px;
+    margin: -1em 0;
 }
-    .linha * {
-        box-sizing: border-box;
-    }
     .linha input {
         flex: 1;
     }
-    @media (max-width: 1080px) {
-        .linha * {
-            margin: 0 10px;
-        }
-        .linha *:not([name="cidade"], [name="estado"]) {
-            flex: none;
+@media (max-width: 1080px) {
+        .linha {
+            display: block;
+            margin: 1em 0;
         }
     }

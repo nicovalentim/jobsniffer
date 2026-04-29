@@ -1,8 +1,3 @@
-#loginMenu, #loginMenu input
-#cadastroMenu, #cadastroMenu input {
-    box-sizing: border-box;
-}
-
 #loginMenu,
 #cadastroMenu {
     display: flex;
@@ -39,21 +34,6 @@
         padding: 10px;
 
         background: white;
-    }
-    #fecharBtn {
-        display: inline;
-        align-self: end;
-
-        margin-bottom: 1em;
-
-        padding: 5px 10px;
-        color: rgb(var(--realce));
-    }
-    #fecharBtn, .btn {
-        cursor: pointer;
-
-        border: none;
-        border-radius: 8px;
     }
     .btn {
         font-weight: 600;
