@@ -13,12 +13,13 @@ DB_PATH = os.path.join(os.getcwd(), 'db', 'jobsniffer.db')
 def index():
     return render_template("index.html")
 
+from py.email import enviar_email
 from py.rota.cadastro import rota_cadastro
 from py.rota.chatbot import rota_chatbot
 from py.rota.login import rota_login
 from py.rota.vagas import rota_vagas
 
-blueprints = [rota_cadastro, rota_login, rota_vagas, rota_chatbot]
+blueprints = [enviar_email, rota_cadastro, rota_login, rota_vagas, rota_chatbot]
 for diagrama in blueprints:
     app.register_blueprint(diagrama)
 
