@@ -36,6 +36,11 @@ async function carregarConteudo(fileUrl, type) {
     if (type === "cadastro" || type === "contato") {
         await import("./formularios.js");
     }
+
+    if (type === "contato") {
+        const contato = await import("./contato.js");
+        contato.enviarEmail();
+    }
 }
 
 navbar.addEventListener("click", (e) => {

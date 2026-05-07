@@ -22,16 +22,14 @@
 
         <section>
             <h1>Envie sua mensagem</h1>
-            <form class="form" id="contato">
-
+            <form class="form" id="contato" onsubmit="return false;"> 
                 <div class="linha">
-                    <input type="text" name="contatoNome" placeholder="Digite seu nome" />
-                    <input type="text" name="contatoEmail" placeholder="Digite seu email" />
+                    <input type="text" name="contatoNome" placeholder="Digite seu nome" required />
+                    <input type="text" name="contatoAssunto" placeholder="Digite o assunto" required />
                 </div>
-                <textarea name="contatoMensagem" placeholder="Digite sua mensagem aqui"></textarea>
+                <textarea name="contatoMensagem" placeholder="Digite sua mensagem aqui" required ></textarea>
                 <button name="enviarEmail" type="submit">Enviar</button>
             </form>
-            <div id="contatoSucesso"></div>
         </section>
 
 </div>

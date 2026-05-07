@@ -4,7 +4,7 @@ export async function vagas_carregarBanco(url) {
         const dados = await resposta.json();
         return dados;
     } catch (erro) {
-        console.error("Erro ao buscar vagas:", erro);
+        console.error("Erro ao buscar vagas: ", erro);
         return { vagas: [] };
     }
 }

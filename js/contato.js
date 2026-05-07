@@ -1,33 +1,29 @@
-document.getElementById('contato').addEventListener('submit', async (e) => {
+export function enviarEmail() {
+    const form = document.getElementById('contato');
+    
+    if (!form) {
+        console.error("Formulário de contato não encontrado!");
+        return;
+    }
+
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const contatoBtn = document.getElementsByName("enviarEmail");
-        const mensagem = document.getElementsByName("contatoMensagem").value;
+        // elementos do HTML
+        const nome = document.querySelector('input[name="contatoNome"]').value;
+        const assunto = document.querySelector('input[name="contatoAssunto"]').value;
+        const mensagem = document.querySelector('textarea[name="contatoMensagem"]').value;
         const sucesso = document.getElementById("contatoSucesso");
 
-        contatoBtn.disabled = true;
-        contatoBtn.innerText = "Enviando...";
+        const destinatario = "209572026@eniac.edu.br";
+        const corpoEmail = `Nome: ${nome}\n\nMensagem:\n${mensagem}`;
+        const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
 
-        try {
-            const resposta = await fetch('send-email', {
-                method: 'POST',
-                headers: { 'Content-type': 'application.json' },
-                body: JSON.stringify ({ message: mensagem })
-            });
+        window.location.href = mailtoLink;
 
-                const resultado = await resposta.json();
-
-                if (resposta.ok) {
-                    sucesso.innerHTML = "Mensagem enviada!";
-                    document.getElementById("contato").reset();
-                } else {
-                    sucesso.innerHTML = `Ocorreu um erro.<br> Erro: ${resultado.message}`;
-                }
-
-            } catch (error) {
-                sucesso.innerHTML = "Erro ao enviar."
-            } finally {
-                contatoBtn.disabled = false;
-                contatoBtn.innerText = "Enviar email";
-            }
-});
+        if (sucesso) {
+            sucesso.innerHTML = "Seu aplicativo de e-mail foi aberto!";
+        }
+        form.reset(); 
+    });
+}
