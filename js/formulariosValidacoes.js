@@ -1,12 +1,11 @@
-import { abreFecha } from "./globalPopups.js";
-export { abreFecha } from "./globalPopups.js";
+export { popUp } from "./globalPopups.js";
 
 // chama a tela de validação de usuário/senha (testa se senha repete e etc)
 const cadastroBtn = document.getElementById('cadastroBtn');
 const cadastroMenu = document.getElementById('cadastroMenu');
 
 if (cadastroBtn && cadastroMenu) {
-    abreFecha(cadastroMenu, cadastroBtn);
+    popUp(cadastroMenu, cadastroBtn);
 }
 
 /* validações */

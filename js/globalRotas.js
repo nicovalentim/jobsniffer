@@ -33,12 +33,12 @@ async function carregarConteudo(fileUrl, type) {
         vagas.vagas_carregar();
     }
 
-    if (type === "cadastro" || type === "contato") {
+    if (type === "cadastro") {
         await import("./formularios.js");
     }
 
     if (type === "contato") {
-        const contato = await import("./contato.js");
+        const contato = await import("./email.js");
         contato.enviarEmail();
     }
 }

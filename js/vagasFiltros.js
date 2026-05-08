@@ -6,19 +6,20 @@ let filtroAtual = {
 
 export function vagas_filtrar() {
     const busca = document.getElementById("vaga_barraPesquisa");
-    const pequisa = busca ? busca.value.toLowerCase().trim(): "";
+    let pesquisa = busca ? busca.value.toLowerCase().trim(): "";
+    pesquisa = pesquisa.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); // regex de acentos
     const vagas = document.querySelectorAll(".vaga");
 
     vagas.forEach(vaga => {
         const localizacao = vaga.dataset.localizacao;
         const regime = vaga.dataset.regime;
         const area = vaga.dataset.area;
-        const conteudo = vaga.textContent.toLowerCase();
+        const conteudo = vaga.textContent.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
         let visivel = true;
 
         if (
-            pequisa !== ""
-            && !conteudo.includes(pequisa)) {
+            pesquisa !== ""
+            && !conteudo.includes(pesquisa)) {
             visivel = false;
         }
 

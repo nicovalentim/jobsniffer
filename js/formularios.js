@@ -1,6 +1,7 @@
 import "./formulariosAutoformatar.js"
 import "./formulariosReceberArquivo.js"
 import "./formulariosValidacoes.js"
+
 import { popUp } from "./globalPopups.js"
 
 const cadastroBtn = document.getElementById('cadastroBtn');

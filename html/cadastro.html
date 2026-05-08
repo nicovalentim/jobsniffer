@@ -9,14 +9,14 @@
         <h1>Cadastro</h1>
         <form action="/cadastro" method="POST">
 
-            <input type="text" name="usuario_nome" placeholder="Digite seu nome aqui" />
+            <input type="text" name="usuario_nome" placeholder="Digite seu nome aqui" required />
             <div class="linha">
-                <input type="text" name="usuario_nascimento" placeholder="Digite sua data de nascimento"  />
-                <input type="text" name="usuario_telefone"  placeholder="Digite seu telefone" />
-                <input type="text" name="usuario_CEP" placeholder="Digite seu CEP"  />
+                <input type="text" name="usuario_nascimento" placeholder="Digite sua data de nascimento" required  />
+                <input type="text" name="usuario_telefone"  placeholder="Digite seu telefone" required />
+                <input type="text" name="usuario_CEP" placeholder="Digite seu CEP" required />
             </div>
-            <input type="url" name="usuario_linkedin" placeholder="Cole o seu LinkedIn"  />
-            <input type="url" name="usuario_folio" placeholder="Cole o link do seu portfolio"  />
+            <input type="url" name="usuario_linkedin" placeholder="Cole o seu LinkedIn" />
+            <input type="url" name="usuario_folio" placeholder="Cole o link do seu portfolio" />
 
             <div id="cadastro_arqReceber">
                 <div class="cadastro_arqNomePadrao">enviar curriculo</div>
@@ -33,9 +33,9 @@
             <button type="button" class="enviar" id="cadastroBtn">Enviar</button>
 
             <div id="cadastroMenu">
-                <input type="email" name="usuario_email"  placeholder="Digite seu e-mail" />
-                <input type="password" name="usuario_senha"  placeholder="Digite sua senha" id="senha" />
-                <input type="password" name="usuario_senha_confirm"  placeholder="Confirme sua senha" id="confirmaSenha" />
+                <input type="email" name="usuario_email"  placeholder="Digite seu e-mail" required />
+                <input type="password" name="usuario_senha"  placeholder="Digite sua senha" id="senha" required />
+                <input type="password" name="usuario_senha_confirm"  placeholder="Confirme sua senha" id="confirmaSenha" required />
                 <p id="regrasSenha">
                     A senha deve ter:
                     <span id="r1">

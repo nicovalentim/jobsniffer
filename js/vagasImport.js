@@ -3,8 +3,6 @@ import { vagas_carregarBanco } from "./vagasBanco.js";
 import { vagas_filtrar } from "./vagasFiltros.js";
 import { vaga_gerarHTML } from "./vagasTemplate.js";
 
-await vagas_carregarBanco();
-
 export async function vagas_carregar(url = "/api/vagas") {
     const container = document.getElementById("posts");
     const dados = await vagas_carregarBanco(url);
@@ -41,6 +39,12 @@ export async function vagas_carregar(url = "/api/vagas") {
             }
         });
     }
+
+    /*
+    const numeroVagas = dados.vagas.length;
+    const vagasPorPagina = 3;
+    alert(numeroVagas % vagasPorPagina);
+    */
 
     vagas_filtrar();
 }
