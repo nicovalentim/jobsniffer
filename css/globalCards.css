@@ -59,6 +59,6 @@
         border-radius: 16px;
         padding: 1em;
 
-        background-color: rgb(var(--realce));
+        background-color: rgb(var(--corPrimaria));
         color: rgb(var(--branco));
     }

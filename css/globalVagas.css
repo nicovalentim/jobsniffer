@@ -20,27 +20,27 @@
 
 /* cores para cada área de vagas */
 .areaVaga[data-area="ti"] {
-    filter: hue-rotate(calc(360deg*0/6));
+    filter: hue-rotate(0deg);
 }
 
 .areaVaga[data-area="adm"] {
-    filter: hue-rotate(calc(360deg*1/6));
+    filter: hue-rotate(20deg);
 }
 
 .areaVaga[data-area="mkt"] {
-    filter: hue-rotate(calc(360deg*2/6));
+    filter: hue-rotate(40deg);
 }
 
 .areaVaga[data-area="com"] {
-    filter: hue-rotate(calc(360deg*3/6));
+    filter: hue-rotate(60deg);
 }
 
 .areaVaga[data-area="log"] {
-    filter: hue-rotate(calc(360deg*4/6));
+    filter: hue-rotate(80deg);
 }
 
 .areaVaga[data-area="eng"] {
-    filter: hue-rotate(calc(360deg*5/6));
+    filter: hue-rotate(100deg);
 }
 
 /* filtro de vagas / botão de ajuda */
@@ -52,7 +52,7 @@
 }
 
 button {
-    background-color: rgba(var(--realce),0.2);
+    background-color: rgba(var(--corPrimaria),0.2);
     border-radius: 8px;
     cursor: pointer;
     user-select: none;
@@ -165,9 +165,9 @@ button {
 
     font-size: 1.5em;
     font-weight: 800;
-    min-width: 4ch;
+    min-width: 6ch;
 
-    background-color: rgb(var(--primaria));
+    background-color: rgb(var(--corRealce));
     color: rgb(var(--branco));
 }
     .filtro .areaVaga {
@@ -211,7 +211,7 @@ button {
             margin: 4px;
             padding: 6px;
 
-            background-color: var(--complementar);
+            background-color: rgba(var(--corRealce), 0.1);
             font-size: 0.7em;
             text-transform: uppercase;
         }
@@ -258,6 +258,6 @@ button {
         right: 1em;
         top: 1em;
 
-        background-color: rgb(var(--realce));
+        background-color: rgb(var(--corPrimaria));
         color: white;
     }

@@ -78,7 +78,7 @@
 /* topo e bottom */
 .chat-box .top, 
 .chat-box .bottom {
-    background-color: rgb(var(--realce));
+    background-color: rgb(var(--corPrimaria));
     padding: 10px;
 }
 
@@ -161,7 +161,7 @@
 }
 
 .chat-box .messages .user {
-    background: rgb(var(--realce));
+    background: rgb(var(--corPrimaria));
     color: white;
     align-self: flex-end;
 }

@@ -46,7 +46,7 @@ ul {
     }
     #cadastro:not(button) {
         color: rgba(var(--branco), 1);
-        background-color: rgb(var(--realce));
+        background-color: rgb(var(--corPrimaria));
         border-radius: 16px;
     }
         @media (max-width: 1080px) {

@@ -42,7 +42,7 @@ header {
         position: absolute;
         inset: 0;
     
-        background-color: rgb(var(--realce));
+        background-color: rgb(var(--corPrimaria));
         mix-blend-mode: color;
     
         z-index: -2;

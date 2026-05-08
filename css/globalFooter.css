@@ -7,7 +7,7 @@ footer {
     margin: 0;
     padding: 1em 20%;
 
-    background-color: rgb(var(--realce));
+    background-color: rgb(var(--corPrimaria));
     color: rgb(var(--branco));
 }
     @media (max-width: 1080px) {

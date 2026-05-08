@@ -12,11 +12,8 @@
 :root {
     --branco: 245, 245, 245;
     --preto: 41, 41, 46;
-
-    --realce: 39,39,87; /* midnightblue */
-    --primaria: 80, 80, 129;
-/*    --primaria: 70, 130, 180; /* steelblue */
-    --complementar: hsl(from rgb(var(--primaria)) 180deg s 70%);
+    --corPrimaria: 54, 61, 99;
+    --corRealce: 61, 73, 143;
 
     --fontePrimaria: "Roboto", sans-serif;
     --fonteSecundaria: "Montserrat", sans-serif;
@@ -28,7 +25,7 @@
 
 a {
     text-decoration: none;
-    color: var(--realce);
+    color: var(--corPrimaria);
 }
 
 body {
