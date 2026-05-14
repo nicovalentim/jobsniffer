@@ -1,3 +1,7 @@
+# requerimento
+- apresentação
+- gravar um vídeo do projeto rodando
+
 # funcional
 - edição de cadastro
 - edição de vagas
