@@ -1,5 +1,6 @@
 #loginMenu,
-#cadastroMenu {
+#cadastroMenu,
+#cadastroSucesso {
     display: flex;
     flex-direction: column;
 
@@ -20,38 +21,76 @@
     padding: 2em;
 }
     #loginMenu.ativo,
-    #cadastroMenu.ativo {
+    #cadastroMenu.ativo,
+    #cadastroSucesso.ativo {
         opacity: 1;
         pointer-events: all;
         transform: translate(-50%, -50%) scale(1);
     }
-    #loginMenu input
+
+    #loginMenu section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .tela p {
+        margin: 10px 0;
+    }
+    .tela p,
+    .erro {
+        text-align: center;
+        font-size: 0.7em;
+    }
+        .erro-shake {
+            border: 2px solid red !important;
+            animation: tremer 0.2s ease-in-out;
+        }
+            @keyframes tremer {
+                0% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                50% { transform: translateX(10px); }
+                75% { transform: translateX(-10px); }
+                100% { transform: translateX(0); }
+            }
+
+    #loginMenu input,
     #cadastroMenu input {
         width: 100%;
 
         border: none;
         border-radius: 8px;
+        margin: 8px 0;
         padding: 10px;
+        text-align: center;
 
         background: white;
     }
+        #loginMenu input::placeholder,
+        #cadastroMenu input::placeholder {
+            text-align: center;
+        }
+
     .btn {
         font-weight: 600;
         padding: 10px;
 
         background: rgb(var(--corPrimaria));
         color: rgb(var(--branco));
-    }
-    #voltarBtn {
-        cursor: pointer;
-        display: none;
 
-        font-size: 0.8em;
-        padding: 10px;
-
-        color: rgb(var(--corPrimaria));
+        flex-shrink: 0;
     }
-    #esqueceuSenha {
+        #btnVoltar {
+            align-self: start;
+            cursor: pointer;
+            display: none;
+
+            font-size: 0.8em;
+            padding: 10px;
+
+            color: rgb(var(--corPrimaria));
+        }
+
+    #login_esqueceuSenha {
         cursor: pointer;
 
         color: rgb(var(--corPrimaria));
@@ -59,7 +98,10 @@
         font-size: 0.85em;
         margin: 10px 0;
     }
-    #loginBtn {
+    #login_emailRec {
+        margin-bottom: 16px !important;
+    }
+    #btnLogin {
         padding: 9px;
         margin: 0 5px;
     }

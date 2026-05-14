@@ -1,67 +1,70 @@
 import { popUp } from "./global.js";
 
-var loginMenu = document.getElementById("loginMenu");
-var voltarBtn = document.getElementById("voltarBtn");
-var loginBtn = document.getElementById("loginBtn");
+const loginMenu = document.getElementById("loginMenu");
+const btnVoltar = document.getElementById("btnVoltar");
+const btnLogin = document.getElementById("btnLogin");
 
-var usuario_telefoneas = {
-    login: document.getElementById("usuario_telefoneaLogin"),
-    senha: document.getElementById("usuario_telefoneaSenha")
+const telas = {
+    login: document.getElementById("login_telaEntrada"),
+    senha: document.getElementById("login_telaRecuperacao")
 };
 
-var campos = {
-    lEmail: document.getElementById("loginEmail"),
-    lSenha: document.getElementById("loginSenha"),
-    rEmail: document.getElementById("recEmail")
+const campos = {
+    email: document.getElementById("login_email"),
+    senha: document.getElementById("login_senha"),
+    emailRec: document.getElementById("login_emailRec")
 };
 
-// chama o menu de login
-popUp(loginMenu, loginBtn, function() {
-    alternarusuario_telefonea('login');
-    campos.lEmail.value = campos.lSenha.value = campos.rEmail.value = "";
+    popUp(loginMenu, btnLogin, function() {
+        login_trocarTelas('login');
+        campos.email.value = campos.senha.value = campos.emailRec.value = "";
 
-    setTimeout(function() {
-        document.getElementById("loginEmail").focus();
-    }, 50);
-});
+        setTimeout(function() {
+            document.getElementById("login_email").focus();
+        }, 50);
+    });
 
-// alterna entre as usuario_telefoneas do menu
-function alternarusuario_telefonea(usuario_telefonea) {
-    limparErros();
-    usuario_telefoneas.login.style.display = (usuario_telefonea === 'login') ? "flex" : "none";
-    usuario_telefoneas.senha.style.display = (usuario_telefonea === 'senha') ? "flex" : "none";
-    voltarBtn.style.display = (usuario_telefonea === 'senha') ? "inline" : "none";
-}
-    voltarBtn.onclick = function() {
-        alternarusuario_telefonea('login');
-    };
-    document.getElementById("esqueceuSenha").onclick = function() {
-        alternarusuario_telefonea('senha');
-    };
-
-// validar dados
-function validar(tipo, valor) {
-    if (tipo === 'email') {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
+    function login_trocarTelas(nomeTela) {
+        limparErros();
+        telas.login.style.display = (nomeTela === 'login') ? "flex" : "none";
+        telas.senha.style.display = (nomeTela === 'senha') ? "flex" : "none";
+        btnVoltar.style.display = (nomeTela === 'senha') ? "inline" : "none";
     }
-    return valor.length >= 6;
+        btnVoltar.onclick = function() {
+            login_trocarTelas('login');
+        };
+        document.getElementById("login_esqueceuSenha").onclick = function() {
+            login_trocarTelas('senha');
+        };
+
+function validar(usuario, senha) {
+    if (usuario === 'email')
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(senha);
+    return senha.length >= 6;
 }
     function submeterLogin() {
         limparErros();
-        var vEmail = validar('email', campos.lEmail.value);
-        var vSenha = validar('senha', campos.lSenha.value);
+        var vEmail = validar('email', campos.email.value);
+        var vSenha = validar('senha', campos.senha.value);
 
-        if (!vEmail) document.getElementById("erroLoginEmail").textContent = "Email inválido";
-        if (!vSenha) document.getElementById("erroLoginSenha").textContent = "Senha curta (min 6)";
+        if (!vEmail) {
+            document.getElementById("erroLoginEmail").textContent = "Email inválido";
+            erroTreme(campos.email);
+        }
+        if (vEmail && !vSenha) {
+            document.getElementById("erroLoginSenha").textContent = "Senha muito curta!";
+            erroTreme(campos.senha);
+        }
 
         if (vEmail && vSenha) console.log("Login OK");
     }
     function submeterRecuperacao() {
         limparErros();
-        if (validar('email', campos.rEmail.value)) {
+        if (validar('email', campos.emailRec.value)) {
             console.log("Recuperação OK");
         } else {
             document.getElementById("erroRecuperacao").textContent = "Email inválido";
+            erroTreme(campos.emailRec);
         }
     }
     // erros
@@ -70,25 +73,31 @@ function validar(tipo, valor) {
         for (var i = 0; i < spans.length; i++) spans[i].textContent = "";   // limpa todos os elementos com a classe erro
     }
 
-// enviar os dados
-document.getElementById("btnEntrar").onclick = function(e) {
-    e.preventDefault();
-    submeterLogin();
-};
-document.getElementById("btnRecuperar").onclick = function(e) {
-    e.preventDefault();
-    submeterRecuperacao();
-};
-    // envia com enter
+    // enviar os dados
+    document.getElementById("btnEntrar").onclick = function(e) {
+        e.preventDefault();
+        submeterLogin();
+    };
+    document.getElementById("btnRecuperar").onclick = function(e) {
+        e.preventDefault();
+        submeterRecuperacao();
+    };
     loginMenu.onkeydown = function(e) {
         if (e.key === "Enter") {
-            // para usuario_telefonea de login
-            if (usuario_telefoneas.login.style.display !== "none") {
+            if (telas.login.style.display !== "none") {
                 submeterLogin();
-            } 
-            // para usuario_telefonea de recuperação
-            else if (usuario_telefoneas.senha.style.display !== "none") {
+            }
+            else if (telas.senha.style.display !== "none") {
                 submeterRecuperacao();
             }
         }
     };
+
+function erroTreme(input) {
+    input.classList.remove("erro-shake");
+    void input.offsetWidth; 
+    input.classList.add("erro-shake");
+    setTimeout(() => {
+        input.classList.remove("erro-shake");
+    }, 500);
+}

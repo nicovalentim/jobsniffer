@@ -1,3 +1,5 @@
+/* #cadastroMenu e #loginMenu estão em globalLogin.css */
+
 form {
     display: block;
 }
@@ -26,9 +28,6 @@ form {
     }
     form input[type="file"] {
         display: none;
-    }
-    form input[type="checkbox"] {
-        margin: 0.5em 0.5em;
     }
     form label {
         display: flex;
@@ -102,13 +101,13 @@ textarea {
         width: 100%;
     }
 
-#regrasSenha span,
-#erroConfirmaSenha.ativo {
+#cadastro_regrasSenha span,
+#cadastro_senhasDiferentes.ativo {
     display: block;
 }
-    #regrasSenha.inativo,
-    #regrasSenha span.valido,
-    #erroConfirmaSenha {
+    #cadastro_regrasSenha.inativo,
+    #cadastro_regrasSenha span.valido,
+    #cadastro_senhasDiferentes {
         display: none;
     }
 
@@ -128,3 +127,28 @@ textarea {
             margin: 1em 0;
         }
     }
+
+    .aceitar {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+
+        width: auto;
+        margin: 10px 0;
+        font-size: 12px;
+    }
+        .aceitar input[type="checkbox"] {
+            width: 1em !important;
+            margin-right: 0.3em !important;
+        }
+
+    .cadastro_enviar {
+        background: rgb(var(--branco));
+        border: 1px solid rgb(var(--preto));
+        color: rgb(var(--preto));
+    }
+        .cadastro_enviar.ativo {
+            background: rgb(var(--corPrimaria));
+            border: none;
+            color: rgb(var(--branco));
+        }

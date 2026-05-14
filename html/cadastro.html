@@ -26,17 +26,14 @@
 
             <button type="button" id="cadastro_arqApaga">Limpar</button>
 
-<!--            <label><input type="checkbox">
-            Aceitar termos & condições</label> -->
-
             <hr />
             <button type="button" class="enviar" id="cadastroBtn">Enviar</button>
 
             <div id="cadastroMenu">
                 <input type="email" name="usuario_email"  placeholder="Digite seu e-mail" required />
-                <input type="password" name="usuario_senha"  placeholder="Digite sua senha" id="senha" required />
-                <input type="password" name="usuario_senha_confirm"  placeholder="Confirme sua senha" id="confirmaSenha" required />
-                <p id="regrasSenha">
+                <input type="password" name="usuario_senha"  placeholder="Digite sua senha" id="cadastro_senha" required />
+                <input type="password" name="usuario_senha_confirm"  placeholder="Confirme sua senha" id="cadastro_confirmaSenha" required />
+                <p id="cadastro_regrasSenha">
                     A senha deve ter:
                     <span id="r1">
                         • Pelo menos seis caracteres
@@ -48,10 +45,16 @@
                         • Um número
                     </span>
                 </p>
-                <p id="erroConfirmaSenha">
+                <p id="cadastro_senhasDiferentes">
                     As senhas devem ser iguais!
                 </p>
-                <button type="submit" class="enviar" href="#">Criar conta!</button>
+                <label class="aceitar"><input type="checkbox" id="cadastro_aceitar" />
+                    Aceitar termos & condições</label>
+                <button class="cadastro_enviar enviar" id="cadastro_enviar" href="#" disabled>Criar conta!</button>
+            </div>
+
+            <div id="cadastroSucesso">
+                Seu cadastro foi realizado com sucesso!
             </div>
 
             <p style="text-align: center;">Ou faça Login com:</p>

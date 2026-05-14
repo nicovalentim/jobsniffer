@@ -18,9 +18,8 @@ export function popUp(menu, btnAbrir, funcao) {
   overlay.onclick = fechar;
 
   document.addEventListener("click", function(e) {
-      if (menu.classList.contains("ativo") && !menu.contains(e.target) && e.target !== btnAbrir) {
+      if (menu.classList.contains("ativo") && !menu.contains(e.target) && e.target !== btnAbrir)
           fechar();
-      }
   });
 
   document.addEventListener("keydown", function(e) {

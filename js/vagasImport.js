@@ -25,26 +25,18 @@ export async function vagas_carregar(url = "/api/vagas") {
     container.innerHTML = conteudo;
 
     const barraPesquisa = document.getElementById("vaga_barraPesquisa");
-    if (barraPesquisa) {
+    if (barraPesquisa)
         barraPesquisa.addEventListener("input", vagas_filtrar);
-    }
 
     if (document.getElementsByClassName("vaga").length > 0) {
         dados.vagas.forEach(function(vaga) {
             const card = document.getElementById(`vaga_${vaga.id}`);
             const cardGrande = document.getElementById(`infoVaga_${vaga.id}`);
 
-            if (card && cardGrande) {
+            if (card && cardGrande)
                 popUp(cardGrande, card);
-            }
         });
     }
-
-    /*
-    const numeroVagas = dados.vagas.length;
-    const vagasPorPagina = 3;
-    alert(numeroVagas % vagasPorPagina);
-    */
 
     vagas_filtrar();
 }

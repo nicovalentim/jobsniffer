@@ -9,7 +9,6 @@ export function enviarEmail() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // elementos do HTML
         const nome = document.querySelector('input[name="contatoNome"]').value;
         const assuntoSemFiltro = document.querySelector('input[name="contatoAssunto"]').value;
             const assunto = encodeURIComponent(assuntoSemFiltro);

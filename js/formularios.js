@@ -7,14 +7,13 @@ import { popUp } from "./globalPopups.js"
 const cadastroBtn = document.getElementById('cadastroBtn');
 const cadastroMenu = document.getElementById('cadastroMenu');
 
-if (cadastroBtn && cadastroMenu) {
+if (cadastroBtn && cadastroMenu)
     popUp(cadastroMenu, cadastroBtn);
-}
 
 const cadastro_formulario = document.querySelector('form');
 
 cadastro_formulario.addEventListener('submit', async (e) => {
-    e.preventDefault(); // impede sair da página ou recarregar
+    e.preventDefault();
 
     const formData = new FormData(cadastro_formulario);
     const response = await fetch('/cadastro', {

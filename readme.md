@@ -43,7 +43,7 @@ Criação de usuários novos com adição ao banco de dados.
 - validarRegras()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): identifica regras para a criação de uma senha nova (como caracteres maiúsculos e minúsculos) dependendo do que foi digitado;
 - senhaValida()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): verifica se a senha é válida;
 - mostrarErro()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): mostra um erro visual em caso de erro de validação da senha;
-- regrasSenha()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): mostra ou esconde visualmente as regras dependendo do que foi digitado;
+- cadastro_regrasSenha()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): mostra ou esconde visualmente as regras dependendo do que foi digitado;
 - senhasIguais()<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formulariosValidacoes.js): cofnrima que a senha e a verificação dela são iguais;
 - ouvinte em cadastro_formulario<sup>JS</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/js/formularios.js) para enviar os dados ao banco.
 - cadastro_data()<sup>PY</sup>[*](https://github.com/nicovalentim/jobsniffer/blob/main/py/rota/cadastro.py): envia os dados ao banco de dados.

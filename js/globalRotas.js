@@ -38,7 +38,7 @@ async function carregarConteudo(fileUrl, type) {
     }
 
     if (type === "contato") {
-        const contato = await import("./email.js");
+        const contato = await import("./email.js")
         contato.enviarEmail();
     }
 }

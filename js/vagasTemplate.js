@@ -44,15 +44,13 @@ export function vaga_gerarHTML(listaVagas, limiteDesc) {
 
     for (const vaga of listaVagas) {
         let descricaoCurta = vaga.descricao;
-        if (descricaoCurta.length > limiteDesc) {
+        if (descricaoCurta.length > limiteDesc)
             descricaoCurta = `${descricaoCurta.slice(0, limiteDesc)} (...)`;
-        }
 
         const requisitos = vaga.requisitos.split(', ')
         let reqs = ""
-        for (let i = 0; i < requisitos.length; i++) {
-            reqs += `<p class="requisitos">#${requisitos[i]}</p>`
-        }
+        for (let i = 0; i < requisitos.length; i++)
+            reqs += `<p class="requisitos">#${requisitos[i]}</p>`;
 
         const infoVaga = vaga_infoOnClick(vaga, reqs);
         const cardVaga = vaga_info(vaga, descricaoCurta, reqs);

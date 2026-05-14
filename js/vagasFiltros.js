@@ -19,19 +19,16 @@ export function vagas_filtrar() {
 
         if (
             pesquisa !== ""
-            && !conteudo.includes(pesquisa)) {
+            && !conteudo.includes(pesquisa)
+        )
             visivel = false;
-        }
 
-        if (filtroAtual.localizacao.length > 0 && !filtroAtual.localizacao.includes(localizacao)) {
+        if (filtroAtual.localizacao.length > 0 && !filtroAtual.localizacao.includes(localizacao))
             visivel = false;
-        }
-        if (filtroAtual.regime.length > 0 && !filtroAtual.regime.includes(regime)) {
+        if (filtroAtual.regime.length > 0 && !filtroAtual.regime.includes(regime))
             visivel = false;
-        }
-        if (filtroAtual.area.length > 0 && !filtroAtual.area.includes(area)) {
+        if (filtroAtual.area.length > 0 && !filtroAtual.area.includes(area))
             visivel = false;
-        }
 
         vaga.style.display = visivel ? "block" : "none";
     });
@@ -41,11 +38,9 @@ function vaga_verTodosFiltros() {
     const botaoTodos = document.querySelector('[data-filtro="todos"]');
     const selecionados = document.querySelectorAll('.filtro button.selecionado:not([data-filtro="todos"])');
 
-    if (selecionados.length === 0) {
-        botaoTodos.classList.add("selecionado");
-    } else {
+    (selecionados.length === 0) ?
+        botaoTodos.classList.add("selecionado"):
         botaoTodos.classList.remove("selecionado");
-    }
 }
 
 document.addEventListener("click", (e) => {
@@ -58,8 +53,8 @@ document.addEventListener("click", (e) => {
         filtroAtual.regime = [];
         filtroAtual.area = [];
 
-        document.querySelectorAll(".filtro button").
-            forEach(b => b.classList.remove("selecionado"));
+        document.querySelectorAll(".filtro button")
+            .forEach(b => b.classList.remove("selecionado"));
         botao.classList.add("selecionado");
 
     } else {

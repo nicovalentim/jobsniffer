@@ -1,98 +1,71 @@
-export { popUp } from "./globalPopups.js";
+// Seleciona os campos de senha e os elementos de feedback visual
+const senha = document.getElementById("cadastro_senha");
+const confirmaSenha = document.getElementById("cadastro_confirmaSenha");
+const regrasSenha = document.getElementById("cadastro_regrasSenha");
+const senhasDiferentes = document.getElementById("cadastro_senhasDiferentes");
 
-// chama a tela de validação de usuário/senha (testa se senha repete e etc)
-const cadastroBtn = document.getElementById('cadastroBtn');
-const cadastroMenu = document.getElementById('cadastroMenu');
+function validarcadastro_regrasSenha(senha) {
+    const ids = ["r1", "r2", "r3", "r4"];
+    const regras = [
+        senha.length >= 6,           // Regra 1: Pelo menos 6 caracteres
+        /[A-Z]/.test(senha),         // Regra 2: Pelo menos uma letra maiúscula
+        /[a-z]/.test(senha),         // Regra 3: Pelo menos uma letra minúscula
+        /[0-9]/.test(senha)          // Regra 4: Pelo menos um número
+    ];
 
-if (cadastroBtn && cadastroMenu) {
-    popUp(cadastroMenu, cadastroBtn);
-}
-
-/* validações */
-    /* regras ficam verdes quando certas */
-    function validarRegras(senha, ids){
-        const regras = [
-            senha.length >= 6,
-            /[A-Z]/.test(senha),
-            /[a-z]/.test(senha),
-            /[0-9]/.test(senha)
-        ];
-
-        regras.forEach((ok, i) => {
-            const el = document.getElementById(ids[i]);
-            if(ok){
-            el.classList.add("valido");
-            } else {
-            el.classList.remove("valido");
-            }
-        });
-    }
-
-    /* validação senha */
-    function senhaValida(senha){
-        if (senha.length < 6) return false;
-        if (!/[A-Z]/.test(senha)) return false;
-        if (!/[a-z]/.test(senha)) return false;
-        if (!/[0-9]/.test(senha)) return false;
-        return true;
-    }
-
-    /* erro visual */
-/*    function mostrarErro(input){
-        input.classList.remove("erro");
-        void input.offsetWidth;
-        input.classList.add("erro");
-    
-        setTimeout(() => input.classList.remove("erro"), 500);
-    }
-/*        if (!senhaValida(senhaCadastro.value)) {
-            mostrarErro(senhaCadastro);
-            return;
-        }
-
-    /* ativa as regras */
-    document.addEventListener("input", (e) => {
-        if (e.target.id === "senha") {
-            validarRegras(e.target.value, ["r1","r2","r3","r4"]);
-        }
+    regras.forEach((passou, i) => {
+        const elemento = document.getElementById(ids[i]);
+        passou ?
+            elemento.classList.add("valido") :
+            elemento.classList.remove("valido");
     });
 
-    /* esconde texto se todas as regras forem verdadeiras */
-    let senha = document.getElementById("senha")    
+    const todasOk = regras.every(t => t === true);
+    todasOk ?
+        regrasSenha.classList.add("inativo") :
+        regrasSenha.classList.remove("inativo");
+    
+    return todasOk;
+}
 
-    function regrasSenha() {
-        if (
-            !document.getElementById("r1").classList.contains("valido") || 
-            !document.getElementById("r2").classList.contains("valido") || 
-            !document.getElementById("r3").classList.contains("valido") || 
-            !document.getElementById("r4").classList.contains("valido")
-        ) {
-            document.getElementById("regrasSenha").classList.remove("inativo")
+function verificarIgualdade() {
+    if (confirmaSenha.value !== "" && senha.value !== confirmaSenha.value) {
+        senhasDiferentes.classList.add("ativo");
+        return false;
+    } else {
+        senhasDiferentes.classList.remove("ativo");
+        return true;
+    }
+}
+    senha.addEventListener("input", (e) => {
+        validarcadastro_regrasSenha(e.target.value);
+        verificarIgualdade();
+    });
+    confirmaSenha.addEventListener("input", verificarIgualdade);
+
+const form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+    const senhaValida = validarcadastro_regrasSenha(senha.value);
+    const senhasIguais = verificarIgualdade();
+
+    if (!senhaValida || !senhasIguais) {
+        e.preventDefault();
+        alert("Por favor, verifique os requisitos de senha.");
+    }
+});
+
+let botaoEnviar = document.getElementById("cadastro_enviar");
+let checkboxAceitar = document.getElementById("cadastro_aceitar");
+
+    checkboxAceitar.addEventListener("change", function() {
+        if (checkboxAceitar.checked) {
+            botaoEnviar.disabled = false;
+            botaoEnviar.type = "submit";
+            botaoEnviar.classList.add("ativo");
         } else {
-            document.getElementById("regrasSenha").classList.add("inativo")
+            botaoEnviar.disabled = true;
+            botaoEnviar.type = "";
+            botaoEnviar.classList.remove("ativo");
         }
     }
-
-    senha.addEventListener("input",regrasSenha);
-
-    // confirma que as duas senhas digitadas são iguais
-    let confirmaSenha = document.getElementById("confirmaSenha")
-
-    function senhasIguais() {
-        if (
-            confirmaSenha.value != ""
-            && senha.value != ""
-            && senha.value != confirmaSenha.value
-        ) {
-            document.getElementById("erroConfirmaSenha").classList.add("ativo")
-        } else {
-            document.getElementById("erroConfirmaSenha").classList.remove("ativo")
-        }
-    }
-
-    senha.addEventListener("input", senhasIguais);
-    confirmaSenha.addEventListener("input", senhasIguais);
-
-/*  if(e.target.id === "cadEmail"){
-    erroEmail.style.display = "none";
-  } */
+);
