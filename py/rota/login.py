@@ -9,14 +9,21 @@ def login():
     conn = conexao()
     cursor = conn.cursor()
 
-    # verifica usuário e senha
     cursor.execute(
-        "SELECT * FROM cadastro WHERE email = ? AND senha = ?", 
-        (dados.get("email"), dados.get("senha"))
+        "SELECT Nome, Email FROM cadastro WHERE Email = ? AND Senha = ?",
+        (dados.get("Email"), dados.get("Senha"))
     )
-    
-    usuario = cursor.fetchone()
+
+    loginID = cursor.fetchone()
     conn.close()
-    
-    # retorna status
-    return jsonify({"status": "ok" if usuario else "erro"})
+
+    if loginID:
+        return jsonify({
+            "status": "ok",
+            "mensagem": "Login realizado com sucesso"
+        }), 200
+
+    return jsonify({
+        "status": "erro",
+        "mensagem": "Email ou senha inválidos"
+    }), 401

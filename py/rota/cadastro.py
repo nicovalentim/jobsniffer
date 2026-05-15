@@ -5,7 +5,7 @@ rota_cadastro = Blueprint('cadastro', __name__)
 
 @rota_cadastro.route('/cadastro', methods=['POST'])
 def cadastro_data():
-    # variável python = ...('name no html')
+    # python = ...('html')
     nome = request.form.get('usuario_nome')
     email = request.form.get('usuario_email')
     senha = request.form.get('usuario_senha')
@@ -15,20 +15,19 @@ def cadastro_data():
     linkedin = request.form.get('usuario_linkedin')
     folio = request.form.get('usuario_folio')
 
-    conn = conexao()                          # conecta ao banco de dados
-    cursor = conn.cursor()                              # cria cursor para executar comandos SQL
+    conn = conexao()
+    cursor = conn.cursor()
 
     try:
-        cursor.execute(                                 # primeira linha é o nome das colunas do SQLite
-                                                        # segunda linha deixa ? como valor temporário para evitar SQL injection (segurança)
-            """INSERT INTO cadastro 
+        cursor.execute(
+            """INSERT INTO cadastro
             (Nome, Email, Senha, Nascimento, Telefone, CEP, LinkedIn_url, Folio_url)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)""", 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
             (nome, email, senha, nascimento, telefone, cep, linkedin, folio)
         )
         conn.commit()
-        return "Cadastro realizado com sucesso!"        # usado em testes
+        return "Cadastro realizado com sucesso!"
     except Exception as e:
-        return f"Erro ao cadastrar: {e}", 500           # usado em testes
+        return f"Erro ao cadastrar: {e}", 500
     finally:
-        conn.close()                                    # fecha conexão com o banco de dados
+        conn.close()

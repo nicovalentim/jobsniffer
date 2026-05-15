@@ -1,14 +1,20 @@
-# requerimento
+# to do
+
+## requerimento
+
 - apresentação
 - gravar um vídeo do projeto rodando
 
-# funcional
+## funcional
+
 - edição de cadastro
 - edição de vagas
 - lógica de candidatar- se
 - diferenciação de usuário e admin
 - limite de vagas por página
-- lógica de login
+- hashes para senhas no login/cadastro (segurança)
 
-# estética
+## estética
+
+- menuzinho em cima para informações de login/botão de logout
 - reduzir número de vagas por página
