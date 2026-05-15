@@ -10,7 +10,7 @@ def login():
     cursor = conn.cursor()
 
     cursor.execute(
-        "SELECT Nome, Email FROM cadastro WHERE Email = ? AND Senha = ?",
+        "SELECT * FROM cadastro WHERE Email = ? AND Senha = ?",
         (dados.get("Email"), dados.get("Senha"))
     )
 
@@ -20,7 +20,8 @@ def login():
     if loginID:
         return jsonify({
             "status": "ok",
-            "mensagem": "Login realizado com sucesso"
+            "mensagem": "Login realizado com sucesso",
+            "nome": loginID[0]
         }), 200
 
     return jsonify({

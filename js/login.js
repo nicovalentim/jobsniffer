@@ -20,9 +20,13 @@ btnEntrar.addEventListener("click", async () => {
         alert(data.mensagem);
 
         if (response.ok) {
-            console.log("programa funcionando");
-            sessionStorage.setItem("usuarioLogado", "true");
-            sessionStorage.setItem("nomeUsuario", Nome);
+            localStorage.setItem("logado", true);
+            let logado = localStorage.getItem("logado");
+            console.log(localStorage.getItem("logado"));
+
+            localStorage.setItem("nome", data.nome);
+            let nome = localStorage.getItem("nome");
+            console.log(localStorage.getItem("nome"));
         }
 
     } catch (erro) {
@@ -32,7 +36,7 @@ btnEntrar.addEventListener("click", async () => {
     const logout = "";
 
     logout.addEventListener("click", () => {
-        sessionStorage.clear();
+        localStorage.clear();
 
         alert("Você saiu do sistema!");
     });
