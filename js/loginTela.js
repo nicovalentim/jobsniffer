@@ -1,5 +1,5 @@
 import { popUp } from "./global.js";
-import { erroTreme, limparErros, validar } from "./loginValidar.js";
+import { erroTreme, limparErros, validar } from "./loginValidacoes.js";
 
 const loginMenu = document.getElementById("loginMenu");
 const btnVoltar = document.getElementById("btnVoltar");

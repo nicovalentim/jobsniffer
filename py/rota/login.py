@@ -21,7 +21,14 @@ def login():
         return jsonify({
             "status": "ok",
             "mensagem": "Login realizado com sucesso",
-            "nome": loginID[0]
+            "nome": loginID[0],
+            "email": loginID[1],
+            "senha": loginID[2],
+            "nascimento": loginID[3],
+            "telefone": loginID[4],
+            "cep": loginID[5],
+            "linkedin": loginID[6],
+            "github": loginID[7]
         }), 200
 
     return jsonify({
