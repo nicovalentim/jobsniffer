@@ -57,3 +57,17 @@ ul {
                 font-size: 0.75em;
             }
         }
+
+    #menuUsuario {
+        display: none;
+        flex-direction: column;
+        align-items: end;
+    }
+        #menuUsuario a,
+        #menuUsuario p,
+        #usuarioNome {
+            margin: 0;
+        }
+        .segundaLinha {
+            font-size: 0.75em;
+        }

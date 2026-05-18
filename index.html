@@ -26,9 +26,14 @@
     <li>
         <a href="#" id="btnLogin">Login</a>
 
-    <div>
-            <a href="#" id="btnLogout">Sair</a>
-    </div>
+        <section id="menuUsuario">
+            <p>
+                Olá,
+                <a href="#" id="loginNome" class="perfil">Usuário</a>
+            </p><p class="segundaLinha">
+                <a href="#" id="btnLogout">Sair</a>
+            </p>
+        </section>
 
         <div id="loginMenu">
             <span id="btnVoltar">Voltar</span>
@@ -41,16 +46,14 @@
                 <span id="erroLoginSenha" class="erro"></span>
 
                 <p id="login_esqueceuSenha">Esqueceu a sua senha?</p>
-                <label class="aceitar"><input type="checkbox" id="login_salvarSenha" />
-                Se manter conectado?</label>
                 <button id="btnEntrar" class="btn">Entrar</button>
 
                 <p>Ou faça Login com:</p>
-                <span class="api">
-                    <a href><img src="icones/github.png" /></a>
-                    <a href><img src="icones/google.png" /></a>
-                    <a href><img src="icones/linkedin.png" /></a>
-                </span>
+                    <span class="api">
+                        <a href><img src="icones/github.png" /></a>
+                        <a href><img src="icones/google.png" /></a>
+                        <a href><img src="icones/linkedin.png" /></a>
+                    </span>
             </section>
 
             <section id="login_telaRecuperacao" class="tela" style="display:none;">
@@ -61,7 +64,7 @@
         </div>
 
         <a href="cadastro" id="cadastro" class="links">Cadastrar</a>
-        </li>
+    </li>
     </ul>
 
     <div id="pagina"></div>

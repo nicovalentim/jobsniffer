@@ -1,3 +1,5 @@
+import { atualizarUsuario } from "./perfil.js";
+
 const conteudoPagina = document.getElementById("pagina");
 const navbar = document.querySelector(".navbar");
 
@@ -5,19 +7,23 @@ async function rotearPagina(caminho) {
     switch (caminho) {
         case "":
         case "home":
-            await carregarConteudo("/html/home.html", "home");
-            break;
-        case "sobre":
-            await carregarConteudo("/html/sobre.html", "sobre");
-            break;
-        case "contato":
-            await carregarConteudo("/html/contato.html", "contato");
-            break;
-        case "vagas":
-            await carregarConteudo("/html/vagas.html", "vagas");
+            await carregarConteudo("./html/home.html", "home");
             break;
         case "cadastro":
-            await carregarConteudo("/html/cadastro.html", "cadastro");
+            await carregarConteudo("./html/cadastro.html", "cadastro");
+            break;
+        case "contato":
+            await carregarConteudo("./html/contato.html", "contato");
+            break;
+        case "perfil":
+            await carregarConteudo("./html/perfil.html", "perfil");
+            atualizarUsuario();
+            break;
+        case "sobre":
+            await carregarConteudo("./html/sobre.html", "sobre");
+            break;
+        case "vagas":
+            await carregarConteudo("./html/vagas.html", "vagas");
             break;
         default:
             console.log("Rota não mapeada:", caminho);
@@ -47,8 +53,17 @@ navbar.addEventListener("click", (e) => {
     const link = e.target.closest(".links");
     e.preventDefault();
 
+    if (!link) return;
+
     const path = link.getAttribute("href");
-    rotearPagina(path);
+    if (path) {
+        rotearPagina(path);
+    }
+});
+
+document.querySelector(".perfil").addEventListener("click", (e) => {
+    e.preventDefault();
+    rotearPagina("perfil");
 });
 
 document.addEventListener("DOMContentLoaded", () => rotearPagina("home"));

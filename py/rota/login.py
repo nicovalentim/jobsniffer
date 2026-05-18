@@ -28,7 +28,7 @@ def login():
             "telefone": loginID[4],
             "cep": loginID[5],
             "linkedin": loginID[6],
-            "github": loginID[7]
+            "folio": loginID[7]
         }), 200
 
     return jsonify({
