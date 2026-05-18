@@ -1,5 +1,5 @@
 import "./loginTela.js";
-import "./loginValidacoes.js";
+import { erroTreme, validarFormatoLogin } from "./loginValidacoes.js";
 
 const btnEntrar = document.getElementById("btnEntrar");
 const btnLogin = document.getElementById("btnLogin");
@@ -18,10 +18,21 @@ if (localStorage.getItem("logado") === "true") {
 let loginNome = document.getElementById("loginNome");
 loginNome.textContent = localStorage.getItem("nome") || "Usuário";
 
-// onkeydwon para o enter
-btnEntrar.addEventListener("click", async () => {
-    const Email = document.getElementById("login_email").value;
-    const Senha = document.getElementById("login_senha").value;
+btnEntrar.addEventListener("click", (e) => {
+    e.preventDefault();
+    btnEntrarClick();
+});
+
+btnLogout.addEventListener("click", () => {
+    localStorage.clear();
+    location.reload();
+});
+
+async function btnEntrarClick() {
+    const email = document.getElementById("login_email");
+    const senha = document.getElementById("login_senha");
+
+    if (!validarFormatoLogin(email, senha)) return;
 
     try {
         const response = await fetch("/login", {
@@ -29,7 +40,7 @@ btnEntrar.addEventListener("click", async () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ Email, Senha })
+            body: JSON.stringify({ email: email.value, senha: senha.value })
         });
 
         if (response.ok) {
@@ -46,14 +57,14 @@ btnEntrar.addEventListener("click", async () => {
             localStorage.setItem("folio", dados.folio || "Não enviado");
 
             location.reload();
+        } else {
+            document.getElementById("erroLoginSenha").textContent = "Usuário ou senha incorretos.";
+            erroTreme(email);
+            erroTreme(senha);
         }
 
     } catch (erro) {
         console.error("Erro no login:", erro);
+        document.getElementById("erroLoginSenha").textContent = "Erro ao conectar com o servidor.";
     }
-});
-
-    btnLogout.addEventListener("click", () => {
-        localStorage.clear();
-        location.reload();
-    });
+}

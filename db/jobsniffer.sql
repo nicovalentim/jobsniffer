@@ -46,30 +46,6 @@ USE banco_de_vagas;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `banco_de_curriculos`
---
-
-DROP TABLE IF EXISTS `banco_de_curriculos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `banco_de_curriculos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome_documento` varchar(150) DEFAULT NULL,
-  `caminho_no_servidor` varchar(255) DEFAULT NULL,
-  `vaga` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `banco_de_curriculos`
---
-
-LOCK TABLES `banco_de_curriculos` WRITE;
-/*!40000 ALTER TABLE `banco_de_curriculos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `banco_de_curriculos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `banco_de_vagas`
 --
 
@@ -109,6 +85,7 @@ DROP TABLE IF EXISTS `cadastro`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cadastro` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `admin` BOOLEAN(2) DEFAULT FALSE,
   `Nome` varchar(150) DEFAULT NULL,
   `Email` varchar(150) DEFAULT NULL,
   `Senha` varchar(16) DEFAULT NULL,
@@ -117,7 +94,8 @@ CREATE TABLE `cadastro` (
   `CEP` varchar(8) DEFAULT NULL,
   `LinkedIn_url` varchar(255) DEFAULT NULL,
   `Folio_url` varchar(255) DEFAULT NULL,
-  `Currículo_ID` int(11) DEFAULT NULL
+  `Curriculo` int(11) DEFAULT NULL,
+  `Vagas` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

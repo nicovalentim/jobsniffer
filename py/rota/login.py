@@ -11,7 +11,7 @@ def login():
 
     cursor.execute(
         "SELECT * FROM cadastro WHERE Email = ? AND Senha = ?",
-        (dados.get("Email"), dados.get("Senha"))
+        (dados.get("email"), dados.get("senha"))
     )
 
     loginID = cursor.fetchone()
@@ -21,14 +21,14 @@ def login():
         return jsonify({
             "status": "ok",
             "mensagem": "Login realizado com sucesso",
-            "nome": loginID[0],
-            "email": loginID[1],
-            "senha": loginID[2],
-            "nascimento": loginID[3],
-            "telefone": loginID[4],
-            "cep": loginID[5],
-            "linkedin": loginID[6],
-            "folio": loginID[7]
+            "nome": loginID[2],
+            "email": loginID[3],
+            "senha": loginID[4],
+            "nascimento": loginID[5],
+            "telefone": loginID[6],
+            "cep": loginID[7],
+            "linkedin": loginID[8],
+            "folio": loginID[9]
         }), 200
 
     return jsonify({
