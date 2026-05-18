@@ -87,7 +87,7 @@ CREATE TABLE `cadastro` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `admin` BOOLEAN(2) DEFAULT FALSE,
   `Nome` varchar(150) DEFAULT NULL,
-  `Email` varchar(150) DEFAULT NULL,
+  `Email` varchar(150) DEFAULT NULL UNIQUE,
   `Senha` varchar(16) DEFAULT NULL,
   `Nascimento` varchar(10) DEFAULT NULL,
   `Telefone` varchar(15) DEFAULT NULL,

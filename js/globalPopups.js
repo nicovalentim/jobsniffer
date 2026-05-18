@@ -1,24 +1,32 @@
 export function popUp(menu, btnAbrir, funcao) {
   const abrir = function() {
       menu.classList.add("ativo");
-      overlay.classList.add("ativo");
+      if (typeof overlay !== 'undefined' && overlay) overlay.classList.add("ativo");
       if (typeof funcao === "function") funcao();
   };
 
   const fechar = function() {
       menu.classList.remove("ativo");
-      overlay.classList.remove("ativo");
+      if (typeof overlay !== 'undefined' && overlay) overlay.classList.remove("ativo");
   };
 
-  btnAbrir.onclick = function(e) {
-      e.stopPropagation();
+  if (btnAbrir) {
+      btnAbrir.onclick = function(e) {
+          e.stopPropagation();
+          abrir();
+      };
+  } else {
       abrir();
-  };
+  }
 
-  overlay.onclick = fechar;
+  if (typeof overlay !== 'undefined' && overlay) {
+      overlay.onclick = fechar;
+  }
 
   document.addEventListener("click", function(e) {
-      if (menu.classList.contains("ativo") && !menu.contains(e.target) && e.target !== btnAbrir)
+      const clicouNoBotao = btnAbrir && e.target === btnAbrir;
+      
+      if (menu.classList.contains("ativo") && !menu.contains(e.target) && !clicouNoBotao)
           fechar();
   });
 

@@ -4,10 +4,9 @@
 </header>
 
 <div class="fundo card cadastro">
-
     <section>
         <h1>Cadastro</h1>
-        <form action="/cadastro" method="POST">
+        <form action="/cadastro" method="POST" class="cadastro_form">
 
             <input type="text" name="usuario_nome" placeholder="Digite seu nome aqui" required />
             <div class="linha">
@@ -20,7 +19,7 @@
 
             <div id="cadastro_arqReceber">
                 <div class="cadastro_arqNomePadrao">enviar curriculo</div>
-                <input type="file" id="cadastro_arqRecebido" />
+                <input type="file" id="cadastro_arqRecebido" name="usuario_curriculo" />
                 <div class="cadastro_arqNome"></div>
             </div>
 
@@ -50,7 +49,7 @@
                 </p>
                 <label class="aceitar"><input type="checkbox" id="cadastro_aceitar" />
                     Aceitar termos & condições</label>
-                <button class="cadastro_enviar enviar" id="cadastro_enviar" href="#" disabled>Criar conta!</button>
+                <button type="submit" class="cadastro_enviar enviar" id="cadastro_enviar" disabled>Criar conta!</button>     
             </div>
 
             <div id="cadastroSucesso">
