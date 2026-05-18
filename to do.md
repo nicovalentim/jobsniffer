@@ -8,11 +8,11 @@
 ## funcional
 
 - hashes para senhas no login/cadastro (segurança)
+- diferenciação de usuário e admin
 - edição de cadastro
 - edição de vagas
-- lógica de candidatar- se
-- diferenciação de usuário e admin
 - limite de vagas por página
+- mostrar candidaturas
 
 ## estética
 

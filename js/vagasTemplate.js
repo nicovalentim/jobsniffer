@@ -22,8 +22,12 @@ export function vaga_info(vaga, descricao, reqs) {
 }
 
 export function vaga_infoOnClick(vaga, reqs) {
+    let salario = vaga.salario;
+    salario = salario.toLocaleString('pt-BR');
+    salario = "R$ " + salario + ",00";
+
     return `
-        <div class="infoVaga" id="infoVaga_${vaga.id}">
+        <form class="infoVaga" id="infoVaga_${vaga.id}">
             <span class="tituloVaga">
                 <p class="areaVaga" data-area="${vaga.area.toLowerCase()}">${vaga.area}</p>
             </span>
@@ -32,10 +36,11 @@ export function vaga_infoOnClick(vaga, reqs) {
             <section>
                 <span class="naVaga">${vaga.localizacao}</span>
                 <span class="naVaga">${vaga.regime}</span>
+                <span class="naVaga">${salario}</span>
             </section>
             <span class="reqs">${reqs}</span>
-            <button class="">Candidatar-se!</button>
-        </div>
+            <button type="submit">Candidatar-se!</button>
+        </form>
     `
 }
 

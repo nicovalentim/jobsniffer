@@ -1,5 +1,6 @@
 import { popUp } from "./globalPopups.js";
 import { vagas_carregarBanco } from "./vagasBanco.js";
+import { inicializarCandidatura } from "./vagasCandidatar.js";
 import { vagas_filtrar } from "./vagasFiltros.js";
 import { vaga_gerarHTML } from "./vagasTemplate.js";
 
@@ -33,8 +34,11 @@ export async function vagas_carregar(url = "/api/vagas") {
             const card = document.getElementById(`vaga_${vaga.id}`);
             const cardGrande = document.getElementById(`infoVaga_${vaga.id}`);
 
-            if (card && cardGrande)
+            if (card && cardGrande) {
                 popUp(cardGrande, card);
+                const formularioVaga = document.getElementById(`infoVaga_${vaga.id}`);
+                inicializarCandidatura(formularioVaga, vaga.id);
+            }
         });
     }
 
