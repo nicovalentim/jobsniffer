@@ -7,8 +7,13 @@ import { vaga_gerarHTML } from "./vagasTemplate.js";
 export async function vagas_carregar(url = "/api/vagas") {
     const container = document.getElementById("posts");
 
+    if (document.getElementsByClassName("vagasPerfil").length > 0) {
+        url = "/api/vagas/inscritas";
+    }
+
     const usuarioEmail = localStorage.getItem('email');
         const urlComFiltro = usuarioEmail ? `${url}?email=${encodeURIComponent(usuarioEmail)}` : url;
+
     const dados = await vagas_carregarBanco(urlComFiltro);
 
     dados.vagas.sort(function(a, b) {
@@ -26,7 +31,24 @@ export async function vagas_carregar(url = "/api/vagas") {
         conteudo = vaga_gerarHTML(vagasEmDestaque, 69);
     }
 
+    if (document.getElementsByClassName("vagasPerfil").length > 0) {
+        const vagasInscritas = dados.vagas;
+        document.getElementById("tituloCandidaturas").style.display = "flex";
+        conteudo = vaga_gerarHTML(vagasInscritas, 69);
+    } else if  (!vagasinscritas) {
+        document.getElementById("tituloCandidaturas").style.display = "none";
+    }
+
+// Se estivermos na página de perfil
+if (document.getElementsByClassName("vagasPerfil").length > 0) {
+    // 1. Injeta apenas os cards das vagas dentro do container #posts
     container.innerHTML = conteudo;
+    // 2. Garante que o #posts não herde estilos que quebrem o grid secundário
+    container.style.display = "contents";
+} else {
+    // Comportamento padrão para a Home e listagem normal
+    container.innerHTML = conteudo;
+}
 
     const barraPesquisa = document.getElementById("vaga_barraPesquisa");
     if (barraPesquisa)

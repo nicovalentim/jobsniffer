@@ -34,7 +34,7 @@ async function carregarConteudo(fileUrl, type) {
     const resposta = await fetch(fileUrl);
     conteudoPagina.innerHTML = await resposta.text();
 
-    if (type === "vagas" || type === "home") {
+    if (type === "vagas" || type === "home" || type === "perfil") {
         const vagas = await import("./vagasImport.js");
         vagas.vagas_carregar();
     }

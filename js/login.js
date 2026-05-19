@@ -40,7 +40,7 @@ async function btnEntrarClick() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ email: email.value, senha: senha.value })
+            body: JSON.stringify({ email: email.value.toLowerCase(), senha: senha.value })
         });
 
         if (response.ok) {

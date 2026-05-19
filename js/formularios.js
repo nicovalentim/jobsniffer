@@ -33,7 +33,7 @@ cadastro_formulario.addEventListener('submit', async (e) => {
         usuario_CEP: cadastro_formulario.querySelector('[name="usuario_CEP"]').value,
         usuario_linkedin: cadastro_formulario.querySelector('[name="usuario_linkedin"]').value,
         usuario_folio: cadastro_formulario.querySelector('[name="usuario_folio"]').value,
-        usuario_email: cadastro_formulario.querySelector('[name="usuario_email"]').value,
+        usuario_email: cadastro_formulario.querySelector('[name="usuario_email"]').value.toLowerCase(),
         usuario_senha: cadastro_formulario.querySelector('[name="usuario_senha"]').value
     };
 
@@ -50,13 +50,7 @@ cadastro_formulario.addEventListener('submit', async (e) => {
             if (cadastroMenu) cadastroMenu.style.display = "none";
             cadastro_formulario.reset();
 
-            async function f5Delay() {
-                setTimeout(() => {
-                    location.reload();
-                }, 2000);
-            }
-
-            popUp(cadastroSucesso, null, f5Delay());
+            popUp(cadastroSucesso, null);
         } else {
             const erroJson = await response.json();
             alert("Erro no cadastro: " + erroJson.mensagem);

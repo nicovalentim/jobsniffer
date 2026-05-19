@@ -38,13 +38,13 @@ export function vaga_infoOnClick(vaga, reqs) {
             </span>
             <h1>${vaga.titulo}</h1>
             <span class="textoVaga">${vaga.descricao}</span>
-            <section>
+            <span class="detalhesVaga">
                 <span class="naVaga">${vaga.localizacao}</span>
                 <span class="naVaga">${vaga.regime}</span>
                 <span class="naVaga">${salario}</span>
-            </section>
+            </span>
             <span class="reqs">${reqs}</span>
-            <button type="submit" ${atributoDisabled} ${estiloBotao}>${textoBotao}</button>
+            <button type="submit" class="vagasCandidatarSe" ${atributoDisabled} ${estiloBotao}>${textoBotao}</button>
         </form>
     `
 }
@@ -66,7 +66,8 @@ export function vaga_gerarHTML(listaVagas, limiteDesc) {
         const cardVaga = vaga_info(vaga, descricaoCurta, reqs);
 
         conteudoHTML += cardVaga + infoVaga;
+
     }
-    
+
     return conteudoHTML;
 }

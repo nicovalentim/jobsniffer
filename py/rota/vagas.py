@@ -6,13 +6,13 @@ rota_vagas = Blueprint('vagas', __name__)
 @rota_vagas.route('/api/vagas')
 def get_vagas_data():
     email_usuario = request.args.get('email')
-    
+
     conn = conexao()
     cursor = conn.cursor()
 
     if email_usuario:
         query = """
-            SELECT 
+            SELECT
                 v.*,
                 CASE WHEN c.id IS NOT NULL THEN 1 ELSE 0 END AS ja_candidatado
             FROM banco_de_vagas v
@@ -23,13 +23,40 @@ def get_vagas_data():
         cursor.execute(query, (email_usuario,))
     else:
         query = """
-            SELECT 
+            SELECT
                 *,
                 0 AS ja_candidatado
             FROM banco_de_vagas
         """
         cursor.execute(query)
-        
+
+    lista = [dict(row) for row in cursor.fetchall()]
+    conn.close()
+
+    return jsonify({"vagas": lista})
+
+@rota_vagas.route('/api/vagas/inscritas')
+def get_vagas_inscritas():
+    email_usuario = request.args.get('email')
+
+    if not email_usuario:
+        return jsonify({"vagas": [], "mensagem": "E-mail não fornecido"}), 400
+
+    conn = conexao()
+    cursor = conn.cursor()
+
+    query = """
+        SELECT
+            v.*,
+            1 AS ja_candidatado
+        FROM banco_de_vagas v
+        INNER JOIN candidaturas c ON v.id = c.vaga_id
+        WHERE c.usuario_id = (
+            SELECT id FROM cadastro WHERE Email = ?
+        )
+    """
+
+    cursor.execute(query, (email_usuario,))
     lista = [dict(row) for row in cursor.fetchall()]
     conn.close()
 

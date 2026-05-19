@@ -1,3 +1,5 @@
+import { popUp } from "./globalPopups.js";
+
 export function inicializarCandidatura(formularioVaga) {
     if (!formularioVaga) return;
 
@@ -12,10 +14,9 @@ export function inicializarCandidatura(formularioVaga) {
         }
 
         const vagaId = event.target.getAttribute('data-vaga-id');
-        console.log(`Enviando candidatura do email ${usuarioEmail} para a vaga ID: ${vagaId}`);
 
         const dadosCandidatura = {
-            "vaga_id": Number(vagaId), 
+            "vaga_id": Number(vagaId),
             "email": usuarioEmail
         };
 
@@ -31,8 +32,9 @@ export function inicializarCandidatura(formularioVaga) {
             const resultado = await resposta.json();
 
             if (resposta.ok && resultado.status === "ok") {
-                alert('Parabéns! Sua candidatura foi registrada com sucesso.');
-                
+                const candidatarSucesso = document.getElementById("candidatarSucesso");
+                popUp(candidatarSucesso, null);
+
                 const botao = formularioVaga.querySelector('button');
                 if (botao) {
                     botao.textContent = "Já Candidatado";
