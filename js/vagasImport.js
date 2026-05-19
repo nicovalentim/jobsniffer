@@ -6,7 +6,10 @@ import { vaga_gerarHTML } from "./vagasTemplate.js";
 
 export async function vagas_carregar(url = "/api/vagas") {
     const container = document.getElementById("posts");
-    const dados = await vagas_carregarBanco(url);
+
+    const usuarioEmail = localStorage.getItem('email');
+        const urlComFiltro = usuarioEmail ? `${url}?email=${encodeURIComponent(usuarioEmail)}` : url;
+    const dados = await vagas_carregarBanco(urlComFiltro);
 
     dados.vagas.sort(function(a, b) {
         return new Date(b.data_de_criacao).getTime() - new Date(a.data_de_criacao).getTime();

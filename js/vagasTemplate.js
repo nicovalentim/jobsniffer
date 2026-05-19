@@ -26,6 +26,11 @@ export function vaga_infoOnClick(vaga, reqs) {
     salario = salario.toLocaleString('pt-BR');
     salario = "R$ " + salario + ",00";
 
+    const jaCandidatado = vaga.ja_candidatado === 1;
+    const textoBotao = jaCandidatado ? "Já Candidatado" : "Candidatar-se!";
+    const estiloBotao = jaCandidatado ? 'style="background-color: gray;"' : '';
+    const atributoDisabled = jaCandidatado ? 'disabled' : '';
+
     return `
         <form class="infoVaga" id="infoVaga_${vaga.id}" data-vaga-id="${vaga.id}">
             <span class="tituloVaga">
@@ -39,7 +44,7 @@ export function vaga_infoOnClick(vaga, reqs) {
                 <span class="naVaga">${salario}</span>
             </section>
             <span class="reqs">${reqs}</span>
-            <button type="submit">Candidatar-se!</button>
+            <button type="submit" ${atributoDisabled} ${estiloBotao}>${textoBotao}</button>
         </form>
     `
 }
