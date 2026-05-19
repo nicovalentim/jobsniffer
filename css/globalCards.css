@@ -62,3 +62,50 @@
         background-color: rgb(var(--corPrimaria));
         color: rgb(var(--branco));
     }
+
+    /* perfil do usuário */
+    .card.perfil {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5em;
+        align-items: start;
+    }
+        .card.perfil .dados-usuario {
+            grid-column: 1;
+            grid-row: span 3;
+            height: 100%;
+        }
+        .card.perfil #tituloCandidaturas {
+            grid-column: 2 / 4;
+            grid-row: 1;
+            margin: 0;
+            width: 100%;
+        }
+        .card.perfil .vaga {
+            grid-column: span 1;
+            grid-row: span 1;
+            min-height: auto;
+        }
+            .card.perfil .infoVaga {
+                grid-area: 1 / 1 / 1 / 1;
+                pointer-events: none;
+            }
+            .card.perfil .infoVaga.ativo {
+                pointer-events: auto;
+            }
+                @media (max-width: 1080px) {
+                    .card.perfil {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                        .card.perfil .dados-usuario {
+                            grid-column: 1;
+                            grid-row: span 3;
+                        }
+                        .card.perfil #tituloCandidaturas {
+                            grid-column: 2;
+                            grid-row: 1;
+                        }
+                        .card.perfil .vaga {
+                            grid-column: span 1;
+                        }
+                    }

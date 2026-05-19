@@ -40,11 +40,14 @@ ul {
         font-size: 1.5em;
         color: black;
     }
-    #btnLogin, #cadastro {
+    #btnLogin,
+    #btnLogout,
+    #cadastro {
         padding: 9px;
         margin: 0 5px;
     }
-    #cadastro:not(button) {
+    #cadastro,
+    #btnLogout {
         color: rgba(var(--branco), 1);
         background-color: rgb(var(--corPrimaria));
         border-radius: 16px;
@@ -67,14 +70,7 @@ ul {
             margin: 0;
         }
         #btnLogout {
-            background-color: rgb(var(--corPrimaria));
-            color: rgb(var(--branco));
-
-            font-size: 0.8em;
-
-            border-radius: 12px;
             margin-left: 8px;
-            padding: 8px;
         }
 
         @media (max-width: 1080px) {

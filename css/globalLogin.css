@@ -1,6 +1,7 @@
 #loginMenu,
 #cadastroMenu,
-#cadastroSucesso {
+#cadastroSucesso,
+#candidatarSucesso {
     display: flex;
     flex-direction: column;
 
@@ -22,7 +23,8 @@
 }
     #loginMenu.ativo,
     #cadastroMenu.ativo,
-    #cadastroSucesso.ativo {
+    #cadastroSucesso.ativo,
+    #candidatarSucesso.ativo {
         opacity: 1;
         pointer-events: all;
         transform: translate(-50%, -50%) scale(1);

@@ -247,7 +247,7 @@ button {
     .infoVaga h1 {
         margin: 0;
     }
-    .infoVaga section, .infoVaga .reqs, .infoVaga .textoVaga {
+    .infoVaga .detalhesVaga, .infoVaga .reqs, .infoVaga .textoVaga {
         margin: 8px;
     }
     .infoVaga .tituloVaga {
@@ -260,4 +260,7 @@ button {
 
         background-color: rgb(var(--corPrimaria));
         color: white;
+    }
+    .vagasCandidatarSe {
+        display: flex; /* modificar para sumir */
     }

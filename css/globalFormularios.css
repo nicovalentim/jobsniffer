@@ -78,7 +78,8 @@ textarea {
     justify-content: center;
 }
 
-#cadastro {
+#cadastro,
+#btnLogout {
     padding: 9px;
     margin: 0 5px;
 }
