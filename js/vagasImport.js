@@ -37,7 +37,7 @@ export async function vagas_carregar(url = "/api/vagas") {
             if (card && cardGrande) {
                 popUp(cardGrande, card);
                 const formularioVaga = document.getElementById(`infoVaga_${vaga.id}`);
-                inicializarCandidatura(formularioVaga, vaga.id);
+                inicializarCandidatura(formularioVaga);
             }
         });
     }

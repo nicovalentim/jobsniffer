@@ -1,8 +1,8 @@
-export function inicializarCandidatura(formularioVaga, vagaId) {
+export function inicializarCandidatura(formularioVaga) {
     if (!formularioVaga) return;
 
     formularioVaga.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Impede o recarregamento da página
+        event.preventDefault();
 
         const usuarioEmail = localStorage.getItem('email');
 
@@ -11,8 +11,11 @@ export function inicializarCandidatura(formularioVaga, vagaId) {
             return;
         }
 
+        const vagaId = event.target.getAttribute('data-vaga-id');
+        console.log(`Enviando candidatura do email ${usuarioEmail} para a vaga ID: ${vagaId}`);
+
         const dadosCandidatura = {
-            "vaga.id": vagaId,
+            "vaga_id": Number(vagaId), 
             "email": usuarioEmail
         };
 

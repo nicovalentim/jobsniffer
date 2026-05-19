@@ -27,7 +27,7 @@ export function vaga_infoOnClick(vaga, reqs) {
     salario = "R$ " + salario + ",00";
 
     return `
-        <form class="infoVaga" id="infoVaga_${vaga.id}">
+        <form class="infoVaga" id="infoVaga_${vaga.id}" data-vaga-id="${vaga.id}">
             <span class="tituloVaga">
                 <p class="areaVaga" data-area="${vaga.area.toLowerCase()}">${vaga.area}</p>
             </span>

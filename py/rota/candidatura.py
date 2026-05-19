@@ -7,7 +7,7 @@ rota_candidatar = Blueprint('candidatar', __name__)
 def candidatar_data():
     dados = request.json
 
-    vaga_id = dados.get('vaga.id')
+    vaga_id = dados.get('vaga_id') or dados.get('vaga.id')
     email = dados.get('email')
 
     if not vaga_id or not email:
