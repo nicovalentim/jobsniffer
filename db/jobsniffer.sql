@@ -32,7 +32,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `cadastro`;
 CREATE TABLE `cadastro` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `admin` BOOLEAN(2) DEFAULT FALSE,
+  `admin` int(2) DEFAULT FALSE,
   `Nome` varchar(150) DEFAULT NULL,
   `Email` varchar(150) DEFAULT NULL UNIQUE,
   `Senha` varchar(16) DEFAULT NULL,

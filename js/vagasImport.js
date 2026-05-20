@@ -33,22 +33,15 @@ export async function vagas_carregar(url = "/api/vagas") {
 
     if (document.getElementsByClassName("vagasPerfil").length > 0) {
         const vagasInscritas = dados.vagas;
-        document.getElementById("tituloCandidaturas").style.display = "flex";
         conteudo = vaga_gerarHTML(vagasInscritas, 69);
-    } else if  (!vagasinscritas) {
-        document.getElementById("tituloCandidaturas").style.display = "none";
     }
 
-// Se estivermos na página de perfil
-if (document.getElementsByClassName("vagasPerfil").length > 0) {
-    // 1. Injeta apenas os cards das vagas dentro do container #posts
-    container.innerHTML = conteudo;
-    // 2. Garante que o #posts não herde estilos que quebrem o grid secundário
-    container.style.display = "contents";
-} else {
-    // Comportamento padrão para a Home e listagem normal
-    container.innerHTML = conteudo;
-}
+    if (document.getElementsByClassName("vagasPerfil").length > 0) {
+        container.innerHTML = conteudo;
+        container.style.display = "contents";
+    } else {
+        container.innerHTML = conteudo;
+    }
 
     const barraPesquisa = document.getElementById("vaga_barraPesquisa");
     if (barraPesquisa)
