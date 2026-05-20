@@ -143,6 +143,7 @@ Painel de gerenciamento completo para administradores.
 
 ### Planejado
 
+- *Readme editado à mão:* a versão atual do readme.md foi criada por uma ferramenta de IA, o que vai ser removido futuramente, para um texto mais interessante, conciso e humano.
 - *Layout da página inicial:* A linguagem visual está diferente na homepage e em outras páginas e isso é intencional - ela atualmente serve como uma página de testes de funcionalidades do site.
 - *Painel Administrativo:* Interface para criação, edição e exclusão de vagas (CRUD).
 - *Hashes para Segurança das Senhas:* Criptografia para as senhas salvas no banco de dados.
