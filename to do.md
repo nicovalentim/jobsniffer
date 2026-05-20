@@ -12,7 +12,6 @@
 - edição de cadastro
 - edição de vagas
 - limite de vagas por página
-- mostrar candidaturas
 
 ## estética
 
