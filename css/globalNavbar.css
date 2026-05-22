@@ -72,9 +72,3 @@ ul {
         #btnLogout {
             margin-left: 8px;
         }
-
-        @media (max-width: 1080px) {
-            #menuUsuario a {
-                font-size: 100%;
-            }
-        }
