@@ -1,3 +1,5 @@
+import "./perfilEditar.js";
+
 export function atualizarUsuario() {
 
     let usuarioNome = document.getElementById("loginNome");
