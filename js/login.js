@@ -15,8 +15,8 @@ if (localStorage.getItem("logado") === "true") {
     menuUsuario.style.display = "none";
 }
 
-let loginNome = document.getElementById("loginNome");
-loginNome.textContent = localStorage.getItem("nome") || "Usuário";
+let usuarioNome = document.getElementById("usuarioNome");
+usuarioNome.textContent = localStorage.getItem("nome") || "Usuário";
 
 btnEntrar.addEventListener("click", (e) => {
     e.preventDefault();

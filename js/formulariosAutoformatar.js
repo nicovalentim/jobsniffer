@@ -1,44 +1,81 @@
-let cadastro_usuarioCEP = document.getElementsByName("usuario_CEP")[0];
-cadastro_usuarioCEP.addEventListener('input', function(e) {
-        var valor = e.target.value.replace(/\D/g, '');
-        var formatado = '';
+export function formatarCEPTexto(valor) {
+    var numero = valor.replace(/\D/g, '');
+    var formatado = '';
+    if (numero.length <= 5) formatado = numero;
+    if (numero.length > 5) formatado = numero.substring(0, 5) + "-" + numero.substring(5, 8);
+    return formatado;
+}
 
-        if (valor.length <=5 )
-            formatado = valor;
-        if (valor.length > 5)
-            formatado = valor.substring(0,5) + "-" + valor.substring(5,8);
+export function formatarNascimentoTexto(valor) {
+    var numero = valor.replace(/\D/g, '');
+    var formatado = '';
+    if (numero.length > 0) formatado = numero.substring(0, 2);
+    if (numero.length > 2) formatado += ' / ' + numero.substring(2, 4);
+    if (numero.length > 4) formatado += ' / ' + numero.substring(4, 8);
+    return formatado;
+}
 
-    e.target.value = formatado;
-});
+export function formatarTelefoneTexto(valor) {
+    var numero = valor.replace(/\D/g, '');
+    var formatado = '';
+    if (numero.length > 0) formatado = "(" + numero.substring(0, 2);
+    if (numero.length > 2) formatado += ') ' + numero.substring(2, 7);
+    if (numero.length > 7) formatado += '-' + numero.substring(7, 11);
+    return formatado;
+}
 
-let cadastro_usuarioNascimento = document.getElementsByName("usuario_nascimento")[0];
-cadastro_usuarioNascimento.addEventListener('input', function(e) {
-        var valor = e.target.value.replace(/\D/g, '');
-        var formatado = '';
+export function validarCampoFormatado(campoId, textoNovo, validarRegrasSenha) {
+    if (campoId === "usuarioSenha") {
+        if (!validarRegrasSenha(textoNovo)) {
+            alert("A senha não atende aos requisitos mínimos de segurança.");
+            return false;
+        }
+    }
 
-        if (valor.length > 0)
-            formatado = valor.substring(0,2);               //dia
-        if (valor.length > 2)
-            formatado += ' / ' + valor.substring(2,4);      //mês
-        if (valor.length > 4)
-            formatado += ' / ' + valor.substring(4,8);      //ano
+    if (campoId === "usuarioCEP") {
+        if (textoNovo.replace(/\D/g, '').length !== 8) {
+            alert("Por favor, insira um CEP válido com 8 dígitos.");
+            return false;
+        }
+    }
 
-    e.target.value = formatado;
-});
+    if (campoId === "usuarioNascimento") {
+        if (textoNovo.replace(/\D/g, '').length !== 8) {
+            alert("Por favor, insira a data de nascimento completa.");
+            return false;
+        }
+    }
 
-let cadastro_usuarioTelefone = document.getElementsByName("usuario_telefone")[0];
-cadastro_usuarioTelefone.addEventListener('input', function(e) {
-        var valor = e.target.value.replace(/\D/g, '');
-        var formatado = '';
+    if (campoId === "usuarioTelefone") {
+        const qtdNumeros = textoNovo.replace(/\D/g, '').length;
+        if (qtdNumeros < 10 || qtdNumeros > 11) {
+            alert("Por favor, insira um telefone válido com DDD (10 ou 11 dígitos).");
+            return false;
+        }
+    }
 
-        if (valor.length > 0)
-            formatado = "(" + valor.substring(0,2);         //ddd
-        if (valor.length > 2)
-            formatado += ') ' + valor.substring(2,6);
-        if (valor.length > 6 && valor.length < 11)
-            formatado += '-' + valor.substring(6,10);
-        if (valor.length >= 11)
-            formatado = "(" + valor.substring(0,2)+ ") " + valor.substring(2,7) + "-" + valor.substring(7,11);
+    return true;
+}
 
-    e.target.value = formatado;
-});
+export function inicializarFormatarEventos() {
+    let usuarioCEP = document.getElementsByName("usuario_CEP")[0];
+    if (usuarioCEP) {
+        usuarioCEP.addEventListener('input', function(e) {
+            e.target.value = formatarCEPTexto(e.target.value);
+        });
+    }
+
+    let usuarioNascimento = document.getElementsByName("usuario_nascimento")[0];
+    if (usuarioNascimento) {
+        usuarioNascimento.addEventListener('input', function(e) {
+            e.target.value = formatarNascimentoTexto(e.target.value);
+        });
+    }
+
+    let usuarioTelefone = document.getElementsByName("usuario_telefone")[0];
+    if (usuarioTelefone) {
+        usuarioTelefone.addEventListener('input', function(e) {
+            e.target.value = formatarTelefoneTexto(e.target.value);
+        });
+    }
+}

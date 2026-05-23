@@ -1,8 +1,7 @@
-import "./perfilEditar.js";
+import { editarTexto } from "./editar.js";
 
 export function atualizarUsuario() {
-
-    let usuarioNome = document.getElementById("loginNome");
+    let usuarioNome = document.getElementById("perfilNome");
     usuarioNome.textContent = localStorage.getItem("nome") || "Usuário";
 
     let usuarioEmail = document.getElementById("usuarioEmail");
@@ -25,4 +24,7 @@ export function atualizarUsuario() {
 
     let usuarioFolio = document.getElementById("usuarioFolio");
     usuarioFolio.textContent = localStorage.getItem("folio") || "Não enviado";
+
+    const dadosUsuario = document.querySelectorAll(".dadosUsuario table td");
+    editarTexto(dadosUsuario);
 }
