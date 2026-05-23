@@ -48,32 +48,45 @@ def login():
         "mensagem": "Email ou senha inválidos"
     }), 401
 
-@rota_login.route('/atualizarCadastro', methods=['POST'])
-def atualizar_cadastro():
+@rota_login.route('/atualizarCadastroLote', methods=['POST'])
+def atualizar_cadastro_lote():
     dados = request.json
+    email = dados.get("email")
+    alteracoes = dados.get("alteracoes")  # Dicionário ex: {"usuarioCEP": "12345-678", "usuarioNome": "Novo Nome"}
+
+    if not alteracoes:
+        return jsonify({"status": "erro", "mensagem": "Nenhuma alteração enviada."}), 400
 
     conn = conexao()
     cursor = conn.cursor()
 
-    email = dados.get("email")
-
-    colunaBanco = CAMPOS.get(dados.get("campo"))
-    textoNovo = dados.get("textoNovo")
-
     try:
-        cursor.execute(
-            f"UPDATE cadastro SET {colunaBanco} = ? WHERE Email = ?",
-            (textoNovo, email)
-        )
+        # Construindo dinamicamente a query de UPDATE baseada nos campos recebidos
+        valores = []
+        partes_query = []
+
+        for campo_id, texto_novo in alteracoes.items():
+            coluna_banco = CAMPOS.get(campo_id)
+            if coluna_banco:
+                partes_query.append(f"{coluna_banco} = ?")
+                valores.append(texto_novo)
+
+        # Adiciona o email ao final para o WHERE
+        valores.append(email)
+        
+        # Exemplo final: UPDATE cadastro SET CEP = ?, Nome = ? WHERE Email = ?
+        query_final = f"UPDATE cadastro SET {', '.join(partes_query)} WHERE Email = ?"
+
+        cursor.execute(query_final, tuple(valores))
         conn.commit()
     
         return jsonify({
             "status": "ok", 
-            "mensagem": f"{colunaBanco} atualizado com sucesso!"
+            "mensagem": "Cadastro atualizado em lote com sucesso!"
         }), 200
 
     except Exception as e:
-        print(f"Erro ao atualizar banco: {e}")
+        print(f"Erro ao atualizar banco em lote: {e}")
         return jsonify({"status": "erro", "mensagem": "Erro interno do servidor"}), 500
         
     finally:

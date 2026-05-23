@@ -1,4 +1,8 @@
-import { formatarCEPTexto, formatarNascimentoTexto, formatarTelefoneTexto, validarCampoFormatado } from "./formulariosAutoformatar.js";
+import { registrarAlteracao } from "./editarEstado.js";
+import { criarInputConfigurado } from "./editarInputFactory.js";
+import { validarEntradaUsuario } from "./editarValidador.js";
+
+export { salvarDadosNoBanco } from "./editarAPI.js";
 
 export function editarTexto(grupoTexto) {
     grupoTexto.forEach(texto => {
@@ -6,128 +10,57 @@ export function editarTexto(grupoTexto) {
             if (texto.style.display === "none") return;
 
             const textoAnterior = texto.innerHTML.trim();
-
-            const input = document.createElement("input");
-            input.value = textoAnterior;
-
             const campoId = texto.id;
+            
+            // 1. Cria o elemento usando a nossa fábrica
+            const input = criarInputConfigurado(campoId, textoAnterior);
 
-                if (campoId === "usuarioEmail") {
-                    localStorage.setItem("email", textoNovo.toLowerCase());
-                } else if (campoId === "usuarioLinkedin" || campoId === "usuarioFolio") {
-                input.type = "url";
-                input.placeholder = "https://jobsniffer.com"; 
-
-                if (textoAnterior === "Não enviado" || textoAnterior === "Perfil não associado." || textoAnterior === "Link não enviado.") {
-                    input.value = "";
-                }
-            }
-
-            input.addEventListener('input', function(e) {
-                if (campoId === "usuarioCEP") e.target.value = formatarCEPTexto(e.target.value);
-                if (campoId === "usuarioNascimento") e.target.value = formatarNascimentoTexto(e.target.value);
-                if (campoId === "usuarioTelefone") e.target.value = formatarTelefoneTexto(e.target.value);
-            });
-
+            // 2. Mapeia os eventos do teclado e foco
             input.addEventListener('blur', confirmarDigitado);
             input.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') { input.blur(); }
-                if (event.key === 'Escape') { cancelarDigitado(); }
+                if (event.key === 'Enter') input.blur();
+                if (event.key === 'Escape') cancelarDigitado();
             });
 
             function cancelarDigitado() {
                 input.removeEventListener('blur', confirmarDigitado);
-                input.value = textoAnterior;
                 texto.style.display = "";
                 input.remove();
             }
 
-            async function confirmarDigitado() {
-                const textoNovo = input.value.trim();
+            function confirmarDigitado() {
+                // 3. Valida usando o nosso validador isolado
+                if (!validarEntradaUsuario(campoId, input)) {
+                    input.removeEventListener('blur', confirmarDigitado);
+                    setTimeout(() => { input.addEventListener('blur', confirmarDigitado); input.focus(); }, 0);
+                    return;
+                }
+
+                input.removeEventListener('blur', confirmarDigitado);
+                const textoNovo = input.value.trim() || "Não enviado";
 
                 if (textoNovo === textoAnterior) {
                     cancelarDigitado();
                     return;
                 }
 
-                if (input.required && !textoNovo) {
-                    input.removeEventListener('blur', confirmarDigitado);
-                    alert("Este campo é obrigatório.");
-
-                    setTimeout(() => {
-                        input.addEventListener('blur', confirmarDigitado);
-                        input.focus();
-                    }, 0);
-                    return;
+                // 4. Aplica as atualizações visuais no DOM local
+                texto.textContent = textoNovo;
+                if (campoId === "usuarioNome" || campoId === "perfilNome") {
+                    const elPerfilNome = document.getElementById("perfilNome");
+                    if (elPerfilNome) elPerfilNome.textContent = textoNovo;
                 }
 
-    if (input.checkValidity && !input.checkValidity()) {
-        input.removeEventListener('blur', confirmarDigitado);
-        alert("Por favor, insira um formato válido para este campo.");
+                // 5. Registra o estado e exibe o botão global de salvar
+                registrarAlteracao(campoId, textoNovo);
+                const btnSalvar = document.getElementById("btnSalvarPerfil");
+                if (btnSalvar) btnSalvar.style.display = "block";
 
-        setTimeout(() => {
-            input.addEventListener('blur', confirmarDigitado);
-            input.focus();
-        }, 0);
-        return;
-    }
-
-    if (!validarCampoFormatado(campoId, textoNovo, () => true)) {
-        input.removeEventListener('blur', confirmarDigitado);
-        setTimeout(() => {
-            input.addEventListener('blur', confirmarDigitado);
-            input.focus();
-        }, 0);
-        return;
-    }
-
-    input.removeEventListener('blur', confirmarDigitado);
-
-    const email = localStorage.getItem("email");
-
-    try {
-        const response = await fetch('/atualizarCadastro', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                campo: campoId,
-                email: email,
-                textoNovo: textoNovo
-            })
-        });
-
-        if (response.ok) {
-            if (campoId === "usuarioEmail") {
-                localStorage.setItem("email", textoNovo.toLowerCase());
+                texto.style.display = "";
+                input.remove();
             }
 
-            texto.textContent = textoNovo || "Não enviado";
-
-            const chaveLocal = campoId.replace("usuario", "").replace("perfil", "").toLowerCase();
-            localStorage.setItem(chaveLocal, textoNovo || "Não enviado");
-
-            if (campoId === "usuarioNome" || campoId === "perfilNome") {
-                const elementosNome = document.querySelectorAll("#perfilNome, #usuarioNome");
-                elementosNome.forEach(el => {
-                    el.textContent = textoNovo;
-                });
-            }
-        } else {
-            alert('Erro ao salvar dados no banco.');
-            texto.textContent = textoAnterior;
-        }
-    } catch (erro) {
-        console.error('Erro na requisição:', erro);
-        alert('Erro de conexão. Tente novamente mais tarde.');
-        texto.textContent = textoAnterior;
-    }
-
-    texto.style.display = "";
-    input.remove();
-}
-
+            // Substituição visual na tabela
             texto.style.display = "none";
             texto.parentNode.insertBefore(input, texto);
             input.focus();
