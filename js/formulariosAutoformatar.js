@@ -27,7 +27,8 @@ export function formatarTelefoneTexto(valor) {
 export function validarCampoFormatado(campoId, textoNovo, validarRegrasSenha) {
     if (campoId === "usuarioSenha") {
         if (!validarRegrasSenha(textoNovo)) {
-            alert("A senha não atende aos requisitos mínimos de segurança.");
+            alert(`A senha não atende aos requisitos mínimos de segurança:
+                \n- seis caracteres, incluindo pelo menos:\n- uma maiúscula,\n- uma minúscula e\n- um número.`);
             return false;
         }
     }
@@ -53,7 +54,6 @@ export function validarCampoFormatado(campoId, textoNovo, validarRegrasSenha) {
             return false;
         }
     }
-
     return true;
 }
 

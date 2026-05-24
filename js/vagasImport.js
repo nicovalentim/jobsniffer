@@ -9,6 +9,13 @@ export async function vagas_carregar(url = "/api/vagas") {
 
     if (document.getElementsByClassName("vagasPerfil").length > 0) {
         url = "/api/vagas/inscritas";
+
+        const titulo = document.createElement("h1");
+            titulo.id = "tituloCandidaturas";
+            titulo.innerText = "Candidaturas feitas:";
+        const posts = document.getElementById("posts");
+
+        posts.parentNode.insertBefore(titulo, posts);
     }
 
     const usuarioEmail = localStorage.getItem('email');

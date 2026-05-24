@@ -1,8 +1,7 @@
-import { registrarAlteracao } from "./editarEstado.js";
-import { criarInputConfigurado } from "./editarInputFactory.js";
-import { validarEntradaUsuario } from "./editarValidador.js";
+import { registrarAlteracao } from "./editarDOM.js";
+import { editarValidacaoEntrada, criarInputConfigurado } from "./editarValidacoes.js";
 
-export { salvarDadosNoBanco } from "./editarAPI.js";
+export { salvarBanco } from "./editarAPI.js";
 
 export function editarTexto(grupoTexto) {
     grupoTexto.forEach(texto => {
@@ -11,16 +10,12 @@ export function editarTexto(grupoTexto) {
 
             const textoAnterior = texto.innerHTML.trim();
             const campoId = texto.id;
-            
-            // 1. Cria o elemento usando a nossa fábrica
             const input = criarInputConfigurado(campoId, textoAnterior);
-
-            // 2. Mapeia os eventos do teclado e foco
-            input.addEventListener('blur', confirmarDigitado);
-            input.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') input.blur();
-                if (event.key === 'Escape') cancelarDigitado();
-            });
+                input.addEventListener('blur', confirmarDigitado);
+                input.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') input.blur();
+                    if (event.key === 'Escape') cancelarDigitado();
+                });
 
             function cancelarDigitado() {
                 input.removeEventListener('blur', confirmarDigitado);
@@ -29,8 +24,14 @@ export function editarTexto(grupoTexto) {
             }
 
             function confirmarDigitado() {
-                // 3. Valida usando o nosso validador isolado
-                if (!validarEntradaUsuario(campoId, input)) {
+                const resultadoValidacao = editarValidacaoEntrada(campoId, input);
+
+                if (resultadoValidacao === "cancelar") {
+                    cancelarDigitado();
+                    return;
+                }
+
+                if (!resultadoValidacao) {
                     input.removeEventListener('blur', confirmarDigitado);
                     setTimeout(() => { input.addEventListener('blur', confirmarDigitado); input.focus(); }, 0);
                     return;
@@ -38,29 +39,25 @@ export function editarTexto(grupoTexto) {
 
                 input.removeEventListener('blur', confirmarDigitado);
                 const textoNovo = input.value.trim() || "Não enviado";
-
                 if (textoNovo === textoAnterior) {
                     cancelarDigitado();
                     return;
                 }
 
-                // 4. Aplica as atualizações visuais no DOM local
                 texto.textContent = textoNovo;
                 if (campoId === "usuarioNome" || campoId === "perfilNome") {
                     const elPerfilNome = document.getElementById("perfilNome");
                     if (elPerfilNome) elPerfilNome.textContent = textoNovo;
                 }
 
-                // 5. Registra o estado e exibe o botão global de salvar
                 registrarAlteracao(campoId, textoNovo);
-                const btnSalvar = document.getElementById("btnSalvarPerfil");
-                if (btnSalvar) btnSalvar.style.display = "block";
+                const btnSalvar = document.getElementById("perfilBtn");
+                if (btnSalvar) btnSalvar.classList.add("ativo");
 
                 texto.style.display = "";
                 input.remove();
             }
 
-            // Substituição visual na tabela
             texto.style.display = "none";
             texto.parentNode.insertBefore(input, texto);
             input.focus();

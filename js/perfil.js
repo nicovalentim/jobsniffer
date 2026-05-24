@@ -1,7 +1,6 @@
-import { editarTexto, salvarDadosNoBanco } from "./editar.js"; // Importando a nova função
+import { editarTexto, salvarBanco } from "./editar.js";
 
 export function atualizarUsuario() {
-    // ... todo o seu preenchimento de textContent original continua igual aqui ...
     let usuarioNome = document.getElementById("perfilNome");
     usuarioNome.textContent = localStorage.getItem("nome") || "Usuário";
     
@@ -29,13 +28,11 @@ export function atualizarUsuario() {
     const dadosUsuario = document.querySelectorAll(".dadosUsuario table td");
     editarTexto(dadosUsuario);
 
-    // --- NOVA LÓGICA DO BOTÃO ---
-    const btnSalvar = document.getElementById("btnSalvarPerfil");
-    if (btnSalvar) {
-        // Remove ouvintes antigos para evitar duplicações caso a função seja chamada mais de uma vez
-        btnSalvar.replaceWith(btnSalvar.cloneNode(true)); 
-        const novoBtnSalvar = document.getElementById("btnSalvarPerfil");
-        
-        novoBtnSalvar.addEventListener("click", salvarDadosNoBanco);
+    const perfilBtn = document.getElementById("perfilBtn");
+    if (perfilBtn) {
+        perfilBtn.replaceWith(perfilBtn.cloneNode(true)); 
+        const novoperfilBtn = document.getElementById("perfilBtn");
+
+        novoperfilBtn.addEventListener("click", salvarBanco);
     }
 }

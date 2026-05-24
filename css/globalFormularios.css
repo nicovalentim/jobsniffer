@@ -3,7 +3,8 @@
 form {
     display: block;
 }
-    form button {
+    form button,
+    #perfilBtn {
         border: none;
         border-radius: 8px;
         display: block;
@@ -143,13 +144,16 @@ textarea {
             margin-right: 0.3em !important;
         }
 
-    .cadastro_enviar {
-        background: rgb(var(--branco));
-        border: 1px solid rgb(var(--preto));
-        color: rgb(var(--preto));
+    #perfilBtn {
+        margin-top: 16px;
+        display: none;
     }
-        .cadastro_enviar.ativo {
-            background: rgb(var(--corPrimaria));
-            border: none;
-            color: rgb(var(--branco));
+        #perfilBtn.ativo {
+            display: block !important;
+        }
+    .dadosUsuario {
+        align-content: start;
+    }
+        .dadosUsuario table tr * {
+            text-align: left;
         }

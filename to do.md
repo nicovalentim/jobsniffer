@@ -9,7 +9,6 @@
 
 - hashes para senhas no login/cadastro (segurança)
 - diferenciação de usuário e admin
-- edição de cadastro
 - edição de vagas
 - limite de vagas por página
 

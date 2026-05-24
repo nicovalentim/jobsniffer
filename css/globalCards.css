@@ -66,46 +66,30 @@
     /* perfil do usuário */
     .card.perfil {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, auto);
+            justify-content: center;
+        grid-template-rows: 20px 1fr;
         gap: 1.5em;
-        align-items: start;
     }
         .card.perfil .dadosUsuario {
             grid-column: 1;
-            grid-row: span 3;
-            height: 100%;
+            grid-row: span 2;
+
+            font-size: 1.25em;
+            padding-top: 4em;
         }
-        .card.perfil #tituloCandidaturas {
-            grid-column: 2 / 4;
+            .card.perfil .dadosUsuario h1,
+            .card.perfil .dadosUsuario h6 { 
+                margin: 8px 0;
+            }
+        #tituloCandidaturas {
+            grid-column: 2 / span 2;
             grid-row: 1;
-            margin: 0;
-            width: 100%;
+            justify-self: start;
         }
-        .card.perfil .vaga {
-            grid-column: span 1;
-            grid-row: span 1;
-            min-height: auto;
+
+        @media (max-width: 1080px) {
+            .card.perfil {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-            .card.perfil .infoVaga {
-                grid-area: 1 / 1 / 1 / 1;
-                pointer-events: none;
-            }
-            .card.perfil .infoVaga.ativo {
-                pointer-events: auto;
-            }
-                @media (max-width: 1080px) {
-                    .card.perfil {
-                        grid-template-columns: repeat(2, 1fr);
-                    }
-                        .card.perfil .dadosUsuario {
-                            grid-column: 1;
-                            grid-row: span 3;
-                        }
-                        .card.perfil #tituloCandidaturas {
-                            grid-column: 2;
-                            grid-row: 1;
-                        }
-                        .card.perfil .vaga {
-                            grid-column: span 1;
-                        }
-                    }
