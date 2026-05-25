@@ -48,11 +48,11 @@ def login():
         "mensagem": "Email ou senha inválidos"
     }), 401
 
-@rota_login.route('/atualizarCadastroLote', methods=['POST'])
+@rota_login.route('/atualizarCadastro', methods=['POST'])
 def atualizar_cadastro_lote():
     dados = request.json
     email = dados.get("email")
-    alteracoes = dados.get("alteracoes")  # Dicionário ex: {"usuarioCEP": "12345-678", "usuarioNome": "Novo Nome"}
+    alteracoes = dados.get("alteracoes")
 
     if not alteracoes:
         return jsonify({"status": "erro", "mensagem": "Nenhuma alteração enviada."}), 400
@@ -61,7 +61,6 @@ def atualizar_cadastro_lote():
     cursor = conn.cursor()
 
     try:
-        # Construindo dinamicamente a query de UPDATE baseada nos campos recebidos
         valores = []
         partes_query = []
 
@@ -70,11 +69,7 @@ def atualizar_cadastro_lote():
             if coluna_banco:
                 partes_query.append(f"{coluna_banco} = ?")
                 valores.append(texto_novo)
-
-        # Adiciona o email ao final para o WHERE
         valores.append(email)
-        
-        # Exemplo final: UPDATE cadastro SET CEP = ?, Nome = ? WHERE Email = ?
         query_final = f"UPDATE cadastro SET {', '.join(partes_query)} WHERE Email = ?"
 
         cursor.execute(query_final, tuple(valores))

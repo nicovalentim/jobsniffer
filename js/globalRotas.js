@@ -38,11 +38,9 @@ async function carregarConteudo(fileUrl, type) {
         const vagas = await import("./vagasImport.js");
         vagas.vagas_carregar();
     }
-
     if (type === "cadastro") {
         await import("./formularios.js");
     }
-
     if (type === "contato") {
         const contato = await import("./email.js")
         contato.enviarEmail();
@@ -51,9 +49,8 @@ async function carregarConteudo(fileUrl, type) {
 
 navbar.addEventListener("click", (e) => {
     const link = e.target.closest(".links");
-    e.preventDefault();
-
     if (!link) return;
+    e.preventDefault();
 
     const path = link.getAttribute("href");
     if (path) {

@@ -1,4 +1,9 @@
+import { editarTexto } from "./editar.js";
+import { salvarVagaBanco } from "./editarAPI.js";
+import { limparAlteracoes } from "./editarDOM.js";
+
 import { popUp } from "./globalPopups.js";
+
 import { vagas_carregarBanco } from "./vagasBanco.js";
 import { inicializarCandidatura } from "./vagasCandidatar.js";
 import { vagas_filtrar } from "./vagasFiltros.js";
@@ -9,13 +14,6 @@ export async function vagas_carregar(url = "/api/vagas") {
 
     if (document.getElementsByClassName("vagasPerfil").length > 0) {
         url = "/api/vagas/inscritas";
-
-        const titulo = document.createElement("h1");
-            titulo.id = "tituloCandidaturas";
-            titulo.innerText = "Candidaturas feitas:";
-        const posts = document.getElementById("posts");
-
-        posts.parentNode.insertBefore(titulo, posts);
     }
 
     const usuarioEmail = localStorage.getItem('email');
@@ -40,6 +38,16 @@ export async function vagas_carregar(url = "/api/vagas") {
 
     if (document.getElementsByClassName("vagasPerfil").length > 0) {
         const vagasInscritas = dados.vagas;
+
+        if (vagasInscritas.length > 0) {
+            const posts = document.getElementById("posts");
+            const titulo = document.createElement("h1");
+                titulo.id = "tituloCandidaturas";
+                titulo.innerText = "Candidaturas feitas:";
+
+            posts.parentNode.insertBefore(titulo, posts);
+        }
+
         conteudo = vaga_gerarHTML(vagasInscritas, 69);
     }
 
@@ -48,6 +56,17 @@ export async function vagas_carregar(url = "/api/vagas") {
         container.style.display = "contents";
     } else {
         container.innerHTML = conteudo;
+        document.querySelectorAll('.vagaBtn').forEach((btn) => {
+            const clone = btn.cloneNode(true);
+            btn.replaceWith(clone);
+            clone.addEventListener('click', async () => {
+                const infoVaga = clone.closest('.infoVaga');
+                await salvarVagaBanco(infoVaga);
+                clone.classList.remove('ativo');
+                if (!document.querySelector('.vagaBtn.ativo')) limparAlteracoes();
+            }
+        );
+        });
     }
 
     const barraPesquisa = document.getElementById("vaga_barraPesquisa");
@@ -67,5 +86,6 @@ export async function vagas_carregar(url = "/api/vagas") {
         });
     }
 
+    editarTexto(document.querySelectorAll('.editavelVaga'));
     vagas_filtrar();
 }

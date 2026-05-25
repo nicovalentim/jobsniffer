@@ -9,7 +9,7 @@ export function editarTexto(grupoTexto) {
             if (texto.style.display === "none") return;
 
             const textoAnterior = texto.innerHTML.trim();
-            const campoId = texto.id;
+            const campoId = texto.id || texto.dataset.campo;
             const input = criarInputConfigurado(campoId, textoAnterior);
                 input.addEventListener('blur', confirmarDigitado);
                 input.addEventListener('keydown', (event) => {
@@ -50,9 +50,19 @@ export function editarTexto(grupoTexto) {
                     if (elPerfilNome) elPerfilNome.textContent = textoNovo;
                 }
 
-                registrarAlteracao(campoId, textoNovo);
-                const btnSalvar = document.getElementById("perfilBtn");
-                if (btnSalvar) btnSalvar.classList.add("ativo");
+                const infoVaga = texto.closest('.infoVaga');
+
+                if (infoVaga) {
+                    const infoVaga = texto.closest('.infoVaga');
+                    registrarAlteracao(`vaga_${infoVaga.dataset.vagaId}_${campoId}`, textoNovo);
+
+                    const vagaBtn = infoVaga.querySelector('.vagaBtn');
+                    if (vagaBtn) vagaBtn.classList.add("ativo");
+                } else {
+                    registrarAlteracao(campoId, textoNovo);
+                    const btnSalvar = document.getElementById("perfilBtn");
+                    if (btnSalvar) btnSalvar.classList.add("ativo");
+                }
 
                 texto.style.display = "";
                 input.remove();

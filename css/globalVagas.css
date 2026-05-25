@@ -253,14 +253,12 @@ button {
     .infoVaga .tituloVaga {
         margin: 1em 0;
     }
-    .infoVaga button {
+    .vagasCandidatarSe {
         position: fixed;
         right: 1em;
         top: 1em;
 
         background-color: rgb(var(--corPrimaria));
         color: white;
-    }
-    .vagasCandidatarSe {
-        display: flex; /* modificar para sumir */
+        display: flex;
     }

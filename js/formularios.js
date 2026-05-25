@@ -68,6 +68,9 @@ if (cadastro_formulario) {
                 if (cadastroMenu) cadastroMenu.style.display = "none";
                 cadastro_formulario.reset();
                 popUp(cadastroSucesso, null);
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
             } else {
                 const erroJson = await response.json();
                 alert("Erro no cadastro: " + erroJson.mensagem);

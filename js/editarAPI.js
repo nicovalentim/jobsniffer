@@ -8,7 +8,7 @@ export async function salvarBanco() {
     const perfilBtn = document.getElementById("perfilBtn");
 
     try {
-        const response = await fetch('/atualizarCadastroLote', {
+        const response = await fetch('/atualizarCadastro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -37,8 +37,7 @@ export async function salvarBanco() {
             }
 
             limparAlteracoes();
-            const btnSalvar = document.getElementById("perfilBtn");
-            if (btnSalvar) btnSalvar.classList.remove("ativo");
+            if (perfilBtn) perfilBtn.classList.remove("ativo");
             
         } else {
             alert('Erro ao salvar dados no banco. Recarregue a página para reverter.');
@@ -46,5 +45,41 @@ export async function salvarBanco() {
     } catch (erro) {
         console.error('Erro na requisição:', erro);
         alert('Erro de conexão. Tente novamente mais tarde.');
+    }
+}
+
+export async function salvarVagaBanco(infoVaga) {
+    const vagaId = infoVaga.dataset.vagaId;
+    const alteracoes = obterAlteracoes();
+    const payload = { id: vagaId };
+
+    Object.entries(alteracoes).forEach(([chave, valor]) => {
+        if (chave.startsWith(`vaga_${vagaId}_`)) {
+            const campo = chave.replace(`vaga_${vagaId}_`,'');
+            payload[campo] = valor;
+            }
+        });
+
+    try {
+        const response = await fetch('/editarVaga', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }
+        );
+
+        if (response.ok) {
+            Object.keys(alteracoes).forEach((chave) => {
+                if (chave.startsWith(`vaga_${vagaId}_`))delete alteracoes[chave];
+            });
+            alert('Vaga atualizada com sucesso!');
+        } else {
+            alert('Erro ao salvar vaga.');
+        }
+    } catch (erro) {
+        console.error(erro);
+        alert('Erro de conexão.');
     }
 }

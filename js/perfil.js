@@ -32,7 +32,6 @@ export function atualizarUsuario() {
     if (perfilBtn) {
         perfilBtn.replaceWith(perfilBtn.cloneNode(true)); 
         const novoperfilBtn = document.getElementById("perfilBtn");
-
         novoperfilBtn.addEventListener("click", salvarBanco);
     }
 }
