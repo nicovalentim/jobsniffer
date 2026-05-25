@@ -47,6 +47,7 @@ async function btnEntrarClick() {
             const dados = await response.json();
 
             localStorage.setItem("logado", "true");
+            localStorage.setItem("tipo", dados.tipo);
             localStorage.setItem("nome", dados.nome);
             localStorage.setItem("email", dados.email);
             localStorage.setItem("senha", dados.senha);

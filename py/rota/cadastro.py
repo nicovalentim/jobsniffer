@@ -1,13 +1,14 @@
 from flask import Blueprint, request, jsonify
 from py.conectarBanco import conexao
+from werkzeug.security import generate_password_hash
 
 rota_cadastro = Blueprint('cadastro', __name__)
 
 @rota_cadastro.route('/cadastro', methods=['POST'])
 def cadastro_data():
     dados = request.json
-    
-    # variavel pithon = dados.get('variavel_html')
+
+    # variável python = dados.get('variável js')    
     nome = dados.get('usuario_nome')
     email = dados.get('usuario_email')
     senha = dados.get('usuario_senha')
@@ -16,6 +17,11 @@ def cadastro_data():
     cep = dados.get('usuario_CEP')
     linkedin = dados.get('usuario_linkedin')
     folio = dados.get('usuario_folio')
+
+    if senha:
+        senha = generate_password_hash(senha)
+    else:
+        return jsonify({"status": "erro", "mensagem": "A senha é obrigatória!"}), 400
 
     conn = conexao()
     cursor = conn.cursor()

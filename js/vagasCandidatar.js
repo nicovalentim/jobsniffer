@@ -34,9 +34,6 @@ export function inicializarCandidatura(formularioVaga) {
             if (resposta.ok && resultado.status === "ok") {
                 const candidatarSucesso = document.getElementById("candidatarSucesso");
                 popUp(candidatarSucesso, null);
-                setTimeout(() => {
-                    location.reload();
-                }, 1500);
 
                 const botao = formularioVaga.querySelector('button');
                 if (botao) {

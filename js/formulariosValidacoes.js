@@ -56,7 +56,7 @@ document.addEventListener("input", (e) => {
 
 document.addEventListener("change", (e) => {
     if (e.target && e.target.id === "cadastro_aceitar") {
-        const botaoEnviar = document.getElementById("cadastro_enviar");
+        const botaoEnviar = document.getElementById("cadastroEnviar");
         if (botaoEnviar) {
             if (e.target.checked) {
                 botaoEnviar.disabled = false;

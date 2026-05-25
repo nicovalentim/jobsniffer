@@ -33,15 +33,15 @@ export function criarInputConfigurado(campoId, textoAnterior) {
         input.type = "email";
         input.placeholder = "nome@exemplo.com";
     }
+    
+    if (campoId === "usuarioSenha") input.type = "password";
 
     if (campoId === "usuarioLinkedin" || campoId === "usuarioFolio") {
         input.type = "url";
         input.placeholder = "https://jobsniffer.com"; 
 
         const textosPadrao = ["Não enviado", "Perfil não associado.", "Link não enviado."];
-        if (textosPadrao.includes(textoAnterior)) {
-            input.value = "";
-        }
+        if (textosPadrao.includes(textoAnterior)) input.value = "";
     }
 
     input.addEventListener('input', function(e) {

@@ -107,3 +107,6 @@
         padding: 9px;
         margin: 0 5px;
     }
+    #usuarioSenha {
+        -webkit-text-security: disc; 
+    }

@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from py.conectarBanco import conexao
+from werkzeug.security import generate_password_hash, check_password_hash
 
 rota_login = Blueprint('login', __name__)
 
@@ -18,21 +19,25 @@ CAMPOS = {
 @rota_login.route('/login', methods=['POST'])
 def login():
     dados = request.json
+    email = dados.get("email")
+    senha_digitada = dados.get("senha")
+
     conn = conexao()
     cursor = conn.cursor()
 
     cursor.execute(
-        "SELECT * FROM cadastro WHERE Email = ? AND Senha = ?",
-        (dados.get("email"), dados.get("senha"))
+        "SELECT * FROM cadastro WHERE Email = ?",
+        (email,)
     )
 
     loginID = cursor.fetchone()
     conn.close()
 
-    if loginID:
+    if loginID and check_password_hash(loginID[4], senha_digitada):
         return jsonify({
             "status": "ok",
             "mensagem": "Login realizado com sucesso",
+            "tipo": loginID[1],
             "nome": loginID[2],
             "email": loginID[3],
             "senha": loginID[4],
@@ -49,7 +54,7 @@ def login():
     }), 401
 
 @rota_login.route('/atualizarCadastro', methods=['POST'])
-def atualizar_cadastro_lote():
+def atualizarCadastro():
     dados = request.json
     email = dados.get("email")
     alteracoes = dados.get("alteracoes")
@@ -67,8 +72,12 @@ def atualizar_cadastro_lote():
         for campo_id, texto_novo in alteracoes.items():
             coluna_banco = CAMPOS.get(campo_id)
             if coluna_banco:
+                if campo_id == 'usuarioSenha':
+                    texto_novo = generate_password_hash(texto_novo)
+                    
                 partes_query.append(f"{coluna_banco} = ?")
                 valores.append(texto_novo)
+                
         valores.append(email)
         query_final = f"UPDATE cadastro SET {', '.join(partes_query)} WHERE Email = ?"
 
@@ -77,7 +86,7 @@ def atualizar_cadastro_lote():
     
         return jsonify({
             "status": "ok", 
-            "mensagem": "Cadastro atualizado em lote com sucesso!"
+            "mensagem": "Cadastro updated em lote com sucesso!"
         }), 200
 
     except Exception as e:

@@ -1,6 +1,7 @@
 .navbar {
     display: flex;
     align-items: center;
+    align-content: center;
     font-size: 2em;
     font-family: var(--fontePrimaria);
     user-select: none;
@@ -9,7 +10,8 @@
     padding: 0.8em;
 }
 
-.navbar > li {
+.navbar > li,
+.navbar > p {
     padding: 0 0.2em;
     text-decoration: none;
     display: flex;
@@ -43,8 +45,8 @@ ul {
     #btnLogin,
     #btnLogout,
     #cadastro {
-        padding: 9px;
-        margin: 0 5px;
+        padding: 8px;
+        margin: 8px;
     }
     #cadastro,
     #btnLogout {
@@ -56,7 +58,10 @@ ul {
             #titulo {
                 font-size: 1em;
             }
-            .navbar a, #btnLogin, #cadastro {
+            .navbar a,
+            .navbar p span,
+            #btnLogin,
+            #cadastro {
                 font-size: 0.75em;
             }
         }

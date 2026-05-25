@@ -5,12 +5,6 @@
 - apresentação
 - gravar um vídeo do projeto rodando
 
-## funcional
-
-- hashes para senhas no login/cadastro (segurança)
-- diferenciação de usuário e admin
-- limite de vagas por página
-
 ## estética
 
 - refazer layout da página inicial

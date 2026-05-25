@@ -54,8 +54,8 @@ export function vaga_infoOnClick(vaga, reqs) {
                     <span class="naVaga editavelVaga" data-campo="salario">${salario}</span>
                 </span>
                 <span class="reqs">${reqs}</span>
-                <button type="button" class="vagaBtn cadastro_enviar">Salvar Alterações</button>
-                <button type="button" class="vagasCandidatarSe" ${atributoDisabled} ${estiloBotao}>${textoBotao}</button>
+                <button type="button" class="vagaBtn enviar">Salvar Alterações</button>
+                <button type="submit" class="vagasCandidatarSe" ${atributoDisabled} ${estiloBotao}>${textoBotao}</button>
             </form>`;
 }
 
