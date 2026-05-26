@@ -46,6 +46,33 @@ export function criarInputConfigurado(campoId, textoAnterior) {
 
                 input.appendChild(option);
             });
+        } else if (campoId === "localizacao") {
+            input = document.createElement("select");
+            const opcoes = [
+                { valor: "Presencial", texto: "Presencial" },
+                { valor: "Híbrido", texto: "Híbrido" },
+                { valor: "Remoto", texto: "Remoto" }
+            ];
+            opcoes.forEach(opcaoInfo => {
+                const option = document.createElement("option");
+                option.value = opcaoInfo.valor;
+                option.textContent = opcaoInfo.texto;
+
+                input.appendChild(option);
+            });
+        } else if (campoId === "regime") {
+            input = document.createElement("select");
+            const opcoes = [
+                { valor: "Meio período", texto: "Meio período" },
+                { valor: "Período Integral", texto: "Período Integral" }
+            ];
+            opcoes.forEach(opcaoInfo => {
+                const option = document.createElement("option");
+                option.value = opcaoInfo.valor;
+                option.textContent = opcaoInfo.texto;
+
+                input.appendChild(option);
+            });
         } else {
             input = document.createElement("input");
         }
@@ -58,6 +85,8 @@ export function criarInputConfigurado(campoId, textoAnterior) {
     }
     
     if (campoId === "usuarioSenha") input.type = "password";
+
+    if (campoId === "salario") input.type = "number";
 
     if (campoId === "usuarioLinkedin" || campoId === "usuarioFolio") {
         input.type = "url";
