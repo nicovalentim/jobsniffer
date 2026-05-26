@@ -1,4 +1,7 @@
 /* vagas na página inicial */
+.vagasHomePage {
+    max-width: 1200px;
+}
 .vagasHomePage #vaga_4 {
     display: none !important;
 }
@@ -147,6 +150,7 @@ button {
     user-select: none;
 
     background-color: rgba(255,255,255,0.5);
+    min-height: 400px;
     padding: 2em;
 
     border: none;
