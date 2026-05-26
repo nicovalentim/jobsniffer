@@ -86,7 +86,7 @@ export async function vagas_carregar(url = "/api/vagas") {
         });
     }
 
-    if (localStorage.getItem("tipo") == "admin")
+//    if (localStorage.getItem("tipo") == "admin")
         editarTexto(document.querySelectorAll('.editavelVaga'));
     vagas_filtrar();
 }

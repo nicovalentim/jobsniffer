@@ -253,6 +253,14 @@ button {
     .infoVaga .tituloVaga {
         margin: 1em 0;
     }
+        .infoVaga textarea {
+            resize: vertical;
+            height: 10lh;
+                line-height: 1.5;
+            width: 100%;
+
+            font: var(--fontePrimaria);
+        }
     .vagasCandidatarSe {
         position: fixed;
         right: 1em;

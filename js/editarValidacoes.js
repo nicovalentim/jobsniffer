@@ -26,7 +26,30 @@ export function editarValidacaoEntrada(campoId, input) {
 }
 
 export function criarInputConfigurado(campoId, textoAnterior) {
-    const input = document.createElement("input");
+    let input;
+        if (campoId === "descricao") {
+            input = document.createElement("textarea");
+        } else if (campoId === "area") {
+            input = document.createElement("select");
+            const opcoes = [
+                { valor: "ADM", texto: "Administração" },
+                { valor: "COM", texto: "Comércio" },
+                { valor: "ENG", texto: "Engenharia" },
+                { valor: "LOG", texto: "Logística" },
+                { valor: "MKT", texto: "Marketing" },
+                { valor: "TI", texto: "Tecnologia da Informação" }
+            ];
+            opcoes.forEach(opcaoInfo => {
+                const option = document.createElement("option");
+                option.value = opcaoInfo.valor;
+                option.textContent = opcaoInfo.texto;
+
+                input.appendChild(option);
+            });
+        } else {
+            input = document.createElement("input");
+        }
+
     input.value = textoAnterior;
 
     if (campoId === "usuarioEmail") {

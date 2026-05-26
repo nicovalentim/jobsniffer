@@ -7,5 +7,6 @@
 
 ## estética
 
+- formulário para criar novas vagas / cadastro de vagas
 - refazer layout da página inicial
 - reduzir número de vagas por página

@@ -47,7 +47,7 @@ export function vaga_infoOnClick(vaga, reqs) {
                     <p class="areaVaga editavelVaga" data-campo="area" data-area="${area.toLowerCase()}">${area}</p>
                 </span>
                 <h1 class="editavelVaga" data-campo="titulo">${titulo}</h1>
-                <span class="textoVaga editavelVaga" data-campo="descricao"> ${descricao}</span>
+                <span class="textoVaga editavelVaga" data-campo="descricao">${descricao}</span>
                 <span class="detalhesVaga">
                     <span class="naVaga editavelVaga" data-campo="localizacao">${localizacao}</span>
                     <span class="naVaga editavelVaga" data-campo="regime">${regime}</span>
@@ -70,7 +70,7 @@ export function vaga_gerarHTML(listaVagas, limiteDesc) {
         const requisitos = (vaga.requisitos || "").split(', ')
         let reqs = ""
         for (let i = 0; i < requisitos.length; i++)
-            reqs += `<p class="requisitos">#${requisitos[i]}</p>`;
+            reqs += `<p class="requisitos editavelVaga" data-campo="requisitos">#${requisitos[i]}</p>`;
 
         const infoVaga = vaga_infoOnClick(vaga, reqs);
         const cardVaga = vaga_info(vaga, descricaoCurta, reqs);
