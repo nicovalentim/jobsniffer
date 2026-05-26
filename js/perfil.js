@@ -8,7 +8,7 @@ export function atualizarUsuario() {
     usuarioEmail.textContent = localStorage.getItem("email") || "usuário@exemplo.com";
 
     let usuarioSenha = document.getElementById("usuarioSenha");
-    usuarioSenha.textContent = localStorage.getItem("senha") || "••••••••";
+    usuarioSenha.textContent = "••••••••";
 
     let usuarioNascimento = document.getElementById("usuarioNascimento");
     usuarioNascimento.textContent = localStorage.getItem("nascimento") || "00/00/0000";

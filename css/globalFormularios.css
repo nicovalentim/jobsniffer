@@ -14,6 +14,7 @@ form {
 
         background-color: rgb(var(--corPrimaria));
         color: rgb(var(--branco));
+        justify-self: center;
     }
     .enviar.ativo {
         display: block !important;

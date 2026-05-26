@@ -48,6 +48,8 @@ CREATE TABLE `cadastro` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `cadastro` WRITE;
+INSERT into `cadastro` VALUES (0,'admin','Administrador','admin@jobsniffer.com','scrypt:32768:8:1$QRtIXu39TIEewPk9$668eb2c6b5034c20815f946c99ded2520b05d596af2d04084e10e723f78961dfc2b39381aa6bf3d1181d87b27dcdbe14e5148c57040488785ce176641c1101b3',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/* senha é Admin1 */
 UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `candidaturas`;
