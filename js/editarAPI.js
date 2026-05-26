@@ -51,7 +51,8 @@ export async function salvarBanco() {
 export async function salvarVagaBanco(infoVaga) {
     const vagaId = infoVaga.dataset.vagaId;
     const alteracoes = obterAlteracoes();
-    const payload = { id: vagaId };
+    const emailAtual = localStorage.getItem("email");
+    const payload = { id: vagaId, emailSolicitante: emailAtual };
 
     Object.entries(alteracoes).forEach(([chave, valor]) => {
         if (chave.startsWith(`vaga_${vagaId}_`)) {
@@ -76,6 +77,7 @@ export async function salvarVagaBanco(infoVaga) {
             });
             alert('Vaga atualizada com sucesso!');
         } else {
+            const dadosErro = await response.json();
             alert('Erro ao salvar vaga.');
         }
     } catch (erro) {

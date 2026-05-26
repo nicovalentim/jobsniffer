@@ -91,14 +91,28 @@ def get_vagas_inscritas():
 def editar_vaga():
     dados = request.json
     vaga_id = dados.get('id')
+    email_solicitante = dados.get('emailSolicitante') 
+
     if not vaga_id:
-        return jsonify({
-            'success': False,
-            'erro': 'ID da vaga não enviado'
-        }), 400
+        return jsonify({'success': False, 'erro': 'ID da vaga não enviado'}), 400
 
     conn = conexao()
     cursor = conn.cursor()
+
+    try:
+        if not email_solicitante:
+            return jsonify({'success': False, 'erro': 'Usuário não identificado.'}), 401
+
+        cursor.execute("SELECT tipo FROM cadastro WHERE Email = ?", (email_solicitante,))
+        usuario = cursor.fetchone()
+
+        if not usuario or usuario[0] != 'admin':
+            return jsonify({'success': False, 'erro': 'Acesso negado. Apenas administradores.'}), 403
+    except Exception as e:
+        print(f"Erro na autenticação: {e}")
+        cursor.close()
+        conn.close()
+        return jsonify({'success': False, 'erro': 'Erro ao validar permissões.'}), 500
 
     campos = []
     valores = []
@@ -113,6 +127,7 @@ def editar_vaga():
     ]
 
     for campo in campos_validos:
+        if campo not in dados: continue 
         valor = dados.get(campo)
         if valor is None: continue
         if campo == 'salario':
