@@ -15,7 +15,6 @@
 
 ## estética
 
+- página de testes
 - reduzir número de vagas por página
 - formulário para criar novas vagas / cadastro de vagas
-- refazer layout da página inicial
-- página de testes
