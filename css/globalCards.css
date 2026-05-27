@@ -33,58 +33,76 @@
     .card h1 {
         font-weight: 700;
     }
-    .homeEncontre {
+
+.homeEncontre {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5em;
+
+    margin: 2em 0;
+    height: 320px;
+    min-height: 320px;
+}
+    .homeEncontre section:has(h1) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .homeEncontre li {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+    }
+
+    .homeEncontre section:has(img) {
         display: grid;
-        grid-template-columns: repeat(4, auto);
-    }
-        .homeEncontre section {
-            align-content: center;
-        }
-        .homeEncontre li {
-            font-size: 1.4em;
-        }
-        .homeEncontre .lateral {
-            grid-template-columns: 3;
-            grid-column: span 3;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        padding: 0;
 
-            background-color: rgb(var(--branco));
-            box-shadow: none;
-            object-fit: cover;
-        }
-            .homeEncontre .lateral img {
-                filter: saturate(0);
-            }
-    .homeValores {
+        box-shadow: none;
+    }
+    .homeEncontre section:has(img) img {
+        height: 100%;
+    }
+    .homeEncontre section:has(img) img,
+    .homeValores img {
         border-radius: 16px;
-        margin: 4em 0;
-        grid-template-columns: repeat(5, auto);
-        gap: 16px;
+        width: 100%;
+        object-fit: cover;
+        filter: saturate(0.6);
     }
-        .homeValores .valoresImg {
-            grid-column: span 5;
-            width: 100%;
-        }
-            .homeValores .valoresImg img {
-                object-fit: cover;
-                height: 160px;
-                width: 100%;
 
-                filter: saturate(0);
-            }
+.homeValores {
+    margin: 1em 0;
+    grid-template-columns: repeat(5, auto);
+    gap: 16px;
+}
+    .homeValores section {
+        background-color: rgb(var(--branco));
+        align-content: center;
+        text-align: center;
+        box-shadow: none;
+        padding: 0;
+
+        font-size: 1.2em;
+    }
+    .homeValores section:has(img) {
+        grid-column: span 5;
+        width: 100%;
+    }
+        .homeValores img {
+            height: 160px;
+        }
         .homeValores hr {
             align-self: center;
-            height: 50%;
+            height: 90%;
+            opacity: 0.2;
         }
-        .homeValores section {
-            background-color: rgb(var(--branco));
-            align-content: center;
-            text-align: center;
-            max-height: fit-content;
-            box-shadow: none;
-            padding: 0;
 
-            font-size: 1.4em;
-        }
+.homeVagas {
+    justify-items: center;
+}
+
     .sobre {
         grid-template-columns: repeat(3, 1fr);
     }

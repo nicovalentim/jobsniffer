@@ -91,6 +91,15 @@ textarea {
     grid-template-columns: 1fr 3fr;
     gap: 1em;
 }
+    .contato section {
+        min-height: 50vh;
+        width: 100%;
+    }
+    [name="enviarEmail"] {
+        color: rgba(var(--branco), 1);
+        background-color: rgb(var(--corPrimaria));
+        border-radius: 8px;
+    }
     @media (max-width: 1080px) {
         .contato {
             grid-template-columns: 1fr;
