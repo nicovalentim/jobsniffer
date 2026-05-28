@@ -2,8 +2,8 @@ import os
 from flask import Flask, render_template
 from py.iniciarBanco import init_db
 
-app = Flask(__name__, 
-            template_folder='', 
+app = Flask(__name__,
+            template_folder='',
             static_folder='',
             static_url_path='')
 

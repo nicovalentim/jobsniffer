@@ -8,7 +8,7 @@ rota_cadastro = Blueprint('cadastro', __name__)
 def cadastro_data():
     dados = request.json
 
-    # variável python = dados.get('variável js')    
+    # variável python = dados.get('variável js')
     nome = dados.get('usuario_nome')
     email = dados.get('usuario_email')
     senha = dados.get('usuario_senha')
@@ -43,12 +43,12 @@ def cadastro_data():
             (nome, email, senha, nascimento, telefone, cep, linkedin, folio)
         )
         conn.commit()
-        
+
         return jsonify({
             "status": "ok",
             "mensagem": "Cadastro realizado com sucesso!"
         }), 200
-        
+
     except Exception as e:
         return jsonify({
             "status": "erro",

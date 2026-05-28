@@ -28,7 +28,7 @@ def candidatar_data():
                 "status": "erro",
                 "mensagem": "Usuário não cadastrado ou não encontrado no sistema!"
             }), 404
-        
+
         usuario_id = usuario[0]
 
         cursor.execute(

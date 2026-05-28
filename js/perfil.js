@@ -3,7 +3,7 @@ import { editarTexto, salvarBanco } from "./editar.js";
 export function atualizarUsuario() {
     let usuarioNome = document.getElementById("perfilNome");
     usuarioNome.textContent = localStorage.getItem("nome") || "Usuário";
-    
+
     let usuarioEmail = document.getElementById("usuarioEmail");
     usuarioEmail.textContent = localStorage.getItem("email") || "usuário@exemplo.com";
 
@@ -30,7 +30,7 @@ export function atualizarUsuario() {
 
     const perfilBtn = document.getElementById("perfilBtn");
     if (perfilBtn) {
-        perfilBtn.replaceWith(perfilBtn.cloneNode(true)); 
+        perfilBtn.replaceWith(perfilBtn.cloneNode(true));
         const novoperfilBtn = document.getElementById("perfilBtn");
         novoperfilBtn.addEventListener("click", salvarBanco);
     }

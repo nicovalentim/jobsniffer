@@ -28,13 +28,13 @@ def init_db(app):
 
         if not os.path.exists(db_path):
             print("Iniciando o banco de dados pelo arquivo SQL...")
-            
+
             conn = sqlite3.connect(db_path)
             cursor = conn.cursor()
-            
+
             try:
                 with open(sql_path, 'r', encoding='utf-8') as f:
-                    sql_commands = mysqlParaSqlite(f.read()) 
+                    sql_commands = mysqlParaSqlite(f.read())
 
                     for command in sql_commands:
                             cursor.execute(command)
@@ -45,9 +45,9 @@ def init_db(app):
             except Exception as e:
                 print(f"Erro na inicialização: {e}")
                 conn.close()
-                if os.path.exists(db_path): 
+                if os.path.exists(db_path):
                     os.remove(db_path)
-            
+
             finally:
-                if 'conn' in locals(): 
+                if 'conn' in locals():
                     conn.close()

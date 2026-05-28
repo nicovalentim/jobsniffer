@@ -91,7 +91,7 @@ def get_vagas_inscritas():
 def editar_vaga():
     dados = request.json
     vaga_id = dados.get('id')
-    email_solicitante = dados.get('emailSolicitante') 
+    email_solicitante = dados.get('emailSolicitante')
 
     if not vaga_id:
         return jsonify({'success': False, 'erro': 'ID da vaga não enviado'}), 400
@@ -127,7 +127,7 @@ def editar_vaga():
     ]
 
     for campo in campos_validos:
-        if campo not in dados: continue 
+        if campo not in dados: continue
         valor = dados.get(campo)
         if valor is None: continue
         if campo == 'salario':

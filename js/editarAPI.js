@@ -22,10 +22,7 @@ export async function salvarBanco() {
 
             Object.keys(alteracoes).forEach(campoId => {
                 const textoNovo = alteracoes[campoId];
-
-                if (campoId === "usuarioEmail") 
-                    localStorage.setItem("email", textoNovo.toLowerCase());
-
+                if (campoId === "usuarioEmail") localStorage.setItem("email", textoNovo.toLowerCase());
                 const chaveLocal = campoId.replace("usuario", "").replace("perfil", "").toLowerCase();
                 localStorage.setItem(chaveLocal, textoNovo);
             });
@@ -38,7 +35,6 @@ export async function salvarBanco() {
 
             limparAlteracoes();
             if (perfilBtn) perfilBtn.classList.remove("ativo");
-            
         } else {
             alert('Erro ao salvar dados no banco. Recarregue a página para reverter.');
         }

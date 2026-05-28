@@ -33,7 +33,7 @@ export function vaga_infoOnClick(vaga, reqs) {
     let salario = Number(vaga.salario || 0);
         salario = salario.toLocaleString('pt-BR');
         salario = "R$ " + salario + ",00";
-                
+
     const jaCandidatado = vaga.ja_candidatado === 1;
         const textoBotao = jaCandidatado ? "Já Candidatado" : "Quero me candidatar!";
         const estiloBotao = jaCandidatado ? 'style="background-color: gray;"' : '';
