@@ -21,7 +21,7 @@ export function validarFormatoLogin(email, senha) {
             return false;
         }
 
-    return true; 
+    return true;
 }
     export function erroTreme(input) {
         if (!input) return;

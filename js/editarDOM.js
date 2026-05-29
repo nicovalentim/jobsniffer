@@ -18,7 +18,6 @@ export function obterAlteracoes() {
 
 export function registrarAlteracao(campoId, valorNovo) {
     alteracoesPendentes[campoId] = valorNovo;
-    
     window.removeEventListener("beforeunload", avisarAntesDeSair);
     window.addEventListener("beforeunload", avisarAntesDeSair);
 }

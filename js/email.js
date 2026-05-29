@@ -1,8 +1,7 @@
 export function enviarEmail() {
     const form = document.getElementById('contato');
-    
-    if (!form)
-        return;
+
+    if (!form) return;
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -20,8 +19,7 @@ export function enviarEmail() {
 
         window.location.href = mailtoLink;
 
-        if (sucesso)
-            sucesso.innerHTML = "Seu aplicativo de e-mail foi aberto!";
+        if (sucesso) sucesso.innerHTML = "Seu aplicativo de e-mail foi aberto!";
         form.reset();
     });
 }

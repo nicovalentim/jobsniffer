@@ -48,7 +48,7 @@ CREATE TABLE `cadastro` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `cadastro` WRITE;
-INSERT into `cadastro` VALUES (0,'admin','Administrador','admin@jobsniffer.com','scrypt:32768:8:1$QRtIXu39TIEewPk9$668eb2c6b5034c20815f946c99ded2520b05d596af2d04084e10e723f78961dfc2b39381aa6bf3d1181d87b27dcdbe14e5148c57040488785ce176641c1101b3',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT into `cadastro` VALUES (0,'admin','Administrador','admin@jobsniffer.com','scrypt:32768:8:1$QRtIXu39TIEewPk9$668eb2c6b5034c20815f946c99ded2520b05d596af2d04084e10e723f78961dfc2b39381aa6bf3d1181d87b27dcdbe14e5148c57040488785ce176641c1101b3',NULL,NULL,NULL,NULL,NULL,NULL,NULL), (1,'usuario','Usuário de Testes','usuario@dominio.com','scrypt:32768:8:1$07JFRaZQAEyVwLbJ$67c18b3167e02607ebe21eeb7f71b92fa901bed4dbb5185f5197c3d6f153e405641344e426c6271462e9707556f442e6b1fef6a12b6ccd703fddb40506964740','12 / 03 / 2045','(11) 98765-4321','12345-678',NULL,NULL,NULL,NULL);
 /* senha é Admin1 */
 UNLOCK TABLES;
 

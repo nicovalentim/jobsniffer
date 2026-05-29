@@ -79,7 +79,7 @@
 }
     .homeValores section {
         background-color: rgb(var(--branco));
-        align-content: center;
+        align-content: start;
         text-align: center;
         box-shadow: none;
         padding: 0;

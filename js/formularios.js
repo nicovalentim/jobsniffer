@@ -41,7 +41,7 @@ if (cadastro_formulario) {
         if (!validarCampoFormatado("usuarioNascimento", nascimentoValor, validarRegrasSenha) ||
             !validarCampoFormatado("usuarioTelefone", telefoneValor, validarRegrasSenha) ||
             !validarCampoFormatado("usuarioCEP", CEPValor, validarRegrasSenha)) {
-            return; 
+            return;
         }
 
         const dadosFormulario = {

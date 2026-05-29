@@ -74,24 +74,24 @@ def atualizarCadastro():
             if coluna_banco:
                 if campo_id == 'usuarioSenha':
                     texto_novo = generate_password_hash(texto_novo)
-                    
+
                 partes_query.append(f"{coluna_banco} = ?")
                 valores.append(texto_novo)
-                
+
         valores.append(email)
         query_final = f"UPDATE cadastro SET {', '.join(partes_query)} WHERE Email = ?"
 
         cursor.execute(query_final, tuple(valores))
         conn.commit()
-    
+
         return jsonify({
-            "status": "ok", 
+            "status": "ok",
             "mensagem": "Cadastro updated em lote com sucesso!"
         }), 200
 
     except Exception as e:
         print(f"Erro ao atualizar banco em lote: {e}")
         return jsonify({"status": "erro", "mensagem": "Erro interno do servidor"}), 500
-        
+
     finally:
         conn.close()

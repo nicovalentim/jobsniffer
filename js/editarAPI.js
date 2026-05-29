@@ -22,10 +22,7 @@ export async function salvarBanco() {
 
             Object.keys(alteracoes).forEach(campoId => {
                 const textoNovo = alteracoes[campoId];
-
-                if (campoId === "usuarioEmail") 
-                    localStorage.setItem("email", textoNovo.toLowerCase());
-
+                if (campoId === "usuarioEmail") localStorage.setItem("email", textoNovo.toLowerCase());
                 const chaveLocal = campoId.replace("usuario", "").replace("perfil", "").toLowerCase();
                 localStorage.setItem(chaveLocal, textoNovo);
             });
@@ -38,7 +35,6 @@ export async function salvarBanco() {
 
             limparAlteracoes();
             if (perfilBtn) perfilBtn.classList.remove("ativo");
-            
         } else {
             alert('Erro ao salvar dados no banco. Recarregue a página para reverter.');
         }
@@ -83,5 +79,69 @@ export async function salvarVagaBanco(infoVaga) {
     } catch (erro) {
         console.error(erro);
         alert('Erro de conexão.');
+    }
+}
+
+export async function criarVagaBanco(infoVaga) {
+    const alteracoes = obterAlteracoes();
+    const emailAtual = localStorage.getItem("email");
+    const vagaId = 'nova';
+    const payload = { emailSolicitante: emailAtual };
+
+    Object.entries(alteracoes).forEach(([chave, valor]) => {
+        if (chave.startsWith(`vaga_${vagaId}_`)) {
+            const campo = chave.replace(`vaga_${vagaId}_`, '');
+            payload[campo] = valor;
+        }
+    });
+
+    try {
+        const response = await fetch('/criarVaga', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+            Object.keys(alteracoes).forEach((chave) => {
+                if (chave.startsWith(`vaga_${vagaId}_`)) delete alteracoes[chave];
+            });
+            alert('Nova vaga criada com sucesso!');
+            window.location.reload();
+        } else {
+            const dadosErro = await response.json();
+            alert(`Erro ao criar vaga: ${dadosErro.erro}`);
+        }
+
+    } catch (erro) {
+        console.error(erro);
+        alert('Erro de conexão.');
+    }
+}
+
+export async function deletarVagaBanco(vagaId) {
+    const confirmacao = confirm("Tem certeza de que deseja apagar permanentemente esta vaga? Esta ação não pode ser desfeita.");
+    if (!confirmacao) return;
+
+    const emailAtual = localStorage.getItem("email");
+    const payload = { id: vagaId, emailSolicitante: emailAtual };
+
+    try {
+        const response = await fetch('/deletarVaga', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+            alert('Vaga excluída com sucesso!');
+            window.location.reload();
+        } else {
+            const dadosErro = await response.json();
+            alert(`Erro ao excluir vaga: ${dadosErro.erro}`);
+        }
+    } catch (erro) {
+        console.error(erro);
+        alert('Erro de conexão ao tentar excluir a vaga.');
     }
 }

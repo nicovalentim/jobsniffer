@@ -1,5 +1,5 @@
 import { formatarCEPTexto, formatarNascimentoTexto, formatarTelefoneTexto, validarCampoFormatado } from "./formulariosAutoformatar.js";
-import { validarRegrasSenha } from "./formulariosValidacoes.js"; 
+import { validarRegrasSenha } from "./formulariosValidacoes.js";
 
 export function editarValidacaoEntrada(campoId, input) {
     const textoNovo = input.value.trim();
@@ -83,14 +83,11 @@ export function criarInputConfigurado(campoId, textoAnterior) {
         input.type = "email";
         input.placeholder = "nome@exemplo.com";
     }
-    
     if (campoId === "usuarioSenha") input.type = "password";
-
     if (campoId === "salario") input.type = "number";
-
     if (campoId === "usuarioLinkedin" || campoId === "usuarioFolio") {
         input.type = "url";
-        input.placeholder = "https://jobsniffer.com"; 
+        input.placeholder = "https://jobsniffer.com";
 
         const textosPadrao = ["Não enviado", "Perfil não associado.", "Link não enviado."];
         if (textosPadrao.includes(textoAnterior)) input.value = "";

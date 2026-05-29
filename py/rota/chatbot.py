@@ -50,7 +50,7 @@ def responder_usuario(msg):
 
     else:
         return "Posso te ajudar com:\n\n• Vagas 💼\n• Currículo 📄\n• Cadastro 📝\n• Processo seletivo 🎯"
-    
+
 @rota_chatbot.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()

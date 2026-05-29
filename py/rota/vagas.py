@@ -91,7 +91,7 @@ def get_vagas_inscritas():
 def editar_vaga():
     dados = request.json
     vaga_id = dados.get('id')
-    email_solicitante = dados.get('emailSolicitante') 
+    email_solicitante = dados.get('emailSolicitante')
 
     if not vaga_id:
         return jsonify({'success': False, 'erro': 'ID da vaga não enviado'}), 400
@@ -127,7 +127,7 @@ def editar_vaga():
     ]
 
     for campo in campos_validos:
-        if campo not in dados: continue 
+        if campo not in dados: continue
         valor = dados.get(campo)
         if valor is None: continue
         if campo == 'salario':
@@ -173,6 +173,105 @@ def editar_vaga():
             'success': False,
             'erro': str(erro)
         }), 500
+
+    finally:
+        cursor.close()
+        conn.close()
+
+@rota_vagas.route('/criarVaga', methods=['POST'])
+def criar_vaga():
+    dados = request.json
+    email_solicitante = dados.get('emailSolicitante')
+
+    conn = conexao()
+    cursor = conn.cursor()
+
+    try:
+        if not email_solicitante:
+            return jsonify({'success': False, 'erro': 'Usuário não identificado.'}), 401
+
+        cursor.execute("SELECT tipo FROM cadastro WHERE Email = ?", (email_solicitante,))
+        usuario = cursor.fetchone()
+        if not usuario or usuario[0] != 'admin':
+            return jsonify({'success': False, 'erro': 'Acesso negado.'}), 403
+
+    except Exception as e:
+        cursor.close()
+        conn.close()
+        return jsonify({'success': False, 'erro': 'Erro ao validar permissões.'}), 500
+
+    campos_validos = ['titulo', 'descricao', 'area', 'localizacao', 'regime', 'salario', 'requisitos']
+    campos = []
+    valores = []
+
+    for campo in campos_validos:
+        valor = dados.get(campo, '')
+
+        if campo == 'salario':
+            valor = str(valor).replace('R$', '').replace('.', '').replace(',00', '').replace(',', '.').strip()
+            valor = 0 if valor == "" else valor
+
+        campos.append(campo)
+        valores.append(valor)
+
+    if not dados.get('titulo'):
+        cursor.close()
+        conn.close()
+        return jsonify({'success': False, 'erro': 'O título é obrigatório.'}), 400
+
+    placeholders = ', '.join(['?'] * len(campos))
+    query = f"INSERT INTO banco_de_vagas ({', '.join(campos)}) VALUES ({placeholders})"
+
+    try:
+        cursor.execute(query, valores)
+        conn.commit()
+        return jsonify({'success': True})
+
+    except Exception as erro:
+        print(erro)
+        return jsonify({'success': False, 'erro': str(erro)}), 500
+
+    finally:
+        cursor.close()
+        conn.close()
+
+@rota_vagas.route('/deletarVaga', methods=['POST'])
+def deletar_vaga():
+    dados = request.json
+    vaga_id = dados.get('id')
+    email_solicitante = dados.get('emailSolicitante')
+
+    if not vaga_id:
+        return jsonify({'success': False, 'erro': 'ID da vaga não fornecido.'}), 400
+
+    conn = conexao()
+    cursor = conn.cursor()
+
+    try:
+        if not email_solicitante:
+            return jsonify({'success': False, 'erro': 'Usuário não identificado.'}), 401
+
+        cursor.execute("SELECT tipo FROM cadastro WHERE Email = ?", (email_solicitante,))
+        usuario = cursor.fetchone()
+        if not usuario or usuario[0] != 'admin':
+            return jsonify({'success': False, 'erro': 'Acesso negado. Apenas administradores.'}), 403
+
+    except Exception as e:
+        cursor.close()
+        conn.close()
+        return jsonify({'success': False, 'erro': 'Erro ao validar permissões.'}), 500
+
+    try:
+        cursor.execute("DELETE FROM candidaturas WHERE vaga_id = ?", (vaga_id,))
+
+        cursor.execute("DELETE FROM banco_de_vagas WHERE id = ?", (vaga_id,))
+        conn.commit()
+
+        return jsonify({'success': True})
+
+    except Exception as erro:
+        print(erro)
+        return jsonify({'success': False, 'erro': str(erro)}), 500
 
     finally:
         cursor.close()

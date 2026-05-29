@@ -1,6 +1,5 @@
 export function enviarEmail() {
     const form = document.getElementById('contato');
-    
     if (!form) {
         console.error("Formulário de contato não encontrado!");
         return;
@@ -25,6 +24,6 @@ export function enviarEmail() {
         if (sucesso) {
             sucesso.innerHTML = "Seu aplicativo de e-mail foi aberto!";
         }
-        form.reset(); 
+        form.reset();
     });
 }

@@ -1,17 +1,14 @@
 let chat = document.getElementById("chat");
 let chatbotBtn = document.getElementById("chatbot");
 
-/* reset */
 function resetChat() {
     let messages = document.getElementById("messages");
     let sugestoes = document.getElementById("sugestoes");
 
-    // remove todas as mensagens depois das sugestões
     while (messages.children.length > 2) {
         messages.removeChild(messages.lastChild);
     }
 
-    /* traz perguntas de volta */
     if (sugestoes) {
         sugestoes.style.position = "static";
         sugestoes.style.pointerEvents = "auto";
@@ -19,7 +16,6 @@ function resetChat() {
     }
 }
 
-/* abre e fecha chat */
 export function toggleChat() {
     if (chat.style.display === "none" || chat.style.display === "") {
         chat.style.display = "flex";
@@ -31,7 +27,6 @@ export function toggleChat() {
     }
 }
 
-/* fechar clicando fora */
 window.addEventListener("click", function (event) {
     if (chat.style.display === "flex") {
         if (!chat.contains(event.target) && !chatbotBtn.contains(event.target)) {
@@ -42,7 +37,6 @@ window.addEventListener("click", function (event) {
     }
 });
 
-/* sugestões */
 function enviarSugestao(texto) {
     let input = document.getElementById("text");
     let sugestoes = document.getElementById("sugestoes");
@@ -60,7 +54,6 @@ function enviarSugestao(texto) {
 
 window.enviarSugestao = enviarSugestao;
 
-/* envia mensagem */
 export async function sendMessage() {
     let input = document.getElementById("text");
     let message = input.value.trim();
@@ -75,7 +68,6 @@ export async function sendMessage() {
         sugestoes.style.opacity = "0";
     }
 
-    /* mensagem do usuário */
     let userMessage = document.createElement("div");
     userMessage.className = "user";
     userMessage.innerText = message;
@@ -85,7 +77,6 @@ export async function sendMessage() {
 
     messages.scrollTop = messages.scrollHeight;
 
-    /* 🔥 DIGITANDO (CORRIGIDO COM ANIMAÇÃO) */
     let botTyping = document.createElement("div");
     botTyping.className = "bot typing";
 
@@ -126,7 +117,6 @@ export async function sendMessage() {
     }
 }
 
-/* enter envia mensagem */
 document.addEventListener("DOMContentLoaded", function () {
     let input = document.getElementById("text");
 

@@ -275,3 +275,22 @@ button {
         color: white;
         display: flex;
     }
+    #vaga_nova {
+        border: 2px dashed color-mix(in srgb, rgb(var(--preto)), transparent 75%);
+
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 150px;
+    }
+        #vaga_nova div {
+            color: color-mix(in srgb, rgb(var(--preto)), transparent 75%);
+            font-size: 15em;
+            text-align: center;
+        }
+    .botoesAdmin {
+        display: flex;
+        gap: 16px;
+    }
