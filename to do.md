@@ -17,7 +17,3 @@
 
 - página de testes
 - reduzir número de vagas por página
-<<<<<<< HEAD
-=======
-- formulário para criar novas vagas / cadastro de vagas
->>>>>>> 7f5a07a60afa603daa4688ebdea06082e4600035
