@@ -4,12 +4,10 @@ import { limparErros } from "./loginValidacoes.js";
 const loginMenu = document.getElementById("loginMenu");
 const btnVoltar = document.getElementById("btnVoltar");
 const btnLogin = document.getElementById("btnLogin");
-
 const telas = {
     login: document.getElementById("login_telaEntrada"),
     senha: document.getElementById("login_telaRecuperacao")
 };
-
 const campos = {
     email: document.getElementById("login_email"),
     senha: document.getElementById("login_senha"),

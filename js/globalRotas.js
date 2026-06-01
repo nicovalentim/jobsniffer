@@ -33,18 +33,17 @@ async function rotearPagina(caminho) {
 async function carregarConteudo(fileUrl, type) {
     const resposta = await fetch(fileUrl);
     conteudoPagina.innerHTML = await resposta.text();
-
-    if (type === "vagas" || type === "home" || type === "perfil") {
-        const vagas = await import("./vagasImport.js");
-        vagas.vagas_carregar();
-    }
-    if (type === "cadastro") {
-        await import("./formularios.js");
-    }
-    if (type === "contato") {
-        const contato = await import("./email.js")
-        contato.enviarEmail();
-    }
+        if (type === "vagas" || type === "home" || type === "perfil") {
+            const vagas = await import("./vagasImport.js");
+            vagas.vagas_carregar();
+        }
+        if (type === "cadastro") {
+            await import("./formularios.js");
+        }
+        if (type === "contato") {
+            const contato = await import("./email.js")
+            contato.enviarEmail();
+        }
 }
 
 navbar.addEventListener("click", (e) => {

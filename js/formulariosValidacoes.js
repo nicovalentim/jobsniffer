@@ -11,21 +11,17 @@ export function validarRegrasSenha(senhaTexto) {
     regras.forEach((passou, i) => {
         const elemento = document.getElementById(ids[i]);
         if (elemento) {
-            if (passou) {
-                elemento.classList.add("valido");
-            } else {
+            (passou) ?
+                elemento.classList.add("valido") :
                 elemento.classList.remove("valido");
-            }
         }
     });
 
     const todasOk = regras.every(t => t === true);
     if (regrasSenha) {
-        if (todasOk) {
-            regrasSenha.classList.add("inativo");
-        } else {
+        (todasOk) ?
+            regrasSenha.classList.add("inativo") :
             regrasSenha.classList.remove("inativo");
-        }
     }
     return todasOk;
 }
@@ -49,9 +45,7 @@ document.addEventListener("input", (e) => {
         validarRegrasSenha(e.target.value);
         verificarSenhas();
     }
-    if (e.target && e.target.id === "cadastro_confirmaSenha") {
-        verificarSenhas();
-    }
+    if (e.target && e.target.id === "cadastro_confirmaSenha") verificarSenhas();
 });
 
 document.addEventListener("change", (e) => {

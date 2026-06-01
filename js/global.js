@@ -22,3 +22,16 @@ document.querySelectorAll(".navbar a, .links").forEach(link => {
         }
     });
 });
+
+/*
+const admin = localStorage.getItem("tipo") === "admin";
+const usuario = localStorage.getItem("tipo") === "usuario";
+let nomeLogado = document.getElementById("nomeLogado")
+
+admin ?
+    nomeLogado.innerHTML ="admin"
+    : null;
+usuario ?
+    nomeLogado.innerHTML = "<a href="#" id="usuarioNome" class="perfil">Usuário</a>";
+    : null;
+    */

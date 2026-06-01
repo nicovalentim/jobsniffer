@@ -30,20 +30,18 @@ export function inicializarCandidatura(formularioVaga) {
             });
 
             const resultado = await resposta.json();
+                if (resposta.ok && resultado.status === "ok") {
+                    const candidatarSucesso = document.getElementById("candidatarSucesso");
+                    popUp(candidatarSucesso, null);
 
-            if (resposta.ok && resultado.status === "ok") {
-                const candidatarSucesso = document.getElementById("candidatarSucesso");
-                popUp(candidatarSucesso, null);
+                    const botao = formularioVaga.querySelector('button');
+                        if (botao) {
+                            botao.textContent = "Já Candidatado";
+                            botao.disabled = true;
+                            botao.style.backgroundColor = "gray";
+                        }
 
-                const botao = formularioVaga.querySelector('button');
-                if (botao) {
-                    botao.textContent = "Já Candidatado";
-                    botao.disabled = true;
-                    botao.style.backgroundColor = "gray";
-                }
-            } else {
-                alert(`Erro: ${resultado.mensagem}`);
-            }
+            } else alert(`Erro: ${resultado.mensagem}`);
 
         } catch (error) {
             console.error('Erro na requisição:', error);

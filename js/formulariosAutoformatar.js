@@ -25,34 +25,33 @@ export function formatarTelefoneTexto(valor) {
 }
 
 export function validarCampoFormatado(campoId, textoNovo, validarRegrasSenha) {
-    if (campoId === "usuarioSenha") {
-        if (!validarRegrasSenha(textoNovo)) {
-            alert(`A senha não atende aos requisitos mínimos de segurança:
-                \n- seis caracteres, incluindo pelo menos:\n- uma maiúscula,\n- uma minúscula e\n- um número.`);
-            return false;
-        }
-    }
-
-    if (campoId === "usuarioCEP") {
-        if (textoNovo.replace(/\D/g, '').length !== 8) {
-            alert("Por favor, insira um CEP válido com 8 dígitos.");
-            return false;
-        }
-    }
-
-    if (campoId === "usuarioNascimento") {
-        if (textoNovo.replace(/\D/g, '').length !== 8) {
-            alert("Por favor, insira a data de nascimento completa.");
-            return false;
-        }
-    }
-
-    if (campoId === "usuarioTelefone") {
-        const qtdNumeros = textoNovo.replace(/\D/g, '').length;
-        if (qtdNumeros < 10 || qtdNumeros > 11) {
-            alert("Por favor, insira um telefone válido com DDD (10 ou 11 dígitos).");
-            return false;
-        }
+    switch (campoId) {
+        case "usuarioSenha":
+            if (!validarRegrasSenha(textoNovo)) {
+                alert(`A senha não atende aos requisitos mínimos de segurança:
+                    \n- seis caracteres, incluindo pelo menos:\n- uma maiúscula,\n- uma minúscula e\n- um número.`);
+                return false;
+            }
+            break;
+        case "usuarioCEP":
+            if (textoNovo.replace(/\D/g, '').length !== 8) {
+                alert("Por favor, insira um CEP válido com 8 dígitos.");
+                return false;
+            }
+            break;
+        case "usuarioNascimento":
+            if (textoNovo.replace(/\D/g, '').length !== 8) {
+                alert("Por favor, insira a data de nascimento completa.");
+                return false;
+            }
+            break;
+        case "usuarioTelefone":
+            const qtdNumeros = textoNovo.replace(/\D/g, '').length;
+            if (qtdNumeros < 10 || qtdNumeros > 11) {
+                alert("Por favor, insira um telefone válido com DDD (10 ou 11 dígitos).");
+                return false;
+            }
+            break;
     }
     return true;
 }

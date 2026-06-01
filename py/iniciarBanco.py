@@ -5,8 +5,8 @@ from py.rota._sqliteSQL import mysqlParaSqlite
 def init_db(app):
     with app.app_context():
         db_dir = os.path.join(os.getcwd(), 'db')
-        db_path = os.path.join(db_dir, 'jobsniffer.db')
-        sql_path = os.path.join(os.getcwd(), 'db', 'jobsniffer.sql')
+        db_path = os.path.join(db_dir, 'db.db')
+        sql_path = os.path.join(os.getcwd(), 'db', 'db.sql')
 
         if not os.path.exists(db_dir):
             os.makedirs(db_dir)

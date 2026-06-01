@@ -20,42 +20,39 @@ if (cadastro_formulario) {
         e.stopPropagation();
 
         const senhaInput = document.getElementById("cadastro_senha");
-        const senhaTexto = senhaInput ? senhaInput.value : "";
-
-        const senhaValida = validarRegrasSenha(senhaTexto);
-        const senhasIguais = verificarSenhas();
-
-        if (!senhaValida || !senhasIguais) {
-            alert("Por favor, verifique os requisitos de senha.");
-            return;
-        }
+            const senhaTexto = senhaInput ? senhaInput.value : "";
+            const senhaValida = validarRegrasSenha(senhaTexto);
+            const senhasIguais = verificarSenhas();
+            if (!senhaValida || !senhasIguais) {
+                alert("Por favor, verifique os requisitos de senha.");
+                return;
+            }
 
         const nascimentoInput = cadastro_formulario.querySelector('[name="usuario_nascimento"]');
+            const nascimentoValor = nascimentoInput ? nascimentoInput.value : "";
         const telefoneInput = cadastro_formulario.querySelector('[name="usuario_telefone"]');
+            const telefoneValor = telefoneInput ? telefoneInput.value : "";
         const CEPInput = cadastro_formulario.querySelector('[name="usuario_CEP"]');
-
-        const nascimentoValor = nascimentoInput ? nascimentoInput.value : "";
-        const telefoneValor = telefoneInput ? telefoneInput.value : "";
-        const CEPValor = CEPInput ? CEPInput.value : "";
+            const CEPValor = CEPInput ? CEPInput.value : "";
 
         if (!validarCampoFormatado("usuarioNascimento", nascimentoValor, validarRegrasSenha) ||
             !validarCampoFormatado("usuarioTelefone", telefoneValor, validarRegrasSenha) ||
-            !validarCampoFormatado("usuarioCEP", CEPValor, validarRegrasSenha)) {
+            !validarCampoFormatado("usuarioCEP", CEPValor, validarRegrasSenha))
             return;
-        }
 
         const dadosFormulario = {
             usuario_nome: cadastro_formulario.querySelector('[name="usuario_nome"]').value,
             usuario_nascimento: nascimentoValor,
             usuario_telefone: telefoneValor,
             usuario_CEP: CEPValor,
-            usuario_linkedin: cadastro_formulario.querySelector('[name="usuario_linkedin"]').value,
-            usuario_folio: cadastro_formulario.querySelector('[name="usuario_folio"]').value,
+            usuario_linkedin: cadastro_formulario.querySelector('[name="usuario_linkedin"]').value.toLowerCase(),
+            usuario_folio: cadastro_formulario.querySelector('[name="usuario_folio"]').value.toLowerCase(),
             usuario_email: cadastro_formulario.querySelector('[name="usuario_email"]').value.toLowerCase(),
             usuario_senha: senhaTexto
         };
 
         try {
+
             const response = await fetch('/cadastro', {
                 method: 'POST',
                 headers: {
@@ -75,8 +72,9 @@ if (cadastro_formulario) {
                 const erroJson = await response.json();
                 alert("Erro no cadastro: " + erroJson.mensagem);
             }
-        } catch (error) {
-            console.error("Erro na requisição:", error);
+
+        } catch (erro) {
+            console.error("Erro na requisição:", erro);
             alert("Não foi possível conectar ao servidor.");
         }
     });

@@ -1,7 +1,6 @@
+export { bancoSalvarPerfil as salvarBancoPerfil } from "./bancoAPI.js";
 import { registrarAlteracao } from "./editarDOM.js";
 import { editarValidacaoEntrada, criarInputConfigurado } from "./editarValidacoes.js";
-
-export { salvarBanco } from "./editarAPI.js";
 
 export function editarTexto(grupoTexto) {
     grupoTexto.forEach(texto => {
@@ -39,16 +38,16 @@ export function editarTexto(grupoTexto) {
 
                 input.removeEventListener('blur', confirmarDigitado);
                 const textoNovo = input.value.trim() || "Não enviado";
-                if (textoNovo === textoAnterior) {
-                    cancelarDigitado();
-                    return;
-                }
+                    if (textoNovo === textoAnterior) {
+                        cancelarDigitado();
+                        return;
+                    }
 
                 texto.textContent = textoNovo;
-                if (campoId === "usuarioNome" || campoId === "perfilNome") {
-                    const elPerfilNome = document.getElementById("perfilNome");
-                    if (elPerfilNome) elPerfilNome.textContent = textoNovo;
-                }
+                    if (campoId === "usuarioNome" || campoId === "perfilNome") {
+                        const elPerfilNome = document.getElementById("perfilNome");
+                        if (elPerfilNome) elPerfilNome.textContent = textoNovo;
+                    }
 
                 const infoVaga = texto.closest('.infoVaga');
 

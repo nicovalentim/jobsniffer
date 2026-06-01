@@ -108,6 +108,7 @@ def editar_vaga():
 
         if not usuario or usuario[0] != 'admin':
             return jsonify({'success': False, 'erro': 'Acesso negado. Apenas administradores.'}), 403
+
     except Exception as e:
         print(f"Erro na autenticação: {e}")
         cursor.close()
@@ -116,21 +117,24 @@ def editar_vaga():
 
     campos = []
     valores = []
-    campos_validos = [
-        'titulo',
-        'descricao',
-        'area',
-        'localizacao',
-        'regime',
-        'salario',
-        'requisitos'
-    ]
 
-    for campo in campos_validos:
-        if campo not in dados: continue
-        valor = dados.get(campo)
+    # 'formulario': 'banco'
+    mapeamento_campos = {
+        'vagaTitulo': 'titulo',
+        'vagaDescricao': 'descricao',
+        'vagaArea': 'area',
+        'vagaLocalizacao': 'localizacao',
+        'vagaRegime': 'regime',
+        'vagaSalario': 'salario',
+        'vagaRequisitos': 'requisitos'
+    }
+
+    for campo_form, coluna_banco in mapeamento_campos.items():
+        if campo_form not in dados: continue
+        valor = dados.get(campo_form)
         if valor is None: continue
-        if campo == 'salario':
+
+        if campo_form == 'vagaSalario':
             valor = str(valor)
             valor = (valor
                 .replace('R$', '')
@@ -141,13 +145,13 @@ def editar_vaga():
             )
             if valor == "":
                 valor = 0
-        campos.append(f"{campo} = ?")
+
+        campos.append(f"{coluna_banco} = ?")
         valores.append(valor)
 
     if len(campos) == 0:
         cursor.close()
         conn.close()
-
         return jsonify({
             'success': False,
             'erro': 'Nenhum campo enviado'
@@ -200,21 +204,31 @@ def criar_vaga():
         conn.close()
         return jsonify({'success': False, 'erro': 'Erro ao validar permissões.'}), 500
 
-    campos_validos = ['titulo', 'descricao', 'area', 'localizacao', 'regime', 'salario', 'requisitos']
+    # 'formulario': 'banco'
+    mapeamento_campos = {
+        'vagaTitulo': 'titulo',
+        'vagaDescricao': 'descricao',
+        'vagaArea': 'area',
+        'vagaLocalizacao': 'localizacao',
+        'vagaRegime': 'regime',
+        'vagaSalario': 'salario',
+        'vagaRequisitos': 'requisitos'
+    }
+
     campos = []
     valores = []
 
-    for campo in campos_validos:
-        valor = dados.get(campo, '')
+    for campo_form, coluna_banco in mapeamento_campos.items():
+        valor = dados.get(campo_form, '')
 
-        if campo == 'salario':
+        if campo_form == 'vagaSalario':
             valor = str(valor).replace('R$', '').replace('.', '').replace(',00', '').replace(',', '.').strip()
             valor = 0 if valor == "" else valor
 
-        campos.append(campo)
+        campos.append(coluna_banco)
         valores.append(valor)
 
-    if not dados.get('titulo'):
+    if not dados.get('vagaTitulo'):
         cursor.close()
         conn.close()
         return jsonify({'success': False, 'erro': 'O título é obrigatório.'}), 400

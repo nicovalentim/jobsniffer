@@ -45,17 +45,16 @@ async function btnEntrarClick() {
 
         if (response.ok) {
             const dados = await response.json();
-
-            localStorage.setItem("logado", "true");
-            localStorage.setItem("tipo", dados.tipo);
-            localStorage.setItem("nome", dados.nome);
-            localStorage.setItem("email", dados.email);
-            localStorage.setItem("senha", dados.senha);
-            localStorage.setItem("nascimento", dados.nascimento);
-            localStorage.setItem("telefone", dados.telefone);
-            localStorage.setItem("cep", dados.cep);
-            localStorage.setItem("linkedin", dados.linkedin);
-            localStorage.setItem("folio", dados.folio || "Não enviado");
+                localStorage.setItem("logado", "true");
+                localStorage.setItem("tipo", dados.tipo);
+                localStorage.setItem("nome", dados.nome);
+                localStorage.setItem("email", dados.email);
+                localStorage.setItem("senha", dados.senha);
+                localStorage.setItem("nascimento", dados.nascimento);
+                localStorage.setItem("telefone", dados.telefone);
+                localStorage.setItem("cep", dados.cep);
+                localStorage.setItem("linkedin", dados.linkedin);
+                localStorage.setItem("folio", dados.folio || "Não enviado");
 
             location.reload();
         } else {

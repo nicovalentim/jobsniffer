@@ -7,7 +7,7 @@ app = Flask(__name__,
             static_folder='',
             static_url_path='')
 
-DB_PATH = os.path.join(os.getcwd(), 'db', 'jobsniffer.db')
+DB_PATH = os.path.join(os.getcwd(), 'db', 'db.db')
 
 @app.route("/")
 def index():
