@@ -15,6 +15,10 @@ async function rotearPagina(caminho) {
         case "contato":
             await carregarConteudo("./html/contato.html", "contato");
             break;
+        case "dashboard":
+            await carregarConteudo("./html/dashboard.html", "dashboard");
+            atualizarUsuario();
+            break;
         case "perfil":
             await carregarConteudo("./html/perfil.html", "perfil");
             atualizarUsuario();
@@ -57,9 +61,12 @@ navbar.addEventListener("click", (e) => {
     }
 });
 
-document.querySelector(".perfil").addEventListener("click", (e) => {
+document.getElementById("usuarioNome").addEventListener("click", (e) => {
     e.preventDefault();
-    rotearPagina("perfil");
+        const admin = localStorage.getItem("tipo") === "admin";
+        const usuario = localStorage.getItem("tipo") === "usuario";
+    const path = admin ? "dashboard" : usuario ? "perfil" : "home";
+    rotearPagina(path)
 });
 
 document.addEventListener("DOMContentLoaded", () => rotearPagina("home"));
