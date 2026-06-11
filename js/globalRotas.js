@@ -48,6 +48,9 @@ async function carregarConteudo(fileUrl, type) {
             const contato = await import("./email.js")
             contato.enviarEmail();
         }
+        if (type === "dashboard") {
+            await import("./dashboard.js");
+        }
 }
 
 navbar.addEventListener("click", (e) => {
