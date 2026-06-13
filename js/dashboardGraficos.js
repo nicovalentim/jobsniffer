@@ -10,9 +10,9 @@ const css = getComputedStyle(document.documentElement);
         };
     const corRealceHex = rgbToHex(corRealce);
     let cores = [];
-    let coresTotal = 10;
+    let coresTotal = 4;
         for (let i = 0; i < coresTotal; i++) {
-            cores = cores.concat(`hsl(from ${corRealceHex} h s ${25+(i+1)*75/coresTotal}`);
+            cores.push(`hsl(from ${corRealceHex} h s ${25+(i+1)*50/coresTotal}`);
         }
 
 export function graficosBarra(barraDados, barraRotulo, barraLocal, config = {}) {
@@ -170,38 +170,83 @@ export function graficosLinha(linhaDados, linhaRotulo, linhaLocal, config = {}) 
     });
 }
 
-export function graficosPizza (pizzaDados, pizzaLocal, rosca) {
-        pizzaLocal.forEach((pizzaCanvas) => {
-            const pizzaCtx = pizzaCanvas.getContext('2d');
+export function graficosPizza(pizzaDados, pizzaLocal, pizzaRotulo, rosca) {
+    pizzaLocal.forEach((pizzaCanvas) => {
+        const pizzaCtx = pizzaCanvas.getContext('2d');
+        pizzaCtx.clearRect(0, 0, pizzaCanvas.width, pizzaCanvas.height);
 
-            const pizzaTotal = pizzaDados.reduce((sum, val) => sum + val, 0);
-            const pizzaX = pizzaCanvas.width / 2;
-            const pizzaY = pizzaCanvas.height / 2;
-            const pizzaRaioY = pizzaCanvas.width / 2;
-            let pizzaAnguloInicial = 0;
+        const pizzaTotal = pizzaDados.reduce((sum, val) => sum + val, 0);
+        const pizzaX = pizzaCanvas.width / 2;
+        const pizzaY = pizzaCanvas.height / 2;
 
-            pizzaDados.forEach((value, index) => {
-                const sliceAngle = (value / pizzaTotal) * 2 * Math.PI;
+        const pizzaRaioY = (pizzaCanvas.width / 2) * 0.85; 
+        let pizzaAnguloInicial = 0;
 
-                pizzaCtx.fillStyle = cores[index];
+        pizzaDados.forEach((value, index) => {
+            const sliceAngle = (value / pizzaTotal) * 2 * Math.PI;
+
+            pizzaCtx.fillStyle = cores[index % cores.length];
+            pizzaCtx.beginPath();
+            pizzaCtx.moveTo(pizzaX, pizzaY);
+            pizzaCtx.arc(pizzaX, pizzaY, pizzaRaioY, pizzaAnguloInicial, pizzaAnguloInicial + sliceAngle);
+            pizzaCtx.closePath();
+            pizzaCtx.fill();
+
+            pizzaAnguloInicial += sliceAngle;
+        });
+
+        if (rosca) {
+            pizzaCtx.beginPath();
+            pizzaCtx.fillStyle = `rgb(${branco})`;
+            pizzaCtx.arc(pizzaX, pizzaY, pizzaRaioY * 0.6, 0, 2 * Math.PI);
+            pizzaCtx.closePath();
+            pizzaCtx.fill();
+        }
+
+        let anguloRotuloInicial = 0;
+        pizzaDados.forEach((value, index) => {
+            const sliceAngle = (value / pizzaTotal) * 2 * Math.PI;
+
+            if (pizzaRotulo[index] !== undefined && value > 0) {
+                const anguloMeio = anguloRotuloInicial + (sliceAngle / 2);
+                const raioTexto = rosca ? pizzaRaioY * 0.8 : pizzaRaioY * 0.65;
+
+                const textoX = pizzaX + Math.cos(anguloMeio) * raioTexto;
+                const textoY = pizzaY + Math.sin(anguloMeio) * raioTexto;
+
+                pizzaCtx.save();
+
+                pizzaCtx.textAlign = "center";
+                pizzaCtx.textBaseline = "middle";
+
+                const texto = pizzaRotulo[index];
+
+                const métricas = pizzaCtx.measureText(texto);
+                const larguraTexto = métricas.width;
+                const alturaTexto = 14;
+
+                const bgX = textoX - (larguraTexto / 2) - 4;
+                const bgY = textoY - (alturaTexto / 2) - 4;
+                const bgLargura = larguraTexto + (4 * 2);
+                const bgAltura = alturaTexto + (4 * 2);
+
+                pizzaCtx.fillStyle = `rgba(${preto}, 0.02)`;
                 pizzaCtx.beginPath();
-                pizzaCtx.moveTo(pizzaX, pizzaY);
-                pizzaCtx.arc(pizzaX, pizzaY, pizzaRaioY, pizzaAnguloInicial, pizzaAnguloInicial + sliceAngle);
-                pizzaCtx.closePath();
+                const raioBorda = 2;
+                pizzaCtx.roundRect(bgX, bgY, bgLargura, bgAltura, raioBorda);
                 pizzaCtx.fill();
 
-                pizzaAnguloInicial += sliceAngle;
+                pizzaCtx.beginPath();
+                pizzaCtx.fillStyle = `rgb(${branco})`;
+                pizzaCtx.fillText(texto, textoX, textoY);
+                
+                pizzaCtx.restore();
+            }
 
-                if (rosca) {
-                    pizzaCtx.beginPath();
-                    pizzaCtx.fillStyle = `rgb(${branco})`;
-                    pizzaCtx.arc(pizzaX, pizzaY, pizzaRaioY * 0.6, 0, 2 * Math.PI);
-                    pizzaCtx.closePath();
-                    pizzaCtx.fill();
-                }
-            });
+            anguloRotuloInicial += sliceAngle;
         });
+    });
 }
-    export function graficosRosca (roscaDados, roscaLocal) {
-        graficosPizza(roscaDados, roscaLocal, true);
+    export function graficosRosca(roscaDados, roscaLocal, roscaRotulo) {
+        graficosPizza(roscaDados, roscaLocal, roscaRotulo, true);
     }

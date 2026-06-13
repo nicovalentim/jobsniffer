@@ -48,7 +48,8 @@ async function carregarConteudo(fileUrl, type) {
             contato.enviarEmail();
         }
         if (type === "dashboard") {
-            await import("./dashboard.js");
+            const dashboard = await import("./dashboard.js");
+            dashboard.graficos();
         }
 }
 

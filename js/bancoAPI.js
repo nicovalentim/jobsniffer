@@ -74,7 +74,7 @@ export async function bancoSalvarVaga(infoVaga) {
     const payload = { 
         id: vagaId, 
         emailSolicitante: localStorage.getItem("email"),
-        ...camposVaga 
+        ...camposVaga
     };
 
     try {
@@ -94,7 +94,7 @@ export async function bancoCriarVaga() {
 
     const payload = { 
         emailSolicitante: localStorage.getItem("email"),
-        ...camposVaga 
+        ...camposVaga
     };
 
     try {
