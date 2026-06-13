@@ -17,7 +17,6 @@ async function rotearPagina(caminho) {
             break;
         case "dashboard":
             await carregarConteudo("./html/dashboard.html", "dashboard");
-            atualizarUsuario();
             break;
         case "perfil":
             await carregarConteudo("./html/perfil.html", "perfil");
