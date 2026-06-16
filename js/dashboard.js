@@ -1,6 +1,23 @@
 import { graficosBarra, graficosLinha, graficosPizza, graficosRosca } from "./dashboardGraficos.js";
+import { dadosDashboard } from "./dashboardBanco.js";
 
-export function graficos() {
+export async function graficos() {
+    const admin = localStorage.getItem("tipo") === "admin";
+        if (!admin) {
+            alert("Acesso negado. Esta página é restrita para administradores.");
+            window.location.href = "login.html";
+            return;
+        }
+
+    const email = localStorage.getItem('email'); 
+    const dados = await dadosDashboard(email);
+    if (!dados) return;
+
+    console.log(dados.usuarios);
+    console.log(dados.vagas);
+    console.log(dados.candidaturas);
+    // usar os dados daqui nos gráficos
+
     const barraLocal = document.querySelectorAll('.graficoBarra');
     if (barraLocal.length > 0) {
         graficosBarra (

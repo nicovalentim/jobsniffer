@@ -1,19 +1,22 @@
 const css = getComputedStyle(document.documentElement);
-    const branco = css.getPropertyValue('--branco').trim();
-    const preto = css.getPropertyValue('--preto').trim();
-    const corRealce = css.getPropertyValue('--corRealce').trim();
-        const rgbToHex = (rgbString) => {
-            const rgbArray = rgbString.match(/\d+/g);
-            const [r, g, b] = rgbArray.map(Number);
-            const toHex = (c) => c.toString(16).padStart(2, '0');
-            return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-        };
-    const corRealceHex = rgbToHex(corRealce);
-    let cores = [];
-    let coresTotal = 4;
-        for (let i = 0; i < coresTotal; i++) {
-            cores.push(`hsl(from ${corRealceHex} h s ${25+(i+1)*50/coresTotal}`);
-        }
+const branco = css.getPropertyValue('--branco').trim();
+const preto = css.getPropertyValue('--preto').trim();
+const corRealce = css.getPropertyValue('--corRealce').trim();
+
+const rgbToHex = (rgbString) => {
+    const rgbArray = rgbString.match(/\d+/g);
+    const [r, g, b] = rgbArray.map(Number);
+    const toHex = (c) => c.toString(16).padStart(2, '0');
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+};
+
+const corRealceHex = rgbToHex(corRealce);
+let cores = [];
+let coresTotal = 4;
+for (let i = 0; i < coresTotal; i++) {
+    cores.push(`hsl(from ${corRealceHex} h s ${25+(i+1)*50/coresTotal})`);
+}
+const text = `12px ` + css.getPropertyValue('--fontePrimaria');
 
 export function graficosBarra(barraDados, barraRotulo, barraLocal, config = {}) {
     const padding = { top: 20, right: 20, bottom: 40, left: 50, ...config.padding };
@@ -29,6 +32,7 @@ export function graficosBarra(barraDados, barraRotulo, barraLocal, config = {}) 
         const barChartHeight = barCanvas.height - padding.top - padding.bottom;
         const maxBarValue = Math.max(...barraDados) || 1;
 
+        barCtx.font = text;
         barCtx.fillStyle = `rgba(${preto}, 0.8)`;
         barCtx.textAlign = "right";
         barCtx.textBaseline = "middle";
@@ -56,7 +60,6 @@ export function graficosBarra(barraDados, barraRotulo, barraLocal, config = {}) 
             const calculatedBarHeight = (value / maxBarValue) * barChartHeight;
             const xCoord = padding.left + (index * (barWidth + barGap));
             const yCoord = barCanvas.height - padding.bottom - calculatedBarHeight;
-
 
             barCtx.fillStyle = cores[index % cores.length];
             barCtx.fillRect(xCoord, yCoord, barWidth, calculatedBarHeight);
@@ -97,9 +100,10 @@ export function graficosLinha(linhaDados, linhaRotulo, linhaLocal, config = {}) 
     elementosCanvas.forEach((linhaCanvas) => {
         const linhaCtx = linhaCanvas.getContext('2d');
         linhaCtx.clearRect(0, 0, linhaCanvas.width, linhaCanvas.height);
-            linhaCtx.fillStyle = `rgba(${preto}, 0.8)`;
-            linhaCtx.textAlign = "right";
-            linhaCtx.textBaseline = "middle";
+        linhaCtx.font = text;
+        linhaCtx.fillStyle = `rgba(${preto}, 0.8)`;
+        linhaCtx.textAlign = "right";
+        linhaCtx.textBaseline = "middle";
 
         const linhaChartWidth = linhaCanvas.width - padding.left - padding.right;
         const linhaChartHeight = linhaCanvas.height - padding.top - padding.bottom;
@@ -140,8 +144,7 @@ export function graficosLinha(linhaDados, linhaRotulo, linhaLocal, config = {}) 
 
         linhaPoints.forEach((point, index) => {
             linhaCtx.beginPath();
-            linhaCtx.fillStyle = 
-                `hsl(from ${corRealceHex} h 20% l)`;
+            linhaCtx.fillStyle = `hsl(from ${corRealceHex} h 20% l)`;
             linhaCtx.arc(point.x, point.y, 5, 0, 2 * Math.PI);
             linhaCtx.fill();
 
@@ -171,7 +174,9 @@ export function graficosLinha(linhaDados, linhaRotulo, linhaLocal, config = {}) 
 }
 
 export function graficosPizza(pizzaDados, pizzaLocal, pizzaRotulo, rosca) {
-    pizzaLocal.forEach((pizzaCanvas) => {
+    const elementosCanvas = pizzaLocal.forEach ? pizzaLocal : [pizzaLocal];
+
+    elementosCanvas.forEach((pizzaCanvas) => {
         const pizzaCtx = pizzaCanvas.getContext('2d');
         pizzaCtx.clearRect(0, 0, pizzaCanvas.width, pizzaCanvas.height);
 
@@ -185,6 +190,7 @@ export function graficosPizza(pizzaDados, pizzaLocal, pizzaRotulo, rosca) {
         pizzaDados.forEach((value, index) => {
             const sliceAngle = (value / pizzaTotal) * 2 * Math.PI;
 
+            pizzaCtx.font = text;
             pizzaCtx.fillStyle = cores[index % cores.length];
             pizzaCtx.beginPath();
             pizzaCtx.moveTo(pizzaX, pizzaY);
@@ -207,7 +213,7 @@ export function graficosPizza(pizzaDados, pizzaLocal, pizzaRotulo, rosca) {
         pizzaDados.forEach((value, index) => {
             const sliceAngle = (value / pizzaTotal) * 2 * Math.PI;
 
-            if (pizzaRotulo[index] !== undefined && value > 0) {
+            if (pizzaRotulo && pizzaRotulo[index] !== undefined && value > 0) {
                 const anguloMeio = anguloRotuloInicial + (sliceAngle / 2);
                 const raioTexto = rosca ? pizzaRaioY * 0.8 : pizzaRaioY * 0.65;
 
