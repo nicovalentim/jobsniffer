@@ -1,4 +1,4 @@
-export async function dadosDashboard(email) {
+export async function dashboardBanco(email) {
     try {
         const resposta = await fetch(`/dashboard?emailSolicitante=${encodeURIComponent(email)}`);
         const dados = await resposta.json();

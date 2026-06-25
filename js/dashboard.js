@@ -1,5 +1,6 @@
 import { graficosBarra, graficosLinha, graficosPizza, graficosRosca } from "./dashboardGraficos.js";
-import { dadosDashboard } from "./dashboardBanco.js";
+import { dashboardBanco } from "./dashboardBanco.js";
+import { dashboardDados } from "./dashboardDados.js";
 
 export async function graficos() {
     const admin = localStorage.getItem("tipo") === "admin";
@@ -8,15 +9,9 @@ export async function graficos() {
             window.location.href = "login.html";
             return;
         }
-
     const email = localStorage.getItem('email'); 
-    const dados = await dadosDashboard(email);
+    const dados = await dashboardBanco(email);
     if (!dados) return;
-
-    console.log(dados.usuarios);
-    console.log(dados.vagas);
-    console.log(dados.candidaturas);
-    // usar os dados daqui nos gráficos
 
     const barraLocal = document.querySelectorAll('.graficoBarra');
     if (barraLocal.length > 0) {
@@ -59,5 +54,15 @@ export async function graficos() {
             [10, 20, 30],
             roscaLocal
         );
+    }
+
+    const areasRosca = document.getElementById("areas");
+    if (areasRosca) {
+        const dadosArea = dashboardDados(dados.vagas, 'area');
+            graficosRosca(
+                dadosArea.valores, 
+                areasRosca, 
+                dadosArea.rotulos
+            );
     }
 }
