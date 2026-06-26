@@ -1,6 +1,5 @@
 import { graficosBarra, graficosLinha, graficosPizza, graficosRosca } from "./dashboardGraficos.js";
-import { dashboardBanco } from "./dashboardBanco.js";
-import { dashboardDados } from "./dashboardDados.js";
+import { dashboardBanco, dashboardDados } from "./dashboardBanco.js";
 
 export async function graficos() {
     const admin = localStorage.getItem("tipo") === "admin";

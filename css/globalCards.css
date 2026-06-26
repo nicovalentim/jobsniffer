@@ -29,8 +29,17 @@
     }
     .card.dashboard {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
+        .card.dashboard section {
+            width: 100%;
+        }
+        .card.dashboard section:nth-child(2n) {
+            grid-column: 1 / span 3;
+        }
+        .card.dashboard section:nth-child(2n+1) {
+            grid-column: 2 / span 3;
+        }
     .card.homeEncontre {
         min-height: 480px;
     }
