@@ -23,10 +23,10 @@ def get_dashboard_data():
             return jsonify({'success': False, 'erro': 'Acesso negado. Apenas administradores podem acessar estes dados.'}), 403
 
         cursor.execute("""
-            SELECT v.id, v.titulo, v.area, v.salario, COUNT(c.id) AS total_candidatos
+            SELECT v.id, v.titulo, v.area, v.salario, v.regime, v.localizacao, COUNT(c.id) AS total_candidatos
             FROM banco_de_vagas v
             LEFT JOIN candidaturas c ON v.id = c.vaga_id
-            GROUP BY v.id
+            GROUP BY v.id, v.titulo, v.area, v.salario, v.regime, v.localizacao
         """)
 
         vagas = []
@@ -36,7 +36,9 @@ def get_dashboard_data():
                 'titulo': row[1],
                 'area': row[2],
                 'salario': row[3],
-                'total_candidatos': row[4]
+                'regime': row[4],
+                'localizacao': row[5],
+                'total_candidatos': row[6]
             })
 
         cursor.execute("""

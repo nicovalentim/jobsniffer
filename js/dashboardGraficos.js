@@ -16,7 +16,7 @@ let coresTotal = 4;
 for (let i = 0; i < coresTotal; i++) {
     cores.push(`hsl(from ${corRealceHex} h s ${25+(i+1)*50/coresTotal})`);
 }
-const text = `12px ` + css.getPropertyValue('--fontePrimaria');
+const text = `10px ` + css.getPropertyValue('--fontePrimaria');
 
 export function graficosBarra(barraDados, barraRotulo, barraLocal, config = {}) {
     const padding = { top: 20, right: 20, bottom: 40, left: 50, ...config.padding };

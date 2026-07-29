@@ -12,6 +12,80 @@ export async function graficos() {
     const dados = await dashboardBanco(email);
     if (!dados) return;
 
+    const vagasTotal = document.getElementById("vagasTotal");
+        vagasTotal.innerText = dados.vagas.length;
+    const usuariosTotal = document.getElementById("usuariosTotal");
+        usuariosTotal.innerText = dados.usuarios.length + "*";
+    const vagasAreaPop = document.getElementById("vagasAreaPop");
+        const dadosArea = dashboardDados(dados.vagas, 'area');
+            let indiceMaisPopular = 0;
+            let maxVagas = 0;
+        dadosArea.valores.forEach((quantidade, index) => {
+            if (quantidade > maxVagas) {
+                maxVagas = quantidade;
+                indiceMaisPopular = index;
+            }
+        });
+        const vagasPopSigla = dadosArea.rotulos[indiceMaisPopular];
+        let vagasPop;
+            switch (vagasPopSigla) {
+                case "ADM":
+                    vagasPop = "Administração";
+                    break;
+                case "COM":
+                    vagasPop = "Comércio";
+                    break;
+                case "ENG":
+                    vagasPop = "Engenharia";
+                    break;
+                case "LOG":
+                    vagasPop = "Logística";
+                    break;
+                case "MKT":
+                    vagasPop = "Marketing";
+                    break;
+                case "TI":
+                    vagasPop = "Tecnologia da Informação";
+                    break;
+                default:
+                    vagasPop = "Não definido.";
+            }
+        vagasAreaPop.innerText = `${vagasPop} \n (${maxVagas} vagas)`;
+
+    const vagaAreasRosca = document.getElementById("graficoVagasAreas");
+    if (vagaAreasRosca) {
+        const dadosArea = dashboardDados(dados.vagas, 'area');
+            graficosRosca(
+                dadosArea.valores, 
+                vagaAreasRosca,
+                dadosArea.rotulos
+            );
+    }
+        const vagaRegimePizza = document.getElementById("graficoVagasRegime");
+        if (vagaRegimePizza) {
+            const dadosRegime = dashboardDados(dados.vagas, 'regime');
+            graficosRosca(
+                dadosRegime.valores, 
+                vagaRegimePizza,
+                dadosRegime.rotulos
+            );
+        }
+        const vagasLocalizacaoPizza = document.getElementById("graficoVagasLocalizacao");
+        if (vagasLocalizacaoPizza) {
+            const dadosPresenca = dashboardDados(dados.vagas, 'localizacao');
+                graficosRosca(
+                    dadosPresenca.valores, 
+                    vagasLocalizacaoPizza,
+                    dadosPresenca.rotulos
+                );
+        }
+
+        const teste = await dashboardBanco(email);
+        if (!teste) return;
+        
+        // ADICIONE ESTE LOG PARA INSPECIONAR OS CAMPOS DA VAGA:
+        console.log("Exemplo do servidor:", dados.usuarios[0]);
+
     const barraLocal = document.querySelectorAll('.graficoBarra');
     if (barraLocal.length > 0) {
         graficosBarra (
@@ -53,15 +127,5 @@ export async function graficos() {
             [10, 20, 30],
             roscaLocal
         );
-    }
-
-    const areasRosca = document.getElementById("areas");
-    if (areasRosca) {
-        const dadosArea = dashboardDados(dados.vagas, 'area');
-            graficosRosca(
-                dadosArea.valores, 
-                areasRosca, 
-                dadosArea.rotulos
-            );
     }
 }
