@@ -52,7 +52,7 @@ It provides features for two main user groups::
 
 ### 3. SPA Navigation and Routing
 Ensures continuous navigation without page reloads, managing dynamic content injection and the lifecycle of scripts for each view.
-<img src="_gifs/spa.gif" />
+<img src="_readme/spa.gif" />
 
 | File | Responsibility |
 |---|---|
@@ -64,34 +64,34 @@ Ensures continuous navigation without page reloads, managing dynamic content inj
 
 ### 4. Job Listings, Filters, and Applications
 Module focused on the display of job opportunities, allowing real-time searching and application submissions.
-<img src="_gifs/filtros.gif" />
+<img src="_readme/filtros.gif" />
 
 | File / Module | Responsibility |
 |---|---|
 | `client/js/vagas.js` / `client/js/vagasBanco.js` | Job data fetching, sorting, and rendering. |
 | `client/js/vagasFiltros.js` | Search algorithms filtering by keyword, field of work, and contract type. |
 | `client/js/vagasCandidatar.js` | Manages the candidate application flow for a specific job. |
-| `py/rota/vagas.py` | REST routes for querying and listing jobs. |
-| `py/rota/candidatura.py` | Route for handling and persisting job applications. |
+| `server/py/rota/vagas.py` | REST routes for querying and listing jobs. |
+| `server/py/rota/candidatura.py` | Route for handling and persisting job applications. |
 
 ---
 
 ### 5. Administrative Dashboard
 Area focused on statistical data analysis with interactive charts.
-<img src="_gifs/admin.gif" />
+<img src="_readme/admin.gif" />
 
 | File / Module | Responsibility |
 |---|---|
 | `client/js/dashboard.js` | Main initialization logic and dashboard data handling. |
 | `client/js/dashboardGraficos.js` | Visual rendering of charts and statistical reports. |
 | `client/js/dashboardBanco.js` | Communication with backend metrics APIs. |
-| `py/rota/dashboard.py` | Route responsible for consolidating metrics for the admin area. |
+| `server/py/rota/dashboard.py` | Route responsible for consolidating metrics for the admin area. |
 
 ---
 
 ### 6. Authentication, User Profile, and Forms
 Real-time frontend validation of input data and secure server-side processing.
-<img src="_gifs/valida.gif" />
+<img src="_readme/valida.gif" />
 
 | File / Module | Responsibility |
 |---|---|
@@ -99,19 +99,19 @@ Real-time frontend validation of input data and secure server-side processing.
 | `client/js/formulariosValidacoes.js` | Validation for passwords, emails, and input rules. |
 | `client/js/formulariosAutoformatar.js` | Dynamic input masking (ZIP code, phone numbers, Tax IDs). |
 | `client/js/perfil.js` / `client/js/editar.js` | User profile data viewing and updating. |
-| `py/rota/login.py` / `py/rota/cadastro.py` | Backend routes for authentication and user registration in SQLite. |
+| `server/py/rota/login.py` / `server/py/rota/cadastro.py` | Backend routes for authentication and user registration in SQLite. |
 
 ---
 
 ### 7. Chatbot and Auxiliary Services
 
-<img src="_gifs/utilidades.gif" />
+<img src="_readme/utilidades.gif" />
 
 | File / Module | Responsibility |
 |---|---|
-| `client/js/chatbot.js` / `py/rota/chatbot.py` | Interactive assistant to answer quick questions about jobs and processes. |
-| `client/js/email.js` / `py/email.py` | Integration for sending notifications and confirmation emails. |
-| `py/iniciarBanco.py` / `py/sqliteSQL.py` | Scripts for database schema setup, initialization, and SQLite connection. |
+| `client/js/chatbot.js` / `server/py/rota/chatbot.py` | Interactive assistant to answer quick questions about jobs and processes. |
+| `client/js/email.js` / `server/py/email.py` | Integration for sending notifications and confirmation emails. |
+| `server/py/iniciarBanco.py` / `server/py/sqliteSQL.py` | Scripts for database schema setup, initialization, and SQLite connection. |
 
 ---
 
