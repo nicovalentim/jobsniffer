@@ -35,15 +35,15 @@ It provides features for two main user groups::
 
 ### 1. Challenges
 
-- SPA navigation without frameworks;
+SPA navigation without frameworks;
 <img src="_gifs/spa.gif" width="500" />
-- Dynamic script loading;
+Dynamic script loading;
 <img src="_gifs/filtros.gif" width="500" />
-- Modular Flask Blueprints;
-- REST API organization;
-- Authentication flow;;
+Modular Flask Blueprints;
+REST API organization;
+Authentication flow;;
 <img src="_gifs/valida.gif" width="500" />
-- Dashboard statistics and more!
+Dashboard statistics and more!
 <img src="_gifs/admin.gif" width="500" />
 
 ### 2. Technologies
