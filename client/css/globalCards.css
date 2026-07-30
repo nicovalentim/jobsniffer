@@ -1,0 +1,192 @@
+/* fundo do corpo */
+.fundo {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    width: 90%;
+    max-width: 1200px;
+
+    overflow-wrap: break-word;
+}
+    .fundo ul {
+        margin: 0;
+    }
+
+#pagina {
+    margin-bottom: 1em;
+}
+
+.card {
+    display: grid;
+    gap: 1em;
+    margin: 1em 3em;
+}
+    .card section {
+        background-color: rgba(255,255,255,0.5);
+        border: none;
+        border-radius: 16px;
+        box-shadow: 5px 5px 20px rgba(var(--preto),0.2);
+
+        padding: 2em;
+    }
+    .card.dashboard {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+        .card.dashboard section {
+            align-content: center;
+            text-align: center;
+
+            width: 100%;
+        }
+            .card.dashboard h2,
+            .card.dashboard p {
+                margin: 0.5em;
+            }
+            .card.dashboard p {
+                margin-bottom: 2em;
+            }
+            .card.dashboard .pequeno {
+                grid-column: 1 / span 4;
+                font-size: 0.75em;
+            }
+        .card.dashboard section:nth-child(1),
+        .card.dashboard section:nth-child(4),
+        .card.dashboard section:nth-child(5) {
+            grid-column: span 1;
+        }
+        .card.dashboard section:nth-child(2),
+        .card.dashboard section:nth-child(3),
+        .card.dashboard section:nth-child(6) {
+            grid-column: span 3;
+        }
+    .card.dashboard section.graficosLinha {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 1.5em;
+    }
+        .card.dashboard section.graficosLinha > div {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    .card.homeEncontre {
+        min-height: 480px;
+    }
+    .card h1 {
+        font-weight: 700;
+    }
+
+.homeEncontre {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5em;
+
+    margin: 2em 0;
+    height: 320px;
+    min-height: 320px;
+}
+    .homeEncontre .texto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .homeEncontre li {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+    }
+
+    .homeEncontre .imagem {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        padding: 0;
+
+        box-shadow: none;
+    }
+    .homeEncontre .imagem img {
+        height: 100%;
+    }
+    .homeEncontre .imagem img,
+    .homeValores img {
+        border-radius: 16px;
+        width: 100%;
+        object-fit: cover;
+        filter: saturate(0.6);
+    }
+
+.homeValores {
+    margin: 1em 0;
+    grid-template-columns: repeat(5, auto);
+    gap: 16px;
+}
+    .homeValores section {
+        background-color: rgb(var(--branco));
+        align-content: start;
+        text-align: center;
+        box-shadow: none;
+        padding: 0;
+
+        font-size: 1.2em;
+    }
+    .homeValoresImg {
+        grid-column: span 5;
+        width: 100%;
+    }
+        .homeValores img {
+            height: 160px;
+        }
+        .homeValores hr {
+            align-self: center;
+            height: 90%;
+            opacity: 0.2;
+        }
+
+    .sobre {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* perfil do usuário */
+    .card.perfil {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+            justify-content: center;
+        grid-template-rows: 20px 1fr;
+        gap: 1.5em;
+    }
+        .card.perfil .dadosUsuario {
+            grid-column: 1;
+            grid-row: span 2;
+
+            font-size: 1.25em;
+            align-content: center;
+        }
+            .card.perfil .dadosUsuario h1 { 
+                margin-bottom: 0;
+            }
+            .card.perfil .dadosUsuario h6 {
+                margin-top: 4px;
+                margin-bottom: 16px;
+            }
+        #tituloCandidaturas {
+            grid-column: 2 / span 2;
+            grid-row: 1;
+            justify-self: start;
+        }
+
+        @media (max-width: 1080px) {
+            .card.perfil {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            #tituloCandidaturas {
+                grid-column: 2;
+                grid-row: 1;
+                justify-self: start;
+            }
+        }

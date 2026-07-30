@@ -1,0 +1,61 @@
+<header>
+    <img src="../images/dashboardHeader.jpg">
+    <h1>dashboard</h1>
+</header>
+
+<div class="fundo">
+<div class="card dashboard">
+    <section>
+        <h2>Vagas abertas no momento</h2>
+        <p id="vagasTotal">valor</p>
+        <h2>Área com mais vagas</h2>
+        <p id="vagasAreaPop">valor</p>
+        <p></p>
+    </section><section class="graficosLinha">
+        <div>
+            <h2>Vagas por área</h2>
+            <canvas id="graficoVagasAreas" width="200" height="200"></canvas>
+        </div><div>
+            <h2>Vagas por Regime</h2>
+            <canvas id="graficoVagasRegime" width="200" height="200"></canvas>
+        </div><div>
+            <h2>Vagas por Local</h2>
+            <canvas id="graficoVagasLocalizacao" width="200" height="200"></canvas>
+        </div>
+    </section>
+
+    <section class="graficosLinha">
+        <div>
+            <h2>Média Salarial¹</h2>
+            <p id="mediaSalarial">valor</p>
+            <h2>Folha de pagamento¹</h2>
+            <p id="folhaPagamento">valor</p>
+            <p class="pequeno">¹ apenas considerando vagas abertas.</p>
+        </div><div>
+            <h2>Média de salários por área</h2>
+            <canvas id="graficoSalario" width="400" height="200"></canvas>
+        </div>
+    </section><section>
+        <h2>Usuarios cadastrados</h2>
+        <p id="usuariosTotal">valor</p>
+        <p class="pequeno">² inclui administradores na contagem.</p>
+    </section>
+
+    <section>
+        <h2>Candidaturas totais</h2>
+        <p id="candidaturasRealizadas">valor</p>
+    </section><section class="graficosLinha">
+        <div>
+            <h2>Áreas mais procuradas</h2>
+            <canvas id="graficoCandidaturasArea" width="200" height="200"></canvas>
+        </div><div>
+            <h2>Vagas Novas³</h2>
+            <p id="vagasMesPassado">valor</p>
+            <h2>Candidaturas recentes³</h2>
+            <p id="candidaturasMesPassado">valor</p>
+            <p class="pequeno">³ apenas considerando vagas de até 30 dias atrás.</p>
+        </div>
+    </section>
+
+</div>
+</div>
