@@ -1,6 +1,6 @@
 # JobSniffer
 
-[![en](https://img.shields.io/badge/lang-English-blue.svg)](./README-EN.md)
+[![en](https://img.shields.io/badge/lang-English-blue.svg)](./readme-en.md)
 
 <p>
   <a href="https://jobsniffer.onrender.com/" target="_blank">
