@@ -35,16 +35,12 @@ It provides features for two main user groups::
 
 ### 1. Challenges
 
-SPA navigation without frameworks;
-<img src="_gifs/spa.gif" />
-Dynamic script loading;
-<img src="_gifs/filtros.gif" />
-Modular Flask Blueprints;
-REST API organization;
-Authentication flow;;
-<img src="_gifs/valida.gif" />
-Dashboard statistics and more!
-<img src="_gifs/admin.gif" />
+  - SPA navigation without frameworks;
+  - Dynamic script loading;
+  - Modular Flask Blueprints;
+  - REST API organization;
+  - Authentication flow;;
+  - Dashboard statistics and more!
 
 ### 2. Technologies
 
@@ -56,6 +52,7 @@ Dashboard statistics and more!
 
 ### 3. SPA Navigation and Routing
 Ensures continuous navigation without page reloads, managing dynamic content injection and the lifecycle of scripts for each view.
+<img src="_gifs/spa.gif" />
 
 | File | Responsibility |
 |---|---|
@@ -67,6 +64,7 @@ Ensures continuous navigation without page reloads, managing dynamic content inj
 
 ### 4. Job Listings, Filters, and Applications
 Module focused on the display of job opportunities, allowing real-time searching and application submissions.
+<img src="_gifs/filtros.gif" />
 
 | File / Module | Responsibility |
 |---|---|
@@ -80,6 +78,7 @@ Module focused on the display of job opportunities, allowing real-time searching
 
 ### 5. Administrative Dashboard
 Area focused on statistical data analysis with interactive charts.
+<img src="_gifs/admin.gif" />
 
 | File / Module | Responsibility |
 |---|---|
@@ -92,6 +91,7 @@ Area focused on statistical data analysis with interactive charts.
 
 ### 6. Authentication, User Profile, and Forms
 Real-time frontend validation of input data and secure server-side processing.
+<img src="_gifs/valida.gif" />
 
 | File / Module | Responsibility |
 |---|---|
@@ -104,6 +104,8 @@ Real-time frontend validation of input data and secure server-side processing.
 ---
 
 ### 7. Chatbot and Auxiliary Services
+
+<img src="_gifs/utilidades.gif" />
 
 | File / Module | Responsibility |
 |---|---|
