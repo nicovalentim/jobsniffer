@@ -59,9 +59,9 @@ Garante uma navegação contínua sem recarregamento de páginas, gerenciando a 
 
 | Arquivo              | Responsabilidade                                                         |
 | -------------------- | ------------------------------------------------------------------------ |
-| `js/globalRotas.js`  | Gerencia a troca dinâmica de telas e intercepta os eventos de navegação. |
-| `js/globalPopups.js` | Utilitário global para modais e alertas visuais do sistema.              |
-| `js/globalAoTopo.js` | Controla a rolagem suave e outras interações da interface.               |
+| `client/js/globalRotas.js`  | Gerencia a troca dinâmica de telas e intercepta os eventos de navegação. |
+| `client/js/globalPopups.js` | Utilitário global para modais e alertas visuais do sistema.              |
+| `client/js/globalAoTopo.js` | Controla a rolagem suave e outras interações da interface.               |
 
 ---
 
@@ -73,9 +73,9 @@ Módulo responsável pela exibição das oportunidades de trabalho, permitindo b
 
 | Arquivo / Módulo                   | Responsabilidade                                                           |
 | ---------------------------------- | -------------------------------------------------------------------------- |
-| `js/vagas.js` / `js/vagasBanco.js` | Consulta, ordenação e renderização das vagas.                              |
-| `js/vagasFiltros.js`               | Algoritmos de busca por palavra-chave, área de atuação e tipo de contrato. |
-| `js/vagasCandidatar.js`            | Gerencia o fluxo de candidatura para uma vaga específica.                  |
+| `client/js/vagas.js` / `client/js/vagasBanco.js` | Consulta, ordenação e renderização das vagas.                              |
+| `client/js/vagasFiltros.js`               | Algoritmos de busca por palavra-chave, área de atuação e tipo de contrato. |
+| `client/js/vagasCandidatar.js`            | Gerencia o fluxo de candidatura para uma vaga específica.                  |
 | `py/rota/vagas.py`                 | Rotas REST para consulta e listagem de vagas.                              |
 | `py/rota/candidatura.py`           | Processa e registra as candidaturas.                                       |
 
@@ -89,9 +89,9 @@ Módulo responsável pela exibição das oportunidades de trabalho, permitindo b
 
 | Arquivo / Módulo          | Responsabilidade                                           |
 | ------------------------- | ---------------------------------------------------------- |
-| `js/dashboard.js`         | Inicialização do painel e gerenciamento dos dados.         |
-| `js/dashboardGraficos.js` | Renderização dos gráficos e relatórios estatísticos.       |
-| `js/dashboardBanco.js`    | Comunicação com as APIs de métricas do backend.            |
+| `client/js/dashboard.js`         | Inicialização do painel e gerenciamento dos dados.         |
+| `client/js/dashboardGraficos.js` | Renderização dos gráficos e relatórios estatísticos.       |
+| `client/js/dashboardBanco.js`    | Comunicação com as APIs de métricas do backend.            |
 | `py/rota/dashboard.py`    | Consolida as métricas utilizadas pela área administrativa. |
 
 ---
@@ -104,10 +104,10 @@ Validação dos dados em tempo real no frontend e processamento seguro das infor
 
 | Arquivo / Módulo                           | Responsabilidade                                                  |
 | ------------------------------------------ | ----------------------------------------------------------------- |
-| `js/login.js` / `js/loginValidacoes.js`    | Controle de autenticação e gerenciamento de sessão.               |
-| `js/formulariosValidacoes.js`              | Validação de senhas, e-mails e regras de preenchimento.           |
-| `js/formulariosAutoformatar.js`            | Aplicação dinâmica de máscaras (CEP, telefone e CPF/CNPJ).        |
-| `js/perfil.js` / `js/editar.js`            | Visualização e atualização dos dados do usuário.                  |
+| `client/js/login.js` / `client/js/loginValidacoes.js`    | Controle de autenticação e gerenciamento de sessão.               |
+| `client/js/formulariosValidacoes.js`              | Validação de senhas, e-mails e regras de preenchimento.           |
+| `client/js/formulariosAutoformatar.js`            | Aplicação dinâmica de máscaras (CEP, telefone e CPF/CNPJ).        |
+| `client/js/perfil.js` / `client/js/editar.js`            | Visualização e atualização dos dados do usuário.                  |
 | `py/rota/login.py` / `py/rota/cadastro.py` | Rotas backend para autenticação e cadastro de usuários no SQLite. |
 
 ---
@@ -118,8 +118,8 @@ Validação dos dados em tempo real no frontend e processamento seguro das infor
 
 | Arquivo / Módulo                         | Responsabilidade                                                                  |
 | ---------------------------------------- | --------------------------------------------------------------------------------- |
-| `js/chatbot.js` / `py/rota/chatbot.py`   | Assistente interativo para responder dúvidas rápidas sobre vagas e processos.     |
-| `js/email.js` / `py/email.py`            | Integração responsável pelo envio de notificações e e-mails de confirmação.       |
+| `client/js/chatbot.js` / `py/rota/chatbot.py`   | Assistente interativo para responder dúvidas rápidas sobre vagas e processos.     |
+| `client/js/email.js` / `py/email.py`            | Integração responsável pelo envio de notificações e e-mails de confirmação.       |
 | `py/iniciarBanco.py` / `py/sqliteSQL.py` | Scripts para criação da estrutura do banco, inicialização e conexão com o SQLite. |
 
 ---
