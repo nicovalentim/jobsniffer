@@ -19,21 +19,44 @@
 
 ## About the Project
 
-**JobSniffer** is a full-stack platform for job searching, management, and application tracking planned, built and tested by myself, [nicovalentim](https://github.com/nicovalentim).
+**JobSniffer** is a full-stack platform for job searching, management, and application tracking.
 
-The project combines a lightweight Single Page Application (SPA) Front-end architecture with a Python/Flask backend server modularized using Blueprints, alongside an SQLite database for persistence.
+The project combines a lightweight Single Page Application (SPA) Front-end architecture with a Python/Flask backend server modularized using Blueprints, alongside SQLite for persistence.
 
-The solution serves two main fronts:
-* **Candidates:** Job exploration with instant filters, quick application process, virtual assistant (Chatbot), and application tracking directly through the user profile.
-* **Administrators:** An interactive Dashboard featuring visual metrics and charts to analyze opportunities and user registrations.
+It provides features for two main user groups::
+* **Candidates:** Job exploration with instant filters, quick job applications, a simple chatbot, and application tracking directly through the user profile.
+* **Administrators:** An interactive Dashboard to analyze opportunities and user registrations.
 
 #### **Live Demo:** [jobsniffer.onrender.com](https://jobsniffer.onrender.com/)
+
+INSERT GIF HERE
 
 ---
 
 ## Architecture and Features
 
-### 1. SPA Navigation and Routing
+### 1. Challenges
+
+- SPA navigation without frameworks;
+<img src="_gifs/spa.gif" width="500" />
+- Dynamic script loading;
+<img src="_gifs/filtros.gif" width="500" />
+- Modular Flask Blueprints;
+- REST API organization;
+- Authentication flow;;
+<img src="_gifs/valida.gif" width="500" />
+- Dashboard statistics and more!
+<img src="_gifs/admin.gif" width="500" />
+
+### 2. Technologies
+
+- Flask
+- SQLite
+- Vanilla JavaScript
+- HTML
+- CSS
+
+### 3. SPA Navigation and Routing
 Ensures continuous navigation without page reloads, managing dynamic content injection and the lifecycle of scripts for each view.
 
 | File | Responsibility |
@@ -44,34 +67,33 @@ Ensures continuous navigation without page reloads, managing dynamic content inj
 
 ---
 
-### 2. Job Listings, Filters, and Applications
-Module focused on the responsive display of job opportunities, allowing real-time searching and application submissions.
-The mock database creation in SQL (which was converted to SQLite during execution) was entirely built by [Rods](https://github.com/Rodsmont).
+### 4. Job Listings, Filters, and Applications
+Module focused on the display of job opportunities, allowing real-time searching and application submissions.
 
 | File / Module | Responsibility |
 |---|---|
 | `js/vagas.js` / `js/vagasBanco.js` | Job data fetching, sorting, and rendering. |
-| `js/vagasFiltros.js` | Search algorithms filtering by text, field of work, and contract type. |
+| `js/vagasFiltros.js` | Search algorithms filtering by keyword, field of work, and contract type. |
 | `js/vagasCandidatar.js` | Manages the candidate application flow for a specific job. |
-| `py/rota/vagas.py` | REST endpoints for querying and listing jobs. |
+| `py/rota/vagas.py` | REST routes for querying and listing jobs. |
 | `py/rota/candidatura.py` | Route for handling and persisting job applications. |
 
 ---
 
-### 3. Administrative Dashboard and Metrics
-Area focused on statistical data analysis with support for chart components.
+### 5. Administrative Dashboard
+Area focused on statistical data analysis with interactive charts.
 
 | File / Module | Responsibility |
 |---|---|
 | `js/dashboard.js` | Main initialization logic and dashboard data handling. |
 | `js/dashboardGraficos.js` | Visual rendering of charts and statistical reports. |
 | `js/dashboardBanco.js` | Communication with backend metrics APIs. |
-| `py/rota/dashboard.py` | Endpoint responsible for consolidating metrics for the admin area. |
+| `py/rota/dashboard.py` | Route responsible for consolidating metrics for the admin area. |
 
 ---
 
-### 4. Authentication, User Profile, and Forms
-Real-time front-end validation of input data and secure server-side processing.
+### 6. Authentication, User Profile, and Forms
+Real-time frontend validation of input data and secure server-side processing.
 
 | File / Module | Responsibility |
 |---|---|
@@ -79,18 +101,17 @@ Real-time front-end validation of input data and secure server-side processing.
 | `js/formulariosValidacoes.js` | Validation for passwords, emails, and input rules. |
 | `js/formulariosAutoformatar.js` | Dynamic input masking (ZIP code, phone numbers, Tax IDs). |
 | `js/perfil.js` / `js/editar.js` | User profile data viewing and updating. |
-| `py/rota/login.py` / `py/rota/cadastro.py` | Backend endpoints for authentication and user registration in SQLite. |
+| `py/rota/login.py` / `py/rota/cadastro.py` | Backend routes for authentication and user registration in SQLite. |
 
 ---
 
-### 5. Chatbot and Auxiliary Services
+### 7. Chatbot and Auxiliary Services
 
 | File / Module | Responsibility |
 |---|---|
-| `js/chatbot.js` / `py/rota/chatbot.py` | Interactive assistant to answer quick questions about jobs and processes.* |
+| `js/chatbot.js` / `py/rota/chatbot.py` | Interactive assistant to answer quick questions about jobs and processes. |
 | `js/email.js` / `py/email.py` | Integration for sending notifications and confirmation emails. |
 | `py/iniciarBanco.py` / `py/sqliteSQL.py` | Scripts for database schema setup, initialization, and SQLite connection. |
-* Entirely developed by [rocharlia](https://github.com/rocharlia).
 
 ---
 
@@ -104,7 +125,7 @@ Real-time front-end validation of input data and secure server-side processing.
 
 1. **Clone the repository:**
     ```bash
-    git clone [https://github.com/nicovalentim/jobsniffer.git](https://github.com/nicovalentim/jobsniffer.git)
+    git clone https://github.com/nicovalentim/jobsniffer.git
     cd jobsniffer
     ```
 
@@ -133,3 +154,10 @@ Real-time front-end validation of input data and secure server-side processing.
     ```
 
 5. **Open in browser:** `http://127.0.0.1:5000`
+
+## Acknowledgements
+
+Although JobSniffer was primarily planned, developed and maintained by me, I'd like to thank:
+
+- [Rods](https://github.com/Rodsmont) for creating the original mock SQL dataset used during development.
+- [Rocharlia](https://github.com/rocharlia) for developing the chatbot module.
