@@ -55,7 +55,7 @@ A plataforma oferece funcionalidades para dois principais grupos de usuários:
 
 Garante uma navegação contínua sem recarregamento de páginas, gerenciando a injeção dinâmica de conteúdo e o ciclo de vida dos scripts de cada tela.
 
-<img src="_gifs/spa.gif" />
+<img src="_readme/spa.gif" />
 
 | Arquivo              | Responsabilidade                                                         |
 | -------------------- | ------------------------------------------------------------------------ |
@@ -69,15 +69,15 @@ Garante uma navegação contínua sem recarregamento de páginas, gerenciando a 
 
 Módulo responsável pela exibição das oportunidades de trabalho, permitindo buscas em tempo real e envio de candidaturas.
 
-<img src="_gifs/filtros.gif" />
+<img src="_readme/filtros.gif" />
 
 | Arquivo / Módulo                   | Responsabilidade                                                           |
 | ---------------------------------- | -------------------------------------------------------------------------- |
 | `client/js/vagas.js` / `client/js/vagasBanco.js` | Consulta, ordenação e renderização das vagas.                              |
 | `client/js/vagasFiltros.js`               | Algoritmos de busca por palavra-chave, área de atuação e tipo de contrato. |
 | `client/js/vagasCandidatar.js`            | Gerencia o fluxo de candidatura para uma vaga específica.                  |
-| `py/rota/vagas.py`                 | Rotas REST para consulta e listagem de vagas.                              |
-| `py/rota/candidatura.py`           | Processa e registra as candidaturas.                                       |
+| `server/py/rota/vagas.py`                 | Rotas REST para consulta e listagem de vagas.                              |
+| `server/py/rota/candidatura.py`           | Processa e registra as candidaturas.                                       |
 
 ---
 
@@ -85,14 +85,14 @@ Módulo responsável pela exibição das oportunidades de trabalho, permitindo b
 
 Área voltada para análise estatística dos dados por meio de gráficos interativos.
 
-<img src="_gifs/admin.gif" />
+<img src="_readme/admin.gif" />
 
 | Arquivo / Módulo          | Responsabilidade                                           |
 | ------------------------- | ---------------------------------------------------------- |
 | `client/js/dashboard.js`         | Inicialização do painel e gerenciamento dos dados.         |
 | `client/js/dashboardGraficos.js` | Renderização dos gráficos e relatórios estatísticos.       |
 | `client/js/dashboardBanco.js`    | Comunicação com as APIs de métricas do backend.            |
-| `py/rota/dashboard.py`    | Consolida as métricas utilizadas pela área administrativa. |
+| `server/py/rota/dashboard.py`    | Consolida as métricas utilizadas pela área administrativa. |
 
 ---
 
@@ -100,7 +100,7 @@ Módulo responsável pela exibição das oportunidades de trabalho, permitindo b
 
 Validação dos dados em tempo real no frontend e processamento seguro das informações no servidor.
 
-<img src="_gifs/valida.gif" />
+<img src="_readme/valida.gif" />
 
 | Arquivo / Módulo                           | Responsabilidade                                                  |
 | ------------------------------------------ | ----------------------------------------------------------------- |
@@ -108,19 +108,19 @@ Validação dos dados em tempo real no frontend e processamento seguro das infor
 | `client/js/formulariosValidacoes.js`              | Validação de senhas, e-mails e regras de preenchimento.           |
 | `client/js/formulariosAutoformatar.js`            | Aplicação dinâmica de máscaras (CEP, telefone e CPF/CNPJ).        |
 | `client/js/perfil.js` / `client/js/editar.js`            | Visualização e atualização dos dados do usuário.                  |
-| `py/rota/login.py` / `py/rota/cadastro.py` | Rotas backend para autenticação e cadastro de usuários no SQLite. |
+| `server/py/rota/login.py` / `server/py/rota/cadastro.py` | Rotas backend para autenticação e cadastro de usuários no SQLite. |
 
 ---
 
 ### 7. Chatbot e Serviços Auxiliares
 
-<img src="_gifs/utilidades.gif" />
+<img src="_readme/utilidades.gif" />
 
 | Arquivo / Módulo                         | Responsabilidade                                                                  |
 | ---------------------------------------- | --------------------------------------------------------------------------------- |
-| `client/js/chatbot.js` / `py/rota/chatbot.py`   | Assistente interativo para responder dúvidas rápidas sobre vagas e processos.     |
-| `client/js/email.js` / `py/email.py`            | Integração responsável pelo envio de notificações e e-mails de confirmação.       |
-| `py/iniciarBanco.py` / `py/sqliteSQL.py` | Scripts para criação da estrutura do banco, inicialização e conexão com o SQLite. |
+| `client/js/chatbot.js` / `server/py/rota/chatbot.py`   | Assistente interativo para responder dúvidas rápidas sobre vagas e processos.     |
+| `client/js/email.js` / `server/py/email.py`            | Integração responsável pelo envio de notificações e e-mails de confirmação.       |
+| `server/py/iniciarBanco.py` / `server/py/sqliteSQL.py` | Scripts para criação da estrutura do banco, inicialização e conexão com o SQLite. |
 
 ---
 
