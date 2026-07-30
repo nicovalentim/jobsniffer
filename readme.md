@@ -1,5 +1,7 @@
 # JobSniffer
 
+[![en](https://img.shields.io/badge/lang-English-blue.svg)](./README-EN.md)
+
 <p>
   <a href="https://jobsniffer.onrender.com/" target="_blank">
     <img src="https://img.shields.io/badge/Acessar_Aplicação_ao_Vivo-Render-6f42c1?style=for-the-badge&logo=render&logoColor=white" alt="Live Demo" />
@@ -17,7 +19,7 @@
 
 ## Sobre o Projeto
 
-O **JobSniffer** é uma plataforma full-stack para busca, gestão de vagas e acompanhamento de candidaturas, feita por eu mesmo, [nicovalentim](https://github.com/nicovalentim)
+O **JobSniffer** é uma plataforma fullstack para busca, gestão de vagas e acompanhamento de candidaturas, feita, programada e testada por eu mesmo, [nicovalentim](https://github.com/nicovalentim).
 
 O projeto combina uma arquitetura leve no Front-end baseada em Single Page Application (SPA) com um servidor Python/Flask modularizado via Blueprints e persistência em banco SQLite.
 
@@ -101,33 +103,33 @@ Validação em tempo real dos dados de entrada no front-end e tratamento seguro 
 ### Passo a Passo
 
 1. **Clone o repositório:**
-    ```
+    ```bash
     git clone [https://github.com/nicovalentim/jobsniffer.git](https://github.com/nicovalentim/jobsniffer.git)
     cd jobsniffer
     ```
 
-2. Crie e ative o ambiente virtual:
+2. **Crie e ative o ambiente virtual:**
 
     #### Windows
-   ```
+    ```cmd
     python -m venv venv
     .\venv\Scripts\activate
     ```
 
     #### Linux/macOS
-    ```
+    ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
 
-3. Instale as dependências:
-    ```
+3. **Instale as dependências:**
+    ```bash
     pip install -r requirements.txt
-   ```
-    Execute o servidor:
+    ```
 
-   ```
+4. **Execute o servidor:**
+    ```bash
     python app.py
     ```
 
-4. Acesse no navegador: http://127.0.0.1:5000
+5. **Acesse no navegador:** `http://127.0.0.1:5000`
