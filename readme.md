@@ -1,155 +1,133 @@
-## Sobre
-É uma plataforma centralizada de oportunidades de carreira. O objetivo do projeto é conectar candidatos a uma curadoria de vagas selecionadas, oferecendo uma interface limpa para visualização e, futuramente, um painel administrativo completo para gestão de conteúdo.
+# JobSniffer
 
-## O projeto
+<p>
+  <a href="https://jobsniffer.onrender.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Acessar_Aplicação_ao_Vivo-Render-6f42c1?style=for-the-badge&logo=render&logoColor=white" alt="Live Demo" />
+  </a>
+</p><p>
+  <img src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />
+  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />
+  <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+</p>
 
-Diferente de um simples buscador, também funciona como um portal onde:
-- *Clientes (Candidatos):* Podem navegar por um banco de dados de vagas pré-existentes e encontrar sua próxima oportunidade.
-- *Administradores (Em breve):* Terão um sistema de login exclusivo para cadastrar, editar e remover vagas diretamente pela interface.
+---
 
-# Funcionalidades Atuais
+## Sobre o Projeto
 
-## Navegação SPA (Single Page Application)
+O **JobSniffer** é uma plataforma full-stack para busca, gestão de vagas e acompanhamento de candidaturas, feita por eu mesmo, [nicovalentim](https://github.com/nicovalentim)
 
-Permite que o site funcione como uma aplicação de página única, carregando apenas o conteúdo necessário sem recarregar toda a interface.
+O projeto combina uma arquitetura leve no Front-end baseada em Single Page Application (SPA) com um servidor Python/Flask modularizado via Blueprints e persistência em banco SQLite.
 
-### Responsabilidades
+A solução atende a duas frentes principais:
+* **Candidatos:** Exploração de vagas com filtros instantâneos, candidatura rápida, assistente virtual (Chatbot) e acompanhamento pelo perfil do usuário.
+* **Administradores:** Painel (Dashboard) interativo com métricas visuais e gráficos para análise das oportunidades e cadastros.
 
-- Carregamento dinâmico de páginas
-- Controle de rotas internas
-- Interceptação de navegação
-- Inicialização automática da Home
-- Carregamento condicional de scripts
+#### **Demonstração do site:** [jobsniffer.onrender.com](https://jobsniffer.onrender.com/)
 
-### Funções
+---
 
-| Função | Descrição | Arquivo |
-|---|---|---|
-| `rotearPagina()` | Define qual página HTML deve ser carregada através de lógica `switch/case`. | [`js/router.js`](./js/router.js) |
-| `carregarConteudo()` | Carrega scripts específicos dependendo da página ativa. | [`js/router.js`](./js/router.js) |
-| `navbar listeners` | Intercepta cliques do menu para evitar reload e mudança de URL. | [`js/router.js`](./js/router.js) |
-| `DOMContentLoaded listener` | Inicializa automaticamente a página Home ao abrir o sistema. | [`js/router.js`](./js/router.js) |
+## Arquitetura e Funcionalidades
 
-## Sistema de Visualização de Vagas
-
-Responsável por buscar vagas no banco de dados e renderizá-las dinamicamente na interface.
-
-### Recursos
-
-- Busca automática no banco
-- Ordenação das vagas
-- Renderização dinâmica em HTML
-- Exibição detalhada via popup
-- Integração Python ↔ JavaScript
-
-### Funções
-
-| Função | Descrição | Arquivo |
-|---|---|---|
-| `vagas_carregarBanco()` | Solicita os dados de vagas ao backend. | [`js/vagas.js`](./js/vagas.js) |
-| `conexao()` | Cria conexão com o banco SQLite. | [`py/database.py`](./py/database.py) |
-| `get_vagas_data()` | Retorna os dados das vagas armazenadas. | [`py/database.py`](./py/database.py) |
-| `init_db()` | Inicializa o banco de dados. | [`py/database.py`](./py/database.py) |
-| `mysqlParaSqlite(conteudo_sql)` | Converte scripts MySQL para SQLite para ambiente simplificado de testes. | [`py/mysqlParaSqlite.py`](./py/mysqlParaSqlite.py) |
-| `vaga_gerarHTML(listaVagas, limiteDesc)` | Gera os elementos HTML das vagas dinamicamente. | [`js/vagas.js`](./js/vagas.js) |
-| `vaga_info()` | Cria estrutura visual resumida da vaga. | [`js/vagas.js`](./js/vagas.js) |
-| `vaga_infoOnClick()` | Exibe detalhes completos da vaga ao clicar. | [`js/vagas.js`](./js/vagas.js) |
-| `vagas_carregar()` | Ordena e renderiza vagas da mais recente para a mais antiga. | [`js/vagas.js`](./js/vagas.js) |
-| `popUp()` | Sistema global de popup reutilizável em diferentes áreas do sistema. | [`js/popup.js`](./js/popup.js) |
-
-## Sistema de Busca e Filtros
-
-Permite localizar vagas dinamicamente através de texto, área de atuação e regime de trabalho.
-
-### Recursos
-
-- Busca em tempo real
-- Filtro por datasets HTML
-- Filtros por área
-- Filtros por regime
-- Limpeza de filtros
-
-### Funções
-
-| Função | Descrição | Arquivo |
-|---|---|---|
-| `vagas_filtrar()` | Filtra vagas utilizando texto digitado e datasets dos elementos HTML. | [`js/filtros.js`](./js/filtros.js) |
-| `vaga_verTodosFiltros()` | Remove filtros ativos e exibe todas as vagas novamente. | [`js/filtros.js`](./js/filtros.js) |
-| `search listeners` | Atualiza os filtros em tempo real conforme o usuário digita. | [`js/filtros.js`](./js/filtros.js) |
-| `filter buttons listeners` | Ativa filtros por categoria e regime. | [`js/filtros.js`](./js/filtros.js) |
-
-## Cadastro de Usuários
-
-Módulo responsável pelo registro de candidatos e envio dos dados ao banco de dados.
-
-### Recursos
-
-- Upload de currículo
-- Máscaras automáticas
-- Validação de senha
-- Validação de confirmação
-- Feedback visual de erros
-- Envio dos dados ao backend
-
-### Funções
-
-| Função | Descrição | Arquivo |
-|---|---|---|
-| `cadastro_arqAtualiza()` | Atualiza visualmente o nome do arquivo enviado pelo usuário. | [`js/cadastro.js`](./js/cadastro.js) |
-| `cadastro_arqRecebido listener` | Detecta recebimento de arquivo. | [`js/cadastro.js`](./js/cadastro.js) |
-| `cadastro_arqApaga listener` | Remove o arquivo enviado. | [`js/cadastro.js`](./js/cadastro.js) |
-| `usuario_CEP listener` | Formata automaticamente o CEP. | [`js/cadastro.js`](./js/cadastro.js) |
-| `usuario_nascimento listener` | Formata automaticamente a data de nascimento. | [`js/cadastro.js`](./js/cadastro.js) |
-| `usuario_telefone listener` | Formata automaticamente o telefone. | [`js/cadastro.js`](./js/cadastro.js) |
-| `validarRegras()` | Verifica requisitos mínimos de senha. | [`js/validacao.js`](./js/validacao.js) |
-| `senhaValida()` | Valida a senha inserida. | [`js/validacao.js`](./js/validacao.js) |
-| `mostrarErro()` | Exibe erros visuais de validação. | [`js/validacao.js`](./js/validacao.js) |
-| `cadastro_regrasSenha()` | Mostra e oculta regras de senha dinamicamente. | [`js/validacao.js`](./js/validacao.js) |
-| `senhasIguais()` | Confirma se as duas senhas digitadas coincidem. | [`js/validacao.js`](./js/validacao.js) |
-| `cadastro_formulario listener` | Envia os dados do formulário ao backend. | [`js/cadastro.js`](./js/cadastro.js) |
-| `cadastro_data()` | Persiste os dados do usuário no banco de dados. | [`py/cadastro.py`](./py/cadastro.py) |
-
-## Sistema Backend em Python
-
-Camada responsável pelo gerenciamento de dados e comunicação com o banco.
-
-### Recursos
-
-- Conexão com banco SQLite
-- Inicialização automática do banco
-- CRUD de vagas
-- Persistência de usuários
-- Conversão de scripts SQL
-
-### Arquivos Principais
+### 1. Navegação e Roteamento SPA
+Garante navegação contínua e sem recarregamento de página, gerenciando a injeção dinâmica de conteúdo e o ciclo de vida dos scripts de cada tela.
 
 | Arquivo | Responsabilidade |
 |---|---|
-| [`app.py`](./app.py) | Inicialização da aplicação principal. |
-| [`py/database.py`](./py/database.py) | Conexão, leitura e gerenciamento de vagas. |
-| [`py/cadastro.py`](./py/cadastro.py) | Persistência de dados de usuários. |
-| [`py/mysqlParaSqlite.py`](./py/mysqlParaSqlite.py) | Conversão de scripts MySQL para SQLite. |
-| [`db/`](./db/) | Arquivos do banco de dados e scripts SQL. |
+| `js/globalRotas.js` | Gerencia a troca dinâmica de telas e a interceptação dos eventos de link. |
+| `js/globalPopups.js` | Utilitário global para modais e alertas visuais do sistema. |
+| `js/globalAoTopo.js` | Controle de rolagem suave e interações de interface. |
 
-## Interface e Estrutura Visual
+---
 
-Responsável pela experiência visual da plataforma.
+### 2. Vagas, Filtros e Candidatura
+Módulo focado na exibição responsiva das oportunidades de trabalho, permitindo busca em tempo real e envio de inscrições.
+A criação do banco de dados fictício em SQL (que foi convertida para SQLite na execução) foi inteiramente feita por [Rods](https://github.com/Rodsmont).
 
-# Funcionalidades Futuras
+| Arquivo / Módulo | Responsabilidade |
+|---|---|
+| `js/vagas.js` / `js/vagasBanco.js` | Requisição, ordenação e renderização dos dados de vagas. |
+| `js/vagasFiltros.js` | Algoritmos de busca por texto, área de atuação e tipo de contrato. |
+| `js/vagasCandidatar.js` | Gerencia o processo de inscrição do candidato em uma vaga específica. |
+| `py/rota/vagas.py` | Endpoints REST para consulta e listagem de vagas. |
+| `py/rota/candidatura.py` | Rota para processamento e persistência de candidaturas. |
 
-## Sistema Administrativo
+---
 
-Painel de gerenciamento completo para administradores.
+### 3. Painel Administrativo e Métricas (Dashboard)
+Área voltada para análise estatística dos dados com suporte a componentes gráficos.
 
-### Planejado
+| Arquivo / Módulo | Responsabilidade |
+|---|---|
+| `js/dashboard.js` | Lógica principal de inicialização e dados do painel. |
+| `js/dashboardGraficos.js` | Renderização visual de gráficos e relatórios estatísticos. |
+| `js/dashboardBanco.js` | Comunicação com as APIs de métricas do backend. |
+| `py/rota/dashboard.py` | Endpoint responsável por consolidar estatísticas para a área administrativa. |
 
-- *Readme editado à mão:* a versão atual do readme.md foi criada por uma ferramenta de IA, o que vai ser removido futuramente, para um texto mais interessante, conciso e humano.
-- *Layout da página inicial:* A linguagem visual está diferente na homepage e em outras páginas e isso é intencional - ela atualmente serve como uma página de testes de funcionalidades do site.
-- *Painel Administrativo:* Interface para criação, edição e exclusão de vagas (CRUD).
-- *Hashes para Segurança das Senhas:* Criptografia para as senhas salvas no banco de dados.
-- *Separação Visual de Vagas:* Separar elas em páginas diferentes, ao invés de mostrar todas as vagas disponíveis de uma vez.
+---
 
-## Como rodar o projeto
+### 4. Autenticação, Perfil e Formulários
+Validação em tempo real dos dados de entrada no front-end e tratamento seguro no servidor.
 
-1. Clone o repositório.
-2. Use o comando `py app.py` dentro do terminal do VSCode.
+| Arquivo / Módulo | Responsabilidade |
+|---|---|
+| `js/login.js` / `js/loginValidacoes.js` | Controle de autenticação de usuários e tratamento de sessão. |
+| `js/formulariosValidacoes.js` | Validação de senhas, e-mails e regras de preenchimento. |
+| `js/formulariosAutoformatar.js` | Aplicação dinâmica de máscaras (CEP, telefone, CPF/CNPJ). |
+| `js/perfil.js` / `js/editar.js` | Visualização e edição dos dados cadastrais do usuário. |
+| `py/rota/login.py` / `py/rota/cadastro.py` | Endpoints backend para autenticação e registro no SQLite. |
+
+---
+
+### 5. Chatbot e Serviços Auxiliares
+
+| Arquivo / Módulo | Responsabilidade |
+|---|---|
+| `js/chatbot.js` / `py/rota/chatbot.py` | Assistente interativo para tirar dúvidas rápidas sobre vagas e processos.* |
+| `js/email.js` / `py/email.py` | Integração para envio de notificações e e-mails de confirmação. |
+| `py/iniciarBanco.py` / `py/sqliteSQL.py` | Scripts de estruturação, inicialização e conexão com a base SQLite. |
+* Inteiramente desenvolvido por [rocharlia](https://github.com/rocharlia).
+
+---
+
+## Como Rodar o Projeto Localmente
+
+### Pré-requisitos
+* Python 3.10 ou superior
+* Git
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+    ```
+    git clone [https://github.com/nicovalentim/jobsniffer.git](https://github.com/nicovalentim/jobsniffer.git)
+    cd jobsniffer
+    ```
+
+2. Crie e ative o ambiente virtual:
+
+    #### Windows
+   ```
+    python -m venv venv
+    .\venv\Scripts\activate
+    ```
+
+    #### Linux/macOS
+    ```
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+3. Instale as dependências:
+    ```
+    pip install -r requirements.txt
+   ```
+    Execute o servidor:
+
+   ```
+    python app.py
+    ```
+
+4. Acesse no navegador: http://127.0.0.1:5000
