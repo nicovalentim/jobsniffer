@@ -29,8 +29,6 @@ It provides features for two main user groups::
 
 #### **Live Demo:** [jobsniffer.onrender.com](https://jobsniffer.onrender.com/)
 
-INSERT GIF HERE
-
 ---
 
 ## Architecture and Features
