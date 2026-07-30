@@ -6,6 +6,8 @@ form {
     .enviar {
         margin-bottom: 1em;
         margin-top: 16px;
+        margin-left: auto;
+        margin-right: auto;
 
         border: none;
         border-radius: 8px;
@@ -14,13 +16,18 @@ form {
 
         background-color: rgb(var(--corPrimaria));
         color: rgb(var(--branco));
-        justify-self: center;
     }
     .enviar.ativo {
         display: block !important;
     }
     form hr {
         margin: 16px 0;
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid rgba(var(--preto), 0.2);
+        margin: 1em 0;
+        padding: 0;
     }
     form input:not([type="checkbox"]) {
         display: flex;

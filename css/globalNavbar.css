@@ -21,7 +21,7 @@
 }
 
 ul {
-    margin: 0;
+    margin: 0 auto;
     width: 75%;
     justify-self: center;
 }

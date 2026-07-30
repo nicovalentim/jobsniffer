@@ -1,14 +1,18 @@
 /* fundo do corpo */
 .fundo {
-    margin: 1em auto;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
     width: 90%;
     max-width: 1200px;
 
     overflow-wrap: break-word;
-
-    justify-self: center;
-    justify-items: center;
 }
+    .fundo ul {
+        margin: 0;
+    }
 
 #pagina {
     margin-bottom: 1em;
@@ -88,7 +92,7 @@
     height: 320px;
     min-height: 320px;
 }
-    .homeEncontre section:has(h1) {
+    .homeEncontre .texto {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -98,7 +102,7 @@
         margin-bottom: 0.5em;
     }
 
-    .homeEncontre section:has(img) {
+    .homeEncontre .imagem {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1em;
@@ -106,10 +110,10 @@
 
         box-shadow: none;
     }
-    .homeEncontre section:has(img) img {
+    .homeEncontre .imagem img {
         height: 100%;
     }
-    .homeEncontre section:has(img) img,
+    .homeEncontre .imagem img,
     .homeValores img {
         border-radius: 16px;
         width: 100%;
@@ -131,7 +135,7 @@
 
         font-size: 1.2em;
     }
-    .homeValores section:has(img) {
+    .homeValoresImg {
         grid-column: span 5;
         width: 100%;
     }
@@ -143,10 +147,6 @@
             height: 90%;
             opacity: 0.2;
         }
-
-.homeVagas {
-    justify-items: center;
-}
 
     .sobre {
         grid-template-columns: repeat(3, 1fr);
