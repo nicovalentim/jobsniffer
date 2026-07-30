@@ -36,15 +36,15 @@ It provides features for two main user groups::
 ### 1. Challenges
 
 SPA navigation without frameworks;
-<img src="_gifs/spa.webm" width="500" />
+<img src="_gifs/spa.gif" width="500" />
 Dynamic script loading;
-<img src="_gifs/filtros.webm" width="500" />
+<img src="_gifs/filtros.gif" width="500" />
 Modular Flask Blueprints;
 REST API organization;
 Authentication flow;;
-<img src="_gifs/valida.webm" width="500" />
+<img src="_gifs/valida.gif" width="500" />
 Dashboard statistics and more!
-<img src="_gifs/admin.webm" width="500" />
+<img src="_gifs/admin.gif" width="500" />
 
 ### 2. Technologies
 
