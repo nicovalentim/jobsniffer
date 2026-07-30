@@ -56,9 +56,9 @@ Ensures continuous navigation without page reloads, managing dynamic content inj
 
 | File | Responsibility |
 |---|---|
-| `js/globalRotas.js` | Manages dynamic screen swapping and link event interception. |
-| `js/globalPopups.js` | Global utility for UI modals and system alert popups. |
-| `js/globalAoTopo.js` | Handles smooth scrolling control and interface interactions. |
+| `client/js/globalRotas.js` | Manages dynamic screen swapping and link event interception. |
+| `client/js/globalPopups.js` | Global utility for UI modals and system alert popups. |
+| `client/js/globalAoTopo.js` | Handles smooth scrolling control and interface interactions. |
 
 ---
 
@@ -68,9 +68,9 @@ Module focused on the display of job opportunities, allowing real-time searching
 
 | File / Module | Responsibility |
 |---|---|
-| `js/vagas.js` / `js/vagasBanco.js` | Job data fetching, sorting, and rendering. |
-| `js/vagasFiltros.js` | Search algorithms filtering by keyword, field of work, and contract type. |
-| `js/vagasCandidatar.js` | Manages the candidate application flow for a specific job. |
+| `client/js/vagas.js` / `client/js/vagasBanco.js` | Job data fetching, sorting, and rendering. |
+| `client/js/vagasFiltros.js` | Search algorithms filtering by keyword, field of work, and contract type. |
+| `client/js/vagasCandidatar.js` | Manages the candidate application flow for a specific job. |
 | `py/rota/vagas.py` | REST routes for querying and listing jobs. |
 | `py/rota/candidatura.py` | Route for handling and persisting job applications. |
 
@@ -82,9 +82,9 @@ Area focused on statistical data analysis with interactive charts.
 
 | File / Module | Responsibility |
 |---|---|
-| `js/dashboard.js` | Main initialization logic and dashboard data handling. |
-| `js/dashboardGraficos.js` | Visual rendering of charts and statistical reports. |
-| `js/dashboardBanco.js` | Communication with backend metrics APIs. |
+| `client/js/dashboard.js` | Main initialization logic and dashboard data handling. |
+| `client/js/dashboardGraficos.js` | Visual rendering of charts and statistical reports. |
+| `client/js/dashboardBanco.js` | Communication with backend metrics APIs. |
 | `py/rota/dashboard.py` | Route responsible for consolidating metrics for the admin area. |
 
 ---
@@ -95,10 +95,10 @@ Real-time frontend validation of input data and secure server-side processing.
 
 | File / Module | Responsibility |
 |---|---|
-| `js/login.js` / `js/loginValidacoes.js` | User authentication control and session management. |
-| `js/formulariosValidacoes.js` | Validation for passwords, emails, and input rules. |
-| `js/formulariosAutoformatar.js` | Dynamic input masking (ZIP code, phone numbers, Tax IDs). |
-| `js/perfil.js` / `js/editar.js` | User profile data viewing and updating. |
+| `client/js/login.js` / `client/js/loginValidacoes.js` | User authentication control and session management. |
+| `client/js/formulariosValidacoes.js` | Validation for passwords, emails, and input rules. |
+| `client/js/formulariosAutoformatar.js` | Dynamic input masking (ZIP code, phone numbers, Tax IDs). |
+| `client/js/perfil.js` / `client/js/editar.js` | User profile data viewing and updating. |
 | `py/rota/login.py` / `py/rota/cadastro.py` | Backend routes for authentication and user registration in SQLite. |
 
 ---
@@ -109,8 +109,8 @@ Real-time frontend validation of input data and secure server-side processing.
 
 | File / Module | Responsibility |
 |---|---|
-| `js/chatbot.js` / `py/rota/chatbot.py` | Interactive assistant to answer quick questions about jobs and processes. |
-| `js/email.js` / `py/email.py` | Integration for sending notifications and confirmation emails. |
+| `client/js/chatbot.js` / `py/rota/chatbot.py` | Interactive assistant to answer quick questions about jobs and processes. |
+| `client/js/email.js` / `py/email.py` | Integration for sending notifications and confirmation emails. |
 | `py/iniciarBanco.py` / `py/sqliteSQL.py` | Scripts for database schema setup, initialization, and SQLite connection. |
 
 ---
