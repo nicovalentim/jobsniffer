@@ -41,9 +41,12 @@
             .card.dashboard p {
                 margin: 0.5em;
             }
-            .card.dashboard p:last-child {
+            .card.dashboard p {
+                margin-bottom: 2em;
+            }
+            .card.dashboard .pequeno {
+                grid-column: 1 / span 4;
                 font-size: 0.75em;
-                margin-top: 2em;
             }
         .card.dashboard section:nth-child(1),
         .card.dashboard section:nth-child(4),

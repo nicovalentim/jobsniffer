@@ -1,5 +1,5 @@
 import { graficosBarra, graficosLinha, graficosPizza, graficosRosca } from "./dashboardGraficos.js";
-import { dashboardBanco, dashboardDados } from "./dashboardBanco.js";
+import { dashboardBanco, dashboardCandidaturasArea, dashboardDados, dashboardMediaArea } from "./dashboardBanco.js";
 
 export async function graficos() {
     const admin = localStorage.getItem("tipo") === "admin";
@@ -14,8 +14,6 @@ export async function graficos() {
 
     const vagasTotal = document.getElementById("vagasTotal");
         vagasTotal.innerText = dados.vagas.length;
-    const usuariosTotal = document.getElementById("usuariosTotal");
-        usuariosTotal.innerText = dados.usuarios.length + "*";
     const vagasAreaPop = document.getElementById("vagasAreaPop");
         const dadosArea = dashboardDados(dados.vagas, 'area');
             let indiceMaisPopular = 0;
@@ -80,52 +78,59 @@ export async function graficos() {
                 );
         }
 
-        const teste = await dashboardBanco(email);
-        if (!teste) return;
-        
-        // ADICIONE ESTE LOG PARA INSPECIONAR OS CAMPOS DA VAGA:
-        console.log("Exemplo do servidor:", dados.usuarios[0]);
-
-    const barraLocal = document.querySelectorAll('.graficoBarra');
-    if (barraLocal.length > 0) {
-        graficosBarra (
-            [10, 10, 50, 80, 95, 2],
-            ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-            barraLocal,
+    const usuariosTotal = document.getElementById("usuariosTotal");
+        usuariosTotal.innerText = dados.usuarios.length + "²";
+    const mediaSalarial = document.getElementById("mediaSalarial");
+        const salarios = dados.vagas.map(vaga => vaga.salario).filter(salario => salario > 0);
+        const media = salarios.reduce((acc, curr) => acc + curr, 0) / salarios.length;
+        mediaSalarial.innerText = `R$ ${media.toFixed(2)}`;
+    const folhaPagamento = document.getElementById("folhaPagamento");
+        const folha = salarios.reduce((acc, curr) => acc + curr, 0);
+        folhaPagamento.innerText = `R$ ${folha.toFixed(2)}`;
+    const graficoSalario = document.getElementById("graficoSalario");
+    if (graficoSalario) {
+        const dadosSalarioArea = dashboardMediaArea(dados.vagas);
+        graficosLinha(
+            dadosSalarioArea.valores,
+            dadosSalarioArea.rotulos,
+            graficoSalario,
             {
-                padding: { bottom: 65, left: 50 },
+                padding: { top: 30, bottom: 65, left: 50, right: 20 },
                 rotacionarX: 45
             }
         );
     }
 
-    const linhaLocal = document.querySelectorAll('.graficoLinha');
-    if (linhaLocal.length > 0) {
-        graficosLinha (
-            [30, 20, 10, 40, 50, 80, 70],
-            ['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7'],
-            linhaLocal,
-            {
-                padding: { top: 30, bottom: 50 },
-                rotacionarX: 0
-            }
+    const candidaturasRealizadas = document.getElementById("candidaturasRealizadas");
+        candidaturasRealizadas.innerText = dados.candidaturas.length;
+    const candidaturasMesPassado = document.getElementById("candidaturasMesPassado");
+        const mesPassado = new Date();
+        mesPassado.setMonth(mesPassado.getMonth() - 1);
+        const candidaturasMesAnterior = dados.candidaturas.filter(candidatura => {
+            const dataCandidatura = new Date(candidatura.data);
+            return dataCandidatura.getMonth() === mesPassado.getMonth() && dataCandidatura.getFullYear() === mesPassado.getFullYear();
+        });
+        candidaturasMesPassado.innerText = candidaturasMesAnterior.length;
+    const vagasMesPassado = document.getElementById("vagasMesPassado");
+        const vagasMesAnterior = dados.vagas.filter(vaga => {
+            const dataVaga = new Date(vaga.data);
+            return dataVaga.getMonth() === mesPassado.getMonth() && dataVaga.getFullYear() === mesPassado.getFullYear();
+        });
+        vagasMesPassado.innerText = vagasMesAnterior.length;
+    const graficoCandidaturasArea = document.getElementById("graficoCandidaturasArea");
+    if (graficoCandidaturasArea) {
+        const dadosCandidaturasArea = dashboardCandidaturasArea(
+            dados.candidaturas, 
+            dados.vagas
+        );
+        graficosRosca(
+            dadosCandidaturasArea.valores,
+            graficoCandidaturasArea,
+            dadosCandidaturasArea.rotulos
         );
     }
 
-    const pizzaLocal = document.querySelectorAll('.graficoPizza');
-    if (pizzaLocal.length > 0) {
-        graficosPizza (
-            [10, 20, 30, 40, 10, 20, 50],
-            pizzaLocal,
-            ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho"]
-        );
-    }
-
-    const roscaLocal = document.querySelectorAll('.graficoRosca');
-    if (roscaLocal.length > 0) {
-        graficosRosca (
-            [10, 20, 30],
-            roscaLocal
-        );
-    }
+        const teste = await dashboardBanco(email);
+        if (!teste) return;
+        console.log("Exemplo do servidor:", dados.vagas.salario);
 }

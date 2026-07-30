@@ -244,6 +244,10 @@ export function graficosPizza(pizzaDados, pizzaLocal, pizzaRotulo, rosca) {
 
                 pizzaCtx.beginPath();
                 pizzaCtx.fillStyle = `rgb(${branco})`;
+                pizzaCtx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+                pizzaCtx.shadowBlur = 4;
+                pizzaCtx.shadowOffsetX = 1;
+                pizzaCtx.shadowOffsetY = 1;
                 pizzaCtx.fillText(texto, textoX, textoY);
                 
                 pizzaCtx.restore();

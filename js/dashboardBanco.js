@@ -28,3 +28,46 @@ export function dashboardDados(array, propriedade) {
         valores: Object.values(contagem)
     };
 }
+
+export function dashboardMediaArea(vagas) {
+    const acumulador = {};
+
+    vagas.forEach(vaga => {
+        const area = vaga.area;
+        const salario = Number(vaga.salario);
+
+        if (salario > 0) {
+            if (!acumulador[area]) {
+                acumulador[area] = { soma: 0, quantidade: 0 };
+            }
+            acumulador[area].soma += salario;
+            acumulador[area].quantidade += 1;
+        }
+    });
+
+    const rotulos = Object.keys(acumulador);
+    const valores = rotulos.map(area => {
+        const media = acumulador[area].soma / acumulador[area].quantidade;
+        return Number(media.toFixed(2));
+    });
+
+    return { rotulos, valores };
+}
+
+export function dashboardCandidaturasArea(candidaturas, vagas) {
+    const contagem = {};
+    const vagaAreaMap = {};
+    vagas.forEach(vaga => {
+        vagaAreaMap[vaga.id] = vaga.area;
+    });
+
+    candidaturas.forEach(candidatura => {
+        const area = vagaAreaMap[candidatura.vaga_id] || "Não definida";
+        contagem[area] = (contagem[area] || 0) + 1;
+    });
+
+    return {
+        rotulos: Object.keys(contagem),
+        valores: Object.values(contagem)
+    };
+}
