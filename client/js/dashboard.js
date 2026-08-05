@@ -49,24 +49,6 @@ export async function graficos() {
     }
     vagasAreaPop.innerText = `${vagasPop} \n (${maxVagas} vagas)`;
 
-    const vagaAreasRosca = document.getElementById("graficoVagasAreas");
-    if (vagaAreasRosca) {
-        const dadosArea = dashboardDados(dados.vagas, 'area');
-        graficosRosca(dadosArea.valores, vagaAreasRosca, dadosArea.rotulos);
-    }
-
-    const vagaRegimePizza = document.getElementById("graficoVagasRegime");
-    if (vagaRegimePizza) {
-        const dadosRegime = dashboardDados(dados.vagas, 'regime');
-        graficosRosca(dadosRegime.valores, vagaRegimePizza, dadosRegime.rotulos);
-    }
-
-    const vagasLocalizacaoPizza = document.getElementById("graficoVagasLocalizacao");
-    if (vagasLocalizacaoPizza) {
-        const dadosPresenca = dashboardDados(dados.vagas, 'localizacao');
-        graficosRosca(dadosPresenca.valores, vagasLocalizacaoPizza, dadosPresenca.rotulos);
-    }
-
     const usuariosTotal = document.getElementById("usuariosTotal");
     usuariosTotal.innerText = dados.usuarios.length + "²";
 
@@ -79,20 +61,6 @@ export async function graficos() {
     const folha = salarios.reduce((acc, curr) => acc + curr, 0);
     folhaPagamento.innerText = `R$ ${folha.toFixed(2)}`;
 
-    const graficoSalario = document.getElementById("graficoSalario");
-    if (graficoSalario) {
-        const dadosSalarioArea = dashboardMediaArea(dados.vagas);
-        graficosLinha(
-            dadosSalarioArea.valores,
-            dadosSalarioArea.rotulos,
-            graficoSalario,
-            {
-                padding: { top: 30, bottom: 65, left: 50, right: 20 },
-                rotacionarX: 45
-            }
-        );
-    }
-
     const candidaturasRealizadas = document.getElementById("candidaturasRealizadas");
     candidaturasRealizadas.innerText = dados.candidaturas.length;
 
@@ -104,7 +72,6 @@ export async function graficos() {
     const candidaturasUltimos30Dias = dados.candidaturas.filter(candidatura => {
         const campoData = candidatura.data_candidatura || candidatura.data;
         const dataCandidatura = extrairDataSegura(campoData);
-
         return !isNaN(dataCandidatura) && dataCandidatura >= trintaDiasAtras;
     });
 
@@ -116,7 +83,6 @@ export async function graficos() {
     const vagasUltimos30Dias = dados.vagas.filter(vaga => {
         const campoData = vaga.data_criacao || vaga.data;
         const dataVaga = extrairDataSegura(campoData);
-
         return !isNaN(dataVaga) && dataVaga >= trintaDiasAtras;
     });
     
@@ -124,16 +90,58 @@ export async function graficos() {
         vagasMesPassado.innerText = vagasUltimos30Dias.length;
     }
 
-    const graficoCandidaturasArea = document.getElementById("graficoCandidaturasArea");
-    if (graficoCandidaturasArea) {
-        const dadosCandidaturasArea = dashboardCandidaturasArea(
-            dados.candidaturas, 
-            dados.vagas
-        );
-        graficosRosca(
-            dadosCandidaturasArea.valores,
-            graficoCandidaturasArea,
-            dadosCandidaturasArea.rotulos
-        );
+    function renderizarTodosGraficos() {
+        const vagaAreasRosca = document.getElementById("graficoVagasAreas");
+        if (vagaAreasRosca) {
+            const dadosArea = dashboardDados(dados.vagas, 'area');
+            graficosRosca(dadosArea.valores, vagaAreasRosca, dadosArea.rotulos);
+        }
+
+        const vagaRegimePizza = document.getElementById("graficoVagasRegime");
+        if (vagaRegimePizza) {
+            const dadosRegime = dashboardDados(dados.vagas, 'regime');
+            graficosRosca(dadosRegime.valores, vagaRegimePizza, dadosRegime.rotulos);
+        }
+
+        const vagasLocalizacaoPizza = document.getElementById("graficoVagasLocalizacao");
+        if (vagasLocalizacaoPizza) {
+            const dadosPresenca = dashboardDados(dados.vagas, 'localizacao');
+            graficosRosca(dadosPresenca.valores, vagasLocalizacaoPizza, dadosPresenca.rotulos);
+        }
+
+        const graficoSalario = document.getElementById("graficoSalario");
+        if (graficoSalario) {
+            const dadosSalarioArea = dashboardMediaArea(dados.vagas);
+            graficosLinha(
+                dadosSalarioArea.valores,
+                dadosSalarioArea.rotulos,
+                graficoSalario,
+                {
+                    padding: { top: 30, bottom: 65, left: 50, right: 20 },
+                    rotacionarX: 45
+                }
+            );
+        }
+
+        const graficoCandidaturasArea = document.getElementById("graficoCandidaturasArea");
+        if (graficoCandidaturasArea) {
+            const dadosCandidaturasArea = dashboardCandidaturasArea(
+                dados.candidaturas, 
+                dados.vagas
+            );
+            graficosRosca(
+                dadosCandidaturasArea.valores,
+                graficoCandidaturasArea,
+                dadosCandidaturasArea.rotulos
+            );
+        }
     }
+
+    renderizarTodosGraficos();
+
+    let timerResize;
+    window.addEventListener("resize", () => {
+        clearTimeout(timerResize);
+        timerResize = setTimeout(renderizarTodosGraficos, 100);
+    });
 }

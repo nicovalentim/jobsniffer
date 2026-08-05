@@ -18,6 +18,19 @@ for (let i = 0; i < coresTotal; i++) {
 }
 const text = `10px ` + css.getPropertyValue('--fontePrimaria');
 
+export function redimensionarCanvas(canvas) {
+    const rect = canvas.getBoundingClientRect();
+    const width = Math.floor(rect.width);
+    const height = Math.floor(rect.height);
+
+    if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        return true;
+    }
+    return false;
+}
+
 export function graficosBarra(barraDados, barraRotulo, barraLocal, config = {}) {
     const padding = { top: 20, right: 20, bottom: 40, left: 50, ...config.padding };
     const rotacionarX = config.rotacionarX || 0;
@@ -25,6 +38,7 @@ export function graficosBarra(barraDados, barraRotulo, barraLocal, config = {}) 
     const elementosCanvas = barraLocal.forEach ? barraLocal : [barraLocal];
 
     elementosCanvas.forEach((barCanvas) => {
+        redimensionarCanvas(barCanvas);
         const barCtx = barCanvas.getContext('2d');
         barCtx.clearRect(0, 0, barCanvas.width, barCanvas.height);
 
@@ -98,6 +112,7 @@ export function graficosLinha(linhaDados, linhaRotulo, linhaLocal, config = {}) 
     const elementosCanvas = linhaLocal.forEach ? linhaLocal : [linhaLocal];
 
     elementosCanvas.forEach((linhaCanvas) => {
+        redimensionarCanvas(linhaCanvas);
         const linhaCtx = linhaCanvas.getContext('2d');
         linhaCtx.clearRect(0, 0, linhaCanvas.width, linhaCanvas.height);
         linhaCtx.font = text;
@@ -177,6 +192,7 @@ export function graficosPizza(pizzaDados, pizzaLocal, pizzaRotulo, rosca) {
     const elementosCanvas = pizzaLocal.forEach ? pizzaLocal : [pizzaLocal];
 
     elementosCanvas.forEach((pizzaCanvas) => {
+        redimensionarCanvas(pizzaCanvas);
         const pizzaCtx = pizzaCanvas.getContext('2d');
         pizzaCtx.clearRect(0, 0, pizzaCanvas.width, pizzaCanvas.height);
 
@@ -184,7 +200,8 @@ export function graficosPizza(pizzaDados, pizzaLocal, pizzaRotulo, rosca) {
         const pizzaX = pizzaCanvas.width / 2;
         const pizzaY = pizzaCanvas.height / 2;
 
-        const pizzaRaioY = (pizzaCanvas.width / 2) * 0.85; 
+        const maxRaio = Math.min(pizzaCanvas.width, pizzaCanvas.height) / 2;
+        const pizzaRaioY = maxRaio * 0.80; 
         let pizzaAnguloInicial = 0;
 
         pizzaDados.forEach((value, index) => {
