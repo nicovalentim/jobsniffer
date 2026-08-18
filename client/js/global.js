@@ -23,16 +23,14 @@ document.querySelectorAll(".navbar a, .links").forEach(link => {
     });
 });
 
-/*
-const admin = localStorage.getItem("tipo") === "admin";
-const usuario = localStorage.getItem("tipo") === "usuario";
+document.addEventListener("DOMContentLoaded", () => {
+    const btnHamburger = document.getElementById("btnHamburger");
+    const navMenu = document.getElementById("navMenu");
 
-let nomeLogado = document.getElementById("nomeLogado")
-
-admin ?
-    nomeLogado.innerHTML ="admin"
-    : null;
-usuario ?
-    nomeLogado.innerHTML = "<a href="#" id="usuarioNome" class="perfil">Usuário</a>";
-    : null;
-    */
+    if (btnHamburger && navMenu) {
+        btnHamburger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle("ativo");
+        });
+    }
+});

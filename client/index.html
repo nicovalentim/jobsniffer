@@ -9,62 +9,66 @@
 </head>
 
 <body>
-
     <ul class="navbar">
         <li>
-            <a href="home"  id="titulo" class="links">
+            <a href="home" id="titulo" class="links">
                 <img src="icones/dog.svg" id="logo"> jobsniffer
             </a>
         </li>
 
-    <li class="links">
-        <a href="sobre" class="links">Sobre</a> -
-        <a href="contato" class="links">Contato</a> -
-        <a href="vagas" class="links">Vagas</a>
-    </li>
+        <button class="hamburger" id="btnHamburger" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <li>
-        <a href="#" id="btnLogin">Login</a>
+        <li class="nav-menu" id="navMenu">
+            <a href="sobre" class="links">Sobre</a>
+            <span class="separador">-</span>
+            <a href="contato" class="links">Contato</a>
+            <span class="separador">-</span>
+            <a href="vagas" class="links">Vagas</a>
+        </li>
 
-        <section id="menuUsuario">
-            <p>
-                <span>Olá,</span>
-                <a href="#" id="usuarioNome">Usuário</a>
-            </p><p>
-                <a href="#" id="btnLogout">Sair</a>
-            </p>
-        </section>
+        <li class="acoes-usuario">
+            <a href="#" id="btnLogin">Login</a>
 
-        <form id="loginMenu">
-            <span id="btnVoltar">Voltar</span>
+            <section id="menuUsuario">
+                <p><a href="#" id="usuarioNome">Usuário</a></p>
+                <p><a href="#" id="btnLogout">Sair</a></p>
+            </section>
 
-            <section id="login_telaEntrada" class="tela">
-                <input type="email" id="login_email" placeholder="Digite seu email" />
-                <span type="email" id="erroLoginEmail" class="erro"></span>
+            <form id="loginMenu">
+                <span id="btnVoltar">Voltar</span>
 
-                <input type="password" id="login_senha" placeholder="Digite sua senha">
-                <span id="erroLoginSenha" class="erro"></span>
+                <section id="login_telaEntrada" class="tela">
+                    <input type="email" id="login_email" placeholder="Digite seu email" />
+                    <span type="email" id="erroLoginEmail" class="erro"></span>
 
-                <p id="login_esqueceuSenha">Esqueceu a sua senha?</p>
-                <button id="btnEntrar" class="btn">Entrar</button>
+                    <input type="password" id="login_senha" placeholder="Digite sua senha">
+                    <span id="erroLoginSenha" class="erro"></span>
 
-                <p>Ou faça Login com:</p>
+                    <p id="login_esqueceuSenha">Esqueceu a sua senha?</p>
+                    <button id="btnEntrar" class="btn">Entrar</button>
+
+                    <p>Ou faça Login com:</p>
                     <span class="api">
                         <a><img src="icones/github.png" /></a>
                         <a><img src="icones/google.png" /></a>
                         <a><img src="icones/linkedin.png" /></a>
                     </span>
-            </section>
+                </section>
 
-            <section id="login_telaRecuperacao" class="tela" style="display:none;">
-                <input type="email" id="login_emailRec" placeholder="Digite o email cadastrado" >
-                <span id="erroRecuperacao" class="erro"></span>
-                <button id="btnRecuperar" class="btn">Recuperar</button>
-            </section>
-        </form>
+                <section id="login_telaRecuperacao" class="tela" style="display:none;">
+                    <input type="email" id="login_emailRec" placeholder="Digite o email cadastrado">
+                    <span id="erroRecuperacao" class="erro"></span>
+                    <button id="btnRecuperar" class="btn">Recuperar</button>
+                </section>
+            </form>
 
-        <a href="cadastro" id="cadastro" class="links">Cadastrar</a>
-    </li>
+            <a href="cadastro" id="cadastro" class="links">Cadastrar</a>
+
+        </li>
     </ul>
 
     <div id="pagina"></div>
