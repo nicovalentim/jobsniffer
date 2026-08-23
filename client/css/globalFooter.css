@@ -10,12 +10,6 @@ footer {
     background-color: rgb(var(--corPrimaria));
     color: rgb(var(--branco));
 }
-    @media (max-width: 1080px) {
-        footer {
-            grid-template-columns: 1fr;
-            gap: 2em;
-        }
-    }
     footer h3 {
         margin: 0;
         text-transform: uppercase;
@@ -28,3 +22,20 @@ footer {
         width: 32px;
         padding: 8px;
     }
+
+@media (max-width: 1080px) {
+    footer {
+        font-size: 2em;
+        grid-template-columns: 1fr;
+        gap: 2em;
+    }
+    footer p {
+        margin: 0;
+    }
+    footer section img {
+        display: inline;
+        width: 64px;
+
+        margin: 8px;
+    }
+}

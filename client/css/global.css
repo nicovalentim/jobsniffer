@@ -83,3 +83,12 @@ button {
         opacity: 1;
         pointer-events: all;
     }
+
+@media (max-width: 1080px) {
+    .api img {
+        height: 48px;
+        width: 48px;
+
+        margin: 8px;
+    }
+}

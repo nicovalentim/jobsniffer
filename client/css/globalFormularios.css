@@ -1,5 +1,3 @@
-/* #cadastroMenu e #loginMenu estão em globalLogin.css */
-
 form {
     display: block;
 }
@@ -107,11 +105,6 @@ textarea {
         background-color: rgb(var(--corPrimaria));
         border-radius: 8px;
     }
-    @media (max-width: 1080px) {
-        .contato {
-            grid-template-columns: 1fr;
-        }
-    }
     .contato textarea {
         margin: 1em 0;
         font: var(--fontePrimaria);
@@ -140,12 +133,6 @@ textarea {
     .linha input {
         flex: 1;
     }
-@media (max-width: 1080px) {
-        .linha {
-            display: block;
-            margin: 1em 0;
-        }
-    }
 
     .aceitar {
         display: flex;
@@ -166,3 +153,35 @@ textarea {
         .dadosUsuario table tr * {
             text-align: left;
         }
+
+@media (max-width: 1080px) {
+    input,
+    select,
+    textarea {
+        font-size: 0.9em;
+    }
+        .cadastro_form button {
+            font-size: 0.9em;
+        }
+    #cadastroMenu {
+        font-size: 1em !important;
+        width: 540px !important;
+    }
+        #cadastroMenu {
+            font-size: 1em !important;
+            width: 540px !important;
+        }
+        .aceitar,
+        .aceitar input[type="checkbox"] {
+            font-size: 1em;
+        }
+
+    .linha {
+        display: block;
+        margin: 1em 0;
+    }
+
+    .contato {
+        grid-template-columns: 1fr;
+    }
+}

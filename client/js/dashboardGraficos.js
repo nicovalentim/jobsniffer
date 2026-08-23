@@ -16,7 +16,7 @@ let coresTotal = 4;
 for (let i = 0; i < coresTotal; i++) {
     cores.push(`hsl(from ${corRealceHex} h s ${25+(i+1)*50/coresTotal})`);
 }
-const text = `10px ` + css.getPropertyValue('--fontePrimaria');
+const text = css.getPropertyValue('--fonteCanvas');
 
 export function redimensionarCanvas(canvas) {
     const rect = canvas.getBoundingClientRect();
@@ -166,7 +166,7 @@ export function graficosLinha(linhaDados, linhaRotulo, linhaLocal, config = {}) 
             if (linhaRotulo[index] !== undefined) {
                 linhaCtx.save();
 
-                const textY = linhaCanvas.height - padding.bottom + 8;
+                const textY = linhaCanvas.height - padding.bottom + 24;
 
                 linhaCtx.translate(point.x, textY);
 

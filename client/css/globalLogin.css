@@ -13,6 +13,7 @@
     opacity: 0;
     pointer-events: none;
 
+    font-size: 0.5em;
     width: 320px;
     max-width: 90%;
 
@@ -30,83 +31,106 @@
         transform: translate(-50%, -50%) scale(1);
     }
 
-    #loginMenu section {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+#loginMenu section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.tela p {
+    margin: 10px 0;
+}
+.tela p,
+.erro {
+    text-align: center;
+    font-size: 0.7em;
+}
+    .erro-shake {
+        border: 2px solid red !important;
+        animation: tremer 0.2s ease-in-out;
     }
-    .tela p {
-        margin: 10px 0;
-    }
-    .tela p,
-    .erro {
+        @keyframes tremer {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+#loginMenu input,
+#cadastroMenu input {
+    width: 100%;
+
+    border: none;
+    border-radius: 8px;
+    margin: 8px 0;
+    padding: 10px;
+    text-align: center;
+
+    background: white;
+}
+    #loginMenu input::placeholder,
+    #cadastroMenu input::placeholder {
         text-align: center;
-        font-size: 0.7em;
     }
-        .erro-shake {
-            border: 2px solid red !important;
-            animation: tremer 0.2s ease-in-out;
-        }
-            @keyframes tremer {
-                0% { transform: translateX(0); }
-                25% { transform: translateX(-10px); }
-                50% { transform: translateX(10px); }
-                75% { transform: translateX(-10px); }
-                100% { transform: translateX(0); }
-            }
 
-    #loginMenu input,
-    #cadastroMenu input {
-        width: 100%;
+.btn {
+    font-weight: 600;
+    padding: 10px;
 
-        border: none;
-        border-radius: 8px;
-        margin: 8px 0;
-        padding: 10px;
-        text-align: center;
+    background: rgb(var(--corPrimaria));
+    color: rgb(var(--branco));
 
-        background: white;
-    }
-        #loginMenu input::placeholder,
-        #cadastroMenu input::placeholder {
-            text-align: center;
-        }
-
-    .btn {
-        font-weight: 600;
-        padding: 10px;
-
-        background: rgb(var(--corPrimaria));
-        color: rgb(var(--branco));
-
-        flex-shrink: 0;
-    }
-        #btnVoltar {
-            align-self: start;
-            cursor: pointer;
-            display: none;
-
-            font-size: 0.8em;
-            padding: 10px;
-
-            color: rgb(var(--corPrimaria));
-        }
-
-    #login_esqueceuSenha {
+    flex-shrink: 0;
+}
+    #btnVoltar {
+        align-self: start;
         cursor: pointer;
+        display: none;
+
+        font-size: 0.8em;
+        padding: 10px;
 
         color: rgb(var(--corPrimaria));
-        text-align: center;
-        font-size: 0.85em;
-        margin: 10px 0;
     }
-    #login_emailRec {
-        margin-bottom: 16px !important;
+
+#login_esqueceuSenha {
+    cursor: pointer;
+
+    color: rgb(var(--corPrimaria));
+    text-align: center;
+    font-size: 0.85em;
+    margin: 10px 0;
+}
+#login_emailRec {
+    margin-bottom: 16px !important;
+}
+#btnLogin {
+    padding: 9px;
+    margin: 0 5px;
+}
+#usuarioSenha {
+    -webkit-text-security: disc; 
+}
+
+@media (max-width: 1080px) {
+    #loginMenu {
+        font-size: 0.8em;
+        padding: 1em;
+        width: 640px;
     }
-    #btnLogin {
-        padding: 9px;
-        margin: 0 5px;
+    #loginMenu input {
+        font-size: 0.75em;
+        font-weight: 100;
+
+        margin: 16px;
     }
-    #usuarioSenha {
-        -webkit-text-security: disc; 
+
+    .btn {
+        font-size: 0.75em;
+        font-weight: 500;
+
+        margin: 16px;
     }
+    .tela p {
+        font-size: 0.8em;
+    }
+}

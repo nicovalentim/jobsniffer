@@ -1,3 +1,7 @@
+:root {
+    --fonteCanvas: 12px var(--fontePrimaria);
+}
+
 /* vagas na página inicial */
 .vagasHomePage {
     max-width: 1200px;
@@ -5,21 +9,7 @@
 .vagasHomePage #vaga_4 {
     display: none !important;
 }
-    @media (max-width: 1080px) {   
-        .vagasHomePage #vaga_4 {
-            display: block !important;
-        }
-        .card {
-            grid-template-columns: 1fr;
-        }
-        .card section {
-            margin-bottom: 1em;
-            min-height: auto;
-        }
-        .sobre {
-            grid-template-columns: 1fr;
-        }
-    }
+
 .homeVagas {
     text-align: center;
 }
@@ -70,9 +60,13 @@ button {
     text-align: center;
 }
 
+.vagasPagina div:first-child {
+    grid-column: span 3;
+}
+
 .filtro {
     display: block;
-    align-items: stretch; /* para os filtros terem a mesma altura mesmo em mobile */
+    align-items: stretch;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -87,16 +81,10 @@ button {
         background-color: rgb(var(--branco));
         color: rgb(var(--preto));
     }
-    @media (max-width: 1080px) {
-        .filtro button {
-            min-width: 0;
-        }
-    }
     .filtro button.selecionado {
         background-color: rgba(var(--preto),1);
         color: rgba(var(--branco),1);
     }
-    /* cor de selecionado quando passa o mouse em cima */
     @media (hover: hover) {
         .filtro button:hover {
             background-color: rgba(var(--preto),1);
@@ -104,7 +92,6 @@ button {
         }
     }
 
-/* seção de vagas */
 .filtro:has(#vaga_barraPesquisa) {
     width: 100%;
     align-self: flex-end;
@@ -145,10 +132,22 @@ button {
     margin: 1em auto;
     width: 100%;
 }
-#posts hr {
-    margin-top: 1em ;
-    opacity: 0.2;
+    #posts hr {
+        margin-top: 1em ;
+        opacity: 0.2;
+    }
+
+.vagasPagina {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 1em auto;
+    width: 100%;
 }
+    .vagasPagina hr {
+        margin-top: 1em ;
+        opacity: 0.2;
+    }
 
 .vaga {
     cursor: pointer;
@@ -299,3 +298,114 @@ button {
         display: flex;
         gap: 16px;
     }
+
+@media (max-width: 1080px) {
+    :root {
+        --fonteCanvas: 600 24px var(--fontePrimaria);
+    }
+
+    .homeVagas > h2 {
+        font-size: 3em;
+        margin-top: 0;
+    }
+    .homeVagas > p {
+        font-size: 2em;
+    }
+
+    .vagasHomePage {
+        display: inline;
+    }
+        .vagasHomePage .vaga {
+            margin-bottom: 1em;
+        }
+        .vagasHomePage #vaga_4 {
+            display: block !important;
+        }
+        .sobre {
+            grid-template-columns: 1fr;
+        }
+        canvas {
+            min-height: 480px;
+            min-width: 480px;
+        }
+
+    .vaga {
+        font-size: 1.8em;
+    }
+        .vagasPerfil > .vaga,
+        .infoVaga button {
+            font-size: 1em;
+        }
+        .infoVaga {
+            font-size: 2em;
+        }
+    .reqs {
+        margin-bottom: 1.2em;
+        margin-top: 0;
+    }
+        .infoVaga > .detalhesVaga, 
+        .infoVaga > .reqs {
+            margin: 1em 0;
+        }
+        .infoVaga h1 {
+            text-align: left;
+        }
+
+    .vagasPagina {
+        display: block !important;
+        position: relative;
+        width: 100%;
+    }
+        .vagasPagina > div:first-child {
+            float: left;
+            position: sticky;
+
+            top: 1em;
+            z-index: 2;
+
+            max-height: calc(100vh - 2em);
+            width: 180px;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .vagasPagina .vaga,
+        .vagasPagina form,
+        .vagasPagina hr {
+            width: calc(100% - 195px);
+            margin-left: auto !important;
+            margin-right: 0 !important;
+            margin-bottom: 1em;
+            box-sizing: border-box;
+        }
+    .filtro {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 2px;
+    }
+        .filtro button {
+            font-size: 1.7em;
+
+            margin: 0.2em 0;
+            padding: 0.4em 0.2em;
+
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
+            white-space: normal;
+            word-break: break-word;
+        }
+        #vaga_barraPesquisa {
+            width: 100%;
+            font-size: 1.5em;
+            box-sizing: border-box;
+        }
+    
+    .vagasPerfil .infoVaga {
+        font-size: 1em;
+    }
+
+    #posts {
+        grid-template-columns: 1fr;
+    }
+}

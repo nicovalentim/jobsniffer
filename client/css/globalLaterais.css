@@ -105,31 +105,6 @@
     font-size: 1.2em;
 }
 
-/* responsivo */
-@media (max-width: 1080px) {
-    #chatbot {
-        padding: 18px;
-        height: 72px;
-        width: 72px;
-    }
-
-    .chat-box {
-        bottom: 80px;
-        right: 80px;
-        width: 280px;
-        height: 400px;
-    }
-
-    .chat-box .avatar {
-        width: 24px;
-        height: 24px;
-    }
-
-    .chat-box .close {
-        font-size: 0.8em;
-    }
-}
-
 .chat-box .messages {
     flex: 1;
     padding: 10px;
@@ -139,16 +114,14 @@
     flex-direction: column;
     gap: 6px;
 
-    justify-content: flex-start; /* evita espaço vazio */
+    justify-content: flex-start;
 }
 
-/* remove “buraco branco” */
 .chat-box .messages::after {
     content: "";
     flex-grow: 1;
 }
 
-/* mensagens */
 .chat-box .messages .user, 
 .chat-box .messages .bot {
     padding: 8px;
@@ -166,7 +139,6 @@
     align-self: flex-end;
 }
 
-/* efeito digitando do chat */
 .chat-box .messages .typing {
     background-color: rgba(var(--preto), 0.05);
     display: flex;
@@ -198,7 +170,6 @@
     40% { transform: scale(1); }
 }
 
-/* sugestões */
 #sugestoes {
     display: flex;
     flex-direction: column;
@@ -217,7 +188,6 @@
     background: #ddd;
 }
 
-/* input */
 .chat-box .bottom {
     display: flex;
     gap: 5px;
@@ -234,4 +204,44 @@
 .chat-box .bottom button {
     background-color: rgb(var(--branco));
     color: rgb(var(--preto));
+}
+
+@media (max-width: 1080px) {
+    #chatbot {
+        height: 120px;
+        width: 120px;
+
+        margin: 16px;
+        padding: 18px;
+    }
+
+    .chat-box {
+        bottom: 120px;
+        right: 120px;
+
+        width: 480px;
+        height: 720px;
+    }
+        .chat-box {
+            font-size: 1.8em;
+        }
+        .chat-box button {
+            font-size: 1em;
+        }
+    .chat-box .avatar {
+        width: 24px;
+        height: 24px;
+    }
+
+    .chat-box .close {
+        font-size: 0.8em;
+    }
+
+    #irAoTopo {
+        margin-right: 16px;
+        right: 0;
+
+        height: 72px;
+        width: 72px;
+    }
 }

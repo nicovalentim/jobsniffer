@@ -44,7 +44,7 @@ export async function vagas_carregar(url = "/api/vagas") {
     }
 
     if (admin && tipoPagina === "pagina") conteudo = vaga_gerarTemplateCriacao() + conteudo;
-    container.innerHTML = conteudo;
+    container.innerHTML += conteudo;
 
     if (tipoPagina === "perfil") {
         container.style.display = "contents";
