@@ -65,6 +65,6 @@ header {
 
 @media (max-width: 1080px) {
     header {
-        min-height: 15vh;
+        min-height: 25vh;
     }
 }
