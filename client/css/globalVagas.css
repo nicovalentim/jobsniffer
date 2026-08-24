@@ -305,11 +305,11 @@ button {
     }
 
     .homeVagas > h2 {
-        font-size: 3em;
+        font-size: 2em;
         margin-top: 0;
     }
     .homeVagas > p {
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .vagasHomePage {
@@ -330,7 +330,8 @@ button {
         }
 
     .vaga {
-        font-size: 1.8em;
+        font-size: 1.5em;
+        text-align: left;
     }
         .vagasPerfil > .vaga,
         .infoVaga button {
@@ -342,6 +343,9 @@ button {
     .reqs {
         margin-bottom: 1.2em;
         margin-top: 0;
+    }
+    .naVaga {
+        font-size: 0.75em;
     }
         .infoVaga > .detalhesVaga, 
         .infoVaga > .reqs {

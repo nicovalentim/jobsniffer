@@ -134,9 +134,10 @@
     }
 
 .homeValores {
-    margin: 1em 0;
-    grid-template-columns: repeat(5, auto);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
     gap: 16px;
+    margin: 1em 0;
 }
     .homeValores section {
         background-color: rgb(var(--branco));
@@ -144,11 +145,10 @@
         text-align: center;
         box-shadow: none;
         padding: 0;
-
         font-size: 1.2em;
     }
     .homeValoresImg {
-        grid-column: span 5;
+        grid-column: 1 / -1; 
         width: 100%;
     }
         .homeValores img {
@@ -193,7 +193,7 @@
 
 @media (max-width: 1080px) {
     .card {
-        font-size: 2em;
+        font-size: 1.5em;
 
         grid-template-columns: 1fr;
     }
@@ -207,6 +207,12 @@
     }
         .card.homeEncontre section.texto {
             padding: 3em;
+        }
+        .card.homeValores {
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+        }
+        .homeValores section {
+            font-size: 1em;
         }
 
     .card.cadastro {
@@ -249,9 +255,8 @@
         }
 
     .card.contato section {
+        min-height: 0;
         align-content: center;
-
-        height: fit-content;
         padding: 2em;
     }
         .card.contato button {
