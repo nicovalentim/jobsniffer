@@ -181,5 +181,5 @@ http://127.0.0.1:5000
 Embora o JobSniffer tenha sido idealizado, desenvolvido e mantido principalmente por mim, gostaria de agradecer:
 
 * [Rods](https://github.com/Rodsmont) pela criação do conjunto original de dados em SQL utilizado durante o desenvolvimento.
-* [Rocharlia](https://github.com/rocharlia) pelo desenvolvimento do módulo do chatbot, e a função de filtragem de vagas.
-
+* [Rocharlia](https://github.com/rocharlia) pelo desenvolvimento do módulo do chatbot e a função de filtragem de vagas.
+* 
