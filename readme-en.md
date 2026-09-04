@@ -160,4 +160,4 @@ Real-time frontend validation of input data and secure server-side processing.
 Although JobSniffer was primarily planned, developed and maintained by me, I'd like to thank:
 
 - [Rods](https://github.com/Rodsmont) for creating the original mock SQL dataset used during development.
-- [Rocharlia](https://github.com/rocharlia) for developing the chatbot module.
+- [Rocharlia](https://github.com/rocharlia) for developing the chatbot module and filtering in job listings.
